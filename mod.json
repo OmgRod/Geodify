@@ -7,8 +7,9 @@
 	"version": "v1.0.0-beta.1",
 	"id": "omgrod.geodify",
 	"name": "Geodify",
-	"developer": "OmgRod",
+	"developers": ["OmgRod", "Viper"],
 	"description": "Converts most menus' backgrounds to the Geode one (SwelvyBG).",
+	"early-load": true,
 	"resources": {
 		"sprites": ["res/*.png"]
 	},
