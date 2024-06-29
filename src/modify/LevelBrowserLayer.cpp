@@ -10,8 +10,10 @@ class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 			return false;
 		}
 
-		this->getChildByID("background")->setVisible(false);
-
+		if (auto bg = this->getChildByID("background")) {
+			bg->setVisible(false);
+		}
+		
 		auto swelvyBG = SwelvyBG::create();
 		swelvyBG->setZOrder(-2);
 		swelvyBG->setID("swelvy-background");

@@ -10,8 +10,12 @@ class $modify(MyLevelSelectLayer, LevelSelectLayer) {
 			return false;
 		}
 
-		this->getChildByID("background")->setVisible(false);
-		this->getChildByID("ground-layer")->setVisible(false);
+		if (auto bg = this->getChildByID("background")) {
+			bg->setVisible(false);
+		}
+		if (auto ground = this->getChildByID("ground-layer")) {
+			ground->setVisible(false);
+		}
 
 		auto swelvyBG = SwelvyBG::create();
 		swelvyBG->setZOrder(-3);

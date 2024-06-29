@@ -10,7 +10,9 @@ class $modify(MyLevelSearchLayer, LevelSearchLayer) {
 			return false;
 		}
 
-		this->getChildByID("background")->setVisible(false);
+		if (auto bg = this->getChildByID("background")) {
+			bg->setVisible(false);
+		}
 
 		CCScale9Sprite* levelSearchBg = static_cast<CCScale9Sprite*>(this->getChildByID("level-search-bg"));
 		levelSearchBg->setColor(ccc3(0, 0, 0));

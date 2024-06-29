@@ -10,10 +10,18 @@ class $modify(MySecretRewardsLayer, SecretRewardsLayer) {
 			return false;
 		}
 
-		this->getChildByID("background")->setVisible(false);
-        this->getChildByID("top-left-art")->setVisible(false);
-        this->getChildByID("top-right-art")->setVisible(false);
-        this->getChildByID("floor")->setVisible(false);
+		if (auto bg = this->getChildByID("background")) {
+			bg->setVisible(false);
+		}
+        if (auto tlArt = this->getChildByID("top-left-art")) {
+			tlArt->setVisible(false);
+		}
+        if (auto trArt = this->getChildByID("top-right-art")) {
+			trArt->setVisible(false);
+		}
+        if (auto floor = this->getChildByID("floor")) {
+			floor->setVisible(false);
+		}
 
 		auto swelvyBG = SwelvyBG::create();
 		swelvyBG->setZOrder(-2);
