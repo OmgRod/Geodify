@@ -1,0 +1,22 @@
+{
+	"geode": "3.1.1",
+	"gd": {
+		"android": "2.206",
+		"win": "2.206"
+	},
+	"version": "v1.0.0-beta.1",
+	"id": "omgrod.geodify",
+	"name": "Geodify",
+	"developer": "OmgRod",
+	"description": "Converts most menus' backgrounds to the Geode one (SwelvyBG).",
+	"resources": {
+		"sprites": ["res/*.png"]
+	},
+	"dependencies": [
+		{
+			"id": "geode.node-ids",
+			"importance": "required",
+			"version": ">=v1.12.0"
+		}
+	]
+}
