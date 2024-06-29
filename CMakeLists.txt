@@ -12,6 +12,7 @@ add_library(${PROJECT_NAME} SHARED
     src/modify/CreatorLayer.cpp
     src/modify/LevelSelectLayer.cpp
     src/modify/LevelBrowserLayer.cpp
+    src/modify/LeaderboardsLayer.cpp
     src/SwelvyBG.cpp
 )
 
