@@ -5,10 +5,10 @@
 using namespace geode::prelude;
 
 class $modify(MenuLayer) {
-	bool init() {
-        static void onModify(auto& self) {
+	static void onModify(auto& self) {
         (void)self.setHookPriority("MenuLayer::init", -2); // For SwelvyBGInsert Aka BetterMenu no overlap
-        }
+    }
+	bool init() {
 		if (!MenuLayer::init()) {
 			return false;
 		}
