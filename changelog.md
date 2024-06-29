@@ -1,3 +1,7 @@
+# v1.0.2
+
+- Fixed versioning stuff (ngl im stupid)
+
 # v1.0.1
 
 - Added Happy Textures as a dependency

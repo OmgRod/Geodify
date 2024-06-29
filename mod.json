@@ -4,7 +4,7 @@
 		"android": "2.206",
 		"win": "2.206"
 	},
-	"version": "v1.0.0",
+	"version": "v1.0.2",
 	"id": "omgrod.geodify",
 	"name": "Geodify",
 	"developers": ["OmgRod", "Viper"],
@@ -12,6 +12,20 @@
 	"early-load": true,
 	"resources": {
 		"sprites": ["res/*.png"]
+	},
+	"settings": {
+		"level-bg": {
+            "name": "Swelvy Gameplay",
+            "description": "Replace BG with SwelvyBG in gameplay.",
+            "type": "bool",
+            "default": false
+        },
+		"external-mods": {
+            "name": "External Mods",
+            "description": "Enable SwelvyBG for external mods' menus.",
+            "type": "bool",
+            "default": true
+        }
 	},
 	"dependencies": [
 		{
