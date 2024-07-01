@@ -3,7 +3,7 @@
 #include "../../Hooks/Hooker.hpp" 
 class TextureWorkshopLayer : public Betterhook::HookBetter { 
     void init(CCNode* _This) override {
-        if (CCSprite* bg = getChildOfType<CCSprite*>(_This,1)) {
+        if (CCSprite* bg = getChildOfType<CCSprite>(_This,1)) {
             bg->setVisible(false);
         }
 
