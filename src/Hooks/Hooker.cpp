@@ -1,19 +1,17 @@
 
-#pragma once
 #include "Hooker.hpp"
-#include <Geode/Geode.hpp>
 
-using namespace geode::prelude;
+#include <Geode/Geode.hpp>
 
 namespace Betterhook {
     
-    static std::vector<Betterhook::Hook*> HooksTable;
+    static std::vector<Betterhook::Hook*> ListHooks;
   
     const std::vector<Betterhook::Hook*>& Hook::Hooks() {
-        return HooksTable;
+        return ListHooks;
     }
-     void Hook::registerHook(Hook* hook) {
-        HooksTable.push_back(hook);
+     void Hook::registerHook(Betterhook::Hook* hook) {
+        ListHooks.push_back(hook);
     }
 
 }

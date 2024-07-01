@@ -6,7 +6,6 @@ using namespace geode::prelude;
 
 
 void runhooks(CCNode* Send,const std::string& layer) {
-        bool cheats = false;
         for (Betterhook::Hook* hook : Betterhook::Hook::Hooks()) {
             if (hook->PutLayer() == layer) {
                 hook->init(Send);
