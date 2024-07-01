@@ -10,17 +10,15 @@ class $modify(MyCreatorLayer, CreatorLayer) {
 			return false;
 		}
 
-		if (auto value = Mod::get()->getSettingValue<bool>("menus")) {
-			if (auto bg = this->getChildByID("background")) {
-				bg->setVisible(false);
-			}
-
-			auto swelvyBG = SwelvyBG::create();
-			swelvyBG->setZOrder(-2);
-			swelvyBG->setID("swelvy-background");
-
-			this->addChild(swelvyBG);
+		if (auto bg = this->getChildByID("background")) {
+			bg->setVisible(false);
 		}
+
+		auto swelvyBG = SwelvyBG::create();
+		swelvyBG->setZOrder(-2);
+		swelvyBG->setID("swelvy-background");
+
+    	this->addChild(swelvyBG);
 
 		return true;
 	}

@@ -4,52 +4,16 @@
 		"android": "2.206",
 		"win": "2.206"
 	},
-	"version": "v1.1.0",
+	"version": "v1.0.2",
 	"id": "omgrod.geodify",
 	"name": "Geodify",
 	"developers": ["OmgRod", "Viper"],
 	"description": "Converts most menus' backgrounds to the Geode one (SwelvyBG).",
-	"early-load": false,
+	"early-load": true,
 	"resources": {
 		"sprites": ["res/*.png"]
 	},
 	"settings": {
-		"menus": {
-			"name": "Miscellaneous Menus",
-			"description": "Replace BG with SwelvyBG in Miscellaneous Menus.",
-            "type": "bool",
-            "default": true
-		},
-		"level-lists": {
-			"name": "Level Lists",
-			"description": "Replace BG with SwelvyBG in Level Lists.",
-            "type": "bool",
-            "default": true
-		},
-		"icon-kit": {
-			"name": "Icon Kit",
-			"description": "Replace BG with SwelvyBG in Icon Kit.",
-            "type": "bool",
-            "default": true
-		},
-		"main-levels-select": {
-			"name": "Main Levels List",
-			"description": "Replace BG with SwelvyBG in Main Levels List.",
-            "type": "bool",
-            "default": true
-		},
-		"gauntlets": {
-			"name": "Gauntlets",
-			"description": "Replace BG with SwelvyBG in Gauntlets Pages.",
-            "type": "bool",
-            "default": true
-		},
-		"treasure-room": {
-			"name": "Treasure Room",
-			"description": "Replace BG with SwelvyBG in Treasure Room.",
-            "type": "bool",
-            "default": true
-		},
 		"level-bg": {
             "name": "Swelvy Gameplay",
             "description": "Replace BG with SwelvyBG in gameplay.",
