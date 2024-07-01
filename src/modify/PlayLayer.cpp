@@ -10,9 +10,7 @@ class $modify(MyPlayLayer, PlayLayer) {
 			return false;
 		}
 
-        auto bgOn = Mod::get()->getSettingValue<int64_t>("level-bg");
-
-        if (bgOn) {
+        if (Mod::get()->getSettingValue<bool>("level-bg")) {
             if (auto bg = this->getChildByID("main-node")->getChildByID("background")) {
                 bg->setVisible(false);
             }

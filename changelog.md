@@ -1,6 +1,7 @@
-# v1.0.2
+# v1.1.0
 
-- Fixed versioning stuff (ngl im stupid)
+- Fixed versioning stuff
+- Added Globed and Texture Loader textures
 
 # v1.0.1
 
@@ -11,14 +12,14 @@
 # v1.0.0
 
 - Added the following layers:
-    - CreatorLayer
-    - GauntletSelectLayer
-    - GJGarageLayer
-    - LeaderboardsLayer
-    - LevelBrowserLayer
-    - LevelInfoLayer
-    - LevelSearchLayer
-    - LevelSelectLayer
-    - LoadingLayer
-    - MenuLayer
-    - SecretRewardsLayer
+    - `CreatorLayer`
+    - `GauntletSelectLayer`
+    - `GJGarageLayer`
+    - `LeaderboardsLayer`
+    - `LevelBrowserLayer`
+    - `LevelInfoLayer`
+    - `LevelSearchLayer`
+    - `LevelSelectLayer`
+    - `LoadingLayer`
+    - `MenuLayer`
+    - `SecretRewardsLayer`

@@ -1,6 +1,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/CCDirector.hpp>
-#include "../modify/Globed/GlobedServersLayer.hpp"
+#include "../modify/mods/dankmeme/globed2/GlobedServersLayer.hpp"
 using namespace geode::prelude;
 
 class $modify(CCDirector) {
