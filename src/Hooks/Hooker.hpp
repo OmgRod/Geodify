@@ -3,7 +3,7 @@
 #include "Hooker.cpp"
 #include <Geode/Geode.hpp>
 
-#define REGISTER_Hook(HookClass) $execute { Betterhook::HookBetter::registerHook<Hook>(); }
+#define REGISTER_Hook(HookClass) $execute { Betterhook::HookBetter::registerHook<HookBetter>(); }
 
 using namespace geode::prelude;
 
