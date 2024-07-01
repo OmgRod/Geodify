@@ -29,7 +29,9 @@ class $modify(CCDirector) {
             size_t pos = fc.find("class ");
             if (pos != std::string::npos) {
                 std::string tcn = fc.substr(pos + 6);
-                log::debug("{}", tcn);
+                #ifndef GITHUB_ACTIONS
+                    log::debug("{}", tcn);
+                #endif
                 runhooks(child,tcn);
             }
         }
