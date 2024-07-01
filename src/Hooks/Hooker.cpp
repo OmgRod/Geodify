@@ -3,16 +3,13 @@
 
 #include <Geode/Geode.hpp>
 
-namespace Betterhook {
-    
-    static std::vector<HookBetter*> ListHooks;
+static std::vector<Betterhook::HookBetter*> ListHooks;
   
-    const std::vector<HookBetter*>& HookBetter::Hooks() {
-        return ListHooks;
-    }
-    
-     void HookBetter::registerHook(HookBetter* hook) {
-        ListHooks.push_back(hook);
-    }
-
+const std::vector<Betterhook::HookBetter*>& Betterhook::HookBetter::Hooks() {
+    return ListHooks;
 }
+
+void Betterhook::HookBetter::registerHook(Betterhook::HookBetter* hook) {
+     ListHooks.push_back(hook);
+ }
+
