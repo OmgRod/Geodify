@@ -20,6 +20,9 @@ class $modify(CCDirector) {
 
     void willSwitchToScene(CCScene* scene) {
         CCDirector::willSwitchToScene(scene);
+        if (!Mod::get()->getSettingValue<bool>("external-mods")) {
+            return;
+        }
         if (CCLayer* child = getChildOfType<CCLayer>(scene, 0)) {
             const char* className = typeid(*child).name();
             std::string fc = className;
