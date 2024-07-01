@@ -3,7 +3,7 @@
 #include "../../SwelvyBG.hpp"
 #include "../../Hooks/Hooker.hpp"
 using namespace geode::prelude;
-class GlobedServersLayer : public Betterhook::Hook {
+class GlobedServersLayer : public Betterhook::HookBetter {
         void init(CCNode* _This) override {
            if (CCNode* bg = typeinfo_cast<CCNode*>(_This->getChildren()->objectAtIndex(1)) ) {
 			bg->setVisible(false);

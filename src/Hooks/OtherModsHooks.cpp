@@ -6,7 +6,7 @@ using namespace geode::prelude;
 
 
 void runhooks(CCNode* Send,const std::string& layer) {
-        for (Betterhook::Hook* hook : Betterhook::Hook::Hooks()) {
+        for (Betterhook::HookBetter* hook : Betterhook::HookBetter::Hooks()) {
             if (hook->PutLayer() == layer) {
                 hook->init(Send);
             }

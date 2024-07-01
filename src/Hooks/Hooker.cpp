@@ -5,12 +5,13 @@
 
 namespace Betterhook {
     
-    static std::vector<Betterhook::Hook*> ListHooks;
+    static std::vector<HookBetter*> ListHooks;
   
-    const std::vector<Betterhook::Hook*>& Hook::Hooks() {
+    const std::vector<HookBetter*>& HookBetter::Hooks() {
         return ListHooks;
     }
-     void Hook::registerHook(Betterhook::Hook* hook) {
+    
+     void HookBetter::registerHook(HookBetter* hook) {
         ListHooks.push_back(hook);
     }
 

@@ -8,10 +8,10 @@
 using namespace geode::prelude;
 
 namespace Betterhook {
- class Hook {
+ class HookBetter {
     public:
-     static void registerHook(Hook* hook);
-     static const std::vector<Hook*>& Hooks();
+     static void registerHook(HookBetter* hook);
+     static const std::vector<HookBetter*>& Hooks();
      virtual void init(cocos2d::CCNode* Layer) = 0;
      virtual const char* PutLayer() const = 0;
  };
