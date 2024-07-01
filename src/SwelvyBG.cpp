@@ -74,9 +74,9 @@ void SwelvyBG::updateSpritePosition(float dt) {
     sprite->setTextureRect(rect);
 }
 
-SwelvyBG* SwelvyBG::create(float widthmult, float m, float minspeed) {
+SwelvyBG* SwelvyBG::create(float widthmult, float m, float minspeed, float maxspeed) {
     auto ret = new SwelvyBG();
-    if (ret->init(widthmult,m,minspeed)) {
+    if (ret->init(widthmult,m,minspeed,maxspeed)) {
         ret->autorelease();
         return ret;
     }
