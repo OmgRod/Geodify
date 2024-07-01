@@ -1,7 +1,17 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/CCDirector.hpp>
-#include "../modify/Globed/GlobedServersLayer.hpp"
+#include "Hooker.hpp"
+
 using namespace geode::prelude;
+
+
+void runhooks(CCNode* Send,const std::string& layer) {
+        for (Betterhook::HookBetter* hook : Betterhook::HookBetter::Hooks()) {
+            if (hook->PutLayer() == layer) {
+                hook->init(Send);
+            }
+        }
+    }
 
 class $modify(CCDirector) {
     static void onModify(auto& self) {
@@ -10,6 +20,9 @@ class $modify(CCDirector) {
 
     void willSwitchToScene(CCScene* scene) {
         CCDirector::willSwitchToScene(scene);
+        if (!Mod::get()->getSettingValue<bool>("external-mods")) {
+            return;
+        }
         if (CCLayer* child = getChildOfType<CCLayer>(scene, 0)) {
             const char* className = typeid(*child).name();
             std::string fc = className;
@@ -17,9 +30,7 @@ class $modify(CCDirector) {
             if (pos != std::string::npos) {
                 std::string tcn = fc.substr(pos + 6);
                 log::debug("{}", tcn);
-                if (tcn == "GlobedServersLayer") {
-                    GlobedServersLayerInit(child);
-                }
+                runhooks(child,tcn);
             }
         }
     }
