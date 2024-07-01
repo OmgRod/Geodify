@@ -2,7 +2,7 @@
 #include <Geode/loader/Mod.hpp>
 #include <random>
 
-bool SwelvyBG::init() {
+bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxspeed) {
     if (!CCNode::init())
         return false;
 
@@ -19,6 +19,7 @@ bool SwelvyBG::init() {
 
     float y = m_obContentSize.height + 5;
     int idx = 0;
+    
     for (auto layer : std::initializer_list<std::pair<ccColor3B, const char*>> {
         { ccc3(244, 212, 142), "geode.loader/swelve-layer3.png" },
         { ccc3(245, 174, 125), "geode.loader/swelve-layer0.png" },
@@ -35,15 +36,15 @@ bool SwelvyBG::init() {
 
         auto sprite = CCSprite::create(layer.second);
         auto rect = sprite->getTextureRect();
-        sprite->setUserObject("width", CCFloat::create(rect.size.width));
-        rect.size = CCSize{winSize.width, rect.size.height};
+        sprite->setUserObject("width", CCFloat::create(rect.size.width * widthmult));
+        rect.size = CCSize{winSize.width * widthmult, rect.size.height * hightmult};
 
         std::string layerID = fmt::format("layer-{}", idx);
         sprite->setID(layerID);
         sprite->getTexture()->setTexParameters(&params);
         sprite->setTextureRect(rect);
         sprite->setAnchorPoint({ 0, 1 });
-        sprite->setContentSize({winSize.width, sprite->getContentSize().height});
+        sprite->setContentSize({winSize.width * widthmult, sprite->getContentSize().height});
         sprite->setColor(layer.first);
         sprite->setPosition({0, y});
         sprite->schedule(schedule_selector(SwelvyBG::updateSpritePosition));
@@ -52,6 +53,7 @@ bool SwelvyBG::init() {
 
         y -= m_obContentSize.height / 6;
         idx += 1;
+    
     }
     return true;
 }
@@ -72,9 +74,9 @@ void SwelvyBG::updateSpritePosition(float dt) {
     sprite->setTextureRect(rect);
 }
 
-SwelvyBG* SwelvyBG::create() {
+SwelvyBG* SwelvyBG::create(float widthmult, float m, float minspeed) {
     auto ret = new SwelvyBG();
-    if (ret->init()) {
+    if (ret->init(widthmult,m,minspeed)) {
         ret->autorelease();
         return ret;
     }
