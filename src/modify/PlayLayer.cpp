@@ -10,18 +10,19 @@ class $modify(MyPlayLayer, PlayLayer) {
 			return false;
 		}
 
-        auto bgOn = Mod::get()->getSettingValue<int64_t>("level-bg");
+        auto bgOn = Mod::get()->getSettingValue<bool>("level-bg");
 
         if (bgOn) {
             if (auto bg = this->getChildByID("main-node")->getChildByID("background")) {
                 bg->setVisible(false);
             }
 
-            auto swelvyBG = SwelvyBG::create();
-            swelvyBG->setZOrder(-2);
+            auto swelvyBG = SwelvyBG::create(1.5,3);
+            swelvyBG->setZOrder(-5);
             swelvyBG->setID("swelvy-background");
-
+            swelvyBG->setScale(2);
             this->getChildByID("main-node")->addChild(swelvyBG);
+            swelvyBG->setPosition(-204,-81);
         }
 
 		return true;

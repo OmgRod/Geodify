@@ -16,6 +16,11 @@ else()
     message(STATUS "Found Geode: $ENV{GEODE_SDK}")
 endif()
 
+if (DEFINED ENV{GITHUB_ACTIONS})
+    message("Github Actions Build")
+    add_definitions(-DGITHUB_ACTIONS)
+endif()
+
 add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 
 setup_geode_mod(${PROJECT_NAME})
