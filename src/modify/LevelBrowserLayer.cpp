@@ -12,13 +12,12 @@ class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 		if (Mod::get()->getSettingValue<bool>("show-level-browser")){
 			if (auto bg = this->getChildByID("background")) {
 				bg->setVisible(false);
+				auto swelvyBG = SwelvyBG::create();
+				swelvyBG->setZOrder(-2);
+				swelvyBG->setID("swelvy-background");
+	
+				this->addChild(swelvyBG);				
 			}
-			
-			auto swelvyBG = SwelvyBG::create();
-			swelvyBG->setZOrder(-2);
-			swelvyBG->setID("swelvy-background");
-
-			this->addChild(swelvyBG);
 		}
 		return true;
 	}
