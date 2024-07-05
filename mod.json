@@ -4,7 +4,7 @@
 		"android": "2.206",
 		"win": "2.206"
 	},
-	"version": "v1.0.2",
+	"version": "v1.0.3",
 	"id": "omgrod.geodify",
 	"name": "Geodify",
 	"developers": ["OmgRod", "Viper"],
@@ -14,17 +14,83 @@
 		"sprites": ["res/*.png"]
 	},
 	"settings": {
-		"level-bg": {
-            "name": "Swelvy Gameplay",
-            "description": "Replace BG with SwelvyBG in gameplay.",
+        "show-main": {
+            "name": "Show in main menu",
+            "description": "MenuLayer",
+            "type": "bool",
+            "default": true
+        },
+        "show-level-select": {
+            "name": "Show in level select menu",
+            "description": "LevelSelectLayer",
             "type": "bool",
             "default": false
         },
-		"external-mods": {
-            "name": "External Mods",
-            "description": "Enable SwelvyBG for external mods' menus.",
+        "show-creator": {
+            "name": "Show in creator menu",
+            "description": "CreatorLayer",
             "type": "bool",
-            "default": true
+            "default": false
+        },
+        "show-level-browser": {
+            "name": "Show in level lists",
+            "description": "Hall of Fame, Featured, Saved, etc. (LevelBrowserLayer)",
+            "type": "bool",
+            "default": false
+        },
+        "show-edit-level": {
+            "name": "Show in edit level menu",
+            "description": "EditLevelLayer",
+            "type": "bool",
+            "default": false
+        },
+        "show-level-info": {
+            "name": "Show in play level menu",
+            "description": "LevelInfoLayer",
+            "type": "bool",
+            "default": false
+        },
+        "show-garage": {
+            "name": "Show in icon select menu",
+            "description": "GJGarageLayer",
+            "type": "bool",
+            "default": false
+        },
+        "show-search": {
+            "name": "Show in search filters menu",
+            "description": "LevelSearchLayer",
+            "type": "bool",
+            "default": false
+        },
+        "show-leaderboard": {
+            "name": "Show in leaderboards menu",
+            "description": "LeaderboardsLayer",
+            "type": "bool",
+            "default": false
+        },
+        "show-level-list": {
+            "name": "Show in level list menu",
+            "description": "LevelListLayer",
+            "type": "bool",
+            "default": false
+        },
+        "show-gauntlet-select": {
+            "name": "Show in gauntlet select menu",
+            "description": "GauntletSelectLayer",
+            "type": "bool",
+            "default": false
+        },
+        "show-gauntlet-map": {
+            "name": "Show in gauntlet map menu",
+            "description": "GauntletLayer",
+            "type": "bool",
+            "default": false
+        },
+        "show-secret-rewards": {
+            "name": "Show in secret chests menu",
+            "description": "GauntletLayer",
+            "type": "bool",
+            "default": false
         }
 	},
 	"dependencies": [
