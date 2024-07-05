@@ -24,73 +24,73 @@
             "name": "Show in level select menu",
             "description": "LevelSelectLayer",
             "type": "bool",
-            "default": false
+            "default": true
         },
         "show-creator": {
             "name": "Show in creator menu",
             "description": "CreatorLayer",
             "type": "bool",
-            "default": false
+            "default": true
         },
         "show-level-browser": {
             "name": "Show in level lists",
             "description": "Hall of Fame, Featured, Saved, etc. (LevelBrowserLayer)",
             "type": "bool",
-            "default": false
+            "default": true
         },
         "show-edit-level": {
             "name": "Show in edit level menu",
             "description": "EditLevelLayer",
             "type": "bool",
-            "default": false
+            "default": true
         },
         "show-level-info": {
             "name": "Show in play level menu",
             "description": "LevelInfoLayer",
             "type": "bool",
-            "default": false
+            "default": true
         },
         "show-garage": {
             "name": "Show in icon select menu",
             "description": "GJGarageLayer",
             "type": "bool",
-            "default": false
+            "default": true
         },
         "show-search": {
             "name": "Show in search filters menu",
             "description": "LevelSearchLayer",
             "type": "bool",
-            "default": false
+            "default": true
         },
         "show-leaderboard": {
             "name": "Show in leaderboards menu",
             "description": "LeaderboardsLayer",
             "type": "bool",
-            "default": false
+            "default": true
         },
         "show-level-list": {
             "name": "Show in level list menu",
             "description": "LevelListLayer",
             "type": "bool",
-            "default": false
+            "default": true
         },
         "show-gauntlet-select": {
             "name": "Show in gauntlet select menu",
             "description": "GauntletSelectLayer",
             "type": "bool",
-            "default": false
+            "default": true
         },
         "show-gauntlet-map": {
             "name": "Show in gauntlet map menu",
             "description": "GauntletLayer",
             "type": "bool",
-            "default": false
+            "default": true
         },
         "show-secret-rewards": {
             "name": "Show in secret chests menu",
             "description": "GauntletLayer",
             "type": "bool",
-            "default": false
+            "default": true
         }
 	},
 	"dependencies": [
