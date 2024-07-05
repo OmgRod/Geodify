@@ -9,17 +9,17 @@ class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 		if (!LevelBrowserLayer::init(p0)) {
 			return false;
 		}
+		if (Mod::get()->getSettingValue<bool>("show-level-browser")){
+			if (auto bg = this->getChildByID("background")) {
+				bg->setVisible(false);
+			}
+			
+			auto swelvyBG = SwelvyBG::create();
+			swelvyBG->setZOrder(-2);
+			swelvyBG->setID("swelvy-background");
 
-		if (auto bg = this->getChildByID("background")) {
-			bg->setVisible(false);
+			this->addChild(swelvyBG);
 		}
-		
-		auto swelvyBG = SwelvyBG::create();
-		swelvyBG->setZOrder(-2);
-		swelvyBG->setID("swelvy-background");
-
-    	this->addChild(swelvyBG);
-
 		return true;
 	}
 };
