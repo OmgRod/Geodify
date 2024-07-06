@@ -9,7 +9,7 @@ class $modify(MyLevelSelectLayer, LevelSelectLayer) {
 		if (!LevelSelectLayer::init(page)) {
 			return false;
 		}
-
+		if (Mod::get()->getSettingValue<bool>("show-level-select")){
 		if (auto bg = this->getChildByID("background")) {
 			bg->setVisible(false);
 		}
@@ -22,7 +22,7 @@ class $modify(MyLevelSelectLayer, LevelSelectLayer) {
 		swelvyBG->setID("swelvy-background");
 
     	this->addChild(swelvyBG);
-
+		}
 		return true;
 	}
 };

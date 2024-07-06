@@ -9,26 +9,26 @@ class $modify(MySecretRewardsLayer, SecretRewardsLayer) {
 		if (!SecretRewardsLayer::init(p0)) {
 			return false;
 		}
+		if (Mod::get()->getSettingValue<bool>("show-secret-rewards")){
+			if (auto bg = this->getChildByID("background")) {
+				bg->setVisible(false);
+			}
+			if (auto tlArt = this->getChildByID("top-left-art")) {
+				tlArt->setVisible(false);
+			}
+			if (auto trArt = this->getChildByID("top-right-art")) {
+				trArt->setVisible(false);
+			}
+			if (auto floor = this->getChildByID("floor")) {
+				floor->setVisible(false);
+			}
 
-		if (auto bg = this->getChildByID("background")) {
-			bg->setVisible(false);
-		}
-        if (auto tlArt = this->getChildByID("top-left-art")) {
-			tlArt->setVisible(false);
-		}
-        if (auto trArt = this->getChildByID("top-right-art")) {
-			trArt->setVisible(false);
-		}
-        if (auto floor = this->getChildByID("floor")) {
-			floor->setVisible(false);
-		}
+			auto swelvyBG = SwelvyBG::create();
+			swelvyBG->setZOrder(-2);
+			swelvyBG->setID("swelvy-background");
 
-		auto swelvyBG = SwelvyBG::create();
-		swelvyBG->setZOrder(-2);
-		swelvyBG->setID("swelvy-background");
-
-    	this->addChild(swelvyBG);
-
+			this->addChild(swelvyBG);
+		}
 		return true;
 	}
 };
