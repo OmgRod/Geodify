@@ -2,7 +2,6 @@
 
 - Fixed versioning stuff
 - Fixed `LoadingLayer` bug
-- Added mods: BetterInfo, Globed, TexturePackLoader, TexturePackWorkshop
 - Added very customisable settings
 
 # v1.0.1
