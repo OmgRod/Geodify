@@ -1,6 +1,7 @@
-# v1.0.2
+# v1.1.0
 
-- Fixed versioning stuff (ngl im stupid)
+- Fixed versioning stuff
+- Fixed `LoadingLayer` bug
 
 # v1.0.1
 

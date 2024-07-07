@@ -6,3 +6,9 @@ This mod converts most menus' backgrounds to the Geode one (SwelvyBG). This incl
 - LevelBrowserLayer
 - LevelSearchLayer
 - LevelSelectLayer
+
+## Credits
+
+- Lead dev: OmgRod
+- Most pull requests guy: Viper
+- Logo by hiimjustin000
