@@ -1,7 +1,9 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/CCDirector.hpp>
 #include "Hooker.hpp"
+if defined(GEODE_IS_ANDROID)
 #include <cxxabi.h>
+#endif
 #include <typeinfo>
 #include <memory>
 #include <string>
@@ -19,6 +21,7 @@ void runhooks(CCNode* Send,const std::string& layer) {
     }
 
 std::string demangle(const char* mangledName) {
+    if defined(GEODE_IS_ANDROID)
     static std::unordered_map<std::string, std::string> cache;
     
 
@@ -42,6 +45,9 @@ std::string demangle(const char* mangledName) {
 
     cache[mangledName] = result;
     return result;
+    #else
+    return mangledName;
+    #endif
 }
 
 std::string getclass(auto object) {
