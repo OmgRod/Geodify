@@ -1,6 +1,11 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/CCDirector.hpp>
 #include "Hooker.hpp"
+#include <cxxabi.h>
+#include <typeinfo>
+#include <memory>
+#include <string>
+#include <unordered_map>
 
 using namespace geode::prelude;
 
@@ -13,6 +18,47 @@ void runhooks(CCNode* Send,const std::string& layer) {
         }
     }
 
+std::string demangle(const char* mangledName) {
+    static std::unordered_map<std::string, std::string> cache;
+    
+
+    auto it = cache.find(mangledName);
+    if (it != cache.end()) {
+        return it->second;
+    }
+
+    int status = 0;
+    char* demangled = abi::__cxa_demangle(mangledName, nullptr, nullptr, &status);
+    std::string result;
+    
+    if (status == 0) {
+        result = demangled;
+    } else {
+        result = mangledName;
+    }
+
+    free(demangled);
+
+
+    cache[mangledName] = result;
+    return result;
+}
+
+std::string getclass(auto object) {
+const char* className = typeid(*object).name();
+#if defined(GEODE_IS_WINDOWS)
+     size_t pos = fc.find("class ");
+            if (pos != std::string::npos) {
+                return fc.substr(pos + 6);
+            } else {
+                return fc
+            }
+#elif defined(GEODE_IS_ANDROID)
+
+#endif
+
+
+}
 
 class $modify(CCDirector) {
     static void onModify(auto& self) {
@@ -26,8 +72,8 @@ class $modify(CCDirector) {
         }
         if (CCLayer* child = getChildOfType<CCLayer>(scene, 0)) {
             const char* className = typeid(*child).name();
-            log::debug("ClassName {}", className);
-            child->setID(className); // prob break something but will show me how it works
+            log::debug("ClassName {}", demangle(className) );
+            child->setID(demangle(className)); // prob break something but will show me how it works
             std::string fc = className;
             size_t pos = fc.find("class ");
             if (pos != std::string::npos) {
