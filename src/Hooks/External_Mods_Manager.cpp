@@ -20,8 +20,8 @@ void runhooks(CCNode* Send,const std::string& layer) {
         }
     }
 
-#if defined(GEODE_IS_ANDROID)
     std::string demangle(const char* mangledName) {
+        #if defined(GEODE_IS_ANDROID)
         static std::unordered_map<std::string, std::string> cache;
         
 
@@ -45,8 +45,10 @@ void runhooks(CCNode* Send,const std::string& layer) {
 
         cache[mangledName] = result;
         return result;
+        #else
+            return "Not android";
+        #endif
     }
-#endif
 
 std::string getclass(auto object) {
 std::string className = typeid(*object).name();
