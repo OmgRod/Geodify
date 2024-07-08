@@ -13,6 +13,7 @@ void runhooks(CCNode* Send,const std::string& layer) {
         }
     }
 
+
 class $modify(CCDirector) {
     static void onModify(auto& self) {
         (void)self.setHookPriority("CCDirector::willSwitchToScene", -999); 
@@ -25,6 +26,8 @@ class $modify(CCDirector) {
         }
         if (CCLayer* child = getChildOfType<CCLayer>(scene, 0)) {
             const char* className = typeid(*child).name();
+            log::debug("ClassName {}", className);
+            scene->setID(className); // prob break something but will show me how it works
             std::string fc = className;
             size_t pos = fc.find("class ");
             if (pos != std::string::npos) {
