@@ -51,10 +51,10 @@ void runhooks(CCNode* Send,const std::string& layer) {
     }
 
 std::string getclass(auto object) {
-std::string className = typeid(*object).name();
 #if defined(GEODE_IS_ANDROID)
-    return demangle(className);
+    return demangle(typeid(*object).name(););
 #else
+    std::string className = typeid(*object).name();
      size_t pos = className.find("class ");
             if (pos != std::string::npos) {
                 return className.substr(pos + 6);
