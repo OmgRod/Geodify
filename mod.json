@@ -86,6 +86,12 @@
             "type": "bool",
             "default": true
         },
+        "external-mods": {
+            "name": "A",
+            "description": "GGGGGGGGGGGG",
+            "type": "bool",
+            "default": true
+        },
         "show-secret-rewards": {
             "name": "Show in secret chests menu",
             "description": "GauntletLayer",
