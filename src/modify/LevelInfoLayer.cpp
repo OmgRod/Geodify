@@ -9,17 +9,17 @@ class $modify(MyLevelInfoLayer, LevelInfoLayer) {
 		if (!LevelInfoLayer::init(level, challenge)) {
 			return false;
 		}
+		if (Mod::get()->getSettingValue<bool>("show-level-info")){
+			if (auto bg = this->getChildByID("background")) {
+				bg->setVisible(false);
+			}
 
-		if (auto bg = this->getChildByID("background")) {
-			bg->setVisible(false);
+			auto swelvyBG = SwelvyBG::create();
+			swelvyBG->setZOrder(-2);
+			swelvyBG->setID("swelvy-background");
+
+			this->addChild(swelvyBG);
 		}
-
-		auto swelvyBG = SwelvyBG::create();
-		swelvyBG->setZOrder(-2);
-		swelvyBG->setID("swelvy-background");
-
-    	this->addChild(swelvyBG);
-
 		return true;
 	}
 };
