@@ -87,8 +87,8 @@
             "default": true
         },
         "external-mods": {
-            "name": "A",
-            "description": "GGGGGGGGGGGG",
+            "name": "external mods",
+            "description": "For external mod layers",
             "type": "bool",
             "default": true
         },

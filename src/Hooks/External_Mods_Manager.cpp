@@ -75,15 +75,11 @@ class $modify(CCDirector) {
             return;
         }
         if (CCLayer* child = getChildOfType<CCLayer>(scene, 0)) {
-            std::string fc = getclass(child);
-            size_t pos = fc.find("class ");
-            if (pos != std::string::npos) {
-                std::string tcn = fc.substr(pos + 6);
+                std::string fc = getclass(child);
                 #ifndef GITHUB_ACTIONS
-                    log::debug("{}", tcn);
+                    log::debug("{}", fc);
                 #endif
-                runhooks(child,tcn);
-            }
+                runhooks(child,fc);
         }
     }
 };
