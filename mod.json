@@ -86,15 +86,15 @@
             "type": "bool",
             "default": true
         },
-        "external-mods": {
-            "name": "external mods",
-            "description": "For external mod layers",
-            "type": "bool",
-            "default": true
-        },
         "show-secret-rewards": {
             "name": "Show in secret chests menu",
             "description": "GauntletLayer",
+            "type": "bool",
+            "default": true
+        },
+        "external-mods": {
+            "name": "external mods",
+            "description": "For external mod layers",
             "type": "bool",
             "default": true
         }

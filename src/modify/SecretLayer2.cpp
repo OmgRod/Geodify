@@ -1,12 +1,12 @@
 #include "../SwelvyBG.hpp"
 #include <Geode/Geode.hpp>
-#include <Geode/modify/LevelBrowserLayer.hpp>
+#include <Geode/modify/SecretLayer2.hpp>
 
 using namespace geode::prelude;
 
-class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
-	bool init(GJSearchObject* p0) {
-		if (!LevelBrowserLayer::init(p0)) {
+class $modify(MySecretLayer2, SecretLayer2) {
+	bool init() {
+		if (!SecretLayer2::init()) {
 			return false;
 		}
 		if (Mod::get()->getSettingValue<bool>("show-vault-of-secrets")){
