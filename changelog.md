@@ -3,6 +3,7 @@
 - Fixed versioning stuff
 - Fixed `LoadingLayer` bug
 - Added very customisable settings
+- Added `SecretLayer2`
 
 # v1.0.1
 
@@ -13,14 +14,14 @@
 # v1.0.0
 
 - Added the following layers:
-    - CreatorLayer
-    - GauntletSelectLayer
-    - GJGarageLayer
-    - LeaderboardsLayer
-    - LevelBrowserLayer
-    - LevelInfoLayer
-    - LevelSearchLayer
-    - LevelSelectLayer
-    - LoadingLayer
-    - MenuLayer
-    - SecretRewardsLayer
+    - `CreatorLayer`
+    - `GauntletSelectLayer`
+    - `GJGarageLayer`
+    - `LeaderboardsLayer`
+    - `LevelBrowserLayer`
+    - `LevelInfoLayer`
+    - `LevelSearchLayer`
+    - `LevelSelectLayer`
+    - `LoadingLayer`
+    - `MenuLayer`
+    - `SecretRewardsLayer`
