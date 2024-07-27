@@ -40,7 +40,7 @@
         },
 	"show-level-search": {
             "name": "Show in level search",
-            "description": "Look at level levelSearchLayer",
+            "description": "Search for a level (levelSearchLayer)",
             "type": "bool",
             "default": true
         },
