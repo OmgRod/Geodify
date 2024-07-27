@@ -38,6 +38,12 @@
             "type": "bool",
             "default": true
         },
+	"show-level-search": {
+            "name": "Show in level search",
+            "description": "Look at level levelSearchLayer",
+            "type": "bool",
+            "default": true
+        },
         "show-edit-level": {
             "name": "Show in edit level menu",
             "description": "EditLevelLayer",
