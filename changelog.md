@@ -1,3 +1,9 @@
+# v1.2.0
+
+- Added `GDDP Integration` mod
+- Attempted to add `Minecraftify` mod
+- Added back `LoadingLayer`
+
 # v1.1.0
 
 - Fixed versioning stuff
@@ -9,10 +15,10 @@
 # v1.0.1
 
 - Added Happy Textures as a dependency
-- Added BetterInfo
-- Added Globed
-- Added Texture Pack Loader
-- Added Texture Pack Workshop
+- Added `BetterInfo` mod
+- Added `Globed` mod
+- Added `Texture Pack Loader` mod
+- Added `Texture Pack Workshop` mod
 - Bugfixes:
     - Fixed possible crashes.
 

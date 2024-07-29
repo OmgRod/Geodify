@@ -1,5 +1,6 @@
 #include "../SwelvyBG.hpp"
 #include <Geode/Geode.hpp>
+#include <Geode/Loader.hpp>
 #include <Geode/modify/MenuLayer.hpp>
 
 using namespace geode::prelude;
@@ -20,6 +21,12 @@ class $modify(MenuLayer) {
         if (Mod::get()->getSettingValue<bool>("show-main")){
 			if (CCNode* mainmenu = this->getChildByIDRecursive("main-menu-bg")) { 
 				mainmenu->setVisible(false); 
+			}
+			if (Loader::get()->isModLoaded("zalphalaneous.minecraft") && Mod::get()->getSettingValue<bool>("external-mods")) {
+				auto panorama = this->getChildByID("zalphalaneous.minecraft/minecraft-panorama");
+				if (panorama) {
+					panorama->setVisible(false);
+				}
 			}
 			SwelvyBG* swelvyBG = SwelvyBG::create();
 			swelvyBG->setZOrder(-3);

@@ -26,6 +26,12 @@
             "type": "bool",
             "default": true
         },
+        "loading-screen": {
+            "name": "Show in loading screen",
+            "description": "LoadingLayer",
+            "type": "bool",
+            "default": true
+        },
         "show-level-select": {
             "name": "Show in level select menu",
             "description": "LevelSelectLayer",
