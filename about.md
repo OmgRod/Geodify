@@ -11,4 +11,4 @@ This mod converts most menus' backgrounds to the Geode one (SwelvyBG). This incl
 
 - Lead dev: OmgRod
 - Most pull requests guy: Viper
-- Logo by hiimjustin000
+- Logo by hiimjustin000 and OmgRod
