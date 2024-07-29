@@ -2,6 +2,7 @@
 
 - Added `GDDP Integration` mod
 - Attempted to add `Minecraftify` mod
+- Added `Newgrounds Explorer` mod
 - Added back `LoadingLayer`
 
 # v1.1.0
