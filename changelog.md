@@ -1,4 +1,4 @@
-# v1.3.0
+# v1.2.1
 
 - Updated to Geode v3.4.0
 - Bugfixes:
