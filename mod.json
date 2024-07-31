@@ -1,5 +1,5 @@
 {
-	"geode": "3.3.1",
+	"geode": "3.4.0",
 	"gd": {
 		"android": "2.206",
 		"win": "2.206"
@@ -24,7 +24,7 @@
             "name": "Show in gameplay",
             "description": "PlayLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "loading-screen": {
             "name": "Show in loading screen",

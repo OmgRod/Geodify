@@ -1,3 +1,9 @@
+# v1.3.0
+
+- Updated to Geode v3.4.0
+- Bugfixes:
+    - Background shows up in gameplay by default
+
 # v1.2.0
 
 - Added `GDDP Integration` mod
@@ -12,6 +18,7 @@
 - Added very customisable settings
 - Added `SecretLayer2` (may not work but i'm unsure)
 - Added GDPS Switcher
+- Updated to Geode v3.3.1
 
 # v1.0.1
 
