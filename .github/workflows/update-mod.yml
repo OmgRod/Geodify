@@ -1,0 +1,36 @@
+name: Update Mod
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  handle_new_release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        profile: minimal
+        override: true
+
+    - name: Clone geode-sdk/cli repository
+      run: git clone https://github.com/geode-sdk/cli.git
+
+    - name: Change directory to cli
+      working-directory: cli
+      run: cargo install --path .
+
+    - name: Find the .geode attachment URL
+      id: find-attachment
+      run: |
+        attachment_url=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r '.assets[] | select(.name == "omgrod.geodify.geode") | .browser_download_url')
+        echo "::set-output name=url::$attachment_url"
+
+    - name: Update mods using geode CLI
+      run: geode index mods update ${{ steps.find-attachment.outputs.url }}
