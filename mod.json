@@ -2,9 +2,10 @@
 	"geode": "3.4.0",
 	"gd": {
 		"android": "2.206",
-		"win": "2.206"
+		"win": "2.206",
+  "mac": "2.206"
 	},
-	"version": "v1.2.1",
+	"version": "v1.2.2",
 	"id": "omgrod.geodify",
 	"name": "Geodify",
 	"developers": ["OmgRod", "Viper"],
