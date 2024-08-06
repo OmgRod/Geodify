@@ -1,4 +1,4 @@
-name: Update Mod
+name: Mod Update Jobs
 
 on:
   release:
@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Rust
       uses: actions-rs/toolchain@v1
@@ -34,3 +34,36 @@ jobs:
 
     - name: Update mods using geode CLI
       run: geode index mods update ${{ steps.find-attachment.outputs.url }}
+
+    - name: Send message to Discord
+      env:
+        DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      run: |
+        # Install jq if it's not already available
+        sudo apt-get install -y jq
+
+        # Extract release details
+        RELEASE_NAME="${{ github.event.release.name }}"
+        RELEASE_BODY="${{ github.event.release.body }}"
+        RELEASE_URL="${{ github.event.release.html_url }}"
+
+        # Get the URL of the attachment (first mod file)
+        ATTACHMENT_URL=$(echo "${{ github.event.release.assets }}" | jq -r '.[] | select(.name | contains("mod")) | .browser_download_url' | head -n 1)
+
+        # Escape special characters in the release body
+        ESCAPED_BODY=$(echo "$RELEASE_BODY" | sed 's/"/\\"/g' | sed 's/\n/\\n/g')
+
+        # Construct the message payload
+        MESSAGE=$(jq -n \
+          --arg name "$RELEASE_NAME" \
+          --arg body "$ESCAPED_BODY" \
+          --arg url "$RELEASE_URL" \
+          --arg attachment "$ATTACHMENT_URL" \
+          '{
+            content: "A new update has been released!\n\n**\($name)**\n\n\($body)\n\n[Download Attachment](\($attachment))\n\n[Release URL](\($url))"
+          }')
+
+        # Send the message to Discord
+        curl -X POST $DISCORD_WEBHOOK_URL \
+          -H "Content-Type: application/json" \
+          -d "$MESSAGE"
