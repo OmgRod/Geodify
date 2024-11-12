@@ -1,3 +1,7 @@
+# v1.3.0
+
+- Updated to Geode v4
+
 # v1.2.2
 
 - Added MacOS support

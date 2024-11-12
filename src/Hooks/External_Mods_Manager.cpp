@@ -76,12 +76,12 @@ class $modify(CCDirector) {
         if (!Mod::get()->getSettingValue<bool>("external-mods")) {
             return;
         }
-        if (CCLayer* child = getChildOfType<CCLayer>(scene, 0)) {
-                std::string fc = getclass(child);
-                #ifndef GITHUB_ACTIONS
-                    log::debug("{}", fc);
-                #endif
-                runhooks(child,fc);
+        if (CCLayer* child = scene->getChildByType<CCLayer>(0)) {
+            std::string fc = getclass(child);
+            #ifndef GITHUB_ACTIONS
+                log::debug("{}", fc);
+            #endif
+            runhooks(child, fc);
         }
     }
 };
