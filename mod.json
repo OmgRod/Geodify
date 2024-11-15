@@ -1,11 +1,11 @@
 {
-	"geode": "4.0.0-alpha.1",
+	"geode": "4.0.0-beta.1",
 	"gd": {
 		"android": "2.2074",
 		"win": "2.2074",
         "mac": "2.2074"
 	},
-	"version": "v1.3.0",
+	"version": "v1.4.0",
 	"id": "omgrod.geodify",
 	"name": "Geodify",
 	"developers": ["OmgRod", "Viper"],
@@ -108,6 +108,30 @@
         "show-inner-tower": {
             "name": "Show in tower levels menu",
             "description": "LevelAreaInnerLayer",
+            "type": "bool",
+            "default": true
+        },
+        "show-outer-tower": {
+            "name": "Show in tower menu",
+            "description": "LevelAreaLayer",
+            "type": "bool",
+            "default": true
+        },
+        "show-vault": {
+            "name": "Show in Vault",
+            "description": "SecretLayer",
+            "type": "bool",
+            "default": true
+        },
+        "show-vault-of-secrets": {
+            "name": "Show in Vault of Secrets",
+            "description": "SecretLayer2",
+            "type": "bool",
+            "default": true
+        },
+        "show-chamber-of-time": {
+            "name": "Show in Chamber of Time",
+            "description": "SecretLayer4",
             "type": "bool",
             "default": true
         },

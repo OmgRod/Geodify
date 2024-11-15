@@ -5,14 +5,11 @@
 using namespace geode::prelude;
 
 class $modify(MyLevelAreaInnerLayer, LevelAreaInnerLayer) {
-	bool init() {
-		if (!LevelAreaInnerLayer::init()) {
+	bool init(bool p0) {
+		if (!LevelAreaInnerLayer::init(p0)) {
 			return false;
 		}
 		if (Mod::get()->getSettingValue<bool>("show-inner-tower")){
-			auto bg = static_cast<CCNode*>(this->getChildren()->objectAtIndex(0));
-			bg->setVisible(false);
-			
 			auto swelvyBG = SwelvyBG::create();
 			swelvyBG->setZOrder(-2);
 			swelvyBG->setID("swelvy-background");

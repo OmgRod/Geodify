@@ -1,19 +1,19 @@
 #include "../SwelvyBG.hpp"
 #include <Geode/Geode.hpp>
-#include <Geode/modify/SecretLayer2.hpp>
+#include <Geode/modify/LevelAreaLayer.hpp>
 
 using namespace geode::prelude;
 
-class $modify(MySecretLayer2, SecretLayer2) {
+class $modify(MyLevelAreaLayer, LevelAreaLayer) {
 	bool init() {
-		if (!SecretLayer2::init()) {
+		if (!LevelAreaLayer::init()) {
 			return false;
 		}
-		if (Mod::get()->getSettingValue<bool>("show-vault-of-secrets")){
+		if (Mod::get()->getSettingValue<bool>("show-outer-tower")){
 			if (auto bg = this->getChildByID("background")) {
 				bg->setVisible(false);
 				auto swelvyBG = SwelvyBG::create();
-				swelvyBG->setZOrder(-3);
+				swelvyBG->setZOrder(-2);
 				swelvyBG->setID("swelvy-background");
 	
 				this->addChild(swelvyBG);				

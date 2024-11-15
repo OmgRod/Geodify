@@ -1,15 +1,15 @@
 #include "../SwelvyBG.hpp"
 #include <Geode/Geode.hpp>
-#include <Geode/modify/SecretLayer2.hpp>
+#include <Geode/modify/SecretLayer.hpp>
 
 using namespace geode::prelude;
 
-class $modify(MySecretLayer2, SecretLayer2) {
+class $modify(MySecretLayer, SecretLayer) {
 	bool init() {
-		if (!SecretLayer2::init()) {
+		if (!SecretLayer::init()) {
 			return false;
 		}
-		if (Mod::get()->getSettingValue<bool>("show-vault-of-secrets")){
+		if (Mod::get()->getSettingValue<bool>("show-vault")){
 			if (auto bg = this->getChildByID("background")) {
 				bg->setVisible(false);
 				auto swelvyBG = SwelvyBG::create();

@@ -1,6 +1,13 @@
+# v1.4.0
+
+- Added Tower layers
+- Added Vaults
+- Added Level Edit layer (not the editor but the level info editor)
+- Updated to Geode v4.0.0-beta.1
+
 # v1.3.0
 
-- Updated to Geode v4
+- Updated to Geode v4.0.0
 
 # v1.2.2
 
