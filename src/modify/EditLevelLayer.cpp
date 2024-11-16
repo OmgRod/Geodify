@@ -5,37 +5,39 @@
 using namespace geode::prelude;
 
 class $modify(MyEditLevelLayer, EditLevelLayer) {
-	bool init(GJGameLevel* p0) {
-		if (!EditLevelLayer::init(p0)) {
-			return false;
-		}
-		if (Mod::get()->getSettingValue<bool>("show-edit-level")){
-			if (auto bg = this->getChildByID("background")){
-				bg->setVisible(false);
-			}
+    bool init(GJGameLevel* p0) {
+        if (!EditLevelLayer::init(p0)) {
+            return false;
+        }
+        if (Mod::get()->getSettingValue<bool>("show-edit-level")) {
+            // Hide the existing background
+            if (auto bg = this->getChildByID("background")) {
+                bg->setVisible(false);
+            }
 
-			CCScale9Sprite* levelNameBG = dynamic_cast<CCScale9Sprite*>(this->getChildByID("level-name-background"));
-			if (levelNameBG) {
-				levelNameBG->setColor(ccColor3B(0, 0, 0));
-        		levelNameBG->setOpacity(60);
-			} else {
-				log::debug("Failed to cast level-name-background to CCSprite");
-			}
+            // Adjust level name background
+            if (auto levelNameBG = static_cast<CCScale9Sprite*>(this->getChildByID("level-name-background"))) {
+                levelNameBG->setColor(ccColor3B(0, 0, 0));
+                levelNameBG->setOpacity(60);
+            } else {
+                log::debug("level-name-background not found or wrong type");
+            }
 
-			CCScale9Sprite* descriptionBG = dynamic_cast<CCScale9Sprite*>(this->getChildByID("description-background"));
-			if (descriptionBG) {
-				descriptionBG->setColor(ccColor3B(0, 0, 0));
-        		descriptionBG->setOpacity(60);
-			} else {
-				log::debug("Failed to cast description-background to CCSprite");
-			}
+            // Adjust description background
+            if (auto descriptionBG = static_cast<CCScale9Sprite*>(this->getChildByID("description-background"))) {
+                descriptionBG->setColor(ccColor3B(0, 0, 0));
+                descriptionBG->setOpacity(60);
+            } else {
+                log::debug("description-background not found or wrong type");
+            }
 
-			auto swelvyBG = SwelvyBG::create();
-			swelvyBG->setZOrder(-2);
-			swelvyBG->setID("swelvy-background");
+            // Add SwelvyBG
+            auto swelvyBG = SwelvyBG::create();
+            swelvyBG->setZOrder(-2);
+            swelvyBG->setID("swelvy-background");
 
-			this->addChild(swelvyBG);
-		}
-		return true;
-	}
+            this->addChild(swelvyBG);
+        }
+        return true;
+    }
 };

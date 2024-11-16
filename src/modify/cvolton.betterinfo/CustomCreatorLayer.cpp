@@ -5,10 +5,10 @@ class CustomCreatorLayer : public Betterhook::HookBetter {
     void init(CCNode* _This) override {
          if (auto bg = _This->getChildByID("cvolton.betterinfo/background")) {
             bg->setVisible(false);
-             SwelvyBG* swelvyBG = SwelvyBG::create();
-        swelvyBG->setZOrder(-1);
-        swelvyBG->setID("swelvy-background");
-        _This->addChild(swelvyBG);
+            SwelvyBG* swelvyBG = SwelvyBG::create();
+            swelvyBG->setZOrder(-1);
+            swelvyBG->setID("swelvy-background");
+            _This->addChild(swelvyBG);
         }
     }
 
