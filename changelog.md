@@ -1,3 +1,8 @@
+# v1.4.1
+
+- Fixes
+- Added `BetterInfo` LevelSearchViewLayer
+
 # v1.4.0
 
 - Added Tower layers
