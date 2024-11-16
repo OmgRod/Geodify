@@ -17,7 +17,7 @@ class $modify(MyEditLevelLayer, EditLevelLayer) {
 
             // Adjust level name background
             if (auto levelNameBG = static_cast<CCScale9Sprite*>(this->getChildByID("level-name-background"))) {
-                levelNameBG->setColor(ccColor3B(0, 0, 0));
+                levelNameBG->setColor(ccColor3B{0, 0, 0});
                 levelNameBG->setOpacity(60);
             } else {
                 log::debug("level-name-background not found or wrong type");
@@ -25,7 +25,7 @@ class $modify(MyEditLevelLayer, EditLevelLayer) {
 
             // Adjust description background
             if (auto descriptionBG = static_cast<CCScale9Sprite*>(this->getChildByID("description-background"))) {
-                descriptionBG->setColor(ccColor3B(0, 0, 0));
+                descriptionBG->setColor(ccColor3B{0, 0, 0});
                 descriptionBG->setOpacity(60);
             } else {
                 log::debug("description-background not found or wrong type");
