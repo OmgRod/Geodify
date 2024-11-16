@@ -1,7 +1,9 @@
 # v1.4.1
 
 - Fixes
-- Added `BetterInfo` LevelSearchViewLayer
+- BetterInfo - `LevelSearchViewLayer`
+- BetterInfo - `RewardViewLayer`
+- BetterInfo - `RewardGroupLayer`
 
 # v1.4.0
 
