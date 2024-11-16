@@ -1,9 +1,9 @@
-# v1.4.1
+# v1.5.0
 
 - Fixes
-- BetterInfo - `LevelSearchViewLayer`
-- BetterInfo - `RewardViewLayer`
-- BetterInfo - `RewardGroupLayer`
+- BetterInfo - `LevelSearchViewLayer`, `RewardViewLayer`, `RewardGroupLayer`, `DailyViewLayer`
+- Integrated Demonlist - `IDListLayer`, `IDPackLayer`
+- Basement - `SecretLayer3`
 
 # v1.4.0
 
