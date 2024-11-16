@@ -129,6 +129,12 @@
             "type": "bool",
             "default": true
         },
+        "show-basement": {
+            "name": "Show in Basement",
+            "description": "SecretLayer3",
+            "type": "bool",
+            "default": true
+        },
         "show-chamber-of-time": {
             "name": "Show in Chamber of Time",
             "description": "SecretLayer4",
