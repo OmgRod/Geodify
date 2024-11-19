@@ -20,6 +20,16 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
     float y = m_obContentSize.height + 5;
     int idx = 0;
     
+    // Retrieve the color offset setting
+    auto mod = Loader::get()->getMod("omgrod.geodify");
+    ccColor3B colorOffset = {255, 0, 0}; // Default color offset
+    if (mod) {
+        auto colorSetting = mod->getSettingValue<std::string>("color");
+        if (!colorSetting.empty()) {
+            sscanf(colorSetting.c_str(), "%hhu,%hhu,%hhu", &colorOffset.r, &colorOffset.g, &colorOffset.b);
+        }
+    }
+
     for (auto layer : std::initializer_list<std::pair<ccColor3B, const char*>> {
         { ccc3(244, 212, 142), "geode.loader/swelve-layer3.png" },
         { ccc3(245, 174, 125), "geode.loader/swelve-layer0.png" },
@@ -28,6 +38,13 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
         { ccc3(173, 84,  146), "geode.loader/swelve-layer1.png" },
         { ccc3(113, 74,  154), "geode.loader/swelve-layer0.png" },
     }) {
+        // Apply the color offset
+        ccColor3B adjustedColor = {
+            static_cast<GLubyte>(std::min(255, layer.first.r + colorOffset.r)),
+            static_cast<GLubyte>(std::min(255, layer.first.g + colorOffset.g)),
+            static_cast<GLubyte>(std::min(255, layer.first.b + colorOffset.b))
+        };
+
         float speed = dis(gen);
         if (sign(gen) == 0) {
             speed = -speed;
@@ -45,7 +62,7 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
         sprite->setTextureRect(rect);
         sprite->setAnchorPoint({ 0, 1 });
         sprite->setContentSize({winSize.width * widthmult, sprite->getContentSize().height});
-        sprite->setColor(layer.first);
+        sprite->setColor(adjustedColor);
         sprite->setPosition({0, y});
         sprite->schedule(schedule_selector(SwelvyBG::updateSpritePosition));
         sprite->setUserObject("speed", CCFloat::create(speed));

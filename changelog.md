@@ -1,3 +1,7 @@
+# v1.6.0
+
+- Added color offset option
+
 # v1.5.2
 
 - Added macOS support

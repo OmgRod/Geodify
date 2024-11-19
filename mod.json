@@ -5,7 +5,7 @@
 		"win": "2.2074",
         "mac": "2.2074"
 	},
-	"version": "v1.5.2",
+	"version": "v1.6.0",
 	"id": "omgrod.geodify",
 	"name": "Geodify",
 	"developers": ["OmgRod", "Viper"],
@@ -15,6 +15,12 @@
 		"sprites": ["res/*.png"]
 	},
 	"settings": {
+        "color": {
+            "name": "Color Offset",
+            "description": "The color offset of the background.",
+            "type": "color",
+            "default": "#FF0000"
+        }
         "show-main": {
             "name": "Show in main menu",
             "description": "MenuLayer",
