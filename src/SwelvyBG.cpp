@@ -21,7 +21,7 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
     int idx = 0;
     
     // Retrieve the color offset setting
-    auto mod = Loader::get()->getMod("omgrod.geodify");
+    auto mod = Mod::get();
     ccColor3B colorOffset = {255, 0, 0}; // Default color offset
     if (mod) {
         auto colorSetting = mod->getSettingValue<std::string>("color");
