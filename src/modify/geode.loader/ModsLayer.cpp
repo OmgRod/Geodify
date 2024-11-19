@@ -7,7 +7,7 @@ using namespace geode::prelude;
 
 class ModsLayer : public Betterhook::HookBetter { 
     void init(CCNode* _This) override {
-        if (!(Loader::get()->getSettingValue<bool>("enable-geode-theme"))) {
+        if (!(Loader::get()->getMod("geode.loader")->getSettingValue<bool>("enable-geode-theme"))) {
             if (auto bg = _This->getChildByID("bg")) {
                 bg->setVisible(false);
             }
