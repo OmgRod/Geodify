@@ -10,7 +10,7 @@ class $modify(MyGauntletLayer, GauntletLayer) {
 			return false;
 		}
 		if (Mod::get()->getSettingValue<bool>("show-gauntlet-map")){
-			auto bg = static_cast<CCNode*>(this->getChildren()->objectAtIndex(0));
+			auto bg = typeinfo_cast<CCNode*>(this->getChildren()->objectAtIndex(0));
 			bg->setVisible(false);
 			
 			auto swelvyBG = SwelvyBG::create();

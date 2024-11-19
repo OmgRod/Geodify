@@ -59,8 +59,8 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
 }
 
 void SwelvyBG::updateSpritePosition(float dt) {
-    auto speed = static_cast<CCFloat*>(this->getUserObject("speed"))->getValue();
-    auto width = static_cast<CCFloat*>(this->getUserObject("width"))->getValue();
+    auto speed = typeinfo_cast<CCFloat*>(this->getUserObject("speed"))->getValue();
+    auto width = typeinfo_cast<CCFloat*>(this->getUserObject("width"))->getValue();
 
     auto sprite = typeinfo_cast<CCSprite*>(this);
     auto rect = sprite->getTextureRect();

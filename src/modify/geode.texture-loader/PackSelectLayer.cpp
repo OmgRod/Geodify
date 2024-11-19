@@ -16,7 +16,7 @@ public:
     }
 
     void onApply(CCObject* sender) {
-        if (auto _This = dynamic_cast<CCNode*>(sender)) {
+        if (auto _This = typeinfo_cast<CCNode*>(sender)) {
             if (auto bg = _This->getChildByID("background")) {
                 bg->setVisible(false);
             }
