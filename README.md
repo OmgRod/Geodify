@@ -62,7 +62,8 @@ class $modify(MyCreatorLayer, CreatorLayer) {
 };
 ```
 
-### External Mods Scenes
+
+### External Mods
 
 For external mods that modify the background of a specific menu, you can use the following example. This shows how to hook into `GlobedLevelListLayer` to add a custom background.
 
@@ -86,8 +87,7 @@ Viper_Hookclass(GlobedLevelListLayer) {
 ```
 This way is new from v1.6.1+!
 
-
-### External Mods Scene fix
+### External Mods Fix
 
 For external mods that really don't like you to modify the background of a specific menu, you can use the following example. This shows how to hook into `cvolton.betterinfo/CustomCreatorLayer` to add a custom background.
 
@@ -109,3 +109,4 @@ Viper_Hookclass_Scene(cvolton_betterinfo_CustomCreatorLayer,"cvolton.betterinfo/
         }
 }
 ```
+This way is new from v1.6.1+!
