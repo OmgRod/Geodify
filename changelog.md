@@ -1,6 +1,7 @@
 # v1.6.0
 
 - Added color offset option
+- remade the external mods hooks function `Fixing the PackSelectLayer apply bug`
 
 # v1.5.2
 
