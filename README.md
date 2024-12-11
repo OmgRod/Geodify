@@ -85,7 +85,7 @@ Viper_Hookclass(GlobedLevelListLayer) {
 }
 
 ```
-This way is new from v1.6.1+!
+This way is new from v1.6.0+!
 
 ### External Mods Fix
 
@@ -109,4 +109,4 @@ Viper_Hookclass_Scene(cvolton_betterinfo_CustomCreatorLayer,"cvolton.betterinfo/
         }
 }
 ```
-This way is new from v1.6.1+!
+This way is new from v1.6.0+!
