@@ -62,7 +62,7 @@ class $modify(MyCreatorLayer, CreatorLayer) {
 };
 ```
 
-### External Mods
+### External Mods Scenes
 
 For external mods that modify the background of a specific menu, you can use the following example. This shows how to hook into `GlobedLevelListLayer` to add a custom background.
 
@@ -84,4 +84,28 @@ Viper_Hookclass(GlobedLevelListLayer) {
 }
 
 ```
-<small>This way is new from v1.6.1+!</small>
+This way is new from v1.6.1+!
+
+
+### External Mods Scene fix
+
+For external mods that really don't like you to modify the background of a specific menu, you can use the following example. This shows how to hook into `cvolton.betterinfo/CustomCreatorLayer` to add a custom background.
+
+Please do not do this unless like in this example it's the only way since Viper_Hookclass won't work on it!
+
+```cpp
+#include <Geode/Geode.hpp>
+#include "../../SwelvyBG.hpp"
+#include "../../Hooks/Hooker.hpp" 
+using namespace geode::prelude;
+
+Viper_Hookclass_Scene("cvolton.betterinfo/CustomCreatorLayer") {
+         if (auto bg = _This->getChildByID("cvolton.betterinfo/background")) {
+            bg->setVisible(false);
+            SwelvyBG* swelvyBG = SwelvyBG::create();
+            swelvyBG->setZOrder(-1);
+            swelvyBG->setID("swelvy-background");
+            _This->addChild(swelvyBG);
+        }
+}
+```

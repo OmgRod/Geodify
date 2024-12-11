@@ -2,6 +2,7 @@
 #pragma once
 #include <Geode/Geode.hpp>
 #include <Geode/modify/CCLayer.hpp>
+#include <Geode/modify/CCDirector.hpp>
 using namespace geode::prelude;
 
 #define Viper_Hookclass(className)                           \
@@ -22,3 +23,27 @@ class $modify(CCLayer) {                                     \
     }                                                        \
 };                                                           \
 void className::____________________DONOTUSE__________________________ViperHookInit()
+// PLEASE DON'T USE THIS UNLESS FORCED APON
+#define Viper_Hookclass_Scene(className)                           \
+class Sillyclass {                                                      \
+public:                                                                 \
+    void ____________________DONOTUSE__________________________ViperHookInit(CCNode* _This);                                               \
+};                                                          \
+class $modify(CCDirector) { \
+    static void onModify(auto& self) { \
+        (void)self.setHookPriority("CCDirector::willSwitchToScene", -999); \
+    } \
+    void willSwitchToScene(CCScene* scene) { \
+        CCDirector::willSwitchToScene(scene); \
+        if (!Mod::get()->getSettingValue<bool>("external-mods")) { \
+            return; \
+        }; \
+        if (CCLayer* child = scene->getChildByType<CCLayer>(0)) { \
+            if (child->getID() == className) { \
+                Sillyclass sillyInstance;       \
+                sillyInstance.____________________DONOTUSE__________________________ViperHookInit(child); \
+            }; \
+        } \
+    }                                                 \
+};                                                           \
+void Sillyclass::____________________DONOTUSE__________________________ViperHookInit(CCNode* _This) 

@@ -2,12 +2,13 @@
 #include "../../SwelvyBG.hpp"
 #include "../../Hooks/Hooker.hpp" 
 using namespace geode::prelude;
-Viper_Hookclass(CustomCreatorLayer) {
-         if (auto bg = this->getChildByID("cvolton.betterinfo/background")) {
+
+Viper_Hookclass_Scene("cvolton.betterinfo/CustomCreatorLayer") {
+         if (auto bg = _This->getChildByID("cvolton.betterinfo/background")) {
             bg->setVisible(false);
             SwelvyBG* swelvyBG = SwelvyBG::create();
             swelvyBG->setZOrder(-1);
             swelvyBG->setID("swelvy-background");
-            this->addChild(swelvyBG);
+            _This->addChild(swelvyBG);
         }
 }
