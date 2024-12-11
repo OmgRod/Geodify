@@ -17,7 +17,7 @@ class $modify(MyPlayLayer, PlayLayer) {
                 bg->setVisible(false);
             }
 
-            auto swelvyBG = SwelvyBG::create(1.5,3);
+            SwelvyBG* swelvyBG = SwelvyBG::create(1.5,3);
             swelvyBG->setZOrder(-5);
             swelvyBG->setID("swelvy-background");
             swelvyBG->setScale(2);

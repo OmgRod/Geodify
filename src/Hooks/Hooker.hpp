@@ -1,17 +1,24 @@
 
 #pragma once
 #include <Geode/Geode.hpp>
+#include <Geode/modify/CCLayer.hpp>
+using namespace geode::prelude;
 
-
-#define REGISTER_HookBetter(Class) $execute { Betterhook::HookBetter::registerHook<Class>(); }
-namespace Betterhook {
- class HookBetter {
-    public:
-     static void registerHook(HookBetter* hook);
-     template<typename T, typename = std::enable_if_t<std::is_base_of_v<HookBetter, T>>>
-     static void registerHook() { registerHook(new T()); }
-     static const std::vector<HookBetter*>& Hooks();
-     virtual void init(cocos2d::CCNode* Layer) = 0;
-     virtual const char* PutLayer() const = 0;
- };
-}
+#define Viper_Hookclass(className)                           \
+class className : public CCLayer {                           \
+public:                                                      \
+    void ____________________DONOTUSE__________________________ViperHookInit();                                       \
+};                                                           \
+class $modify(CCLayer) {                                     \
+    bool init() {                                   \
+        if (!CCLayer::init()) return false;                  \
+         if (!Mod::get()->getSettingValue<bool>("external-mods")) { \
+            return true; \
+        } \
+		if (auto x = typeinfo_cast<className*>(this)) {      \
+        	queueInMainThread([=] {x->____________________DONOTUSE__________________________ViperHookInit();});     return true;          		 	 \
+        }                                                    \
+        return true;                                         \
+    }                                                        \
+};                                                           \
+void className::____________________DONOTUSE__________________________ViperHookInit()

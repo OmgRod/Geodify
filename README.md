@@ -70,21 +70,18 @@ For external mods that modify the background of a specific menu, you can use the
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
 #include "../../Hooks/Hooker.hpp" 
+using namespace geode::prelude;
 
-class GlobedLevelListLayer : public Betterhook::HookBetter { 
-    void init(CCNode* _This) override {
-         if (auto bg = _This->getChildByID("background")) {
+Viper_Hookclass(GlobedLevelListLayer) {
+        if (auto bg = this->getChildByID("background")) {
             bg->setVisible(false);
         }
 
         SwelvyBG* swelvyBG = SwelvyBG::create();
         swelvyBG->setZOrder(-1);
         swelvyBG->setID("swelvy-background");
-        _This->addChild(swelvyBG);
-    }
+        this->addChild(swelvyBG);
+}
 
-    const char* PutLayer() const override { return "GlobedLevelListLayer"; }
-};
-
-REGISTER_HookBetter(GlobedLevelListLayer);
 ```
+<small>This way is new from v1.6.1+!</small>
