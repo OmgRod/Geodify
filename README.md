@@ -98,8 +98,8 @@ Please do not do this unless like in this example it's the only way since Viper_
 #include "../../SwelvyBG.hpp"
 #include "../../Hooks/Hooker.hpp" 
 using namespace geode::prelude;
-
-Viper_Hookclass_Scene("cvolton.betterinfo/CustomCreatorLayer") {
+// class name to store in code, Hook to (the real layer id)
+Viper_Hookclass_Scene(cvolton_betterinfo_CustomCreatorLayer,"cvolton.betterinfo/CustomCreatorLayer") {
          if (auto bg = _This->getChildByID("cvolton.betterinfo/background")) {
             bg->setVisible(false);
             SwelvyBG* swelvyBG = SwelvyBG::create();

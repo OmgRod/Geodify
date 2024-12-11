@@ -24,8 +24,8 @@ class $modify(CCLayer) {                                     \
 };                                                           \
 void className::____________________DONOTUSE__________________________ViperHookInit()
 // PLEASE DON'T USE THIS UNLESS FORCED APON
-#define Viper_Hookclass_Scene(className)                           \
-class Sillyclass {                                                      \
+#define Viper_Hookclass_Scene(unique,className)                           \
+class unique##Sillyclass {                                                      \
 public:                                                                 \
     void ____________________DONOTUSE__________________________ViperHookInit(CCNode* _This);                                               \
 };                                                          \
@@ -40,10 +40,10 @@ class $modify(CCDirector) { \
         }; \
         if (CCLayer* child = scene->getChildByType<CCLayer>(0)) { \
             if (child->getID() == className) { \
-                Sillyclass sillyInstance;       \
+                unique##Sillyclass sillyInstance;       \
                 sillyInstance.____________________DONOTUSE__________________________ViperHookInit(child); \
             }; \
         } \
     }                                                 \
 };                                                           \
-void Sillyclass::____________________DONOTUSE__________________________ViperHookInit(CCNode* _This) 
+void unique##Sillyclass::____________________DONOTUSE__________________________ViperHookInit(CCNode* _This) 
