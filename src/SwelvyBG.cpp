@@ -37,12 +37,13 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
         { ccc3(213, 105, 133), "geode.loader/swelve-layer2.png" },
         { ccc3(173, 84,  146), "geode.loader/swelve-layer1.png" },
         { ccc3(113, 74,  154), "geode.loader/swelve-layer0.png" },
-    }) {
+    }) { if (Mod::get()->getSettingValue<bool>("enable-color-offset")) {
         // Apply the color offset
         ccColor3B adjustedColor = {
             static_cast<GLubyte>(std::min(255, layer.first.r + colorOffset.r)),
             static_cast<GLubyte>(std::min(255, layer.first.g + colorOffset.g)),
             static_cast<GLubyte>(std::min(255, layer.first.b + colorOffset.b))
+}
         };
 
         float speed = dis(gen);
