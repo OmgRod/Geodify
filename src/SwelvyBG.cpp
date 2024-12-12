@@ -7,7 +7,7 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
         return false;
 
     this->setID("SwelvyBG");
-    
+
     auto winSize = CCDirector::get()->getWinSize();
     this->setContentSize(winSize);
     this->setAnchorPoint({ 0.f, 0.f });
@@ -19,14 +19,19 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
 
     float y = m_obContentSize.height + 5;
     int idx = 0;
-    
+
     // Retrieve the color offset setting
     auto mod = Mod::get();
-    ccColor3B colorOffset = {255, 0, 0}; // Default color offset
+    ccColor3B colorOffset = { 0, 0, 0 }; // Default offset is zero (no adjustment)
+    bool enableColor = false;
+
     if (mod) {
-        auto colorSetting = mod->getSettingValue<std::string>("color");
-        if (!colorSetting.empty()) {
-            sscanf(colorSetting.c_str(), "%hhu,%hhu,%hhu", &colorOffset.r, &colorOffset.g, &colorOffset.b);
+        enableColor = mod->getSettingValue<bool>("enable-color");
+        if (enableColor) {
+            auto colorSetting = mod->getSettingValue<std::string>("color");
+            if (!colorSetting.empty()) {
+                sscanf(colorSetting.c_str(), "%hhu,%hhu,%hhu", &colorOffset.r, &colorOffset.g, &colorOffset.b);
+            }
         }
     }
 
@@ -37,14 +42,17 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
         { ccc3(213, 105, 133), "geode.loader/swelve-layer2.png" },
         { ccc3(173, 84,  146), "geode.loader/swelve-layer1.png" },
         { ccc3(113, 74,  154), "geode.loader/swelve-layer0.png" },
-    }) { if (Mod::get()->getSettingValue<bool>("enable-color")) {
-        // Apply the color offset
-        ccColor3B adjustedColor = {
-            static_cast<GLubyte>(std::min(255, layer.first.r + colorOffset.r)),
-            static_cast<GLubyte>(std::min(255, layer.first.g + colorOffset.g)),
-            static_cast<GLubyte>(std::min(255, layer.first.b + colorOffset.b))
-}
-        };
+    }) {
+        ccColor3B adjustedColor = layer.first;
+
+        if (enableColor) {
+            // Apply the color offset
+            adjustedColor = {
+                static_cast<GLubyte>(std::min(255, layer.first.r + colorOffset.r)),
+                static_cast<GLubyte>(std::min(255, layer.first.g + colorOffset.g)),
+                static_cast<GLubyte>(std::min(255, layer.first.b + colorOffset.b))
+            };
+        }
 
         float speed = dis(gen);
         if (sign(gen) == 0) {
@@ -62,17 +70,17 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
         sprite->getTexture()->setTexParameters(&params);
         sprite->setTextureRect(rect);
         sprite->setAnchorPoint({ 0, 1 });
-        sprite->setContentSize({winSize.width * widthmult, sprite->getContentSize().height});
+        sprite->setContentSize({ winSize.width * widthmult, sprite->getContentSize().height });
         sprite->setColor(adjustedColor);
-        sprite->setPosition({0, y});
+        sprite->setPosition({ 0, y });
         sprite->schedule(schedule_selector(SwelvyBG::updateSpritePosition));
         sprite->setUserObject("speed", CCFloat::create(speed));
         this->addChild(sprite);
 
         y -= m_obContentSize.height / 6;
         idx += 1;
-    
     }
+
     return true;
 }
 
@@ -84,17 +92,17 @@ void SwelvyBG::updateSpritePosition(float dt) {
     auto rect = sprite->getTextureRect();
 
     float dX = rect.origin.x - speed * dt;
-    if(dX >= std::abs(width)) {
+    if (dX >= std::abs(width)) {
         dX = 0;
     }
 
-    rect.origin = CCPoint{dX, 0};
+    rect.origin = CCPoint{ dX, 0 };
     sprite->setTextureRect(rect);
 }
 
-SwelvyBG* SwelvyBG::create(float widthmult, float m, float minspeed, float maxspeed) {
+SwelvyBG* SwelvyBG::create(float widthmult, float hightmult, float minspeed, float maxspeed) {
     auto ret = new SwelvyBG();
-    if (ret->init(widthmult,m,minspeed,maxspeed)) {
+    if (ret->init(widthmult, hightmult, minspeed, maxspeed)) {
         ret->autorelease();
         return ret;
     }
