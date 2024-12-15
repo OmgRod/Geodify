@@ -5,23 +5,17 @@
 
 using namespace geode::prelude;
 
-class ModsLayer : public Betterhook::HookBetter { 
-    void init(CCNode* _This) override {
+Viper_Hookclass(ModsLayer) {
         if (!(Loader::get()->getLoadedMod("geode.loader")->getSettingValue<bool>("enable-geode-theme"))) {
-            if (auto bg = _This->getChildByID("bg")) {
+            if (auto bg = this->getChildByID("bg")) {
                 bg->setVisible(false);
             }
 
             SwelvyBG* swelvyBG = SwelvyBG::create();
             swelvyBG->setZOrder(-1);
             swelvyBG->setID("swelvy-background");
-            _This->addChild(swelvyBG);
+            this->addChild(swelvyBG);
         }
-    }
+}
 
-    const char* PutLayer() const override { return "ModsLayer"; }
-};
-
-
-REGISTER_HookBetter(ModsLayer);
 

@@ -1,5 +1,5 @@
 {
-	"geode": "4.0.0",
+	"geode": "4.1.0",
 	"gd": {
 		"android": "2.2074",
 		"win": "2.2074",
@@ -15,11 +15,18 @@
 		"sprites": ["res/*.png"]
 	},
 	"settings": {
+        "enable-color": {
+            "name": "Enable Color Offset",
+            "description": "Enables color offset for the SwelvyBG.",
+            "type": "bool",
+            "default": false
+        },
         "color": {
             "name": "Color Offset",
             "description": "The color offset of the background.",
             "type": "color",
-            "default": "#FF0000"
+            "default": "#FF0000",
+            "enable-if": "enable-color"
         },
         "show-main": {
             "name": "Show in main menu",

@@ -1,8 +1,9 @@
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
 #include "../../Hooks/Hooker.hpp" 
-class CustomCreatorLayer : public Betterhook::HookBetter { 
-    void init(CCNode* _This) override {
+using namespace geode::prelude;
+
+Viper_Hookclass_Scene(cvolton_betterinfo_CustomCreatorLayer,"cvolton.betterinfo/CustomCreatorLayer") {
          if (auto bg = _This->getChildByID("cvolton.betterinfo/background")) {
             bg->setVisible(false);
             SwelvyBG* swelvyBG = SwelvyBG::create();
@@ -10,11 +11,4 @@ class CustomCreatorLayer : public Betterhook::HookBetter {
             swelvyBG->setID("swelvy-background");
             _This->addChild(swelvyBG);
         }
-    }
-
-    const char* PutLayer() const override { return "CustomCreatorLayer"; }
-};
-
-
-REGISTER_HookBetter(CustomCreatorLayer);
-
+}
