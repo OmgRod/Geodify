@@ -1,3 +1,7 @@
+# v1.7.0 (the ninxout update)
+
+- Added ninXout's Geode menu loop
+
 # v1.6.0
 
 - Added color offset option

@@ -1,9 +1,10 @@
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include "../../Hooks/Hooker.hpp" 
+#include <external-hook-api/HookClass.hpp> 
 
 using namespace geode::prelude;
-Viper_Hookclass(RewardViewLayer) {
+HookClass(RewardViewLayer) {
+    if (Mod::get()->getSettingValue<bool>("external-mods")) {
         if (auto bg = this->getChildByID("cvolton.betterinfo/background")) {
             bg->setVisible(false);
         }
@@ -11,6 +12,7 @@ Viper_Hookclass(RewardViewLayer) {
         swelvyBG->setZOrder(-1);
         swelvyBG->setID("swelvy-background");
         this->addChild(swelvyBG);
+    }
 }
 
 

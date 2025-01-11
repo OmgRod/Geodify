@@ -1,9 +1,10 @@
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include "../../Hooks/Hooker.hpp" 
+#include <external-hook-api/HookClass.hpp> 
 using namespace geode::prelude;
-Viper_Hookclass(GlobedServersLayer) {
-        if (CCNode* bg = typeinfo_cast<CCNode*>(this->getChildren()->objectAtIndex(1)) ) {
+HookClass(GlobedServersLayer) {
+    if (Mod::get()->getSettingValue<bool>("external-mods")) {
+        if (CCNode* bg = typeinfo_cast<CCNode*>(this->getChildren()->objectAtIndex(1))) {
             bg->setVisible(false);
         }
 
@@ -11,4 +12,5 @@ Viper_Hookclass(GlobedServersLayer) {
         swelvyBG->setZOrder(-1);
         swelvyBG->setID("swelvy-background");
         this->addChild(swelvyBG);
+    }
 }

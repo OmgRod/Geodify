@@ -1,11 +1,12 @@
 #include <Geode/Geode.hpp>
 #include <Geode/loader/Loader.hpp>
 #include "../../SwelvyBG.hpp"
-#include "../../Hooks/Hooker.hpp"
+#include <external-hook-api/HookClass.hpp>
 
 using namespace geode::prelude;
 
-Viper_Hookclass(ModsLayer) {
+HookClass(ModsLayer) {
+    if (Mod::get()->getSettingValue<bool>("external-mods")) {
         if (!(Loader::get()->getLoadedMod("geode.loader")->getSettingValue<bool>("enable-geode-theme"))) {
             if (auto bg = this->getChildByID("bg")) {
                 bg->setVisible(false);
@@ -16,6 +17,7 @@ Viper_Hookclass(ModsLayer) {
             swelvyBG->setID("swelvy-background");
             this->addChild(swelvyBG);
         }
+    }
 }
 
 

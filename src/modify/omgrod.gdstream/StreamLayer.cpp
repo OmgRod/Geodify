@@ -3,9 +3,9 @@
 #include <external-hook-api/HookClass.hpp> 
 
 using namespace geode::prelude;
-HookClass(GPKofiLayer) {
+HookClass(StreamLayer) {
     if (Mod::get()->getSettingValue<bool>("external-mods")) {
-        if (auto bg = this->getChildByID("background")) {
+        if (auto bg = this->getChildByID("menu")->getChildByID("background")) {
             bg->setVisible(false);
         }
 

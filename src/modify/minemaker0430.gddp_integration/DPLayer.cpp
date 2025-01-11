@@ -1,10 +1,11 @@
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include "../../Hooks/Hooker.hpp" 
+#include <external-hook-api/HookClass.hpp> 
 
 
 using namespace geode::prelude;
-Viper_Hookclass(DPLayer) {
+HookClass(DPLayer) {
+    if (Mod::get()->getSettingValue<bool>("external-mods")) {
         if (auto bg = this->getChildByID("bg")) {
             bg->setVisible(false);
         }
@@ -13,4 +14,5 @@ Viper_Hookclass(DPLayer) {
         swelvyBG->setZOrder(-99999);
         swelvyBG->setID("swelvy-background");
         this->addChild(swelvyBG);
+    }
 }
