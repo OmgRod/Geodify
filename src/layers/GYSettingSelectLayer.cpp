@@ -4,7 +4,7 @@
 
 using namespace geode::prelude;
 
-void GYSettingSelectLayer::KeyBackClicked() {
+void GYSettingSelectLayer::keyBackClicked() {
     CCDirector::get()->popScene();
 }
 
@@ -24,7 +24,7 @@ GYSettingSelectLayer* GYSettingSelectLayer::create() {
     return nullptr;
 }
 
-void GYSettingSelectLayer::settingsBtn(CCObject*) {
+void GYSettingSelectLayer::settingsBtn(CCObject* sender) {
     auto scenePrev = CCTransitionFade::create(0.5f, GYSettingSelectLayer::scene());
     CCDirector::sharedDirector()->pushScene(scenePrev);
 }
