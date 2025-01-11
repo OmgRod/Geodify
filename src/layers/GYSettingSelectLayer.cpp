@@ -101,11 +101,19 @@ bool GYSettingSelectLayer::init() {
 
     leftMenu->updateLayout();
 
+    auto testBtn = CCMenuItemSpriteExtra::create(
+        CCSprite::createWithSpriteFrameName(
+            "GJ_paintBtn_001.png"
+        ),
+        this,
+        menu_selector(GYSettingSelectLayer::popup)
+    );
+
+    testBtn->setPosition(winSize.width * 0.5, winSize.height * 0.5);
+    menu->addChild(testBtn);
+
     this->addChild(leftMenu);
     this->addChild(menu);
-
-    auto p = GYScreenshotPopup::create("MenuLayer");
-    p->show();
     
     return true;
 }
