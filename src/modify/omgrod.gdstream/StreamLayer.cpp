@@ -1,6 +1,6 @@
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include <external-hook-api/HookClass.hpp> 
+#include <HookClass.hpp> 
 
 using namespace geode::prelude;
 HookClass(StreamLayer) {

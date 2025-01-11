@@ -1,7 +1,7 @@
 #include <Geode/Geode.hpp>
 #include <Geode/loader/Loader.hpp>
 #include "../../SwelvyBG.hpp"
-#include <external-hook-api/HookClass.hpp>
+#include <HookClass.hpp>
 
 using namespace geode::prelude;
 
