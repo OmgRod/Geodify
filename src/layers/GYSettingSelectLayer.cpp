@@ -1,6 +1,7 @@
 #include <Geode/Geode.hpp>
 
 #include "GYSettingSelectLayer.hpp"
+#include "GYScreenshotPopup.hpp"
 
 using namespace geode::prelude;
 
@@ -102,6 +103,9 @@ bool GYSettingSelectLayer::init() {
 
     this->addChild(leftMenu);
     this->addChild(menu);
+
+    auto p = GYScreenshotPopup::create("MenuLayer");
+    p->show();
     
     return true;
 }

@@ -5,7 +5,7 @@
 		"win": "2.2074",
         "mac": "2.2074"
 	},
-	"version": "v1.6.0-alpha.1",
+	"version": "v2.0.0",
 	"id": "omgrod.geodify",
 	"name": "Geodify",
 	"developers": ["OmgRod", "Viper"],
@@ -16,7 +16,10 @@
             "GY_modsSheet": [
                 "res/GY_modsSheet/*.png"
             ]
-        }
+        },
+        "sprites": [
+            "res/previews/*.png"
+        ]
 	},
 	"settings": {
         "enable-color": {

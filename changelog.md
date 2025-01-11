@@ -1,7 +1,10 @@
-# v1.7.0 (the ninxout update)
+# v2.0.0
 
 - Added ninXout's Geode menu loop
 - Refactored code
+- Revamped settings menu
+- Bugfix: Color settings don't work
+- Changed color offset to change each individual wave
 
 # v1.6.0
 
