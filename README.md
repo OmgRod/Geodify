@@ -70,7 +70,7 @@ For external mods that modify the background of a specific menu, you can use the
 ```cpp
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include <external-hook-api/include/HookClass.hpp> 
+#include <external-hook-api/HookClass.hpp> 
 using namespace geode::prelude;
 
 HookClass(GlobedLevelListLayer) {
@@ -96,7 +96,7 @@ Please do not do this unless like in this example it's the only way since HookCl
 ```cpp
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include <external-hook-api/include/HookClass.hpp> 
+#include <external-hook-api/HookClass.hpp> 
 using namespace geode::prelude;
 // class name to store in code, Hook to (the real layer id)
 HookClass_Scene(cvolton_betterinfo_CustomCreatorLayer,"cvolton.betterinfo/CustomCreatorLayer") {
