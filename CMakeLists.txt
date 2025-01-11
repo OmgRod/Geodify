@@ -30,7 +30,7 @@ CPMAddPackage("gh:OmgRod/External-Hook-API#master")
 add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 
 # Link the external-hook-api target to your project using the same style
-target_link_libraries(${PROJECT_NAME} PRIVATE external-hook-api)
+target_link_libraries(${PROJECT_NAME} INTERFACE external-hook-api)
 
 # Setup Geode module (if applicable)
 setup_geode_mod(${PROJECT_NAME})
