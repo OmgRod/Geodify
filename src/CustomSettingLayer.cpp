@@ -7,16 +7,13 @@
 using namespace geode::prelude;
 
 $execute {
-    /*
     new EventListener<EventFilter<ModPopupUIEvent>>(+[](ModPopupUIEvent* event) {
         if (event->getModID() == "omgrod.geodify") {
             auto popup = event->getPopup();
             
             if (popup) {
                 if (CCMenuItemSpriteExtra* btn = typeinfo_cast<CCMenuItemSpriteExtra*>(popup->getChildByIDRecursive("settings-button"))) {
-                    btn->setTarget(this, menu_selector(GYSettingSelectLayer::settingsBtn));
-                    
-                    // btn->m_pfnSelector = menu_selector(GYSettingSelectLayer::settingsBtn); // this code sucks - it keeps crashing. im sorry if creating a fake button is a bit too much
+                    btn->m_pfnSelector = menu_selector(GYSettingSelectLayer::settingsBtn); // this code sucks - it keeps crashing. im sorry if creating a fake button is a bit too much
                     
                     // CCSprite* settings = CCSprite::create("geode.loader/settings.png");
                     // CircleButtonSprite* settingsBtn = nullptr;
@@ -40,11 +37,11 @@ $execute {
         }
         return ListenerResult::Propagate;
     });
-    */
 }
 
 /// @brief The following code is for testing purposes only, and adds a Geodify settings button to the main menu.
 
+/*
 #include <Geode/modify/MenuLayer.hpp>
 
 class $modify(MyMenuLayer, MenuLayer) {
@@ -70,4 +67,4 @@ public:
 
         return true;
     }
-};
+}*/

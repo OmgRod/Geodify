@@ -11,4 +11,5 @@ public:
     static GYSettingSelectLayer* create();
     bool init();
     void settingsBtn(CCObject* sender);
+    void backWrapper(CCObject* sender);
 };
