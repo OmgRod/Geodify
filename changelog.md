@@ -1,6 +1,7 @@
 # v1.7.0 (the ninxout update)
 
 - Added ninXout's Geode menu loop
+- Refactored code
 
 # v1.6.0
 
