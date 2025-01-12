@@ -1,5 +1,10 @@
 #include <Geode/Geode.hpp>
 #include <Geode/ui/ScrollLayer.hpp>
+#include <matjson.hpp>
+#include <filesystem>
+#include <fstream>
+#include <sstream>
+#include <iostream>
 
 #include "GYSettingSelectLayer.hpp"
 #include "GYScreenshotPopup.hpp"
@@ -101,7 +106,7 @@ bool GYSettingSelectLayer::init() {
             "GJ_paintBtn_001.png"
         ),
         this,
-        menu_selector(GYSettingSelectLayer::settingsBtn)
+        menu_selector(GYSettingSelectLayer::generateWrapper)
     );
     colorBtn->setID("color-button");
 
@@ -126,11 +131,54 @@ bool GYSettingSelectLayer::init() {
     return true;
 }
 
+void GYSettingSelectLayer::generateWrapper(CCObject* sender) {
+    generateModsList();
+}
+
 bool GYSettingSelectLayer::generateModsList() {
-    auto result = matjson::parse("layers.json"_spr);
+    std::filesystem::path filePath = Mod::get()->getResourcesDir() / "layers.json";
+
+    if (!std::filesystem::exists(filePath)) {
+        log::error("File does not exist at path: {}", filePath.string());
+        return false;
+    }
+
+    std::string filePathStr = filePath.string();
+    log::info("Reading file from: {}", filePathStr);
+
+    std::ifstream file(filePathStr);
+    if (!file.is_open()) {
+        log::error("Failed to open the file: {}", filePathStr);
+        return false;
+    }
+
+    std::string fileContent((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+    file.close();
+    log::info("File content: {}", fileContent);
+
+    auto result = matjson::parse(fileContent);
     if (!result) {
         log::error("Failed to parse json: {}", result.unwrapErr());
         return false;
     }
+
+    auto jsonData = result.unwrap();
+
+    if (!jsonData.contains("mods") || !jsonData["mods"].isArray()) {
+        log::error("Invalid JSON structure: 'mods' key not found or not an array");
+        return false;
+    }
+
+    std::map<std::string, std::string> modsMap;
+    for (const auto& mod : jsonData["mods"].array()) {
+        std::string modName = mod.as<std::string>().unwrap();
+        modsMap[modName] = modName;
+    }
+
+    log::info("Extracted Mods Map:");
+    for (const auto& [modName, _] : modsMap) {
+        log::info("- {}", modName);
+    }
+
     return true;
 }

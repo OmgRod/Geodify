@@ -12,5 +12,6 @@ public:
     bool init();
     void settingsBtn(CCObject* sender);
     void backWrapper(CCObject* sender);
+    void generateWrapper(CCObject* sender);
     bool generateModsList();
 };

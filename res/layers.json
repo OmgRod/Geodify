@@ -18,47 +18,47 @@
     "layers": {
         "1": {
             "name": "MenuLayer",
-            "mod": "robtop.geometrydash"
+            "mod": "gd"
         },
         "2": {
             "name": "CreatorLayer",
-            "mod": "robtop.geometrydash"
+            "mod": "gd"
         },
         "3": {
             "name": "LevelBrowserLayer",
-            "mod": "robtop.geometrydash"
+            "mod": "gd"
         },
         "4": {
             "name": "GJGarageLayer",
-            "mod": "robtop.geometrydash"
+            "mod": "gd"
         },
         "5": {
             "name": "GauntletLayer",
-            "mod": "robtop.geometrydash"
+            "mod": "gd"
         },
         "6": {
             "name": "GauntletSelectLayer",
-            "mod": "robtop.geometrydash"
+            "mod": "gd"
         },
         "7": {
             "name": "LeaderboardsLayer",
-            "mod": "robtop.geometrydash"
+            "mod": "gd"
         },
         "8": {
             "name": "LevelSearchLayer",
-            "mod": "robtop.geometrydash"
+            "mod": "gd"
         },
         "9": {
             "name": "SecretLayer2",
-            "mod": "robtop.geometrydash"
+            "mod": "gd"
         },
         "10": {
             "name": "SecretLayer3",
-            "mod": "robtop.geometrydash"
+            "mod": "gd"
         },
         "11": {
             "name": "SecretRewardsLayer",
-            "mod": "robtop.geometrydash"
+            "mod": "gd"
         }
     }
 }
