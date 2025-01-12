@@ -23,6 +23,53 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
 
     bool enableColor = Mod::get()->getSettingValue<bool>("enable-color");
 
+    auto createLayer = [&](ccColor3B color, const char* texturePath) {
+        ccColor3B adjustedColor = color;
+
+        if (enableColor) {
+            // Construct the setting key dynamically
+            std::string settingKey = "color-" + std::to_string(idx);
+            auto colorSetting = Mod::get()->getSettingValue<std::string>(settingKey);
+
+            if (!colorSetting.empty()) {
+                unsigned int r, g, b;
+                if (sscanf(colorSetting.c_str(), "%u,%u,%u", &r, &g, &b) == 3) {
+                    adjustedColor = {
+                        static_cast<GLubyte>(std::min(255u, r)),
+                        static_cast<GLubyte>(std::min(255u, g)),
+                        static_cast<GLubyte>(std::min(255u, b))
+                    };
+                }
+            }
+        }
+
+        float speed = dis(gen);
+        if (sign(gen) == 0) {
+            speed = -speed;
+        }
+        ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_CLAMP_TO_EDGE};
+
+        auto sprite = CCSprite::create(texturePath);
+        auto rect = sprite->getTextureRect();
+        sprite->setUserObject("width", CCFloat::create(rect.size.width * widthmult));
+        rect.size = CCSize{winSize.width * widthmult, rect.size.height * hightmult};
+
+        std::string layerID = fmt::format("layer-{}", idx);
+        sprite->setID(layerID);
+        sprite->getTexture()->setTexParameters(&params);
+        sprite->setTextureRect(rect);
+        sprite->setAnchorPoint({ 0, 1 });
+        sprite->setContentSize({ winSize.width * widthmult, sprite->getContentSize().height });
+        sprite->setColor(adjustedColor);
+        sprite->setPosition({ 0, y });
+        sprite->schedule(schedule_selector(SwelvyBG::updateSpritePosition));
+        sprite->setUserObject("speed", CCFloat::create(speed));
+        this->addChild(sprite);
+
+        y -= m_obContentSize.height / 6;
+        idx += 1;
+    };
+
     if (enableColor) {
         for (auto layer : std::initializer_list<std::pair<ccColor3B, const char*>> {
             { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-0"), "geode.loader/swelve-layer3.png" },
@@ -32,50 +79,7 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
             { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-4"), "geode.loader/swelve-layer1.png" },
             { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-5"), "geode.loader/swelve-layer0.png" },
         }) {
-            ccColor3B adjustedColor = layer.first;
-
-            if (enableColor) {
-                // Construct the setting key dynamically
-                std::string settingKey = "color-" + std::to_string(idx);
-                auto colorSetting = Mod::get()->getSettingValue<std::string>(settingKey);
-
-                if (!colorSetting.empty()) {
-                    unsigned int r, g, b;
-                    if (sscanf_s(colorSetting.c_str(), "%u,%u,%u", &r, &g, &b) == 3) {
-                        adjustedColor = {
-                            static_cast<GLubyte>(std::min(255u, r)),
-                            static_cast<GLubyte>(std::min(255u, g)),
-                            static_cast<GLubyte>(std::min(255u, b))
-                        };
-                    }
-                }
-            }
-
-            float speed = dis(gen);
-            if (sign(gen) == 0) {
-                speed = -speed;
-            }
-            ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_CLAMP_TO_EDGE};
-
-            auto sprite = CCSprite::create(layer.second);
-            auto rect = sprite->getTextureRect();
-            sprite->setUserObject("width", CCFloat::create(rect.size.width * widthmult));
-            rect.size = CCSize{winSize.width * widthmult, rect.size.height * hightmult};
-
-            std::string layerID = fmt::format("layer-{}", idx);
-            sprite->setID(layerID);
-            sprite->getTexture()->setTexParameters(&params);
-            sprite->setTextureRect(rect);
-            sprite->setAnchorPoint({ 0, 1 });
-            sprite->setContentSize({ winSize.width * widthmult, sprite->getContentSize().height });
-            sprite->setColor(adjustedColor);
-            sprite->setPosition({ 0, y });
-            sprite->schedule(schedule_selector(SwelvyBG::updateSpritePosition));
-            sprite->setUserObject("speed", CCFloat::create(speed));
-            this->addChild(sprite);
-
-            y -= m_obContentSize.height / 6;
-            idx += 1;
+            createLayer(layer.first, layer.second);
         }
     } else {
         for (auto layer : std::initializer_list<std::pair<ccColor3B, const char*>> {
@@ -86,50 +90,7 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
             { ccc3(173, 84, 146), "geode.loader/swelve-layer1.png" },
             { ccc3(113, 74, 154), "geode.loader/swelve-layer0.png" },
         }) {
-            ccColor3B adjustedColor = layer.first;
-
-            if (enableColor) {
-                // Construct the setting key dynamically
-                std::string settingKey = "color-" + std::to_string(idx);
-                auto colorSetting = Mod::get()->getSettingValue<std::string>(settingKey);
-
-                if (!colorSetting.empty()) {
-                    unsigned int r, g, b;
-                    if (sscanf_s(colorSetting.c_str(), "%u,%u,%u", &r, &g, &b) == 3) {
-                        adjustedColor = {
-                            static_cast<GLubyte>(std::min(255u, r)),
-                            static_cast<GLubyte>(std::min(255u, g)),
-                            static_cast<GLubyte>(std::min(255u, b))
-                        };
-                    }
-                }
-            }
-
-            float speed = dis(gen);
-            if (sign(gen) == 0) {
-                speed = -speed;
-            }
-            ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_CLAMP_TO_EDGE};
-
-            auto sprite = CCSprite::create(layer.second);
-            auto rect = sprite->getTextureRect();
-            sprite->setUserObject("width", CCFloat::create(rect.size.width * widthmult));
-            rect.size = CCSize{winSize.width * widthmult, rect.size.height * hightmult};
-
-            std::string layerID = fmt::format("layer-{}", idx);
-            sprite->setID(layerID);
-            sprite->getTexture()->setTexParameters(&params);
-            sprite->setTextureRect(rect);
-            sprite->setAnchorPoint({ 0, 1 });
-            sprite->setContentSize({ winSize.width * widthmult, sprite->getContentSize().height });
-            sprite->setColor(adjustedColor);
-            sprite->setPosition({ 0, y });
-            sprite->schedule(schedule_selector(SwelvyBG::updateSpritePosition));
-            sprite->setUserObject("speed", CCFloat::create(speed));
-            this->addChild(sprite);
-
-            y -= m_obContentSize.height / 6;
-            idx += 1;
+            createLayer(layer.first, layer.second);
         }
     }
 
