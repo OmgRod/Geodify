@@ -14,7 +14,7 @@ class $modify(MySecretLayer2, SecretLayer2) {
 				bg->setVisible(false);
 				auto swelvyBG = SwelvyBG::create();
 				swelvyBG->setZOrder(-3);
-				swelvyBG->setID("swelvy-background");
+				
 	
 				this->addChild(swelvyBG);				
 			}

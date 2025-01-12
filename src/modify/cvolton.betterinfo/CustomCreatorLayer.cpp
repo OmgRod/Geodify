@@ -9,7 +9,7 @@ HookClass_Scene(cvolton_betterinfo_CustomCreatorLayer,"cvolton.betterinfo/Custom
             bg->setVisible(false);
             SwelvyBG* swelvyBG = SwelvyBG::create();
             swelvyBG->setZOrder(-1);
-            swelvyBG->setID("swelvy-background");
+            
             _This->addChild(swelvyBG);
         }
     }

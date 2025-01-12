@@ -16,7 +16,7 @@ class $modify(MyLoadingLayer, LoadingLayer) {
 
 		auto swelvyBG = SwelvyBG::create();
 		swelvyBG->setZOrder(-3);
-		swelvyBG->setID("swelvy-background");
+		
 
     	this->addChild(swelvyBG);
 

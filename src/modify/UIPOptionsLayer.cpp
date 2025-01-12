@@ -13,7 +13,7 @@
 // 			// this->setOpacity(0);
 // 			auto swelvyBG = SwelvyBG::create();
 // 			swelvyBG->setZOrder(-3);
-// 			swelvyBG->setID("swelvy-background");
+// 			
 
 // 			auto layer = this->getChildOfType<CCLayer*>(0);
 //             layer->addChild(swelvyBG);

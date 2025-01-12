@@ -10,7 +10,7 @@ HookClass_Scene(cvolton_betterinfo_LevelSearchViewLayer,"cvolton.betterinfo/Leve
         }
         SwelvyBG* swelvyBG = SwelvyBG::create();
         swelvyBG->setZOrder(-1);
-        swelvyBG->setID("swelvy-background");
+        
         _This->addChild(swelvyBG);
     }
 }

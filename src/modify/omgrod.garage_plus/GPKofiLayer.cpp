@@ -11,7 +11,7 @@ HookClass(GPKofiLayer) {
 
         SwelvyBG* swelvyBG = SwelvyBG::create();
         swelvyBG->setZOrder(-99999);
-        swelvyBG->setID("swelvy-background");
+        
         this->addChild(swelvyBG);
     }
 }

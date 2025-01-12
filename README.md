@@ -53,7 +53,7 @@ class $modify(MyCreatorLayer, CreatorLayer) {
 
 			auto swelvyBG = SwelvyBG::create();
 			swelvyBG->setZOrder(-2);
-			swelvyBG->setID("swelvy-background");
+			
 
 			this->addChild(swelvyBG);
 		}
@@ -80,7 +80,7 @@ HookClass(GlobedLevelListLayer) {
 
         SwelvyBG* swelvyBG = SwelvyBG::create();
         swelvyBG->setZOrder(-1);
-        swelvyBG->setID("swelvy-background");
+        
         this->addChild(swelvyBG);
 }
 
@@ -104,7 +104,7 @@ HookClass_Scene(cvolton_betterinfo_CustomCreatorLayer,"cvolton.betterinfo/Custom
             bg->setVisible(false);
             SwelvyBG* swelvyBG = SwelvyBG::create();
             swelvyBG->setZOrder(-1);
-            swelvyBG->setID("swelvy-background");
+            
             _This->addChild(swelvyBG);
         }
 }

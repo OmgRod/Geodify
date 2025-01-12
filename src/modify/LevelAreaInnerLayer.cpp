@@ -12,7 +12,7 @@ class $modify(MyLevelAreaInnerLayer, LevelAreaInnerLayer) {
 		if (Mod::get()->getSettingValue<bool>("show-inner-tower")){
 			auto swelvyBG = SwelvyBG::create();
 			swelvyBG->setZOrder(-2);
-			swelvyBG->setID("swelvy-background");
+			
 
 			this->addChild(swelvyBG);
 		}

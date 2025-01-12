@@ -1,6 +1,7 @@
 #include <Geode/Geode.hpp>
 #include <Geode/ui/ScrollLayer.hpp>
-#include "../json.hpp"
+#include <Geode/ui/GeodeUI.hpp>
+#include <Geode/ui/BasedButtonSprite.hpp>
 #include <filesystem>
 #include <fstream>
 #include <sstream>
@@ -10,6 +11,8 @@
 
 #include "GYSettingSelectLayer.hpp"
 #include "GYScreenshotPopup.hpp"
+#include "GYModTile.hpp"
+#include "../json.hpp"
 
 using namespace geode::prelude;
 
@@ -51,6 +54,10 @@ void GYSettingSelectLayer::settingsBtn(CCObject* sender) {
     CCDirector::sharedDirector()->pushScene(scenePrev);
 }
 
+void GYSettingSelectLayer::openNormalSettings(CCObject* sender) {
+    openSettingsPopup(Mod::get());
+}
+
 bool GYSettingSelectLayer::init() {
     if (!CCLayer::init())
         return false;
@@ -70,6 +77,19 @@ bool GYSettingSelectLayer::init() {
     background->setPosition({ winSize.width / 2, winSize.height / 2 });
     this->addChild(background);
 
+    auto cornerLeft = CCSprite::createWithSpriteFrameName("GJ_sideArt_001.png");
+    cornerLeft->setPosition(CCPoint(winSize.width * 0, winSize.height * 0));
+    cornerLeft->setAnchorPoint(CCPoint(0, 0));
+    cornerLeft->setID("corner-left");
+    this->addChild(cornerLeft);
+
+    auto cornerRight = CCSprite::createWithSpriteFrameName("GJ_sideArt_001.png");
+    cornerRight->setPosition(CCPoint(winSize.width * 1, winSize.height * 0));
+    cornerRight->setAnchorPoint(CCPoint(1, 0));
+    cornerRight->setFlipX(true);
+    cornerRight->setID("corner-right");
+    this->addChild(cornerRight);
+
     auto backBtn = CCMenuItemSpriteExtra::create(
         CCSprite::createWithSpriteFrameName("GJ_arrow_01_001.png"),
         this,
@@ -86,10 +106,16 @@ bool GYSettingSelectLayer::init() {
 
     auto contentBox = CCScale9Sprite::create("GJ_square01.png");
     contentBox->setContentSize({ winSize.width * 0.7f, winSize.height * 0.7f });
-    contentBox->setPosition({ winSize.width / 2, (winSize.height / 2) - (winSize.height * 0.05f) });
+    contentBox->setPosition({ winSize.width / 2, winSize.height / 2 - winSize.height * 0.05f });
     contentBox->setAnchorPoint({ 0.5f, 0.5f });
     contentBox->setID("content-box");
     this->addChild(contentBox);
+
+    ScrollLayer* scroll = ScrollLayer::create({ winSize.width * 0.7f, winSize.height * 0.7f }, true, true);
+    scroll->setID("scroll");
+    contentBox->addChild(scroll);
+
+    scroll->m_contentLayer->setLayout(ColumnLayout::create()->setAxisReverse(true));
 
     auto leftMenu = CCMenu::create();
     leftMenu->setAnchorPoint({ 0, 0 });
@@ -111,21 +137,41 @@ bool GYSettingSelectLayer::init() {
         menu_selector(GYSettingSelectLayer::generateWrapper)
     );
     colorBtn->setID("color-button");
-
     leftMenu->addChild(colorBtn);
+
+    auto settingsBtn = CCMenuItemSpriteExtra::create(
+        CircleButtonSprite::create(
+            CCSprite::createWithSpriteFrameName("geode.loader/settings.png"),
+            CircleBaseColor::DarkPurple,
+            CircleBaseSize::Medium
+        ),
+        this,
+        menu_selector(GYSettingSelectLayer::openNormalSettings)
+    );
+    settingsBtn->setID("settings-button");
+    leftMenu->addChild(settingsBtn);
 
     leftMenu->updateLayout();
 
-    // auto testBtn = CCMenuItemSpriteExtra::create(
-    //     CCSprite::createWithSpriteFrameName(
-    //         "GJ_paintBtn_001.png"
-    //     ),
-    //     this,
-    //     menu_selector(GYSettingSelectLayer::popup)
-    // );
+    scroll->m_contentLayer->addChild(GYModTile::create());
+    scroll->m_contentLayer->addChild(GYModTile::create());
+    scroll->m_contentLayer->addChild(GYModTile::create());
+    scroll->m_contentLayer->addChild(GYModTile::create());
+    scroll->m_contentLayer->addChild(GYModTile::create());
+    scroll->m_contentLayer->addChild(GYModTile::create());
+    scroll->m_contentLayer->addChild(GYModTile::create());
+    scroll->m_contentLayer->addChild(GYModTile::create());
+    scroll->m_contentLayer->addChild(GYModTile::create());
+    scroll->m_contentLayer->addChild(GYModTile::create());
+    scroll->m_contentLayer->addChild(GYModTile::create());
+    scroll->m_contentLayer->addChild(GYModTile::create());
+    scroll->m_contentLayer->addChild(GYModTile::create());
+    scroll->m_contentLayer->addChild(GYModTile::create());
+    scroll->m_contentLayer->addChild(GYModTile::create());
+    scroll->m_contentLayer->addChild(GYModTile::create());
+    scroll->m_contentLayer->addChild(GYModTile::create());
 
-    // testBtn->setPosition(winSize.width * 0.5, winSize.height * 0.5);
-    // menu->addChild(testBtn);
+    GYSettingSelectLayer::generateModsList();
 
     this->addChild(leftMenu);
     this->addChild(menu);
@@ -226,6 +272,13 @@ bool GYSettingSelectLayer::generateModsList() {
     } else {
         log::warn("No valid 'layers' data found in JSON");
     }
+
+    ScrollLayer* scroll = typeinfo_cast<ScrollLayer*>(this->getChildByID("content-box")->getChildByID("scroll"));
+    if (!scroll) {
+        log::error("Failed to cast content-box->scroll to ScrollLayer");
+        return false;
+    }
+    scroll->m_contentLayer->updateLayout();
 
     return true;
 }

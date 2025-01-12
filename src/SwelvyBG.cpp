@@ -11,6 +11,7 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
     auto winSize = CCDirector::get()->getWinSize();
     this->setContentSize(winSize);
     this->setAnchorPoint({ 0.f, 0.f });
+    this->setID("swelvy-background"_spr);
 
     std::random_device rd;
     std::mt19937 gen(rd());

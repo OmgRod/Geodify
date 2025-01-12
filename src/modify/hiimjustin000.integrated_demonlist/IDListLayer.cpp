@@ -10,6 +10,6 @@ HookClass(IDListLayer) {
 
         SwelvyBG* swelvyBG = SwelvyBG::create();
         swelvyBG->setZOrder(-1);
-        swelvyBG->setID("swelvy-background");
+        
         this->addChild(swelvyBG);
 }

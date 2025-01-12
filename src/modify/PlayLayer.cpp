@@ -19,7 +19,7 @@ class $modify(MyPlayLayer, PlayLayer) {
 
             SwelvyBG* swelvyBG = SwelvyBG::create(1.5,3);
             swelvyBG->setZOrder(-5);
-            swelvyBG->setID("swelvy-background");
+            
             swelvyBG->setScale(2);
             this->getChildByID("main-node")->addChild(swelvyBG);
             swelvyBG->setPosition(-204,-81);

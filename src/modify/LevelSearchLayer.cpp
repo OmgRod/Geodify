@@ -48,7 +48,7 @@ class $modify(MyLevelSearchLayer, LevelSearchLayer) {
 
 			auto swelvyBG = SwelvyBG::create();
 			swelvyBG->setZOrder(-3);
-			swelvyBG->setID("swelvy-background");
+			
 
     		this->addChild(swelvyBG);
 		}

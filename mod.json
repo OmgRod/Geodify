@@ -12,14 +12,20 @@
 	"description": "Converts most menus' backgrounds to the Geode one (SwelvyBG).",
 	"early-load": true,
 	"resources": {
-        "sprites": [
-            "res/previews/*.png"
-        ],
+        "spritesheets": {
+            "previewSheet": [
+                "res/previews/*.png"
+            ]
+        },
         "files": [
             "res/layers.json"
         ]
 	},
 	"settings": {
+        "color-title": {
+            "type": "title",
+            "name": "Color Offset Settings"
+        },
         "enable-color": {
             "name": "Enable Color Offset",
             "description": "Enables color offset for the SwelvyBG.",
@@ -67,6 +73,10 @@
             "type": "string",
             "default": "113,74,154",
             "enable-if": "enable-color"
+        },
+        "gd-title": {
+            "type": "title",
+            "name": "Geometry Dash"
         },
         "show-main": {
             "name": "Show in main menu",
@@ -193,6 +203,10 @@
             "description": "SecretLayer4",
             "type": "bool",
             "default": true
+        },
+        "mods-title": {
+            "type": "title",
+            "name": "Mods Settings"
         },
         "external-mods": {
             "name": "external mods",

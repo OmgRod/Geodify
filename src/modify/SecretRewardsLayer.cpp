@@ -25,7 +25,7 @@ class $modify(MySecretRewardsLayer, SecretRewardsLayer) {
 
 			auto swelvyBG = SwelvyBG::create();
 			swelvyBG->setZOrder(-2);
-			swelvyBG->setID("swelvy-background");
+			
 
 			this->addChild(swelvyBG);
 		}
