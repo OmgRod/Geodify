@@ -31,7 +31,7 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
         if (enableColor) {
             auto colorSetting = mod->getSettingValue<std::string>("color");
             if (!colorSetting.empty()) {
-                sscanf(colorSetting.c_str(), "%hhu,%hhu,%hhu", &colorOffset.r, &colorOffset.g, &colorOffset.b);
+                sscanf_s(colorSetting.c_str(), "%hhu,%hhu,%hhu", &colorOffset.r, &colorOffset.g, &colorOffset.b);
             }
         }
     }
