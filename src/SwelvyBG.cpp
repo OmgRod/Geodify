@@ -21,65 +21,116 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
     float y = m_obContentSize.height + 5;
     int idx = 0;
 
-    // Retrieve the color offset setting
-    auto mod = Mod::get();
-    ccColor3B colorOffset = { 0, 0, 0 }; // Default offset is zero (no adjustment)
-    bool enableColor = false;
+    bool enableColor = Mod::get()->getSettingValue<bool>("enable-color");
 
-    if (mod) {
-        enableColor = mod->getSettingValue<bool>("enable-color");
-        if (enableColor) {
-            auto colorSetting = mod->getSettingValue<std::string>("color");
-            if (!colorSetting.empty()) {
-                sscanf_s(colorSetting.c_str(), "%hhu,%hhu,%hhu", &colorOffset.r, &colorOffset.g, &colorOffset.b);
+    if (enableColor) {
+        for (auto layer : std::initializer_list<std::pair<ccColor3B, const char*>> {
+            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-0"), "geode.loader/swelve-layer3.png" },
+            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-1"), "geode.loader/swelve-layer0.png" },
+            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-2"), "geode.loader/swelve-layer1.png" },
+            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-3"), "geode.loader/swelve-layer2.png" },
+            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-4"), "geode.loader/swelve-layer1.png" },
+            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-5"), "geode.loader/swelve-layer0.png" },
+        }) {
+            ccColor3B adjustedColor = layer.first;
+
+            if (enableColor) {
+                // Construct the setting key dynamically
+                std::string settingKey = "color-" + std::to_string(idx);
+                auto colorSetting = Mod::get()->getSettingValue<std::string>(settingKey);
+
+                if (!colorSetting.empty()) {
+                    unsigned int r, g, b;
+                    if (sscanf_s(colorSetting.c_str(), "%u,%u,%u", &r, &g, &b) == 3) {
+                        adjustedColor = {
+                            static_cast<GLubyte>(std::min(255u, r)),
+                            static_cast<GLubyte>(std::min(255u, g)),
+                            static_cast<GLubyte>(std::min(255u, b))
+                        };
+                    }
+                }
             }
+
+            float speed = dis(gen);
+            if (sign(gen) == 0) {
+                speed = -speed;
+            }
+            ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_CLAMP_TO_EDGE};
+
+            auto sprite = CCSprite::create(layer.second);
+            auto rect = sprite->getTextureRect();
+            sprite->setUserObject("width", CCFloat::create(rect.size.width * widthmult));
+            rect.size = CCSize{winSize.width * widthmult, rect.size.height * hightmult};
+
+            std::string layerID = fmt::format("layer-{}", idx);
+            sprite->setID(layerID);
+            sprite->getTexture()->setTexParameters(&params);
+            sprite->setTextureRect(rect);
+            sprite->setAnchorPoint({ 0, 1 });
+            sprite->setContentSize({ winSize.width * widthmult, sprite->getContentSize().height });
+            sprite->setColor(adjustedColor);
+            sprite->setPosition({ 0, y });
+            sprite->schedule(schedule_selector(SwelvyBG::updateSpritePosition));
+            sprite->setUserObject("speed", CCFloat::create(speed));
+            this->addChild(sprite);
+
+            y -= m_obContentSize.height / 6;
+            idx += 1;
         }
-    }
+    } else {
+        for (auto layer : std::initializer_list<std::pair<ccColor3B, const char*>> {
+            { ccc3(244, 212, 142), "geode.loader/swelve-layer3.png" },
+            { ccc3(245, 174, 125), "geode.loader/swelve-layer0.png" },
+            { ccc3(236, 137, 124), "geode.loader/swelve-layer1.png" },
+            { ccc3(213, 105, 133), "geode.loader/swelve-layer2.png" },
+            { ccc3(173, 84, 146), "geode.loader/swelve-layer1.png" },
+            { ccc3(113, 74, 154), "geode.loader/swelve-layer0.png" },
+        }) {
+            ccColor3B adjustedColor = layer.first;
 
-    for (auto layer : std::initializer_list<std::pair<ccColor3B, const char*>> {
-        { ccc3(244, 212, 142), "geode.loader/swelve-layer3.png" },
-        { ccc3(245, 174, 125), "geode.loader/swelve-layer0.png" },
-        { ccc3(236, 137, 124), "geode.loader/swelve-layer1.png" },
-        { ccc3(213, 105, 133), "geode.loader/swelve-layer2.png" },
-        { ccc3(173, 84,  146), "geode.loader/swelve-layer1.png" },
-        { ccc3(113, 74,  154), "geode.loader/swelve-layer0.png" },
-    }) {
-        ccColor3B adjustedColor = layer.first;
+            if (enableColor) {
+                // Construct the setting key dynamically
+                std::string settingKey = "color-" + std::to_string(idx);
+                auto colorSetting = Mod::get()->getSettingValue<std::string>(settingKey);
 
-        if (enableColor) {
-            // Apply the color offset
-            adjustedColor = {
-                static_cast<GLubyte>(std::min(255, layer.first.r + colorOffset.r)),
-                static_cast<GLubyte>(std::min(255, layer.first.g + colorOffset.g)),
-                static_cast<GLubyte>(std::min(255, layer.first.b + colorOffset.b))
-            };
+                if (!colorSetting.empty()) {
+                    unsigned int r, g, b;
+                    if (sscanf_s(colorSetting.c_str(), "%u,%u,%u", &r, &g, &b) == 3) {
+                        adjustedColor = {
+                            static_cast<GLubyte>(std::min(255u, r)),
+                            static_cast<GLubyte>(std::min(255u, g)),
+                            static_cast<GLubyte>(std::min(255u, b))
+                        };
+                    }
+                }
+            }
+
+            float speed = dis(gen);
+            if (sign(gen) == 0) {
+                speed = -speed;
+            }
+            ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_CLAMP_TO_EDGE};
+
+            auto sprite = CCSprite::create(layer.second);
+            auto rect = sprite->getTextureRect();
+            sprite->setUserObject("width", CCFloat::create(rect.size.width * widthmult));
+            rect.size = CCSize{winSize.width * widthmult, rect.size.height * hightmult};
+
+            std::string layerID = fmt::format("layer-{}", idx);
+            sprite->setID(layerID);
+            sprite->getTexture()->setTexParameters(&params);
+            sprite->setTextureRect(rect);
+            sprite->setAnchorPoint({ 0, 1 });
+            sprite->setContentSize({ winSize.width * widthmult, sprite->getContentSize().height });
+            sprite->setColor(adjustedColor);
+            sprite->setPosition({ 0, y });
+            sprite->schedule(schedule_selector(SwelvyBG::updateSpritePosition));
+            sprite->setUserObject("speed", CCFloat::create(speed));
+            this->addChild(sprite);
+
+            y -= m_obContentSize.height / 6;
+            idx += 1;
         }
-
-        float speed = dis(gen);
-        if (sign(gen) == 0) {
-            speed = -speed;
-        }
-        ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_CLAMP_TO_EDGE};
-
-        auto sprite = CCSprite::create(layer.second);
-        auto rect = sprite->getTextureRect();
-        sprite->setUserObject("width", CCFloat::create(rect.size.width * widthmult));
-        rect.size = CCSize{winSize.width * widthmult, rect.size.height * hightmult};
-
-        std::string layerID = fmt::format("layer-{}", idx);
-        sprite->setID(layerID);
-        sprite->getTexture()->setTexParameters(&params);
-        sprite->setTextureRect(rect);
-        sprite->setAnchorPoint({ 0, 1 });
-        sprite->setContentSize({ winSize.width * widthmult, sprite->getContentSize().height });
-        sprite->setColor(adjustedColor);
-        sprite->setPosition({ 0, y });
-        sprite->schedule(schedule_selector(SwelvyBG::updateSpritePosition));
-        sprite->setUserObject("speed", CCFloat::create(speed));
-        this->addChild(sprite);
-
-        y -= m_obContentSize.height / 6;
-        idx += 1;
     }
 
     return true;

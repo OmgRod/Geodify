@@ -35,43 +35,43 @@
         "color-0": {
             "name": "Color Offset - 1st",
             "description": "The color offset of the background.",
-            "type": "string",
-            "default": "244,212,142",
+            "type": "color",
+            "default": "#F4D48E",
             "enable-if": "enable-color"
         },
         "color-1": {
             "name": "Color Offset - 2nd",
             "description": "The color offset of the background.",
-            "type": "string",
-            "default": "245,174,125",
+            "type": "color",
+            "default": "#F5AE7D",
             "enable-if": "enable-color"
         },
         "color-2": {
             "name": "Color Offset - 3rd",
             "description": "The color offset of the background.",
-            "type": "string",
-            "default": "236,137,124",
+            "type": "color",
+            "default": "#EC897C",
             "enable-if": "enable-color"
         },
         "color-3": {
             "name": "Color Offset - 4th",
             "description": "The color offset of the background.",
-            "type": "string",
-            "default": "213,105,133",
+            "type": "color",
+            "default": "#D56985",
             "enable-if": "enable-color"
         },
         "color-4": {
             "name": "Color Offset - 5th",
             "description": "The color offset of the background.",
-            "type": "string",
-            "default": "173,84,146",
+            "type": "color",
+            "default": "#AD5492",
             "enable-if": "enable-color"
         },
         "color-5": {
             "name": "Color Offset - 6th",
             "description": "The color offset of the background.",
-            "type": "string",
-            "default": "113,74,154",
+            "type": "color",
+            "default": "#714A9A",
             "enable-if": "enable-color"
         },
         "gd-title": {

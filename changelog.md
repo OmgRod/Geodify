@@ -3,8 +3,9 @@
 - Added ninXout's Geode menu loop
 - Refactored code
 - Revamped settings menu
-- Bugfix: Color settings don't work
-- Changed color offset to change each individual wave
+- Bugfix: [Color settings don't work](https://github.com/OmgRod/Geodify/issues/11)
+- Bugfix: [Icon Ninja stuff (thanks undefined0 :D)](https://github.com/OmgRod/Geodify/issues/14)
+- Changed color offset to change [each individual wave](https://github.com/OmgRod/Geodify/issues/13)
 
 # v1.6.0
 
