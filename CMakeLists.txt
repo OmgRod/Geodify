@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
 
-# Set C++ standard and project properties
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64")
@@ -8,40 +7,37 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 project(Geodify VERSION 1.0.0)
 
-# Collect source files
 file(GLOB_RECURSE SOURCES src/*.cpp)
 
-# Define the shared library target
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
-# Ensure Geode SDK is available
 if (NOT DEFINED ENV{GEODE_SDK})
     message(FATAL_ERROR "Unable to find Geode SDK! Please define GEODE_SDK environment variable to point to Geode")
 else()
     message(STATUS "Found Geode: $ENV{GEODE_SDK}")
 endif()
 
-# Special case for GitHub Actions
 if (DEFINED ENV{GITHUB_ACTIONS})
     message("Github Actions Build")
     add_definitions(-DGITHUB_ACTIONS)
 endif()
 
-# Include CPM.cmake
 include("cmake/CPM.cmake")
 
-# Fetch the external-hook-api package using the new CPM syntax
 CPMAddPackage(
     NAME external-hook-api
     GIT_REPOSITORY https://github.com/OmgRod/External-Hook-API.git
     GIT_TAG master
 )
-
-# Add Geode SDK as a subdirectory
-add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
-
-# Link the external-hook-api target to your project
 target_link_libraries(${PROJECT_NAME} external-hook-api)
 
-# Setup Geode module (if applicable)
+CPMAddPackage(
+    NAME nlohmann_json
+    GIT_REPOSITORY https://github.com/nlohmann/json.git
+    VERSION 3.11.3
+)
+target_link_libraries(${PROJECT_NAME} nlohmann_json::nlohmann_json)
+
+add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
+
 setup_geode_mod(${PROJECT_NAME})

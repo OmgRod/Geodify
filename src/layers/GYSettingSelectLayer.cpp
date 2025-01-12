@@ -1,6 +1,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/ui/ScrollLayer.hpp>
-#include <matjson.hpp>
+#include <json.hpp>
 #include <filesystem>
 #include <fstream>
 #include <sstream>
@@ -134,7 +134,7 @@ bool GYSettingSelectLayer::init() {
 void GYSettingSelectLayer::generateWrapper(CCObject* sender) {
     generateModsList();
 }
-
+/*
 bool GYSettingSelectLayer::generateModsList() {
     std::filesystem::path filePath = Mod::get()->getResourcesDir() / "layers.json";
 
@@ -182,3 +182,4 @@ bool GYSettingSelectLayer::generateModsList() {
 
     return true;
 }
+*/
