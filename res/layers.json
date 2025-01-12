@@ -1,6 +1,64 @@
 {
-    "1": "MenuLayer",
-    "2": "CreatorLayer",
-    "3": "LevelBrowserLayer",
-    "4"
+    "mods": [
+        "gd",
+        "cvolton.betterinfo",
+        "dankmeme.globed2",
+        "geode.loader",
+        "geode.texture-loader",
+        "hiimjustin000.integrated_demonlist",
+        "km7dev.gdps-switcher",
+        "limegradient.betterachievements",
+        "minemaker0430.gddp_integration",
+        "omgrod.garage_plus",
+        "omgrod.gdstream",
+        "omgrod.geodify",
+        "thesillydoggo.newgrounds_explorer",
+        "uproxide.textures"
+    ],
+    "layers": {
+        "1": {
+            "name": "MenuLayer",
+            "mod": "robtop.geometrydash"
+        },
+        "2": {
+            "name": "CreatorLayer",
+            "mod": "robtop.geometrydash"
+        },
+        "3": {
+            "name": "LevelBrowserLayer",
+            "mod": "robtop.geometrydash"
+        },
+        "4": {
+            "name": "GJGarageLayer",
+            "mod": "robtop.geometrydash"
+        },
+        "5": {
+            "name": "GauntletLayer",
+            "mod": "robtop.geometrydash"
+        },
+        "6": {
+            "name": "GauntletSelectLayer",
+            "mod": "robtop.geometrydash"
+        },
+        "7": {
+            "name": "LeaderboardsLayer",
+            "mod": "robtop.geometrydash"
+        },
+        "8": {
+            "name": "LevelSearchLayer",
+            "mod": "robtop.geometrydash"
+        },
+        "9": {
+            "name": "SecretLayer2",
+            "mod": "robtop.geometrydash"
+        },
+        "10": {
+            "name": "SecretLayer3",
+            "mod": "robtop.geometrydash"
+        },
+        "11": {
+            "name": "SecretRewardsLayer",
+            "mod": "robtop.geometrydash"
+        }
+    }
 }

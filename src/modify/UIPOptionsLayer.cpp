@@ -10,12 +10,13 @@
 // 			return false;
 // 		}
 // 		if (Mod::get()->getSettingValue<bool>("show-control-settings")){
-// 			this->setOpacity(0);
+// 			// this->setOpacity(0);
 // 			auto swelvyBG = SwelvyBG::create();
 // 			swelvyBG->setZOrder(-3);
 // 			swelvyBG->setID("swelvy-background");
 
-// 			this->addChild(swelvyBG);
+// 			auto layer = this->getChildOfType<CCLayer*>(0);
+//             layer->addChild(swelvyBG);
 // 		}
 // 		return true;
 // 	}

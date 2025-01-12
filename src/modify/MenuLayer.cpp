@@ -2,6 +2,7 @@
 #include <Geode/Geode.hpp>
 #include <Geode/Loader.hpp>
 #include <Geode/modify/MenuLayer.hpp>
+#include <HookClass.hpp>
 
 using namespace geode::prelude;
 
@@ -37,3 +38,10 @@ class $modify(MenuLayer) {
 		return true;
 	}
 };
+
+
+// HookClass(NinjaSwipeLayer) {
+// 	if (Loader::get()->isModLoaded("undefined0.icon_ninja")) {
+// 		this->removeFromParent();
+// 	}
+// }

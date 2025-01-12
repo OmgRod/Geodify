@@ -1,7 +1,9 @@
 #include <Geode/Geode.hpp>
+#include <Geode/ui/ScrollLayer.hpp>
 
 #include "GYSettingSelectLayer.hpp"
 #include "GYScreenshotPopup.hpp"
+#include "Geode/ui/BasedButtonSprite.hpp"
 
 using namespace geode::prelude;
 
@@ -76,10 +78,17 @@ bool GYSettingSelectLayer::init() {
     title->setID("title");
     this->addChild(title);
 
+    auto contentBox = CCScale9Sprite::create("GJ_square01.png");
+    contentBox->setContentSize({ winSize.width * 0.7f, winSize.height * 0.7f });
+    contentBox->setPosition({ winSize.width / 2, (winSize.height / 2) - (winSize.height * 0.05f) });
+    contentBox->setAnchorPoint({ 0.5f, 0.5f });
+    contentBox->setID("content-box");
+    this->addChild(contentBox);
+
     auto leftMenu = CCMenu::create();
     leftMenu->setAnchorPoint({ 0, 0 });
     leftMenu->setContentSize({ 0.f, winSize.height * 0.6f });
-    leftMenu->setPosition({ winSize.width * 0.1f, winSize.height * 0.2f });
+    leftMenu->setPosition({ winSize.width * 0.05f, winSize.height * 0.15f });
     leftMenu->setID("left-menu");
 
     auto leftLayout = ColumnLayout::create();
@@ -89,8 +98,10 @@ bool GYSettingSelectLayer::init() {
     leftMenu->setLayout(leftLayout);
 
     auto colorBtn = CCMenuItemSpriteExtra::create(
-        CCSprite::createWithSpriteFrameName(
+        CircleButtonSprite::create(
+            CCSprite::createWithSpriteFrameName(
             "GJ_paintBtn_001.png"
+        ), CircleBaseColor::Green, CircleBaseSize::Medium
         ),
         this,
         menu_selector(GYSettingSelectLayer::settingsBtn)
@@ -101,19 +112,28 @@ bool GYSettingSelectLayer::init() {
 
     leftMenu->updateLayout();
 
-    auto testBtn = CCMenuItemSpriteExtra::create(
-        CCSprite::createWithSpriteFrameName(
-            "GJ_paintBtn_001.png"
-        ),
-        this,
-        menu_selector(GYSettingSelectLayer::popup)
-    );
+    // auto testBtn = CCMenuItemSpriteExtra::create(
+    //     CCSprite::createWithSpriteFrameName(
+    //         "GJ_paintBtn_001.png"
+    //     ),
+    //     this,
+    //     menu_selector(GYSettingSelectLayer::popup)
+    // );
 
-    testBtn->setPosition(winSize.width * 0.5, winSize.height * 0.5);
-    menu->addChild(testBtn);
+    // testBtn->setPosition(winSize.width * 0.5, winSize.height * 0.5);
+    // menu->addChild(testBtn);
 
     this->addChild(leftMenu);
     this->addChild(menu);
     
+    return true;
+}
+
+bool GYSettingSelectLayer::generateModsList() {
+    auto result = matjson::parse("layers.json"_spr);
+    if (!result) {
+        log::error("Failed to parse json: {}", result.unwrapErr());
+        return false;
+    }
     return true;
 }
