@@ -31,11 +31,7 @@ CPMAddPackage(
 )
 target_link_libraries(${PROJECT_NAME} external-hook-api)
 
-CPMAddPackage(
-    NAME nlohmann_json
-    GIT_REPOSITORY https://github.com/nlohmann/json.git
-    VERSION 3.11.3
-)
+CPMAddPackage("gh:nlohmann/json@3.11.3")
 target_link_libraries(${PROJECT_NAME} nlohmann_json::nlohmann_json)
 
 add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
