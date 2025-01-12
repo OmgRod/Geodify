@@ -3,7 +3,6 @@
 
 #include "GYSettingSelectLayer.hpp"
 #include "GYScreenshotPopup.hpp"
-#include "Geode/ui/BasedButtonSprite.hpp"
 
 using namespace geode::prelude;
 
@@ -98,10 +97,8 @@ bool GYSettingSelectLayer::init() {
     leftMenu->setLayout(leftLayout);
 
     auto colorBtn = CCMenuItemSpriteExtra::create(
-        CircleButtonSprite::create(
-            CCSprite::createWithSpriteFrameName(
+        CCSprite::createWithSpriteFrameName(
             "GJ_paintBtn_001.png"
-        ), CircleBaseColor::Green, CircleBaseSize::Medium
         ),
         this,
         menu_selector(GYSettingSelectLayer::settingsBtn)
