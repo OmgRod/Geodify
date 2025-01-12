@@ -1,10 +1,12 @@
 #include <Geode/Geode.hpp>
 #include <Geode/ui/ScrollLayer.hpp>
-#include <nlohmann/json.hpp>
+#include "../json.hpp"
 #include <filesystem>
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <map>
+#include <string>
 
 #include "GYSettingSelectLayer.hpp"
 #include "GYScreenshotPopup.hpp"
@@ -134,7 +136,7 @@ bool GYSettingSelectLayer::init() {
 void GYSettingSelectLayer::generateWrapper(CCObject* sender) {
     generateModsList();
 }
-/*
+
 bool GYSettingSelectLayer::generateModsList() {
     std::filesystem::path filePath = Mod::get()->getResourcesDir() / "layers.json";
 
@@ -156,30 +158,74 @@ bool GYSettingSelectLayer::generateModsList() {
     file.close();
     log::info("File content: {}", fileContent);
 
-    auto result = matjson::parse(fileContent);
-    if (!result) {
-        log::error("Failed to parse json: {}", result.unwrapErr());
+    nlohmann::json jsonData;
+    try {
+        jsonData = nlohmann::json::parse(fileContent);
+    } catch (const nlohmann::json::parse_error& err) {
+        log::error("Failed to parse JSON: {}", err.what());
         return false;
     }
 
-    auto jsonData = result.unwrap();
-
-    if (!jsonData.contains("mods") || !jsonData["mods"].isArray()) {
-        log::error("Invalid JSON structure: 'mods' key not found or not an array");
+    // Validate the structure of the "mods" key
+    if (!jsonData.contains("mods") || !jsonData["mods"].is_object()) {
+        log::error("Invalid JSON structure: 'mods' key not found or not an object");
         return false;
     }
 
-    std::map<std::string, std::string> modsMap;
-    for (const auto& mod : jsonData["mods"].array()) {
-        std::string modName = mod.as<std::string>().unwrap();
-        modsMap[modName] = modName;
+    const auto& modsData = jsonData["mods"];
+    std::map<std::string, std::pair<std::string, std::string>> modsMap;
+
+    // Extract information about each mod
+    for (auto it = modsData.begin(); it != modsData.end(); ++it) {
+        const std::string modID = it.key();
+        const auto& modInfo = it.value();
+
+        // Validate mod structure
+        if (!modInfo.contains("name") || !modInfo["name"].is_string() ||
+            !modInfo.contains("author") || !modInfo["author"].is_string()) {
+            log::error("Invalid mod entry: Missing 'name' or 'author' in mod '{}'", modID);
+            continue;
+        }
+
+        std::string modName = modInfo["name"];
+        std::string modAuthor = modInfo["author"];
+        modsMap[modID] = { modName, modAuthor };
     }
 
     log::info("Extracted Mods Map:");
-    for (const auto& [modName, _] : modsMap) {
-        log::info("- {}", modName);
+    for (const auto& [modID, modInfo] : modsMap) {
+        log::info("- Mod ID: {}, Name: {}, Author: {}", modID, modInfo.first, modInfo.second);
+    }
+
+    // Process layers if needed
+    if (jsonData.contains("layers") && jsonData["layers"].is_object()) {
+        const auto& layersData = jsonData["layers"];
+        log::info("Layers Info:");
+        for (auto it = layersData.begin(); it != layersData.end(); ++it) {
+            const std::string layerID = it.key();
+            const auto& layerInfo = it.value();
+
+            if (!layerInfo.contains("name") || !layerInfo["name"].is_string() ||
+                !layerInfo.contains("mod") || !layerInfo["mod"].is_string()) {
+                log::error("Invalid layer entry: Missing 'name' or 'mod' in layer '{}'", layerID);
+                continue;
+            }
+
+            std::string layerName = layerInfo["name"];
+            std::string modID = layerInfo["mod"];
+
+            log::info("Layer ID: {}, Name: {}, Mod: {}", layerID, layerName, modID);
+
+            // Optionally cross-reference with modsMap to provide more detailed info
+            if (modsMap.find(modID) != modsMap.end()) {
+                log::info("  - Linked Mod Name: {}, Author: {}", modsMap[modID].first, modsMap[modID].second);
+            } else {
+                log::warn("  - Mod ID '{}' not found in mods list", modID);
+            }
+        }
+    } else {
+        log::warn("No valid 'layers' data found in JSON");
     }
 
     return true;
 }
-*/

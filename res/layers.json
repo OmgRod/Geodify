@@ -1,20 +1,62 @@
 {
-    "mods": [
-        "gd",
-        "cvolton.betterinfo",
-        "dankmeme.globed2",
-        "geode.loader",
-        "geode.texture-loader",
-        "hiimjustin000.integrated_demonlist",
-        "km7dev.gdps-switcher",
-        "limegradient.betterachievements",
-        "minemaker0430.gddp_integration",
-        "omgrod.garage_plus",
-        "omgrod.gdstream",
-        "omgrod.geodify",
-        "thesillydoggo.newgrounds_explorer",
-        "uproxide.textures"
-    ],
+    "mods": {
+        "gd": {
+            "name": "Geometry Dash",
+            "author": "RobTop"
+        },
+        "cvolton.betterinfo": {
+            "name": "BetterInfo",
+            "author": "Cvolton"
+        },
+        "dankmeme.globed2": {
+            "name": "Globed",
+            "author": "dankmeme"
+        },
+        "geode.loader": {
+            "name": "Geode",
+            "author": "Geode Team"
+        },
+        "geode.texture-loader": {
+            "name": "Texture Loader",
+            "author": "Geode Team"
+        },
+        "hiimjustin000.integrated_demonlist": {
+            "name": "Integrated Demonlist",
+            "author": "hiimjustin000"
+        },
+        "km7dev.gdps-switcher": {
+            "name": "GDPS Switcher",
+            "author": "km7dev"
+        },
+        "limegradient.betterachievements": {
+            "name": "BetterAchievements",
+            "author": "limegradient"
+        },
+        "minemaker0430.gddp_integration": {
+            "name": "GDDP Integration",
+            "author": "Minemaker0430"
+        },
+        "omgrod.garage_plus": {
+            "name": "Garage Plus",
+            "author": "OmgRod"
+        },
+        "omgrod.gdstream": {
+            "name": "GDStream",
+            "author": "OmgRod"
+        },
+        "omgrod.geodify": {
+            "name": "Geodify",
+            "author": "OmgRod"
+        },
+        "thesillydoggo.newgrounds_explorer": {
+            "name": "Newgrounds Explorer",
+            "author": "TheSillyDoggo"
+        },
+        "uproxide.textures": {
+            "name": "Texture Workshop",
+            "author": "Uproxide"
+        }
+    },
     "layers": {
         "1": {
             "name": "MenuLayer",
