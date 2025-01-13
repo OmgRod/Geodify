@@ -65,10 +65,10 @@ bool GYSettingSelectLayer::init() {
     setKeypadEnabled(true);
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();
-    auto menu = CCMenu::create();
+    CCMenu* menu = CCMenu::create();
     menu->setID("menu");
 
-    auto background = CCSprite::create("GJ_gradientBG.png");
+    CCSprite* background = CCSprite::create("GJ_gradientBG.png");
     background->setScaleX(CCDirector::sharedDirector()->getWinSize().width / background->getContentSize().width);
     background->setScaleY(CCDirector::sharedDirector()->getWinSize().height / background->getContentSize().height);
     background->setZOrder(-1);
@@ -77,20 +77,20 @@ bool GYSettingSelectLayer::init() {
     background->setPosition({ winSize.width / 2, winSize.height / 2 });
     this->addChild(background);
 
-    auto cornerLeft = CCSprite::createWithSpriteFrameName("GJ_sideArt_001.png");
+    CCSprite* cornerLeft = CCSprite::createWithSpriteFrameName("GJ_sideArt_001.png");
     cornerLeft->setPosition(CCPoint(winSize.width * 0, winSize.height * 0));
     cornerLeft->setAnchorPoint(CCPoint(0, 0));
     cornerLeft->setID("corner-left");
     this->addChild(cornerLeft);
 
-    auto cornerRight = CCSprite::createWithSpriteFrameName("GJ_sideArt_001.png");
+    CCSprite* cornerRight = CCSprite::createWithSpriteFrameName("GJ_sideArt_001.png");
     cornerRight->setPosition(CCPoint(winSize.width * 1, winSize.height * 0));
     cornerRight->setAnchorPoint(CCPoint(1, 0));
     cornerRight->setFlipX(true);
     cornerRight->setID("corner-right");
     this->addChild(cornerRight);
 
-    auto backBtn = CCMenuItemSpriteExtra::create(
+    CCMenuItemSpriteExtra* backBtn = CCMenuItemSpriteExtra::create(
         CCSprite::createWithSpriteFrameName("GJ_arrow_01_001.png"),
         this,
         menu_selector(GYSettingSelectLayer::backWrapper)
@@ -99,12 +99,15 @@ bool GYSettingSelectLayer::init() {
     backBtn->setID("back-btn");
     menu->addChild(backBtn);
 
-    auto title = CCLabelBMFont::create("Geodify Settings", "bigFont.fnt");
+    CCLabelBMFont* title = CCLabelBMFont::create("Geodify Settings", "bigFont.fnt");
     title->setPosition(winSize.width / 2, winSize.height * 0.9);
     title->setID("title");
     this->addChild(title);
 
-    auto contentBox = CCScale9Sprite::create("GJ_square01.png");
+
+    // START OF CONTENT
+
+    CCScale9Sprite* contentBox = CCScale9Sprite::create("GJ_square01.png");
     contentBox->setContentSize({ winSize.width * 0.7f, winSize.height * 0.7f });
     contentBox->setPosition({ winSize.width / 2, winSize.height / 2 - winSize.height * 0.05f });
     contentBox->setAnchorPoint({ 0.5f, 0.5f });
@@ -115,21 +118,92 @@ bool GYSettingSelectLayer::init() {
     scroll->setID("scroll");
     contentBox->addChild(scroll);
 
-    scroll->m_contentLayer->setLayout(ColumnLayout::create()->setAxisReverse(true));
+    auto contentLeft = CCLayer::create();
+    contentLeft->setContentSize({ winSize.width * 0.3f, 0.f });
+    contentLeft->setID("content-left");
+    contentLeft->setPosition({ winSize.width * 0.0125f, 0 });
+    contentLeft->setAnchorPoint({ 0, 0 });
 
-    auto leftMenu = CCMenu::create();
+    auto contentRight = CCLayer::create();
+    contentRight->setContentSize({ winSize.width * 0.3f, 0.f });
+    contentRight->setID("content-right");
+    contentRight->setPosition({ winSize.width * 0.3625f, 0 });
+    contentRight->setAnchorPoint({ 0, 0 });
+
+    auto leftColumn = ColumnLayout::create();
+    leftColumn->setAxis(Axis::Column);
+    leftColumn->setGap(10.f);
+    leftColumn->setAxisReverse(false);
+    leftColumn->setAutoGrowAxis(0.f);
+    contentLeft->setLayout(leftColumn);
+
+    auto rightColumn = ColumnLayout::create();
+    rightColumn->setAxis(Axis::Column);
+    rightColumn->setGap(10.f);
+    rightColumn->setAxisReverse(false);
+    rightColumn->setAutoGrowAxis(0.f);
+    contentRight->setLayout(rightColumn);
+
+    auto modTiles = { GYModTile::create("Geometry Dash", "RobTop", "gd", 0), GYModTile::create("Garage Plus", "OmgRod", "omgrod.garage_plus", 1) };
+
+    bool addToLeft = true;
+    for (auto& tile : modTiles) {
+        if (addToLeft) {
+            contentLeft->addChild(tile);
+        } else {
+            contentRight->addChild(tile);
+        }
+        addToLeft = !addToLeft;
+    }
+
+    auto updateContentSize = [&](CCLayer* layer) {
+        float totalHeight = 0.f;
+
+        auto children = layer->getChildren();
+        if (children) {
+            for (unsigned int i = 0; i < children->count(); ++i) {
+                auto node = typeinfo_cast<CCNode*>(children->objectAtIndex(i));
+                if (node) {
+                    totalHeight += node->getContentSize().height + 10.f;
+                }
+            }
+        }
+
+        layer->setContentSize({ layer->getContentSize().width, totalHeight });
+    };
+
+    updateContentSize(contentLeft);
+    updateContentSize(contentRight);
+
+    scroll->m_contentLayer->addChild(contentLeft);
+    scroll->m_contentLayer->addChild(contentRight);
+
+    contentLeft->updateLayout();
+    contentRight->updateLayout();
+
+    scroll->m_contentLayer->setContentSize({
+        contentLeft->getContentSize().width + contentRight->getContentSize().width + 20.f,
+        std::max(contentLeft->getContentSize().height, contentRight->getContentSize().height)
+    });
+
+    scroll->m_contentLayer->setAnchorPoint({ 0, 0 });
+
+    // END OF CONTENT
+
+
+    CCMenu* leftMenu = CCMenu::create();
     leftMenu->setAnchorPoint({ 0, 0 });
     leftMenu->setContentSize({ 0.f, winSize.height * 0.6f });
     leftMenu->setPosition({ winSize.width * 0.05f, winSize.height * 0.15f });
     leftMenu->setID("left-menu");
 
-    auto leftLayout = ColumnLayout::create();
+    ColumnLayout* leftLayout = ColumnLayout::create();
     leftLayout->setAxis(Axis::Column);
     leftLayout->setGap(10.f);
     
     leftMenu->setLayout(leftLayout);
 
-    auto colorBtn = CCMenuItemSpriteExtra::create(
+    CCMenuItemSpriteExtra* colorBtn = CCMenuItemSpriteExtra::create(
         CCSprite::createWithSpriteFrameName(
             "GJ_paintBtn_001.png"
         ),
@@ -139,7 +213,7 @@ bool GYSettingSelectLayer::init() {
     colorBtn->setID("color-button");
     leftMenu->addChild(colorBtn);
 
-    auto settingsBtn = CCMenuItemSpriteExtra::create(
+    CCMenuItemSpriteExtra* settingsBtn = CCMenuItemSpriteExtra::create(
         CircleButtonSprite::create(
             CCSprite::createWithSpriteFrameName("geode.loader/settings.png"),
             CircleBaseColor::DarkPurple,
@@ -152,24 +226,6 @@ bool GYSettingSelectLayer::init() {
     leftMenu->addChild(settingsBtn);
 
     leftMenu->updateLayout();
-
-    scroll->m_contentLayer->addChild(GYModTile::create());
-    scroll->m_contentLayer->addChild(GYModTile::create());
-    scroll->m_contentLayer->addChild(GYModTile::create());
-    scroll->m_contentLayer->addChild(GYModTile::create());
-    scroll->m_contentLayer->addChild(GYModTile::create());
-    scroll->m_contentLayer->addChild(GYModTile::create());
-    scroll->m_contentLayer->addChild(GYModTile::create());
-    scroll->m_contentLayer->addChild(GYModTile::create());
-    scroll->m_contentLayer->addChild(GYModTile::create());
-    scroll->m_contentLayer->addChild(GYModTile::create());
-    scroll->m_contentLayer->addChild(GYModTile::create());
-    scroll->m_contentLayer->addChild(GYModTile::create());
-    scroll->m_contentLayer->addChild(GYModTile::create());
-    scroll->m_contentLayer->addChild(GYModTile::create());
-    scroll->m_contentLayer->addChild(GYModTile::create());
-    scroll->m_contentLayer->addChild(GYModTile::create());
-    scroll->m_contentLayer->addChild(GYModTile::create());
 
     GYSettingSelectLayer::generateModsList();
 
