@@ -52,7 +52,11 @@ bool GYModTile::init(const char *modName, const char *modAuthor, const char *mod
     auto sprite = CCNode::create();
 
     if (modID != "gd") {
-        sprite = geode::createServerModLogo(modID);
+        if (modID == "geode.loader") {
+            sprite = CCSprite::create("geodeLogo.png"_spr);
+        } else {
+            sprite = geode::createServerModLogo(modID);
+        }
     } else {
         sprite = CCSprite::create("gdLogo.png"_spr);
     }
@@ -64,12 +68,16 @@ bool GYModTile::init(const char *modName, const char *modAuthor, const char *mod
 
     auto menu = CCMenu::create();
     menu->setAnchorPoint({ 0, 0 });
+    menu->setContentSize({ this->getContentSize().width, this->getContentSize().height });
+    menu->setPosition({ 0, 0 });
 
     auto btn = CCMenuItemSpriteExtra::create(
         ButtonSprite::create("View"),
         this,
         menu_selector(GYModTile::viewMod)
     );
+    btn->setPosition({ this->getContentSize().width / 2, winSize.height * 0.075f });
+    btn->setScale(0.8f);
 
     menu->addChild(btn);
     this->addChild(menu);

@@ -21,7 +21,7 @@
             "res/layers.json"
         ],
         "sprites": [
-            "res/gdLogo.png"
+            "res/*.png"
         ]
 	},
 	"settings": {

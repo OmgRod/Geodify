@@ -55,6 +55,7 @@ void GYSettingSelectLayer::settingsBtn(CCObject* sender) {
 }
 
 void GYSettingSelectLayer::openNormalSettings(CCObject* sender) {
+    Mod::get()->setSavedValue("settingsBtnClicked", true);
     openSettingsPopup(Mod::get());
 }
 
@@ -144,7 +145,22 @@ bool GYSettingSelectLayer::init() {
     rightColumn->setAutoGrowAxis(0.f);
     contentRight->setLayout(rightColumn);
 
-    auto modTiles = { GYModTile::create("Geometry Dash", "RobTop", "gd", 0), GYModTile::create("Garage Plus", "OmgRod", "omgrod.garage_plus", 1) };
+    auto modTiles = { 
+        GYModTile::create("Geometry Dash", "RobTop", "gd", 0),
+        GYModTile::create("BetterInfo", "Cvolton", "cvolton.betterinfo", 1),
+        GYModTile::create("Globed", "dankmeme", "dankmeme.globed2", 2),
+        GYModTile::create("Geode", "Geode Team", "geode.loader", 3),
+        GYModTile::create("Texture Loader", "Geode Team", "geode.texture-loader", 4),
+        GYModTile::create("Integrated Demonlist", "hiimjustin000", "hiimjustin000.integrated_demonlist", 5),
+        GYModTile::create("GDPS Switcher", "km7dev", "km7dev.gdps-switcher", 6),
+        GYModTile::create("BetterAchievements", "limegradient", "limegradient.betterachievements", 7),
+        GYModTile::create("GDDP Integration", "Minemaker0430", "minemaker0430.gddp_integration", 8),
+        GYModTile::create("Garage Plus", "OmgRod", "omgrod.garage_plus", 9),
+        GYModTile::create("GDStream", "OmgRod", "omgrod.gdstream", 10),
+        GYModTile::create("Geodify", "OmgRod", "omgrod.geodify", 11),
+        GYModTile::create("Newgrounds Explorer", "TheSillyDoggo", "thesillydoggo.newgrounds_explorer", 12),
+        GYModTile::create("Texture Workshop", "Uproxide", "uproxide.textures", 13),
+    };
 
     bool addToLeft = true;
     for (auto& tile : modTiles) {
@@ -226,6 +242,13 @@ bool GYSettingSelectLayer::init() {
     leftMenu->addChild(settingsBtn);
 
     leftMenu->updateLayout();
+
+    if (Mod::get()->getSavedValue<bool>("settingsBtnClicked") == false) {
+        auto settingsLabel = CCSprite::create("settingsLabel.png"_spr);
+        settingsLabel->setScale(0.75f);
+        settingsLabel->setPosition({ settingsBtn->getPositionX(), settingsBtn->getPositionY() + settingsBtn->getContentSize().height });
+        leftMenu->addChild(settingsLabel);
+    }
 
     GYSettingSelectLayer::generateModsList();
 
