@@ -2,59 +2,73 @@
     "mods": {
         "gd": {
             "name": "Geometry Dash",
-            "author": "RobTop"
+            "author": "RobTop",
+            "id": "0"
         },
         "cvolton.betterinfo": {
             "name": "BetterInfo",
-            "author": "Cvolton"
+            "author": "Cvolton",
+            "id": "1"
         },
         "dankmeme.globed2": {
             "name": "Globed",
-            "author": "dankmeme"
+            "author": "dankmeme",
+            "id": "2"
         },
         "geode.loader": {
             "name": "Geode",
-            "author": "Geode Team"
+            "author": "Geode Team",
+            "id": "3"
         },
         "geode.texture-loader": {
             "name": "Texture Loader",
-            "author": "Geode Team"
+            "author": "Geode Team",
+            "id": "4"
         },
         "hiimjustin000.integrated_demonlist": {
             "name": "Integrated Demonlist",
-            "author": "hiimjustin000"
+            "author": "hiimjustin000",
+            "id": "5"
         },
         "km7dev.gdps-switcher": {
             "name": "GDPS Switcher",
-            "author": "km7dev"
+            "author": "km7dev",
+            "id": "6"
         },
         "limegradient.betterachievements": {
             "name": "BetterAchievements",
-            "author": "limegradient"
+            "author": "limegradient",
+            "id": "7"
         },
         "minemaker0430.gddp_integration": {
             "name": "GDDP Integration",
-            "author": "Minemaker0430"
+            "author": "Minemaker0430",
+            "id": "8"
         },
         "omgrod.garage_plus": {
             "name": "Garage Plus",
-            "author": "OmgRod"
+            "author": "OmgRod",
+            "id": "9"
         },
         "omgrod.gdstream": {
             "name": "GDStream",
-            "author": "OmgRod"
+            "author": "OmgRod",
+            "id": "10"
         },
         "omgrod.geodify": {
             "name": "Geodify",
-            "author": "OmgRod"
+            "author": "OmgRod",
+            "id": "11"
         },
         "thesillydoggo.newgrounds_explorer": {
             "name": "Newgrounds Explorer",
-            "author": "TheSillyDoggo"
+            "author": "TheSillyDoggo",
+            "id": "12"
         },
         "uproxide.textures": {
             "name": "Texture Workshop",
-            "author": "Uproxide"
+            "author": "Uproxide",
+            "id": "13"
         }
     },
     "layers": {

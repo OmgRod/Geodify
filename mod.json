@@ -19,6 +19,9 @@
         },
         "files": [
             "res/layers.json"
+        ],
+        "sprites": [
+            "res/gdLogo.png"
         ]
 	},
 	"settings": {
