@@ -216,6 +216,12 @@
             "description": "For external mod layers",
             "type": "bool",
             "default": true
+        },
+        "alphalaneous.level_info_backgrounds": {
+            "name": "Level Info Backgrounds",
+            "description": "Replace alphalaneous.level_info_backgrounds background.",
+            "type": "bool",
+            "default": false
         }
 	},
 	"dependencies": [
@@ -237,5 +243,10 @@
             "version": ">=v1.0.0"
         }
     ],
-    "tags": ["content", "customization", "enhancement", "interface", "offline", "universal"]
+    "tags": ["content", "customization", "enhancement", "interface", "offline", "universal"],
+    "links": {
+        "community": "",
+        "homepage": "https://omgrod.me",
+        "source": "https://github.com/OmgRod/Geodify"
+    }
 }

@@ -291,7 +291,6 @@ bool GYSettingSelectLayer::generateModsList() {
         return false;
     }
 
-    // Validate the structure of the "mods" key
     if (!jsonData.contains("mods") || !jsonData["mods"].is_object()) {
         log::error("Invalid JSON structure: 'mods' key not found or not an object");
         return false;
@@ -300,12 +299,10 @@ bool GYSettingSelectLayer::generateModsList() {
     const auto& modsData = jsonData["mods"];
     std::map<std::string, std::pair<std::string, std::string>> modsMap;
 
-    // Extract information about each mod
     for (auto it = modsData.begin(); it != modsData.end(); ++it) {
         const std::string modID = it.key();
         const auto& modInfo = it.value();
 
-        // Validate mod structure
         if (!modInfo.contains("name") || !modInfo["name"].is_string() ||
             !modInfo.contains("author") || !modInfo["author"].is_string()) {
             log::error("Invalid mod entry: Missing 'name' or 'author' in mod '{}'", modID);
@@ -322,7 +319,6 @@ bool GYSettingSelectLayer::generateModsList() {
         log::info("- Mod ID: {}, Name: {}, Author: {}", modID, modInfo.first, modInfo.second);
     }
 
-    // Process layers if needed
     if (jsonData.contains("layers") && jsonData["layers"].is_object()) {
         const auto& layersData = jsonData["layers"];
         log::info("Layers Info:");
@@ -341,7 +337,6 @@ bool GYSettingSelectLayer::generateModsList() {
 
             log::info("Layer ID: {}, Name: {}, Mod: {}", layerID, layerName, modID);
 
-            // Optionally cross-reference with modsMap to provide more detailed info
             if (modsMap.find(modID) != modsMap.end()) {
                 log::info("  - Linked Mod Name: {}, Author: {}", modsMap[modID].first, modsMap[modID].second);
             } else {
