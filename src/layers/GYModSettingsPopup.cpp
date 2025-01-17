@@ -46,8 +46,9 @@ bool GYModSettingsPopup::setup(std::string const& modName, std::string const& mo
                     std::string modifiedKey = key;
                     std::replace(modifiedKey.begin(), modifiedKey.end(), '/', '-');
                     log::debug("Modified key: {}", modifiedKey);
-                    node->setTag(tags.getTagFromString(modifiedKey));
-
+                    int Tag = tags.getTagFromString(modifiedKey);
+                    node->setTag(Tag);
+                    btn->setTag(Tag);
                     btn->setTarget(node, menu_selector(GYModSettingsPopup::screenshotPopup));
                 }
             }
