@@ -4,17 +4,23 @@
 #include <Geode/modify/FLAlertLayer.hpp>
 #include <string>
 
+#include "Tags.hpp"
+
 using namespace geode::prelude;
 
-class GYScreenshotPopup : public geode::Popup<std::string const&> {
+class GYScreenshotPopup : public geode::Popup<int const&> {
 protected:
-    bool setup(std::string const& layer) override {
+    bool setup(int const& layer) override {
+        Tags tags;
+        auto layerName = tags.getStringFromTag(layer);
+
         auto winSize = CCDirector::sharedDirector()->getWinSize();
-        this->setTitle(layer);
+        this->setTitle(layerName);
         m_mainLayer->setContentSize({ winSize.width * 0.6f, winSize.height * 0.7f });
         m_mainLayer->updateLayout();
 
-        auto sprite = CCSprite::create(fmt::format("{}Preview.png"_spr, layer).c_str());
+        auto sprite = CCSprite::createWithSpriteFrameName(fmt::format("{}Preview.png"_spr, layerName).c_str());
+        log::debug("Loading sprite: {}", fmt::format("omgrod.geodify/{}Preview.png", layerName));
 
         // Calculate the maximum allowed dimensions for the sprite
         auto maxWidth = m_mainLayer->getContentSize().width * 0.75f;
@@ -37,7 +43,7 @@ protected:
     }
 
 public:
-    static GYScreenshotPopup* create(std::string const& text) {
+    static GYScreenshotPopup* create(int const& text) {
         auto ret = new GYScreenshotPopup();
         if (ret->initAnchored(240.f, 160.f, text)) {
             ret->autorelease();

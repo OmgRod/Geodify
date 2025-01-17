@@ -11,8 +11,15 @@
 #include <Geode/loader/Setting.hpp>
 
 #include "GYModSettingsPopup.hpp"
+#include "GYScreenshotPopup.hpp"
+#include "Tags.hpp"
 
 using namespace geode::prelude;
+
+void GYModSettingsPopup::screenshotPopup(CCObject* sender) {
+    log::debug("Screenshot popup for setting {}", sender->getTag());
+    GYScreenshotPopup::create(sender->getTag())->show();
+}
 
 bool GYModSettingsPopup::setup(std::string const& modName, std::string const& modAuthor, std::string const& modID) {
     this->setTitle(modName + " by " + modAuthor);
@@ -30,6 +37,19 @@ bool GYModSettingsPopup::setup(std::string const& modName, std::string const& mo
             SettingNode* node;
             if (auto sett = Mod::get()->getSetting(key)) {
                 node = sett->createNode(layerSize.width);
+                if (sett->getDescription().has_value()) {
+                    auto menu = node->getChildByType<CCMenu*>(0);
+                    auto btn = menu->getChildByType<CCMenuItemSpriteExtra*>(0);
+
+                    Tags tags;
+
+                    std::string modifiedKey = key;
+                    std::replace(modifiedKey.begin(), modifiedKey.end(), '/', '-');
+                    log::debug("Modified key: {}", modifiedKey);
+                    node->setTag(tags.getTagFromString(modifiedKey));
+
+                    btn->setTarget(node, menu_selector(GYModSettingsPopup::screenshotPopup));
+                }
             }
             // else {
             //     node = UnresolvedCustomSettingNode::create(key, Mod::get(), layerSize.width);
