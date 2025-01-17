@@ -16,6 +16,19 @@
 
 using namespace geode::prelude;
 
+void GYModSettingsPopup::onApply(CCObject* sender) {
+    bool someChangesMade = false;
+    for (auto& sett : m_settings) {
+        if (sett->hasUncommittedChanges()) {
+            sett->commit();
+            someChangesMade = true;
+        }
+    }
+    if (!someChangesMade) {
+        FLAlertLayer::create("Info", "No changes have been made.", "OK")->show();
+    }
+}
+
 void GYModSettingsPopup::screenshotPopup(CCObject* sender) {
     log::debug("Screenshot popup for setting {}", sender->getTag());
     GYScreenshotPopup::create(sender->getTag())->show();
@@ -28,8 +41,8 @@ bool GYModSettingsPopup::setup(std::string const& modName, std::string const& mo
 
     auto layerSize = CCSize(winSize.width * 0.75f, winSize.height * 0.75f);
 
-    auto scroll = ScrollLayer::create(layerSize * 0.9f - ccp(layerSize.width * 0.05f, layerSize.height * 0.2f));
-    scroll->setPosition({ ((winSize.width - layerSize.width) / 2) + layerSize.width * 0.05f, ((winSize.height - layerSize.height) / 2) + layerSize.height * 0.05f });
+    auto scroll = ScrollLayer::create(layerSize * 0.9f - ccp(layerSize.width * 0.05f, layerSize.height * 0.35f));
+    scroll->setPosition({ layerSize.width * 0.05f, layerSize.height * 0.175f });
     scroll->setTouchEnabled(true);
 
     for (auto& key : Mod::get()->getSettingKeys()) {
@@ -49,6 +62,7 @@ bool GYModSettingsPopup::setup(std::string const& modName, std::string const& mo
                     int Tag = tags.getTagFromString(modifiedKey);
                     node->setTag(Tag);
                     btn->setTag(Tag);
+
                     btn->setTarget(node, menu_selector(GYModSettingsPopup::screenshotPopup));
                 }
             }
@@ -56,6 +70,7 @@ bool GYModSettingsPopup::setup(std::string const& modName, std::string const& mo
             //     node = UnresolvedCustomSettingNode::create(key, Mod::get(), layerSize.width);
             // }
             
+            m_settings.push_back(node);
             scroll->m_contentLayer->addChild(node);
         }
     }
@@ -69,7 +84,20 @@ bool GYModSettingsPopup::setup(std::string const& modName, std::string const& mo
     );
     scroll->moveToTop();
 
-    this->addChild(scroll);
+    auto menu = CCMenu::create();
+    menu->setPosition({ 0.f, 0.f });
+
+    auto applyBtn = CCMenuItemSpriteExtra::create(
+        ButtonSprite::create("Apply"),
+        this,
+        menu_selector(GYModSettingsPopup::onApply)
+    );
+    applyBtn->setPosition({ layerSize.width * 0.5f, layerSize.height * 0.1f });
+
+    menu->addChild(applyBtn);
+
+    this->m_mainLayer->addChild(menu);
+    this->m_mainLayer->addChild(scroll);
 
     return true;
 }
