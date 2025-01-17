@@ -248,5 +248,9 @@
         "community": "https://discord.gg/vK3DuqJwyW",
         "homepage": "https://omgrod.me",
         "source": "https://github.com/OmgRod/Geodify"
+    },
+    "issues": {
+        "info": "Create an issue or create feature requests on the GitHub repository.",
+        "url": "https://github.com/OmgRod/Geodify/issues"
     }
 }

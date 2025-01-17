@@ -117,6 +117,7 @@ bool GYSettingSelectLayer::init() {
 
     ScrollLayer* scroll = ScrollLayer::create({ winSize.width * 0.7f, winSize.height * 0.7f }, true, true);
     scroll->setID("scroll");
+    scroll->setTouchEnabled(true);
     contentBox->addChild(scroll);
 
     auto contentLeft = CCLayer::create();
@@ -132,34 +133,36 @@ bool GYSettingSelectLayer::init() {
     contentRight->setAnchorPoint({ 0, 0 });
 
     auto leftColumn = ColumnLayout::create();
-    leftColumn->setAxis(Axis::Column);
-    leftColumn->setGap(10.f);
-    leftColumn->setAxisReverse(false);
-    leftColumn->setAutoGrowAxis(0.f);
+    leftColumn->setAxisReverse(true)
+            ->setAutoGrowAxis(scroll->getContentHeight())
+            ->setCrossAxisOverflow(false)
+            ->setAxisAlignment(AxisAlignment::End)
+            ->setGap(10.f);
     contentLeft->setLayout(leftColumn);
 
     auto rightColumn = ColumnLayout::create();
-    rightColumn->setAxis(Axis::Column);
-    rightColumn->setGap(10.f);
-    rightColumn->setAxisReverse(false);
-    rightColumn->setAutoGrowAxis(0.f);
+    rightColumn->setAxisReverse(true)
+            ->setAutoGrowAxis(scroll->getContentHeight())
+            ->setCrossAxisOverflow(false)
+            ->setAxisAlignment(AxisAlignment::End)
+            ->setGap(10.f);
     contentRight->setLayout(rightColumn);
 
     auto modTiles = { 
-        GYModTile::create("Geometry Dash", "RobTop", "gd", 0),
-        GYModTile::create("BetterInfo", "Cvolton", "cvolton.betterinfo", 1),
-        GYModTile::create("Globed", "dankmeme", "dankmeme.globed2", 2),
-        GYModTile::create("Geode", "Geode Team", "geode.loader", 3),
-        GYModTile::create("Texture Loader", "Geode Team", "geode.texture-loader", 4),
-        GYModTile::create("Integrated Demonlist", "hiimjustin000", "hiimjustin000.integrated_demonlist", 5),
-        GYModTile::create("GDPS Switcher", "km7dev", "km7dev.gdps-switcher", 6),
-        GYModTile::create("BetterAchievements", "limegradient", "limegradient.betterachievements", 7),
-        GYModTile::create("GDDP Integration", "Minemaker0430", "minemaker0430.gddp_integration", 8),
-        GYModTile::create("Garage Plus", "OmgRod", "omgrod.garage_plus", 9),
-        GYModTile::create("GDStream", "OmgRod", "omgrod.gdstream", 10),
-        GYModTile::create("Geodify", "OmgRod", "omgrod.geodify", 11),
-        GYModTile::create("Newgrounds Explorer", "TheSillyDoggo", "thesillydoggo.newgrounds_explorer", 12),
-        GYModTile::create("Texture Workshop", "Uproxide", "uproxide.textures", 13),
+        GYModTile::create("Geometry Dash", "RobTop", "gd"),
+        GYModTile::create("BetterInfo", "Cvolton", "cvolton.betterinfo"),
+        GYModTile::create("Globed", "dankmeme", "dankmeme.globed2"),
+        GYModTile::create("Geode", "Geode Team", "geode.loader"),
+        GYModTile::create("Texture Loader", "Geode Team", "geode.texture-loader"),
+        GYModTile::create("Integrated Demonlist", "hiimjustin000", "hiimjustin000.integrated_demonlist"),
+        GYModTile::create("GDPS Switcher", "km7dev", "km7dev.gdps-switcher"),
+        GYModTile::create("BetterAchievements", "limegradient", "limegradient.betterachievements"),
+        GYModTile::create("GDDP Integration", "Minemaker0430", "minemaker0430.gddp_integration"),
+        GYModTile::create("Garage Plus", "OmgRod", "omgrod.garage_plus"),
+        GYModTile::create("GDStream", "OmgRod", "omgrod.gdstream"),
+        GYModTile::create("Geodify", "OmgRod", "omgrod.geodify"),
+        GYModTile::create("Newgrounds Explorer", "TheSillyDoggo", "thesillydoggo.newgrounds_explorer"),
+        GYModTile::create("Texture Workshop", "Uproxide", "uproxide.textures"),
     };
 
     bool addToLeft = true;
@@ -216,7 +219,7 @@ bool GYSettingSelectLayer::init() {
     ColumnLayout* leftLayout = ColumnLayout::create();
     leftLayout->setAxis(Axis::Column);
     leftLayout->setGap(10.f);
-    
+
     leftMenu->setLayout(leftLayout);
 
     CCMenuItemSpriteExtra* colorBtn = CCMenuItemSpriteExtra::create(
@@ -251,6 +254,8 @@ bool GYSettingSelectLayer::init() {
     }
 
     GYSettingSelectLayer::generateModsList();
+
+    scroll->moveToTop();
 
     this->addChild(leftMenu);
     this->addChild(menu);

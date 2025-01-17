@@ -3,18 +3,18 @@
 #include <Geode/Loader.hpp>
 
 #include "GYModTile.hpp"
-#include "Geode/binding/ButtonSprite.hpp"
-#include "Geode/ui/GeodeUI.hpp"
+#include "GYModSettingsPopup.hpp"
 
 using namespace geode::prelude;
 
 void GYModTile::viewMod(CCObject* sender) {
-    log::debug("Viewing mod: {}", this->getTag());
+    log::debug("Viewing mod: {}", this->m_modID);
+    GYModSettingsPopup::create(this->m_modName, this->m_modAuthor)->show();
 }
 
-GYModTile* GYModTile::create(const char *modName, const char *modAuthor, const char *modID, int tag) {
+GYModTile* GYModTile::create(const char *modName, const char *modAuthor, const char *modID) {
     GYModTile* ret = new GYModTile();
-    if (ret && ret->init(modName, modAuthor, modID, tag)) {
+    if (ret && ret->init(modName, modAuthor, modID)) {
         ret->autorelease();
         return ret;
     }
@@ -22,16 +22,19 @@ GYModTile* GYModTile::create(const char *modName, const char *modAuthor, const c
     return nullptr;
 }
 
-bool GYModTile::init(const char *modName, const char *modAuthor, const char *modID, int tag) {
+bool GYModTile::init(const char *modName, const char *modAuthor, const char *modID) {
     if (!CCLayer::init())
         return false;
+
+    this->m_modID = modID;
+    this->m_modName = modName;
+    this->m_modAuthor = modAuthor;
     
     setMouseEnabled(true);
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();
 
     this->setContentSize({ winSize.width * 0.325f, winSize.height * 0.5f });
-    this->setTag(tag);
 
     // GJ_square04.png - The purple one
     auto bg = CCScale9Sprite::create("GJ_square04.png");
