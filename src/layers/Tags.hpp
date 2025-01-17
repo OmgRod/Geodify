@@ -117,8 +117,7 @@ public:
     }
 
     // Convert a string to a corresponding tag (integer)
-    int getTagFromString(const std::string& name) {
-        log::debug("Getting tag from string: {}", name);
+    int getTagFromString(std::string name) {
         auto it = m_tagMap.find(name);
         if (it != m_tagMap.end()) {
             log::debug("Found tag: {}", it->second);
@@ -130,7 +129,6 @@ public:
 
     // Convert an integer tag back to the corresponding string
     std::string getStringFromTag(int tag) {
-        log::debug("Getting string from tag: {}", tag);
         auto it = m_stringMap.find(tag);
         if (it != m_stringMap.end()) {
             log::debug("Found string: {}", it->second);
