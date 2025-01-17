@@ -82,127 +82,127 @@
             "name": "Geometry Dash"
         },
         "gd/MenuLayer": {
-            "name": "Show in main menu",
+            "name": "Main menu",
             "description": "MenuLayer",
             "type": "bool",
             "default": true
         },
         "gd/PlayLayer": {
-            "name": "Show in gameplay",
+            "name": "Gameplay",
             "description": "PlayLayer",
             "type": "bool",
             "default": false
         },
         "gd/LoadingLayer": {
-            "name": "Show in loading screen",
+            "name": "Loading screen",
             "description": "LoadingLayer",
             "type": "bool",
             "default": true
         },
         "gd/LevelSelectLayer": {
-            "name": "Show in level select menu",
+            "name": "Level select menu",
             "description": "LevelSelectLayer",
             "type": "bool",
             "default": true
         },
         "gd/CreatorLayer": {
-            "name": "Show in creator menu",
+            "name": "Creator menu",
             "description": "CreatorLayer",
             "type": "bool",
             "default": true
         },
         "gd/LevelBrowserLayer": {
-            "name": "Show in level lists",
+            "name": "Level lists",
             "description": "LevelBrowserLayer",
             "type": "bool",
             "default": true
         },
         "gd/EditLevelLayer": {
-            "name": "Show in edit level menu",
+            "name": "Edit level menu",
             "description": "EditLevelLayer",
             "type": "bool",
             "default": true
         },
         "gd/LevelInfoLayer": {
-            "name": "Show in play level menu",
+            "name": "Play level menu",
             "description": "LevelInfoLayer",
             "type": "bool",
             "default": true
         },
         "gd/GJGarageLayer": {
-            "name": "Show in icon select menu",
+            "name": "Icon select menu",
             "description": "GJGarageLayer",
             "type": "bool",
             "default": true
         },
         "gd/LevelSearchLayer": {
-            "name": "Show in search filters menu",
+            "name": "Search filters menu",
             "description": "LevelSearchLayer",
             "type": "bool",
             "default": true
         },
         "gd/LeaderboardsLayer": {
-            "name": "Show in leaderboards menu",
+            "name": "Leaderboards menu",
             "description": "LeaderboardsLayer",
             "type": "bool",
             "default": true
         },
         "gd/LevelListLayer": {
-            "name": "Show in level list menu",
+            "name": "Level list menu",
             "description": "LevelListLayer",
             "type": "bool",
             "default": true
         },
         "gd/GauntletSelectLayer": {
-            "name": "Show in gauntlet select menu",
+            "name": "Gauntlet select menu",
             "description": "GauntletSelectLayer",
             "type": "bool",
             "default": true
         },
         "gd/GauntletLayer": {
-            "name": "Show in gauntlet map menu",
+            "name": "Gauntlet map menu",
             "description": "GauntletLayer",
             "type": "bool",
             "default": true
         },
         "gd/SecretRewardsLayer": {
-            "name": "Show in secret chests menu",
+            "name": "Secret chests menu",
             "description": "SecretRewardsLayer",
             "type": "bool",
             "default": true
         },
         "gd/LevelAreaInnerLayer": {
-            "name": "Show in tower levels menu",
+            "name": "Tower levels menu",
             "description": "LevelAreaInnerLayer",
             "type": "bool",
             "default": true
         },
         "gd/LevelAreaLayer": {
-            "name": "Show in tower menu",
+            "name": "Tower menu",
             "description": "LevelAreaLayer",
             "type": "bool",
             "default": true
         },
         "gd/SecretLayer": {
-            "name": "Show in Vault",
+            "name": "Vault",
             "description": "SecretLayer",
             "type": "bool",
             "default": true
         },
         "gd/SecretLayer2": {
-            "name": "Show in Vault of Secrets",
+            "name": "Vault of Secrets",
             "description": "SecretLayer2",
             "type": "bool",
             "default": true
         },
         "gd/SecretLayer3": {
-            "name": "Show in Basement",
+            "name": "Basement",
             "description": "SecretLayer3",
             "type": "bool",
             "default": true
         },
         "gd/SecretLayer4": {
-            "name": "Show in Chamber of Time",
+            "name": "Chamber of Time",
             "description": "SecretLayer4",
             "type": "bool",
             "default": true
@@ -211,9 +211,141 @@
             "type": "title",
             "name": "Mods Settings"
         },
-        "external-mods": {
-            "name": "external mods",
-            "description": "For external mod layers",
+        "cvolton.betterinfo/CustomCreatorLayer": {
+            "name": "CustomCreatorLayer",
+            "description": "CustomCreatorLayer",
+            "type": "bool",
+            "default": true
+        },
+        "cvolton.betterinfo/DailyViewLayer": {
+            "name": "DailyViewLayer",
+            "description": "DailyViewLayer",
+            "type": "bool",
+            "default": true
+        },
+        "cvolton.betterinfo/LevelSearchViewLayer": {
+            "name": "LevelSearchViewLayer",
+            "description": "LevelSearchViewLayer",
+            "type": "bool",
+            "default": true
+        },
+        "cvolton.betterinfo/RewardGroupLayer": {
+            "name": "RewardGroupLayer",
+            "description": "RewardGroupLayer",
+            "type": "bool",
+            "default": true
+        },
+        "cvolton.betterinfo/RewardViewLayer": {
+            "name": "RewardViewLayer",
+            "description": "RewardViewLayer",
+            "type": "bool",
+            "default": true
+        },
+        "dankmeme.globed2/GlobedLevelListLayer": {
+            "name": "GlobedLevelListLayer",
+            "description": "GlobedLevelListLayer",
+            "type": "bool",
+            "default": true
+        },
+        "dankmeme.globed2/GlobedMenuLayer": {
+            "name": "GlobedMenuLayer",
+            "description": "GlobedMenuLayer",
+            "type": "bool",
+            "default": true
+        },
+        "dankmeme.globed2/GlobedServersLayer": {
+            "name": "GlobedServersLayer",
+            "description": "GlobedServersLayer",
+            "type": "bool",
+            "default": true
+        },
+        "dankmeme.globed2/GlobedSettingsLayer": {
+            "name": "GlobedSettingsLayer",
+            "description": "GlobedSettingsLayer",
+            "type": "bool",
+            "default": true
+        },
+        "geode.loader/ModsLayer": {
+            "name": "ModsLayer",
+            "description": "ModsLayer",
+            "type": "bool",
+            "default": true
+        },
+        "geode.texture-loader/PackSelectLayer": {
+            "name": "PackSelectLayer",
+            "description": "PackSelectLayer",
+            "type": "bool",
+            "default": true
+        },
+        "hiimjustin000.integrated_demonlist/IDListLayer": {
+            "name": "IDListLayer",
+            "description": "IDListLayer",
+            "type": "bool",
+            "default": true
+        },
+        "hiimjustin000.integrated_demonlist/IDPackLayer": {
+            "name": "IDPackLayer",
+            "description": "IDPackLayer",
+            "type": "bool",
+            "default": true
+        },
+        "km7dev.gdps-switcher/ServerSwitchLayer": {
+            "name": "ServerSwitchLayer",
+            "description": "ServerSwitchLayer",
+            "type": "bool",
+            "default": true
+        },
+        "limegradient.betterachievements/BetterAchivementLayer": {
+            "name": "BetterAchivementLayer",
+            "description": "BetterAchivementLayer",
+            "type": "bool",
+            "default": true
+        },
+        "minemaker0430.gddp_integration/DPLayer": {
+            "name": "DPLayer",
+            "description": "DPLayer",
+            "type": "bool",
+            "default": true
+        },
+        "minemaker0430.gddp_integration/DPListLayer": {
+            "name": "DPListLayer",
+            "description": "DPListLayer",
+            "type": "bool",
+            "default": true
+        },
+        "omgrod.garage_plus/GPFeedbackLayer": {
+            "name": "GPFeedbackLayer",
+            "description": "GPFeedbackLayer",
+            "type": "bool",
+            "default": true
+        },
+        "omgrod.garage_plus/GPKofiLayer": {
+            "name": "GPKofiLayer",
+            "description": "GPKofiLayer",
+            "type": "bool",
+            "default": true
+        },
+        "omgrod.gdstream/StreamCreatorLayer": {
+            "name": "StreamCreatorLayer",
+            "description": "StreamCreatorLayer",
+            "type": "bool",
+            "default": true
+        },
+        "omgrod.gdstream/StreamLayer": {
+            "name": "StreamLayer",
+            "description": "StreamLayer",
+            "type": "bool",
+            "default": true
+        },
+        "thesillydoggo.newgrounds_explorer/NewgroundsBrowserLayer": {
+            "name": "NewgroundsBrowserLayer",
+            "description": "NewgroundsBrowserLayer",
+            "type": "bool",
+            "default": true
+        },
+        "uproxide.textures/TextureWorkshopLayer": {
+            "name": "TextureWorkshopLayer",
+            "description": "TextureWorkshopLayer",
             "type": "bool",
             "default": true
         },

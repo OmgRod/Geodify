@@ -1,4 +1,4 @@
-#include "../SwelvyBG.hpp"
+#include "../../SwelvyBG.hpp"
 #include <Geode/Geode.hpp>
 #include <Geode/Loader.hpp>
 #include <Geode/modify/MenuLayer.hpp>

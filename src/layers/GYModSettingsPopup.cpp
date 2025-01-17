@@ -26,7 +26,7 @@ bool GYModSettingsPopup::setup(std::string const& modName, std::string const& mo
     scroll->setTouchEnabled(true);
 
     for (auto& key : Mod::get()->getSettingKeys()) {
-        if (key.starts_with("gd/")) {
+        if (key.starts_with(fmt::format("{}/", modID))) {
             SettingNode* node;
             if (auto sett = Mod::get()->getSetting(key)) {
                 node = sett->createNode(layerSize.width);

@@ -35,7 +35,7 @@ This will compile the mod and generate the necessary files.
 To add a custom background layer to a **Geometry Dash** menu, follow the example below. This demonstrates how to add a background layer in `CreatorLayer`.
 
 ```cpp
-#include "../SwelvyBG.hpp"
+#include "../../SwelvyBG.hpp"
 #include <Geode/Geode.hpp>
 #include <Geode/modify/CreatorLayer.hpp>
 

@@ -1,4 +1,4 @@
-#include "../SwelvyBG.hpp"
+#include "../../SwelvyBG.hpp"
 #include <Geode/Geode.hpp>
 #include <Geode/modify/GauntletLayer.hpp>
 
