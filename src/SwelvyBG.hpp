@@ -4,6 +4,34 @@
 
 using namespace geode::prelude;
 
+#define SET_SWELVY(layer, setting, backgroundID)\
+class $nodeModify(my##layer, layer) {\
+    void modify() {\
+        if (Mod::get()->getSettingValue<bool>(setting)) {\
+            if (auto bg = getChildByID(backgroundID)) {\
+                bg->setVisible(false);\
+                SwelvyBG* swelvyBG = SwelvyBG::create();\
+                swelvyBG->setZOrder(-999);\
+                addChild(swelvyBG);\
+            }\
+        }\
+    }\
+}
+
+#define SET_SWELVY_SPRITE(layer, setting)\
+class $nodeModify(my##layer, layer) {\
+    void modify() {\
+        if (Mod::get()->getSettingValue<bool>(setting)) {\
+            if (auto bg = getChildByType<CCSprite>(0)) {\
+                bg->setVisible(false);\
+                SwelvyBG* swelvyBG = SwelvyBG::create();\
+                swelvyBG->setZOrder(-999);\
+                addChild(swelvyBG);\
+            }\
+        }\
+    }\
+}
+
 class SwelvyBG : public CCNode {
 protected:
     bool init(float widthmult, float heightmul, float minspeed, float maxspeed);

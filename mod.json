@@ -1,17 +1,17 @@
 {
-	"geode": "4.2.0",
-	"gd": {
-		"android": "2.2074",
-		"win": "2.2074",
+    "geode": "4.1.2",
+    "gd": {
+        "android": "2.2074",
+        "win": "2.2074",
         "mac": "2.2074"
-	},
-	"version": "v2.0.0",
-	"id": "omgrod.geodify",
-	"name": "Geodify",
-	"developers": ["OmgRod", "Viper"],
-	"description": "Converts most menus' backgrounds to the Geode one (SwelvyBG).",
-	"early-load": true,
-	"resources": {
+    },
+    "version": "v2.0.0",
+    "id": "omgrod.geodify",
+    "name": "Geodify",
+    "developers": ["OmgRod", "Viper"],
+    "description": "Converts most menus' backgrounds to the Geode one (SwelvyBG).",
+    "early-load": true,
+    "resources": {
         "spritesheets": {
             "previewSheet": [
                 "res/previews/*.png"
@@ -23,8 +23,8 @@
         "sprites": [
             "res/*.png"
         ]
-	},
-	"settings": {
+    },
+    "settings": {
         "color-title": {
             "type": "title",
             "name": "Color Offset Settings"
@@ -355,19 +355,24 @@
             "type": "bool",
             "default": false
         }
-	},
-	"dependencies": [
-		{
-			"id": "geode.node-ids",
-			"importance": "required",
-			"version": ">=v1.12.0"
-		},
-		{
-			"id": "alphalaneous.happy_textures",
-			"importance": "recommended",
-			"version": ">=1.3.18"
-		}
-	],
+    },
+    "dependencies": [
+        {
+            "id": "geode.node-ids",
+            "importance": "required",
+            "version": ">=v1.12.0"
+        },
+        {
+            "id": "alphalaneous.happy_textures",
+            "importance": "recommended",
+            "version": ">=1.3.18"
+        },
+        {
+            "id": "alphalaneous.alphas_geode_utils",
+            "importance": "required",
+            "version": ">=1.0.3"
+        }
+    ],
     "incompatibilities": [
         {
             "id": "undefined0.icon_ninja",

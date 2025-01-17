@@ -1,23 +1,23 @@
 #include <Geode/Geode.hpp>
 #include <Geode/loader/Loader.hpp>
 #include "../../SwelvyBG.hpp"
-#include <HookClass.hpp>
+#include <alphalaneous.alphas_geode_utils/include/NodeModding.h>
 
 using namespace geode::prelude;
 
-HookClass(ModsLayer) {
-    if (Mod::get()->getSettingValue<bool>("geode.loader/ModsLayer")) {
-        if (!(Loader::get()->getLoadedMod("geode.loader")->getSettingValue<bool>("enable-geode-theme"))) {
-            if (auto bg = this->getChildByID("bg")) {
-                bg->setVisible(false);
-            }
+class $nodeModify(ModsLayer) {
+    void modify() {
+        if (Mod::get()->getSettingValue<bool>("geode.loader/ModsLayer")) {
+            if (!(Loader::get()->getLoadedMod("geode.loader")->getSettingValue<bool>("enable-geode-theme"))) {
+                if (auto bg = getChildByID("bg")) {
+                    bg->setVisible(false);
+                }
 
-            SwelvyBG* swelvyBG = SwelvyBG::create();
-            swelvyBG->setZOrder(-1);
-            
-            this->addChild(swelvyBG);
+                SwelvyBG* swelvyBG = SwelvyBG::create();
+                swelvyBG->setZOrder(-1);
+                
+                addChild(swelvyBG);
+            }
         }
     }
-}
-
-
+};

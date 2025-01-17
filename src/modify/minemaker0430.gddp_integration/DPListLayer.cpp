@@ -1,17 +1,7 @@
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include <HookClass.hpp> 
+#include <alphalaneous.alphas_geode_utils/include/NodeModding.h>
 
 using namespace geode::prelude;
-HookClass(DPListLayer) {
-    if (Mod::get()->getSettingValue<bool>("minemaker0430.gddp_integration/DPListLayer")) {
-        if (auto bg = this->getChildByID("bg")) {
-            bg->setVisible(false);
-        }
 
-        SwelvyBG* swelvyBG = SwelvyBG::create();
-        swelvyBG->setZOrder(-99999);
-        
-        this->addChild(swelvyBG);
-    }
-}
+SET_SWELVY(DPListLayer, "minemaker0430.gddp_integration/DPListLayer", "bg");

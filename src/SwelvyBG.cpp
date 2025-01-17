@@ -32,14 +32,8 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
             auto colorSetting = Mod::get()->getSettingValue<std::string>(settingKey);
 
             if (!colorSetting.empty()) {
-                unsigned int r, g, b;
-                if (sscanf(colorSetting.c_str(), "%u,%u,%u", &r, &g, &b) == 3) {
-                    adjustedColor = {
-                        static_cast<GLubyte>(std::min(255u, r)),
-                        static_cast<GLubyte>(std::min(255u, g)),
-                        static_cast<GLubyte>(std::min(255u, b))
-                    };
-                }
+                auto res = cc3bFromHexString(colorSetting);
+                if (res.isOk()) adjustedColor = res.unwrap();
             }
         }
 

@@ -12,7 +12,7 @@ void GYModTile::viewMod(CCObject* sender) {
     GYModSettingsPopup::create(this->m_modName, this->m_modAuthor, this->m_modID)->show();
 }
 
-GYModTile* GYModTile::create(const char *modName, const char *modAuthor, const char *modID) {
+GYModTile* GYModTile::create(std::string modName, std::string modAuthor, std::string modID) {
     GYModTile* ret = new GYModTile();
     if (ret && ret->init(modName, modAuthor, modID)) {
         ret->autorelease();
@@ -22,7 +22,7 @@ GYModTile* GYModTile::create(const char *modName, const char *modAuthor, const c
     return nullptr;
 }
 
-bool GYModTile::init(const char *modName, const char *modAuthor, const char *modID) {
+bool GYModTile::init(std::string modName, std::string modAuthor, std::string modID) {
     if (!CCLayer::init())
         return false;
 
@@ -42,7 +42,7 @@ bool GYModTile::init(const char *modName, const char *modAuthor, const char *mod
     bg->setAnchorPoint({ 0.f, 0.f});
     this->addChild(bg);
 
-    auto modNameText = CCLabelBMFont::create(modName, "bigFont.fnt");
+    auto modNameText = CCLabelBMFont::create(modName.c_str(), "bigFont.fnt");
     modNameText->setPosition({ this->getContentSize().width / 2, this->getContentSize().height - winSize.height * 0.05f });
     modNameText->setScale(0.5f);
     bg->addChild(modNameText);

@@ -7,7 +7,9 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 project(Geodify VERSION 1.0.0)
 
-file(GLOB_RECURSE SOURCES src/*.cpp)
+file(GLOB_RECURSE SOURCES 
+    src/*.cpp
+)
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
@@ -23,13 +25,6 @@ if (DEFINED ENV{GITHUB_ACTIONS})
 endif()
 
 include("cmake/CPM.cmake")
-
-CPMAddPackage(
-    NAME external-hook-api
-    GIT_REPOSITORY https://github.com/OmgRod/External-Hook-API.git
-    GIT_TAG master
-)
-target_link_libraries(${PROJECT_NAME} external-hook-api)
 
 add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 

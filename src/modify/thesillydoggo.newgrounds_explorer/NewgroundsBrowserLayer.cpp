@@ -1,17 +1,7 @@
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include <HookClass.hpp> 
+#include <alphalaneous.alphas_geode_utils/include/NodeModding.h>
 
 using namespace geode::prelude;
-HookClass(NewgroundsBrowserLayer) {
-    if (Mod::get()->getSettingValue<bool>("thesillydoggo.newgrounds_explorer/NewgroundsBrowserLayer")) {
-        if (auto bg = this->getChildByID("background")) {
-            bg->setVisible(false);
-        }
 
-        SwelvyBG* swelvyBG = SwelvyBG::create();
-        swelvyBG->setZOrder(-1);
-        
-        this->addChild(swelvyBG);
-    }
-}
+SET_SWELVY(NewgroundsBrowserLayer, "thesillydoggo.newgrounds_explorer/NewgroundsBrowserLayer", "background");
