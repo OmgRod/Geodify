@@ -9,6 +9,8 @@ class Tags {
 public:
     // Constructor to initialize the tag-to-string and string-to-tag maps
     Tags() {
+        log::debug("Initializing Tags...");
+
         // Populate the maps directly (no hashing needed)
         m_tagMap = {
             {"gd-CreatorLayer", 0},
@@ -59,6 +61,8 @@ public:
             {"uproxide.textures-TextureWorkshopLayer", 45}
         };
 
+        log::debug("Tag map populated with {} entries.", m_tagMap.size());
+
         // Populate the string-to-tag map
         m_stringMap = {
             {0, "gd-CreatorLayer"},
@@ -108,6 +112,8 @@ public:
             {44, "thesillydoggo.newgrounds_explorer-NewgroundsBrowserLayer"},
             {45, "uproxide.textures-TextureWorkshopLayer"}
         };
+
+        log::debug("String map populated with {} entries.", m_stringMap.size());
     }
 
     // Convert a string to a corresponding tag (integer)
@@ -115,6 +121,7 @@ public:
         log::debug("Getting tag from string: {}", name);
         auto it = m_tagMap.find(name);
         if (it != m_tagMap.end()) {
+            log::debug("Found tag: {}", it->second);
             return it->second;
         }
         log::error("Unknown tag: {}", name);
@@ -126,6 +133,7 @@ public:
         log::debug("Getting string from tag: {}", tag);
         auto it = m_stringMap.find(tag);
         if (it != m_stringMap.end()) {
+            log::debug("Found string: {}", it->second);
             return it->second;
         }
         log::error("Unknown tag: {}", tag);
