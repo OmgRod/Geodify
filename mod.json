@@ -77,7 +77,7 @@
             "default": "#714A9A",
             "enable-if": "enable-color"
         },
-        "gd/title": {
+        "gd-title": {
             "type": "title",
             "name": "Geometry Dash"
         },
