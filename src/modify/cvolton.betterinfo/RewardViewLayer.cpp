@@ -4,7 +4,7 @@
 
 using namespace geode::prelude;
 HookClass(RewardViewLayer) {
-    if (Mod::get()->getSettingValue<bool>("external-mods")) {
+    if (Mod::get()->getSettingValue<bool>("cvolton.betterinfo/RewardViewLayer")) {
         if (auto bg = this->getChildByID("cvolton.betterinfo/background")) {
             bg->setVisible(false);
         }

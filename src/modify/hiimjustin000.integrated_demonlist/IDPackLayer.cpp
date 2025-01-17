@@ -4,7 +4,7 @@
 
 using namespace geode::prelude;
 HookClass(IDPackLayer) {
-    if (Mod::get()->getSettingValue<bool>("external-mods")) {
+    if (Mod::get()->getSettingValue<bool>("hiimjustin.integrated_demonlist/IDPackLayer")) {
         if (auto bg = this->getChildByType<CCSprite>(0)) {
             bg->setVisible(false);
         }

@@ -4,7 +4,7 @@
 
 using namespace geode::prelude;
 HookClass(BetterAchievementLayer) {
-    if (Mod::get()->getSettingValue<bool>("external-mods")) {
+    if (Mod::get()->getSettingValue<bool>("limegradient.betterachievements/BetterAchievementLayer")) {
         if (auto bg = this->getChildByID("content-background")) {
             bg->setVisible(false);
         }

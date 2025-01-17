@@ -4,7 +4,7 @@
 
 using namespace geode::prelude;
 HookClass_Scene(cvolton_betterinfo_LevelSearchViewLayer,"cvolton.betterinfo/LevelSearchViewLayer") {
-    if (Mod::get()->getSettingValue<bool>("external-mods")) {
+    if (Mod::get()->getSettingValue<bool>("cvolton.betterinfo/LevelSearchViewLayer")) {
         if (auto bg = _This->getChildByID("cvolton.betterinfo/background")) {
             bg->setVisible(false);
         }

@@ -9,7 +9,7 @@
 // 		if (!UIPOptionsLayer::init()) {
 // 			return false;
 // 		}
-// 		if (Mod::get()->getSettingValue<bool>("show-control-settings")){
+// 		if (Mod::get()->getSettingValue<bool>("gd/UIPOptionsLayer")){
 // 			// this->setOpacity(0);
 // 			auto swelvyBG = SwelvyBG::create();
 // 			swelvyBG->setZOrder(-3);

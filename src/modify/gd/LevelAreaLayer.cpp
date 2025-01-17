@@ -1,19 +1,19 @@
 #include "../SwelvyBG.hpp"
 #include <Geode/Geode.hpp>
-#include <Geode/modify/SecretLayer.hpp>
+#include <Geode/modify/LevelAreaLayer.hpp>
 
 using namespace geode::prelude;
 
-class $modify(MySecretLayer, SecretLayer) {
+class $modify(MyLevelAreaLayer, LevelAreaLayer) {
 	bool init() {
-		if (!SecretLayer::init()) {
+		if (!LevelAreaLayer::init()) {
 			return false;
 		}
-		if (Mod::get()->getSettingValue<bool>("show-vault")){
+		if (Mod::get()->getSettingValue<bool>("gd/LevelAreaLayer")){
 			if (auto bg = this->getChildByID("background")) {
 				bg->setVisible(false);
 				auto swelvyBG = SwelvyBG::create();
-				swelvyBG->setZOrder(-3);
+				swelvyBG->setZOrder(-2);
 				
 	
 				this->addChild(swelvyBG);				

@@ -4,7 +4,7 @@
 using namespace geode::prelude;
 
 HookClass_Scene(cvolton_betterinfo_CustomCreatorLayer,"cvolton.betterinfo/CustomCreatorLayer") {
-    if (Mod::get()->getSettingValue<bool>("external-mods")) {
+    if (Mod::get()->getSettingValue<bool>("cvolton.betterinfo/CustomCreatorLayer")) {
          if (auto bg = _This->getChildByID("cvolton.betterinfo/background")) {
             bg->setVisible(false);
             SwelvyBG* swelvyBG = SwelvyBG::create();

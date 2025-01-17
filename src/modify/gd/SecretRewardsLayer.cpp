@@ -9,7 +9,7 @@ class $modify(MySecretRewardsLayer, SecretRewardsLayer) {
 		if (!SecretRewardsLayer::init(p0)) {
 			return false;
 		}
-		if (Mod::get()->getSettingValue<bool>("show-secret-rewards")){
+		if (Mod::get()->getSettingValue<bool>("gd/SecretRewardsLayer")){
 			if (auto bg = this->getChildByID("background")) {
 				bg->setVisible(false);
 			}

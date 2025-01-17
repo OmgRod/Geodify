@@ -9,7 +9,7 @@ using namespace geode::prelude;
 
 void GYModTile::viewMod(CCObject* sender) {
     log::debug("Viewing mod: {}", this->m_modID);
-    GYModSettingsPopup::create(this->m_modName, this->m_modAuthor)->show();
+    GYModSettingsPopup::create(this->m_modName, this->m_modAuthor, this->m_modID)->show();
 }
 
 GYModTile* GYModTile::create(const char *modName, const char *modAuthor, const char *modID) {

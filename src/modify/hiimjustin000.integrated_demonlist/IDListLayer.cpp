@@ -4,6 +4,7 @@
 
 using namespace geode::prelude;
 HookClass(IDListLayer) {
+    if (Mod::get()->getSettingValue<bool>("hiimjustin000.integrated_demonlist/IDListLayer")) {
         if (auto bg = this->getChildByType<CCSprite>(0)) {
             bg->setVisible(false);
         }
@@ -12,4 +13,5 @@ HookClass(IDListLayer) {
         swelvyBG->setZOrder(-1);
         
         this->addChild(swelvyBG);
+    }
 }

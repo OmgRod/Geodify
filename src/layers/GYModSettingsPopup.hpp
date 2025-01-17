@@ -4,10 +4,10 @@
 
 using namespace geode::prelude;
 
-class GYModSettingsPopup : public geode::Popup<std::string const&, std::string const&> {
+class GYModSettingsPopup : public geode::Popup<std::string const&, std::string const&, std::string const&> {
 protected:
-    bool setup(std::string const& modName, std::string const& modAuthor) override;
+    bool setup(std::string const& modName, std::string const& modAuthor, std::string const& modID) override;
 
 public:
-    static GYModSettingsPopup* create(std::string const& modName, std::string const& modAuthor);
+    static GYModSettingsPopup* create(std::string const& modName, std::string const& modAuthor, std::string const& modID);
 };

@@ -9,7 +9,7 @@ class $modify(MyLevelSelectLayer, LevelSelectLayer) {
 		if (!LevelSelectLayer::init(page)) {
 			return false;
 		}
-		if (Mod::get()->getSettingValue<bool>("show-level-select")){
+		if (Mod::get()->getSettingValue<bool>("gd/LevelSelectLayer")){
 		if (auto bg = this->getChildByID("background")) {
 			bg->setVisible(false);
 		}

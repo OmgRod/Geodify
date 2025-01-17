@@ -9,7 +9,7 @@ class $modify(MyLevelSearchLayer, LevelSearchLayer) {
 		if (!LevelSearchLayer::init(p0)) {
 			return false;
 		}
-		if (Mod::get()->getSettingValue<bool>("show-level-search")){
+		if (Mod::get()->getSettingValue<bool>("gd/LevelSearchLayer")){
 			if (auto bg = this->getChildByID("background")) {
 				bg->setVisible(false);
 			}

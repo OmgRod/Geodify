@@ -4,7 +4,7 @@
 
 using namespace geode::prelude;
 HookClass(ServerSwitchLayer) {
-    if (Mod::get()->getSettingValue<bool>("external-mods")) {
+    if (Mod::get()->getSettingValue<bool>("km7dev.gdps-switcher/ServerSwitchLayer")) {
         if (auto bg = this->getChildByID("background")) {
             bg->setVisible(false);
         }

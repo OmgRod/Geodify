@@ -4,7 +4,7 @@
 
 using namespace geode::prelude;
 HookClass(NewgroundsBrowserLayer) {
-    if (Mod::get()->getSettingValue<bool>("external-mods")) {
+    if (Mod::get()->getSettingValue<bool>("thesillydoggo.newgrounds_explorer/NewgroundsBrowserLayer")) {
         if (auto bg = this->getChildByID("background")) {
             bg->setVisible(false);
         }

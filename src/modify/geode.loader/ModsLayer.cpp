@@ -6,7 +6,7 @@
 using namespace geode::prelude;
 
 HookClass(ModsLayer) {
-    if (Mod::get()->getSettingValue<bool>("external-mods")) {
+    if (Mod::get()->getSettingValue<bool>("geode.loader/ModsLayer")) {
         if (!(Loader::get()->getLoadedMod("geode.loader")->getSettingValue<bool>("enable-geode-theme"))) {
             if (auto bg = this->getChildByID("bg")) {
                 bg->setVisible(false);

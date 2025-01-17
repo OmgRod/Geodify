@@ -3,7 +3,7 @@
 #include <HookClass.hpp> 
 using namespace geode::prelude;
 HookClass(GlobedLevelListLayer) {
-    if (Mod::get()->getSettingValue<bool>("external-mods")) {
+    if (Mod::get()->getSettingValue<bool>("dankmeme.globed2/GlobedLevelListLayer")) {
          if (auto bg = this->getChildByID("background")) {
             bg->setVisible(false);
         }

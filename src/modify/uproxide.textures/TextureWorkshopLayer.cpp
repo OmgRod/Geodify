@@ -4,7 +4,7 @@
 
 using namespace geode::prelude;
 HookClass(TextureWorkshopLayer) {
-    if (Mod::get()->getSettingValue<bool>("external-mods")) {
+    if (Mod::get()->getSettingValue<bool>("uproxide.textures/TextureWorkshopLayer")) {
         if (CCSprite* bg = this->getChildByType<CCSprite>(0)) {
             bg->setVisible(false);
         }

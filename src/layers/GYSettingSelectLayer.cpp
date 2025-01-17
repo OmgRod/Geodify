@@ -14,6 +14,15 @@
 #include "GYModTile.hpp"
 #include "../json.hpp"
 
+/*
+
+BREAKING NEWS:
+
+OmgRod hates scrolling stuff.
+
+*/
+
+
 using namespace geode::prelude;
 
 void GYSettingSelectLayer::keyBackClicked() {
@@ -150,9 +159,9 @@ bool GYSettingSelectLayer::init() {
 
     auto modTiles = { 
         GYModTile::create("Geometry Dash", "RobTop", "gd"),
+        GYModTile::create("Geode", "Geode Team", "geode.loader"),
         GYModTile::create("BetterInfo", "Cvolton", "cvolton.betterinfo"),
         GYModTile::create("Globed", "dankmeme", "dankmeme.globed2"),
-        GYModTile::create("Geode", "Geode Team", "geode.loader"),
         GYModTile::create("Texture Loader", "Geode Team", "geode.texture-loader"),
         GYModTile::create("Integrated Demonlist", "hiimjustin000", "hiimjustin000.integrated_demonlist"),
         GYModTile::create("GDPS Switcher", "km7dev", "km7dev.gdps-switcher"),

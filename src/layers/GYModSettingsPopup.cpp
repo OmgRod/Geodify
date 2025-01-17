@@ -14,24 +14,29 @@
 
 using namespace geode::prelude;
 
-bool GYModSettingsPopup::setup(std::string const& modName, std::string const& modAuthor) {
+bool GYModSettingsPopup::setup(std::string const& modName, std::string const& modAuthor, std::string const& modID) {
     this->setTitle(modName + " by " + modAuthor);
 
-    auto layerSize = this->m_obContentSize;
+    auto winSize = CCDirector::sharedDirector()->getWinSize();
 
-    auto scroll = ScrollLayer::create(layerSize - ccp(0, layerSize.height * 0.1f));
+    auto layerSize = CCSize(winSize.width * 0.75f, winSize.height * 0.75f);
+
+    auto scroll = ScrollLayer::create(layerSize * 0.9f - ccp(layerSize.width * 0.05f, layerSize.height * 0.2f));
+    scroll->setPosition({ ((winSize.width - layerSize.width) / 2) + layerSize.width * 0.05f, ((winSize.height - layerSize.height) / 2) + layerSize.height * 0.05f });
     scroll->setTouchEnabled(true);
 
     for (auto& key : Mod::get()->getSettingKeys()) {
-        SettingNode* node;
-        if (auto sett = Mod::get()->getSetting(key)) {
-            node = sett->createNode(layerSize.width);
+        if (key.starts_with("gd/")) {
+            SettingNode* node;
+            if (auto sett = Mod::get()->getSetting(key)) {
+                node = sett->createNode(layerSize.width);
+            }
+            // else {
+            //     node = UnresolvedCustomSettingNode::create(key, Mod::get(), layerSize.width);
+            // }
+            
+            scroll->m_contentLayer->addChild(node);
         }
-        // else {
-        //     node = UnresolvedCustomSettingNode::create(key, Mod::get(), layerSize.width);
-        // }
-
-        scroll->m_contentLayer->addChild(node);
     }
     scroll->m_contentLayer->setLayout(
         ColumnLayout::create()
@@ -48,12 +53,12 @@ bool GYModSettingsPopup::setup(std::string const& modName, std::string const& mo
     return true;
 }
 
-GYModSettingsPopup* GYModSettingsPopup::create(std::string const& modName, std::string const& modAuthor) {
+GYModSettingsPopup* GYModSettingsPopup::create(std::string const& modName, std::string const& modAuthor, std::string const& modID) {
     auto ret = new GYModSettingsPopup();
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();
     
-    if (ret->initAnchored(winSize.width * 0.75f, winSize.height * 0.75f, modName, modAuthor, "GJ_square05.png")) {
+    if (ret->initAnchored(winSize.width * 0.75f, winSize.height * 0.75f, modName, modAuthor, modID, "GJ_square05.png")) {
         ret->autorelease();
         return ret;
     }

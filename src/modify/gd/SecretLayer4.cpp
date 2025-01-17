@@ -1,19 +1,19 @@
 #include "../SwelvyBG.hpp"
 #include <Geode/Geode.hpp>
-#include <Geode/modify/LevelBrowserLayer.hpp>
+#include <Geode/modify/SecretLayer4.hpp>
 
 using namespace geode::prelude;
 
-class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
-	bool init(GJSearchObject* p0) {
-		if (!LevelBrowserLayer::init(p0)) {
+class $modify(MySecretLayer4, SecretLayer4) {
+	bool init() {
+		if (!SecretLayer4::init()) {
 			return false;
 		}
-		if (Mod::get()->getSettingValue<bool>("show-level-browser")){
+		if (Mod::get()->getSettingValue<bool>("gd/SecretLayer4")){
 			if (auto bg = this->getChildByID("background")) {
 				bg->setVisible(false);
 				auto swelvyBG = SwelvyBG::create();
-				swelvyBG->setZOrder(-2);
+				swelvyBG->setZOrder(-3);
 				
 	
 				this->addChild(swelvyBG);				

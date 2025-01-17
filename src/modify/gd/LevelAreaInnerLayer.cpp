@@ -9,7 +9,7 @@ class $modify(MyLevelAreaInnerLayer, LevelAreaInnerLayer) {
 		if (!LevelAreaInnerLayer::init(p0)) {
 			return false;
 		}
-		if (Mod::get()->getSettingValue<bool>("show-inner-tower")){
+		if (Mod::get()->getSettingValue<bool>("gd/LevelAreaInnerLayer")){
 			auto swelvyBG = SwelvyBG::create();
 			swelvyBG->setZOrder(-2);
 			

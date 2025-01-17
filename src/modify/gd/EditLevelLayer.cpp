@@ -9,7 +9,7 @@ class $modify(MyEditLevelLayer, EditLevelLayer) {
         if (!EditLevelLayer::init(p0)) {
             return false;
         }
-        if (Mod::get()->getSettingValue<bool>("show-edit-level")) {
+        if (Mod::get()->getSettingValue<bool>("gd/EditLevelLayer")) {
             if (auto bg = this->getChildByID("background")) {
                 bg->setVisible(false);
             }

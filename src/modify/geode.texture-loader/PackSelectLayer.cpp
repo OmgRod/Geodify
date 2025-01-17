@@ -5,7 +5,7 @@
 using namespace geode::prelude;
 
 HookClass(PackSelectLayer) {
-    if (Mod::get()->getSettingValue<bool>("external-mods")) {
+    if (Mod::get()->getSettingValue<bool>("geode.texture-loader/PackSelectLayer")) {
         if (auto bg = this->getChildByID("background")) {
             bg->setVisible(false);
         }

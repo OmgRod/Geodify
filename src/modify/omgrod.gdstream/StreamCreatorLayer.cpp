@@ -4,7 +4,7 @@
 
 using namespace geode::prelude;
 HookClass(StreamCreatorLayer) {
-    if (Mod::get()->getSettingValue<bool>("external-mods")) {
+    if (Mod::get()->getSettingValue<bool>("omgrod.gdstream/StreamCreatorLayer")) {
         if (auto bg = this->getChildByID("menu")->getChildByID("background")) {
             bg->setVisible(false);
         }

@@ -3,7 +3,7 @@
 #include <HookClass.hpp> 
 using namespace geode::prelude;
 HookClass(RewardGroupLayer) {
-    if (Mod::get()->getSettingValue<bool>("external-mods")) {
+    if (Mod::get()->getSettingValue<bool>("cvolton.betterinfo/RewardGroupLayer")) {
         if (auto bg = this->getChildByID("cvolton.betterinfo/background")) {
             bg->setVisible(false);
         }

@@ -1,15 +1,15 @@
 #include "../SwelvyBG.hpp"
 #include <Geode/Geode.hpp>
-#include <Geode/modify/SecretLayer3.hpp>
+#include <Geode/modify/SecretLayer.hpp>
 
 using namespace geode::prelude;
 
-class $modify(MySecretLayer3, SecretLayer3) {
+class $modify(MySecretLayer, SecretLayer) {
 	bool init() {
-		if (!SecretLayer3::init()) {
+		if (!SecretLayer::init()) {
 			return false;
 		}
-		if (Mod::get()->getSettingValue<bool>("show-basement")){
+		if (Mod::get()->getSettingValue<bool>("gd/SecretLayer")){
 			if (auto bg = this->getChildByID("background")) {
 				bg->setVisible(false);
 				auto swelvyBG = SwelvyBG::create();

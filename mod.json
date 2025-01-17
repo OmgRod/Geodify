@@ -77,131 +77,131 @@
             "default": "#714A9A",
             "enable-if": "enable-color"
         },
-        "gd-title": {
+        "gd/title": {
             "type": "title",
             "name": "Geometry Dash"
         },
-        "show-main": {
+        "gd/MenuLayer": {
             "name": "Show in main menu",
             "description": "MenuLayer",
             "type": "bool",
             "default": true
         },
-        "level-bg": {
+        "gd/PlayLayer": {
             "name": "Show in gameplay",
             "description": "PlayLayer",
             "type": "bool",
             "default": false
         },
-        "loading-screen": {
+        "gd/LoadingLayer": {
             "name": "Show in loading screen",
             "description": "LoadingLayer",
             "type": "bool",
             "default": true
         },
-        "show-level-select": {
+        "gd/LevelSelectLayer": {
             "name": "Show in level select menu",
             "description": "LevelSelectLayer",
             "type": "bool",
             "default": true
         },
-        "show-creator": {
+        "gd/CreatorLayer": {
             "name": "Show in creator menu",
             "description": "CreatorLayer",
             "type": "bool",
             "default": true
         },
-        "show-level-browser": {
+        "gd/LevelBrowserLayer": {
             "name": "Show in level lists",
-            "description": "Hall of Fame, Featured, Saved, etc. (LevelBrowserLayer)",
+            "description": "LevelBrowserLayer",
             "type": "bool",
             "default": true
         },
-        "show-edit-level": {
+        "gd/EditLevelLayer": {
             "name": "Show in edit level menu",
             "description": "EditLevelLayer",
             "type": "bool",
             "default": true
         },
-        "show-level-info": {
+        "gd/LevelInfoLayer": {
             "name": "Show in play level menu",
             "description": "LevelInfoLayer",
             "type": "bool",
             "default": true
         },
-        "show-garage": {
+        "gd/GJGarageLayer": {
             "name": "Show in icon select menu",
             "description": "GJGarageLayer",
             "type": "bool",
             "default": true
         },
-        "show-level-search": {
+        "gd/LevelSearchLayer": {
             "name": "Show in search filters menu",
             "description": "LevelSearchLayer",
             "type": "bool",
             "default": true
         },
-        "show-leaderboard": {
+        "gd/LeaderboardsLayer": {
             "name": "Show in leaderboards menu",
             "description": "LeaderboardsLayer",
             "type": "bool",
             "default": true
         },
-        "show-level-list": {
+        "gd/LevelListLayer": {
             "name": "Show in level list menu",
             "description": "LevelListLayer",
             "type": "bool",
             "default": true
         },
-        "show-gauntlet-select": {
+        "gd/GauntletSelectLayer": {
             "name": "Show in gauntlet select menu",
             "description": "GauntletSelectLayer",
             "type": "bool",
             "default": true
         },
-        "show-gauntlet-map": {
+        "gd/GauntletLayer": {
             "name": "Show in gauntlet map menu",
             "description": "GauntletLayer",
             "type": "bool",
             "default": true
         },
-        "show-secret-rewards": {
+        "gd/SecretRewardsLayer": {
             "name": "Show in secret chests menu",
-            "description": "GauntletLayer",
+            "description": "SecretRewardsLayer",
             "type": "bool",
             "default": true
         },
-        "show-inner-tower": {
+        "gd/LevelAreaInnerLayer": {
             "name": "Show in tower levels menu",
             "description": "LevelAreaInnerLayer",
             "type": "bool",
             "default": true
         },
-        "show-outer-tower": {
+        "gd/LevelAreaLayer": {
             "name": "Show in tower menu",
             "description": "LevelAreaLayer",
             "type": "bool",
             "default": true
         },
-        "show-vault": {
+        "gd/SecretLayer": {
             "name": "Show in Vault",
             "description": "SecretLayer",
             "type": "bool",
             "default": true
         },
-        "show-vault-of-secrets": {
+        "gd/SecretLayer2": {
             "name": "Show in Vault of Secrets",
             "description": "SecretLayer2",
             "type": "bool",
             "default": true
         },
-        "show-basement": {
+        "gd/SecretLayer3": {
             "name": "Show in Basement",
             "description": "SecretLayer3",
             "type": "bool",
             "default": true
         },
-        "show-chamber-of-time": {
+        "gd/SecretLayer4": {
             "name": "Show in Chamber of Time",
             "description": "SecretLayer4",
             "type": "bool",

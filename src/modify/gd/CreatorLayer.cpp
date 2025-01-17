@@ -9,7 +9,7 @@ class $modify(MyCreatorLayer, CreatorLayer) {
 		if (!CreatorLayer::init()) {
 			return false;
 		}
-		if (Mod::get()->getSettingValue<bool>("show-creator")){
+		if (Mod::get()->getSettingValue<bool>("gd/CreatorLayer")){
 			if (auto bg = this->getChildByID("background")){
 				bg->setVisible(false);
 			}

@@ -4,7 +4,7 @@
 
 using namespace geode::prelude;
 HookClass(GPFeedbackLayer) {
-    if (Mod::get()->getSettingValue<bool>("external-mods")) {
+    if (Mod::get()->getSettingValue<bool>("omgrod.garage_plus/GPFeedbackLayer")) {
         if (auto bg = this->getChildByID("menu")->getChildByID("background")) {
             bg->setVisible(false);
         }

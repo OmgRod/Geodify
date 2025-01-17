@@ -19,7 +19,7 @@ class $modify(MenuLayer) {
 			return true;
 		}
 
-        if (Mod::get()->getSettingValue<bool>("show-main")){
+        if (Mod::get()->getSettingValue<bool>("gd/MenuLayer")) {
 			if (CCNode* mainmenu = this->getChildByIDRecursive("main-menu-bg")) { 
 				mainmenu->setVisible(false); 
 			}

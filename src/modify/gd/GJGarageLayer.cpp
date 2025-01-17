@@ -9,7 +9,7 @@ class $modify(MyGJGarageLayer, GJGarageLayer) {
 		if (!GJGarageLayer::init()) {
 			return false;
 		}
-		if (Mod::get()->getSettingValue<bool>("show-garage")){
+		if (Mod::get()->getSettingValue<bool>("gd/GJGarageLayer")){
 			if (auto bg = this->getChildByID("background")) {
 				bg->setVisible(false);
 			}

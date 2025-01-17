@@ -1,15 +1,15 @@
 #include "../SwelvyBG.hpp"
 #include <Geode/Geode.hpp>
-#include <Geode/modify/LevelInfoLayer.hpp>
+#include <Geode/modify/GauntletSelectLayer.hpp>
 
 using namespace geode::prelude;
 
-class $modify(MyLevelInfoLayer, LevelInfoLayer) {
-	bool init(GJGameLevel* level, bool challenge) {
-		if (!LevelInfoLayer::init(level, challenge)) {
+class $modify(MyGauntletSelectLayer, GauntletSelectLayer) {
+	bool init(int p0) {
+		if (!GauntletSelectLayer::init(p0)) {
 			return false;
 		}
-		if (Mod::get()->getSettingValue<bool>("show-level-info")){
+		if (Mod::get()->getSettingValue<bool>("gd/GauntletSelectLayer")){
 			if (auto bg = this->getChildByID("background")) {
 				bg->setVisible(false);
 			}
