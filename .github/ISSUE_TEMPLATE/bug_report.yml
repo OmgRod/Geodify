@@ -1,0 +1,34 @@
+name: Bug Report
+description: Report an issue or bug in the project
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      placeholder: "Provide a short summary of the bug"
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: "Provide a detailed description of the bug, including steps to reproduce, expected behavior, and observed behavior."
+      placeholder: "Describe the issue here"
+      required: true
+  - type: input
+    id: layer
+    attributes:
+      label: Layer (if applicable)
+      placeholder: "Specify the layer where this issue occurs (if known)"
+      required: false
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: "Select the severity level of the bug"
+      options:
+        - Minor
+        - Major
+        - Critical
+      required: true
