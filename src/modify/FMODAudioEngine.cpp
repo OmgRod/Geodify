@@ -6,7 +6,7 @@ using namespace geode::prelude;
 
 class $modify(MyFMODAudioEngine, FMODAudioEngine) {
 public:
-    void playMusic(gd::string name, bool shouldLoop, float fadeInTime, int channel) {
+    void playMusic(std::string name, bool shouldLoop, float fadeInTime, int channel) {
         log::debug("Playing music: {}", name);
         std::string newName = "ninxout.wav"_spr;
         if ((name.find("menuLoop.mp3") != std::string::npos) && Mod::get()->getSettingValue<bool>("menu-loop")) {
