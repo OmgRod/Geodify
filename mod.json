@@ -12,11 +12,6 @@
     "description": "Converts most menus' backgrounds to the Geode one (SwelvyBG).",
     "early-load": true,
     "resources": {
-        "spritesheets": {
-            "previewSheet": [
-                "res/previews/*.png"
-            ]
-        },
         "files": [
             "res/layers.json",
             "res/loops/*"
