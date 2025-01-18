@@ -248,10 +248,11 @@ bool GYSettingSelectLayer::init() {
         [&](CCMenuItemToggler* toggler) {
             auto fmod = FMODAudioEngine::sharedEngine();
             if (toggler->isOn()) {
-                fmod->playMusic("menuLoop.mp3", true, 0.f, 1);
+                Mod::get()->setSettingValue("menu-loop", false);
             } else {
-                fmod->playMusic("ninxout.wav"_spr, true, 0.f, 1);
+                Mod::get()->setSettingValue("menu-loop", true);
             }
+            fmod->playMusic("menuLoop.mp3", true, 0.5f, 1.0f);
         }
     );
     leftMenu->addChild(geodeLoopToggle);

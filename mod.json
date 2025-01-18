@@ -26,6 +26,12 @@
         ]
     },
     "settings": {
+        "menu-loop": {
+            "name": "Menu Loop",
+            "description": "ninxout geode loop",
+            "type": "bool",
+            "default": true
+        },
         "color-title": {
             "type": "title",
             "name": "Color Offset Settings"
