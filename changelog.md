@@ -1,6 +1,6 @@
 # v2.0.0
 
-- Added ninXout's Geode menu loop
+- ~~Added ninXout's Geode menu loop~~ (delayed to v2.0.1)
 - Refactored code
 - Revamped settings menu
 - Bugfix: [Color settings don't work](https://github.com/OmgRod/Geodify/issues/11)

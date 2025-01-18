@@ -32,11 +32,11 @@
             "type": "bool",
             "default": true
         },
-        "color-title": {
+        "colour-title": {
             "type": "title",
             "name": "Color Offset Settings"
         },
-        "enable-color": {
+        "color-enable": {
             "name": "Enable Color Offset",
             "description": "Enables color offset for the SwelvyBG.",
             "type": "bool",
@@ -47,42 +47,42 @@
             "description": "The color offset of the background.",
             "type": "color",
             "default": "#F4D48E",
-            "enable-if": "enable-color"
+            "enable-if": "color-enable"
         },
         "color-1": {
             "name": "Color Offset - 2nd",
             "description": "The color offset of the background.",
             "type": "color",
             "default": "#F5AE7D",
-            "enable-if": "enable-color"
+            "enable-if": "color-enable"
         },
         "color-2": {
             "name": "Color Offset - 3rd",
             "description": "The color offset of the background.",
             "type": "color",
             "default": "#EC897C",
-            "enable-if": "enable-color"
+            "enable-if": "color-enable"
         },
         "color-3": {
             "name": "Color Offset - 4th",
             "description": "The color offset of the background.",
             "type": "color",
             "default": "#D56985",
-            "enable-if": "enable-color"
+            "enable-if": "color-enable"
         },
         "color-4": {
             "name": "Color Offset - 5th",
             "description": "The color offset of the background.",
             "type": "color",
             "default": "#AD5492",
-            "enable-if": "enable-color"
+            "enable-if": "color-enable"
         },
         "color-5": {
             "name": "Color Offset - 6th",
             "description": "The color offset of the background.",
             "type": "color",
             "default": "#714A9A",
-            "enable-if": "enable-color"
+            "enable-if": "color-enable"
         },
         "gd-title": {
             "type": "title",

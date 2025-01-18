@@ -5,13 +5,11 @@
 #include <Geode/utils/cocos.hpp>
 #include <filesystem>
 #include <fstream>
-#include <sstream>
-#include <iostream>
 #include <map>
 #include <string>
 
 #include "GYSettingSelectLayer.hpp"
-#include "GYScreenshotPopup.hpp"
+#include "GYColorPopup.hpp"
 #include "GYModTile.hpp"
 #include "../json.hpp"
 
@@ -62,6 +60,10 @@ void GYSettingSelectLayer::settingsBtn(CCObject* sender) {
     scene->addChild(GYSettingSelectLayer::create());
     auto scenePrev = CCTransitionFade::create(0.5f, scene);
     CCDirector::sharedDirector()->pushScene(scenePrev);
+}
+
+void GYSettingSelectLayer::colorPopup(CCObject* sender) {
+    GYColorPopup::create()->show();
 }
 
 void GYSettingSelectLayer::openNormalSettings(CCObject* sender) {
@@ -237,11 +239,12 @@ bool GYSettingSelectLayer::init() {
             "GJ_paintBtn_001.png"
         ),
         this,
-        menu_selector(GYSettingSelectLayer::generateWrapper)
+        menu_selector(GYSettingSelectLayer::colorPopup)
     );
     colorBtn->setID("color-button");
     leftMenu->addChild(colorBtn);
 
+    /*
     auto geodeLoopToggle = CCMenuItemExt::createToggler(
         CCSprite::createWithSpriteFrameName("GJ_fxOnBtn_001.png"),
         CCSprite::createWithSpriteFrameName("GJ_fxOffBtn_001.png"),
@@ -256,6 +259,7 @@ bool GYSettingSelectLayer::init() {
         }
     );
     leftMenu->addChild(geodeLoopToggle);
+    */
 
     CCMenuItemSpriteExtra* settingsBtn = CCMenuItemSpriteExtra::create(
         CircleButtonSprite::create(

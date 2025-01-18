@@ -10,13 +10,11 @@
 #include <Geode/ui/Scrollbar.hpp>
 #include <Geode/loader/Setting.hpp>
 
-#include "GYModSettingsPopup.hpp"
-#include "GYScreenshotPopup.hpp"
-#include "../Tags.hpp"
+#include "GYColorPopup.hpp"
 
 using namespace geode::prelude;
 
-void GYModSettingsPopup::onApply(CCObject* sender) {
+void GYColorPopup::onApply(CCObject* sender) {
     bool someChangesMade = false;
     for (auto& sett : m_settings) {
         if (sett->hasUncommittedChanges()) {
@@ -29,42 +27,22 @@ void GYModSettingsPopup::onApply(CCObject* sender) {
     }
 }
 
-void GYModSettingsPopup::screenshotPopup(CCObject* sender) {
-    log::debug("Screenshot popup for setting {}", sender->getTag());
-    GYScreenshotPopup::create(sender->getTag())->show();
-}
-
-bool GYModSettingsPopup::setup(std::string const& modName, std::string const& modAuthor, std::string const& modID) {
-    this->setTitle(modName + " by " + modAuthor);
+bool GYColorPopup::setup() {
+    this->setTitle("Color Settings");
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();
 
     auto layerSize = CCSize(winSize.width * 0.75f, winSize.height * 0.75f);
 
-    auto scroll = ScrollLayer::create(layerSize * 0.9f - ccp(layerSize.width * 0.05f, layerSize.height * 0.35f));
-    scroll->setPosition({ layerSize.width * 0.05f, layerSize.height * 0.175f });
+    auto scroll = ScrollLayer::create(layerSize * 0.9f - ccp(layerSize.width * 0.05f, layerSize.height * 0.5f));
+    scroll->setPosition({ layerSize.width * 0.05f, layerSize.height * 0.375f });
     scroll->setTouchEnabled(true);
 
     for (auto& key : Mod::get()->getSettingKeys()) {
-        if (key.starts_with(fmt::format("{}/", modID))) {
+        if (key.starts_with("color-")) {
             SettingNode* node;
             if (auto sett = Mod::get()->getSetting(key)) {
                 node = sett->createNode(layerSize.width);
-                if (sett->getDescription().has_value()) {
-                    auto menu = node->getChildByType<CCMenu*>(0);
-                    auto btn = menu->getChildByType<CCMenuItemSpriteExtra*>(0);
-
-                    Tags tags;
-
-                    std::string modifiedKey = key;
-                    std::replace(modifiedKey.begin(), modifiedKey.end(), '/', '-');
-                    log::debug("Modified key: {}", modifiedKey);
-                    int Tag = tags.getTagFromString(modifiedKey);
-                    node->setTag(Tag);
-                    btn->setTag(Tag);
-
-                    btn->setTarget(node, menu_selector(GYModSettingsPopup::screenshotPopup));
-                }
             }
             // else {
             //     node = UnresolvedCustomSettingNode::create(key, Mod::get(), layerSize.width);
@@ -90,7 +68,7 @@ bool GYModSettingsPopup::setup(std::string const& modName, std::string const& mo
     auto applyBtn = CCMenuItemSpriteExtra::create(
         ButtonSprite::create("Apply"),
         this,
-        menu_selector(GYModSettingsPopup::onApply)
+        menu_selector(GYColorPopup::onApply)
     );
     applyBtn->setPosition({ layerSize.width * 0.5f, layerSize.height * 0.1f });
 
@@ -102,12 +80,12 @@ bool GYModSettingsPopup::setup(std::string const& modName, std::string const& mo
     return true;
 }
 
-GYModSettingsPopup* GYModSettingsPopup::create(std::string const& modName, std::string const& modAuthor, std::string const& modID) {
-    auto ret = new GYModSettingsPopup();
+GYColorPopup* GYColorPopup::create() {
+    auto ret = new GYColorPopup();
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();
     
-    if (ret->initAnchored(winSize.width * 0.75f, winSize.height * 0.75f, modName, modAuthor, modID, "GJ_square05.png")) {
+    if (ret->initAnchored(winSize.width * 0.75f, winSize.height * 0.75f, "GJ_square01.png")) {
         ret->autorelease();
         return ret;
     }

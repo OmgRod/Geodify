@@ -11,6 +11,7 @@ public:
     static GYSettingSelectLayer* create();
     bool init();
     void settingsBtn(CCObject* sender);
+    void colorPopup(CCObject* sender);
     void backWrapper(CCObject* sender);
     void generateWrapper(CCObject* sender);
     void openNormalSettings(CCObject* sender);
