@@ -2,6 +2,7 @@
 #include <Geode/ui/ScrollLayer.hpp>
 #include <Geode/ui/GeodeUI.hpp>
 #include <Geode/ui/BasedButtonSprite.hpp>
+#include <Geode/utils/cocos.hpp>
 #include <filesystem>
 #include <fstream>
 #include <sstream>
@@ -240,6 +241,20 @@ bool GYSettingSelectLayer::init() {
     );
     colorBtn->setID("color-button");
     leftMenu->addChild(colorBtn);
+
+    auto geodeLoopToggle = CCMenuItemExt::createToggler(
+        CCSprite::createWithSpriteFrameName("GJ_fxOnBtn_001.png"),
+        CCSprite::createWithSpriteFrameName("GJ_fxOffBtn_001.png"),
+        [&](CCMenuItemToggler* toggler) {
+            auto fmod = FMODAudioEngine::sharedEngine();
+            if (toggler->isOn()) {
+                fmod->playMusic("menuLoop.mp3", true, 0.f, 1);
+            } else {
+                fmod->playMusic("ninxout.wav"_spr, true, 0.f, 1);
+            }
+        }
+    );
+    leftMenu->addChild(geodeLoopToggle);
 
     CCMenuItemSpriteExtra* settingsBtn = CCMenuItemSpriteExtra::create(
         CircleButtonSprite::create(

@@ -6,11 +6,12 @@
 - Bugfix: [Color settings don't work](https://github.com/OmgRod/Geodify/issues/11)
 - Bugfix: [Icon Ninja stuff (thanks undefined0 :D)](https://github.com/OmgRod/Geodify/issues/14)
 - Changed color offset to change [each individual wave](https://github.com/OmgRod/Geodify/issues/13)
+- Switched from External Hook API to Alpha's Geode Utils
+- Geodify layer previews
 
 ```
 Setting keys were changed. What does this mean?
 Setting keys are identifiers for different settings to find out which setting is which. We have changed some setting keys so if you notice some changes in your Geodify configuration, don't be worried! Simply just change them back to how they were with the new revamped settings menu!
-- OmgRod
 ```
 
 # v1.6.0

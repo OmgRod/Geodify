@@ -18,7 +18,8 @@
             ]
         },
         "files": [
-            "res/layers.json"
+            "res/layers.json",
+            "res/loops/*"
         ],
         "sprites": [
             "res/*.png"
