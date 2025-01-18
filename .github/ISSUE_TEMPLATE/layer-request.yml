@@ -1,0 +1,24 @@
+name: Layer Request
+description: Request the addition or modification of a specific layer
+title: "[Layer Request]: "
+labels: [layer]
+body:
+  - type: input
+    id: mod
+    attributes:
+      label: Mod
+      placeholder: "Specify which mod this layer belongs to"
+      required: true
+  - type: input
+    id: layer
+    attributes:
+      label: Layer
+      placeholder: "Specify the layer name (if known)"
+      required: false
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: "Provide any additional details about the layer, such as its purpose or configuration."
+      placeholder: "Describe the layer details here"
+      required: false
