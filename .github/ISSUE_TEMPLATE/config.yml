@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: General Support
+    url: https://github.com/your-repository/discussions
+    about: "Get help, ask questions, or discuss the project."
+  - name: Documentation Feedback
+    url: https://github.com/your-repository/issues
+    about: "Provide feedback on the documentation or request improvements."
