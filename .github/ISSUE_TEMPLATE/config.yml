@@ -1,8 +1,90 @@
 blank_issues_enabled: true
-contact_links:
-  - name: General Support
-    url: https://github.com/your-repository/discussions
-    about: "Get help, ask questions, or discuss the project."
-  - name: Documentation Feedback
-    url: https://github.com/your-repository/issues
-    about: "Provide feedback on the documentation or request improvements."
+issue_template:
+  - name: Bug Report
+    description: "Report an issue or bug in the project"
+    title: "[Bug]: "
+    labels: [bug]
+    body:
+      - type: input
+        id: title
+        attributes:
+          label: Title
+          placeholder: "Provide a short summary of the bug"
+          required: true
+      - type: textarea
+        id: description
+        attributes:
+          label: Description
+          description: "Provide a detailed description of the bug, including steps to reproduce, expected behavior, and observed behavior."
+          placeholder: "Describe the issue here"
+          required: true
+      - type: input
+        id: layer
+        attributes:
+          label: Layer (if applicable)
+          placeholder: "Specify the layer where this issue occurs (if known)"
+          required: false
+      - type: dropdown
+        id: severity
+        attributes:
+          label: Severity
+          description: "Select the severity level of the bug"
+          options:
+            - Minor
+            - Major
+            - Critical
+          required: true
+
+  - name: Feature Request
+    description: "Suggest a new feature for the project"
+    title: "[Feature Request]: "
+    labels: [feature request]
+    body:
+      - type: input
+        id: title
+        attributes:
+          label: Title
+          placeholder: "Provide a short title for the feature request"
+          required: true
+      - type: textarea
+        id: description
+        attributes:
+          label: Description
+          description: "Provide a detailed description of the feature, including why it is needed and any potential implementation details."
+          placeholder: "Describe your feature request here"
+          required: true
+      - type: dropdown
+        id: priority
+        attributes:
+          label: Priority
+          description: "Select the priority level for this feature"
+          options:
+            - Low
+            - Medium
+            - High
+          required: true
+
+  - name: Layer Request
+    description: "Request the addition or modification of a specific layer"
+    title: "[Layer Request]: "
+    labels: [layer]
+    body:
+      - type: input
+        id: mod
+        attributes:
+          label: Mod
+          placeholder: "Specify which mod this layer belongs to"
+          required: true
+      - type: input
+        id: layer
+        attributes:
+          label: Layer
+          placeholder: "Specify the layer name (if known)"
+          required: false
+      - type: textarea
+        id: description
+        attributes:
+          label: Description
+          description: "Provide any additional details about the layer, such as its purpose or configuration."
+          placeholder: "Describe the layer details here"
+          required: false
