@@ -70,43 +70,11 @@ For external mods that modify the background of a specific menu, you can use the
 ```cpp
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include <HookClass.hpp> 
+#include <alphalaneous.alphas_geode_utils/include/NodeModding.h>
+
 using namespace geode::prelude;
 
-HookClass(GlobedLevelListLayer) {
-        if (auto bg = this->getChildByID("background")) {
-            bg->setVisible(false);
-        }
-
-        SwelvyBG* swelvyBG = SwelvyBG::create();
-        swelvyBG->setZOrder(-1);
-        
-        this->addChild(swelvyBG);
-}
+SET_SWELVY(GlobedLevelListLayer, "dankmeme.globed2/GlobedLevelListLayer", "background");
 
 ```
-This way is new from v1.7.0+!
-
-### External Mods Fix
-
-For external mods that really don't like you to modify the background of a specific menu, you can use the following example. This shows how to hook into `cvolton.betterinfo/CustomCreatorLayer` to add a custom background.
-
-Please do not do this unless like in this example it's the only way since HookClass won't work on it!
-
-```cpp
-#include <Geode/Geode.hpp>
-#include "../../SwelvyBG.hpp"
-#include <HookClass.hpp> 
-using namespace geode::prelude;
-// class name to store in code, Hook to (the real layer id)
-HookClass_Scene(cvolton_betterinfo_CustomCreatorLayer,"cvolton.betterinfo/CustomCreatorLayer") {
-         if (auto bg = _This->getChildByID("cvolton.betterinfo/background")) {
-            bg->setVisible(false);
-            SwelvyBG* swelvyBG = SwelvyBG::create();
-            swelvyBG->setZOrder(-1);
-            
-            _This->addChild(swelvyBG);
-        }
-}
-```
-This way is new from v1.7.0+!
+This way is new from v2.0.0+!
