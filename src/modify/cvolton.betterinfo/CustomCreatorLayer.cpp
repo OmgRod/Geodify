@@ -1,16 +1,7 @@
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include <HookClass.hpp>
+#include <alphalaneous.alphas_geode_utils/include/NodeModding.h>
+
 using namespace geode::prelude;
 
-HookClass_Scene(cvolton_betterinfo_CustomCreatorLayer,"cvolton.betterinfo/CustomCreatorLayer") {
-    if (Mod::get()->getSettingValue<bool>("cvolton.betterinfo/CustomCreatorLayer")) {
-         if (auto bg = _This->getChildByID("cvolton.betterinfo/background")) {
-            bg->setVisible(false);
-            SwelvyBG* swelvyBG = SwelvyBG::create();
-            swelvyBG->setZOrder(-1);
-            
-            _This->addChild(swelvyBG);
-        }
-    }
-}
+SET_SWELVY(CustomCreatorLayer, "cvolton.betterinfo/CustomCreatorLayer", "cvolton.betterinfo/background");

@@ -2,7 +2,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/Loader.hpp>
 #include <Geode/modify/MenuLayer.hpp>
-#include <HookClass.hpp>
 
 using namespace geode::prelude;
 

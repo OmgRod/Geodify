@@ -1,18 +1,7 @@
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include <HookClass.hpp> 
+#include <alphalaneous.alphas_geode_utils/include/NodeModding.h>
 
 using namespace geode::prelude;
-HookClass(RewardViewLayer) {
-    if (Mod::get()->getSettingValue<bool>("cvolton.betterinfo/RewardViewLayer")) {
-        if (auto bg = this->getChildByID("cvolton.betterinfo/background")) {
-            bg->setVisible(false);
-        }
-        SwelvyBG* swelvyBG = SwelvyBG::create();
-        swelvyBG->setZOrder(-1);
-        
-        this->addChild(swelvyBG);
-    }
-}
 
-
+SET_SWELVY(RewardViewLayer, "cvolton.betterinfo/RewardViewLayer", "cvolton.betterinfo/background");

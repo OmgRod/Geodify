@@ -24,13 +24,6 @@ endif()
 
 include("cmake/CPM.cmake")
 
-CPMAddPackage(
-    NAME external-hook-api
-    GIT_REPOSITORY https://github.com/OmgRod/External-Hook-API.git
-    GIT_TAG master
-)
-target_link_libraries(${PROJECT_NAME} external-hook-api)
-
 add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 
 setup_geode_mod(${PROJECT_NAME})

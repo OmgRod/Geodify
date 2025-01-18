@@ -1,19 +1,7 @@
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include <HookClass.hpp> 
+#include <alphalaneous.alphas_geode_utils/include/NodeModding.h>
 
 using namespace geode::prelude;
-HookClass(BetterAchievementLayer) {
-    if (Mod::get()->getSettingValue<bool>("limegradient.betterachievements/BetterAchievementLayer")) {
-        if (auto bg = this->getChildByID("content-background")) {
-            bg->setVisible(false);
-        }
 
-        SwelvyBG* swelvyBG = SwelvyBG::create();
-        swelvyBG->setZOrder(-1);
-        
-        this->addChild(swelvyBG);
-    }
-}
-
-
+SET_SWELVY(BetterAchievementLayer, "limegradient.betterachievements/BetterAchievementLayer", "content-background");
