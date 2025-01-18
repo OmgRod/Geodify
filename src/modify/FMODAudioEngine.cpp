@@ -7,11 +7,18 @@ class $modify(MyFMODAudioEngine, FMODAudioEngine) {
 public:
     void playMusic(gd::string name, bool shouldLoop, float fadeInTime, int channel) {
         log::debug("Playing music: {}", name);
-        std::string newName = "ninxout.wav"_spr;
-        if (name == "menuLoop.mp3" && Mod::get()->getSettingValue<bool>("menu-loop")) {
+
+        std::string newName = "ninxout.wav";
+        
+        // Convert gd::string to std::string for find operation
+        std::string nameStr = name.c_str();
+        
+        // Check if name contains "menuLoop.mp3"
+        if (nameStr.find("menuLoop.mp3") != std::string::npos && Mod::get()->getSettingValue<bool>("menu-loop")) {
             name = newName;
             log::debug("Changed music to: {}", name);
         }
+
         FMODAudioEngine::playMusic(name, shouldLoop, fadeInTime, channel);
     }
 };
