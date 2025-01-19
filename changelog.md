@@ -1,13 +1,17 @@
+# v2.0.1
+
+- Bugfix: BetterAchievements background didn't change
+
 # v2.0.0
 
-- ~~Added ninXout's Geode menu loop~~ (delayed to v2.0.1)
+- ~~Added ninXout's Geode menu loop~~ (delayed to v2.1.0)
 - Refactored code
 - Revamped settings menu
 - Bugfix: [Color settings don't work](https://github.com/OmgRod/Geodify/issues/11)
 - Bugfix: [Icon Ninja stuff (thanks undefined0 :D)](https://github.com/OmgRod/Geodify/issues/14)
 - Changed color offset to change [each individual wave](https://github.com/OmgRod/Geodify/issues/13)
 - Switched from External Hook API to Alpha's Geode Utils
-- ~~Geodify layer previews~~ (delayed to v2.0.1 or v2.1.0)
+- ~~Geodify layer previews~~ (delayed to v2.1.0)
 
 ```
 Setting keys were changed. What does this mean?
