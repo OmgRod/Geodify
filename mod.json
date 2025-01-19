@@ -297,7 +297,7 @@
             "type": "bool",
             "default": true
         },
-        "limegradient.betterachievements/BetterAchivementLayer": {
+        "limegradient.betterachievements/BetterAchievementLayer": {
             "name": "BetterAchivementLayer",
             "description": "BetterAchivementLayer",
             "type": "bool",
