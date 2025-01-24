@@ -369,6 +369,12 @@
             "type": "bool",
             "default": true
         },
+        "omgrod.geodify/GYSettingSelectLayer": {
+            "name": "GYSettingSelectLayer",
+            "description": "GYSettingSelectLayer",
+            "type": "bool",
+            "default": true
+        },
         "alphalaneous.level_info_backgrounds": {
             "name": "Level Info Backgrounds",
             "description": "Replace alphalaneous.level_info_backgrounds background.",

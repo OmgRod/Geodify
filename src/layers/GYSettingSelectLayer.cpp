@@ -11,6 +11,7 @@
 #include "GYSettingSelectLayer.hpp"
 #include "GYColorPopup.hpp"
 #include "GYModTile.hpp"
+#include "../SwelvyBG.hpp"
 #include "../json.hpp"
 
 /*
@@ -81,14 +82,20 @@ bool GYSettingSelectLayer::init() {
     CCMenu* menu = CCMenu::create();
     menu->setID("menu");
 
-    CCSprite* background = CCSprite::create("GJ_gradientBG.png");
-    background->setScaleX(CCDirector::sharedDirector()->getWinSize().width / background->getContentSize().width);
-    background->setScaleY(CCDirector::sharedDirector()->getWinSize().height / background->getContentSize().height);
-    background->setZOrder(-1);
-    background->setColor({ 0, 102, 255 });
-    background->setID("background");
-    background->setPosition({ winSize.width / 2, winSize.height / 2 });
-    this->addChild(background);
+    if (Mod::get()->getSettingValue<bool>("omgrod.geodify/GYSettingSelectLayer")) {
+        auto swelvyBG = SwelvyBG::create();
+		swelvyBG->setZOrder(-1);
+		this->addChild(swelvyBG);
+    } else {
+        CCSprite* background = CCSprite::create("GJ_gradientBG.png");
+        background->setScaleX(CCDirector::sharedDirector()->getWinSize().width / background->getContentSize().width);
+        background->setScaleY(CCDirector::sharedDirector()->getWinSize().height / background->getContentSize().height);
+        background->setZOrder(-1);
+        background->setColor({ 0, 102, 255 });
+        background->setID("background");
+        background->setPosition({ winSize.width / 2, winSize.height / 2 });
+        this->addChild(background);
+    }
 
     CCSprite* cornerLeft = CCSprite::createWithSpriteFrameName("GJ_sideArt_001.png");
     cornerLeft->setPosition(CCPoint(winSize.width * 0, winSize.height * 0));
