@@ -36,7 +36,6 @@ protected:
         m_mainLayer->setContentSize({ winSize.width * 0.6f, winSize.height * 0.7f });
         m_mainLayer->updateLayout();
 
-        // Construct URL for the raw GitHub image
         std::string URL = fmt::format("https://raw.githubusercontent.com/OmgRod/Geodify/master/previews/{}Preview.png", layerName);
         
         auto req = web::WebRequest();
@@ -85,7 +84,6 @@ protected:
     }
 
     void onDownloadFail() {
-        // Handle failure if the image could not be downloaded
         CCSprite* fallbackSprite = CCSprite::create("noPreview.png"_spr);
         m_mainLayer->addChildAtPosition(fallbackSprite, Anchor::Center);
     }
