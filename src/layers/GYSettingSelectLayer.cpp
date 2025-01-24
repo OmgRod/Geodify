@@ -171,9 +171,9 @@ bool GYSettingSelectLayer::init() {
         GYModTile::create("BetterAchievements", "limegradient", "limegradient.betterachievements"),
         GYModTile::create("GDDP Integration", "Minemaker0430", "minemaker0430.gddp_integration"),
         GYModTile::create("Garage Plus", "OmgRod", "omgrod.garage_plus"),
-        GYModTile::create("GDStream", "OmgRod", "omgrod.gdstream"),
+        // GYModTile::create("GDStream", "OmgRod", "omgrod.gdstream"),
         GYModTile::create("Geodify", "OmgRod", "omgrod.geodify"),
-        GYModTile::create("Newgrounds Explorer", "TheSillyDoggo", "thesillydoggo.newgrounds_explorer"),
+        // GYModTile::create("Newgrounds Explorer", "TheSillyDoggo", "thesillydoggo.newgrounds_explorer"),
         GYModTile::create("Texture Workshop", "Uproxide", "uproxide.textures"),
     };
 
