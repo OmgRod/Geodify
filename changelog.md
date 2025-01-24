@@ -1,7 +1,7 @@
 # v2.0.1
 
 - Bugfix: BetterAchievements background didn't change
-- Added Layers: `minemaker0430.gddp_integration/DPSearchLayer`, `minemaker0430.gddp_integration/RecommendedLayer`, `minemaker0430.gddp_integration/RouletteSafeLayer`
+- Added Layers: `minemaker0430.gddp_integration/DPSearchLayer`, `minemaker0430.gddp_integration/RecommendedLayer`, `minemaker0430.gddp_integration/RouletteSafeLayer`, `omgrod.geodify/GYSettingSelectLayer`
 - Geodify layer previews
 - Support me on Ko-fi
 - justin0 lost credit -> jasmine thanks for making mod logo
