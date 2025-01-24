@@ -3,6 +3,7 @@
 - Bugfix: BetterAchievements background didn't change
 - Added Layers: `minemaker0430.gddp_integration/DPSearchLayer`, `minemaker0430.gddp_integration/RecommendedLayer`, `minemaker0430.gddp_integration/RouletteSafeLayer`
 - Geodify layer previews
+- Support me on Ko-fi
 - justin0 lost credit -> jasmine thanks for making mod logo
 
 # v2.0.0
