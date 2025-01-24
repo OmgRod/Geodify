@@ -4,4 +4,4 @@
 
 using namespace geode::prelude;
 
-SET_SWELVY(TextureWorkshopLayer, "uproxide.textures/TextureWorkshopLayer", "background");
+SET_SWELVY(DPSearchLayer, "minemaker0430.gddp_integration/DPSearchLayer", "bg");

@@ -21,4 +21,4 @@ Please create an [issue](https://github.com/OmgRod/Geodify/issues) on GitHub for
 - Lead Developer: OmgRod
 - Developers: OmgRod, Viper
 - Alpha's Geode Utils: Alphalaneous
-- Logo: hiimjustin000 and OmgRod
+- Logo: hiimjasmine00 and OmgRod

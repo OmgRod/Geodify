@@ -4,4 +4,4 @@
 
 using namespace geode::prelude;
 
-SET_SWELVY(TextureWorkshopLayer, "uproxide.textures/TextureWorkshopLayer", "background");
+SET_SWELVY(RouletteSafeLayer, "minemaker0430.gddp_integration/RouletteSafeLayer", "bg");

@@ -1,6 +1,9 @@
 # v2.0.1
 
 - Bugfix: BetterAchievements background didn't change
+- Added Layers: `minemaker0430.gddp_integration/DPSearchLayer`, `minemaker0430.gddp_integration/RecommendedLayer`, `minemaker0430.gddp_integration/RouletteSafeLayer`
+- Geodify layer previews
+- justin0 lost credit -> jasmine thanks for making mod logo
 
 # v2.0.0
 
@@ -11,7 +14,6 @@
 - Bugfix: [Icon Ninja stuff (thanks undefined0 :D)](https://github.com/OmgRod/Geodify/issues/14)
 - Changed color offset to change [each individual wave](https://github.com/OmgRod/Geodify/issues/13)
 - Switched from External Hook API to Alpha's Geode Utils
-- ~~Geodify layer previews~~ (delayed to v2.1.0)
 
 ```
 Setting keys were changed. What does this mean?

@@ -298,8 +298,8 @@
             "default": true
         },
         "limegradient.betterachievements/BetterAchievementLayer": {
-            "name": "BetterAchivementLayer",
-            "description": "BetterAchivementLayer",
+            "name": "BetterAchievementLayer",
+            "description": "BetterAchievementLayer",
             "type": "bool",
             "default": true
         },
@@ -312,6 +312,24 @@
         "minemaker0430.gddp_integration/DPListLayer": {
             "name": "DPListLayer",
             "description": "DPListLayer",
+            "type": "bool",
+            "default": true
+        },
+        "minemaker0430.gddp_integration/DPSearchLayer": {
+            "name": "DPSearchLayer",
+            "description": "DPSearchLayer",
+            "type": "bool",
+            "default": true
+        },
+        "minemaker0430.gddp_integration/RecommendedLayer": {
+            "name": "RecommendedLayer",
+            "description": "RecommendedLayer",
+            "type": "bool",
+            "default": true
+        },
+        "minemaker0430.gddp_integration/RouletteSafeLayer": {
+            "name": "RouletteSafeLayer",
+            "description": "RouletteSafeLayer",
             "type": "bool",
             "default": true
         },
