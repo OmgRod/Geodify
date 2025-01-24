@@ -53,12 +53,16 @@ public:
             {"limegradient.betterachievements-BetterAchievementLayer", 37},
             {"minemaker0430.gddp_integration-DPLayer", 38},
             {"minemaker0430.gddp_integration-DPListLayer", 39},
+            {"minemaker0430.gddp_integration-DPSearchLayer", 46},
+            {"minemaker0430.gddp_integration-RecommendedLayer", 47},
+            {"minemaker0430.gddp_integration-RouletteSafeLayer", 48},
             {"omgrod.garage_plus-GPFeedbackLayer", 40},
             {"omgrod.garage_plus-GPKofiLayer", 41},
             {"omgrod.gdstream-StreamLayer", 42},
             {"omgrod.gdstream-StreamCreatorLayer", 43},
             {"thesillydoggo.newgrounds_explorer-NewgroundsBrowserLayer", 44},
-            {"uproxide.textures-TextureWorkshopLayer", 45}
+            {"uproxide.textures-TextureWorkshopLayer", 45},
+            {"omgrod.geodify-GYSettingSelectLayer", 49},
         };
 
         log::debug("Tag map populated with {} entries.", m_tagMap.size());
@@ -110,7 +114,11 @@ public:
             {42, "omgrod.gdstream-StreamLayer"},
             {43, "omgrod.gdstream-StreamCreatorLayer"},
             {44, "thesillydoggo.newgrounds_explorer-NewgroundsBrowserLayer"},
-            {45, "uproxide.textures-TextureWorkshopLayer"}
+            {45, "uproxide.textures-TextureWorkshopLayer"},
+            {46, "minemaker0430.gddp_integration-DPSearchLayer"},
+            {47, "minemaker0430.gddp_integration-RecommendedLayer"},
+            {48, "minemaker0430.gddp_integration-RouletteSafeLayer"},
+            {49, "omgrod.geodify-GYSettingSelectLayer"},
         };
 
         log::debug("String map populated with {} entries.", m_stringMap.size());
