@@ -1,4 +1,4 @@
-# v2.0.2
+# v2.1.0-beta
 
 - Added Layers: `teamtcm.geometry-dash-odyssey/OdysseyComicLayer`, `teamtcm.geometry-dash-odyssey/OdysseySelectLayer`, `gd/UIOptionsLayer`, `gd/UIPOptionsLayer`, `GJShopLayer` (currently all of them are together)
 

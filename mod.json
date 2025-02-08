@@ -5,7 +5,7 @@
         "win": "2.2074",
         "mac": "2.2074"
     },
-    "version": "v2.0.2",
+    "version": "v2.1.0-beta",
     "id": "omgrod.geodify",
     "name": "Geodify",
     "developers": ["OmgRod", "Viper"],
@@ -432,6 +432,12 @@
         "teamtcm.geometry-dash-odyssey/OdysseySelectLayer": {
             "name": "OdysseySelectLayer",
             "description": "OdysseySelectLayer",
+            "type": "bool",
+            "default": true
+        },
+        "teamtcm.geometry-dash-odyssey/GJShopLayer-Carp": {
+            "name": "Carp Shop",
+            "description": "GJShopLayer-Carp",
             "type": "bool",
             "default": true
         },
