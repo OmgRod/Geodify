@@ -215,9 +215,33 @@
             "type": "bool",
             "default": true
         },
-        "gd/GJShopLayer": {
-            "name": "Shops (Currently just all of them)",
-            "description": "GJShopLayer",
+        "gd/GJShopLayer-Normal": {
+            "name": "Normal Shop",
+            "description": "GJShopLayer-Normal",
+            "type": "bool",
+            "default": true
+        },
+        "gd/GJShopLayer-Secret": {
+            "name": "Scratch Shop",
+            "description": "GJShopLayer-Secret",
+            "type": "bool",
+            "default": true
+        },
+        "gd/GJShopLayer-Community": {
+            "name": "Community Shop",
+            "description": "GJShopLayer-Community",
+            "type": "bool",
+            "default": true
+        },
+        "gd/GJShopLayer-Mechanic": {
+            "name": "Mechanic Shop",
+            "description": "GJShopLayer-Mechanic",
+            "type": "bool",
+            "default": true
+        },
+        "gd/GJShopLayer-Diamond": {
+            "name": "Diamond Shop",
+            "description": "GJShopLayer-Diamond",
             "type": "bool",
             "default": true
         },
