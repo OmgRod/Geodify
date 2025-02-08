@@ -1,3 +1,7 @@
+# v2.0.2
+
+- Added Layers: `teamtcm.geometry-dash-odyssey/OdysseyComicLayer`, `teamtcm.geometry-dash-odyssey/OdysseySelectLayer`, `gd/UIOptionsLayer`, `gd/UIPOptionsLayer`, `GJShopLayer` (currently all of them are together)
+
 # v2.0.1
 
 - Bugfix: BetterAchievements background didn't change

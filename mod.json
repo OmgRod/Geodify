@@ -410,32 +410,29 @@
             "description": "OdysseySelectLayer",
             "type": "bool",
             "default": true
+        },
+
+        "other/enable-menu-icons": {
+            "name": "Enable Menu Ground + Icons",
+            "description": "Keeps the ground and icons visible in MenuLayer.",
+            "type": "bool",
+            "default": true
         }
     },
-    "dependencies": [
-        {
-            "id": "geode.node-ids",
-            "importance": "required",
-            "version": ">=v1.12.0"
-        },
-        {
-            "id": "alphalaneous.happy_textures",
+    "dependencies": {
+        "geode.node-ids": ">=v1.19.0",
+        "alphalaneous.alphas_geode_utils": ">=1.0.3",
+        "alphalaneous.happy_textures": {
             "importance": "recommended",
             "version": ">=1.3.18"
-        },
-        {
-            "id": "alphalaneous.alphas_geode_utils",
-            "importance": "required",
-            "version": ">=1.0.3"
         }
-    ],
-    "incompatibilities": [
-        {
-            "id": "undefined0.icon_ninja",
-            "importance": "conflicting",
-            "version": ">=v1.0.0"
+    },
+    "incompatibilities": {
+        "undefined0.icon_ninja": {
+            "importance": "breaking",
+            "version": "<=v1.2.3"
         }
-    ],
+    },
     "tags": ["content", "customization", "enhancement", "interface", "offline", "universal"],
     "links": {
         "community": "https://discord.gg/vK3DuqJwyW",

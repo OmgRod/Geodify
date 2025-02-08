@@ -7,7 +7,7 @@ using namespace geode::prelude;
 
 class $modify(MenuLayer) {
 	static void onModify(auto& self) {
-        (void)self.setHookPriority("MenuLayer::init", -2); // For SwelvyBGInsert Aka BetterMenu no overlap
+        (void)self.setHookPriority("MenuLayer::init", -2);
     }
 	bool init() {
 		if (!MenuLayer::init()) {
@@ -19,8 +19,12 @@ class $modify(MenuLayer) {
 		}
 
         if (Mod::get()->getSettingValue<bool>("gd/MenuLayer")) {
-			if (CCNode* mainmenu = this->getChildByIDRecursive("main-menu-bg")) { 
-				mainmenu->setVisible(false); 
+			if (CCNode* mainmenu = this->getChildByIDRecursive("main-menu-bg")) {
+				if (Mod::get()->getSettingValue<bool>("other/part-enable-menu-bg")) {
+					mainmenu->getChildByID("background")->setVisible(false);
+				} else {
+					mainmenu->setVisible(false);
+				}
 			}
 			if (Loader::get()->isModLoaded("zalphalaneous.minecraft") && Mod::get()->getSettingValue<bool>("external-mods")) {
 				auto panorama = this->getChildByID("zalphalaneous.minecraft/minecraft-panorama");
@@ -37,10 +41,3 @@ class $modify(MenuLayer) {
 		return true;
 	}
 };
-
-
-// HookClass(NinjaSwipeLayer) {
-// 	if (Loader::get()->isModLoaded("undefined0.icon_ninja")) {
-// 		this->removeFromParent();
-// 	}
-// }
