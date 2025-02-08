@@ -8,8 +8,8 @@ class $modify(MyCCLayer, CCLayer) {
 	void onEnter() {
 		CCLayer::onEnter();
 
-		if (auto parent = dynamic_cast<UIPOptionsLayer*>(this->getParent())) {
-			if (Mod::get()->getSettingValue<bool>("gd/UIPOptionsLayer")) {
+		if (auto parent = dynamic_cast<UIOptionsLayer*>(this->getParent())) {
+			if (Mod::get()->getSettingValue<bool>("gd/UIOptionsLayer")) {
 				int lowestZ = INT_MAX;
 				CCObject* obj = nullptr;
 				CCARRAY_FOREACH(this->getChildren(), obj) {

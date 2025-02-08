@@ -9,7 +9,7 @@
     "id": "omgrod.geodify",
     "name": "Geodify",
     "developers": ["OmgRod", "Viper"],
-    "description": "Converts most menus' backgrounds to the Geode one (SwelvyBG).",
+    "description": "Converts most backgrounds to Geode's background (SwelvyBG).",
     "early-load": true,
     "resources": {
         "files": [
@@ -209,9 +209,27 @@
             "type": "bool",
             "default": true
         },
+        "gd/SecretLayer5": {
+            "name": "The Wraith",
+            "description": "SecretLayer5",
+            "type": "bool",
+            "default": true
+        },
         "gd/GJShopLayer": {
             "name": "Shops (Currently just all of them)",
             "description": "GJShopLayer",
+            "type": "bool",
+            "default": true
+        },
+        "gd/UIOptionsLayer": {
+            "name": "ui",
+            "description": "UIOptionsLayer",
+            "type": "bool",
+            "default": true
+        },
+        "gd/UIPOptionsLayer": {
+            "name": "uip",
+            "description": "UIPOptionsLayer",
             "type": "bool",
             "default": true
         },
