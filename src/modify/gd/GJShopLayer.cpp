@@ -9,7 +9,7 @@ class $modify(MyGJShopLayer, GJShopLayer) {
 		if (!GJShopLayer::init(p0)) {
 			return false;
 		}
-        if (p0 == ShopType::Normal) {
+        if (static_cast<int>(p0) == 0) {
             if (Mod::get()->getSettingValue<bool>("gd/GJShopLayer-Normal")){
                 if (auto bg = this->getChildByID("background")) {
                     bg->setVisible(false);
@@ -21,7 +21,7 @@ class $modify(MyGJShopLayer, GJShopLayer) {
 
                 this->addChild(swelvyBG);
             }
-        } else if (p0 == ShopType::Secret) {
+        } else if (static_cast<int>(p0) == 1) {
             if (Mod::get()->getSettingValue<bool>("gd/GJShopLayer-Secret")){
                 if (auto bg = this->getChildByID("background")) {
                     bg->setVisible(false);
@@ -33,7 +33,7 @@ class $modify(MyGJShopLayer, GJShopLayer) {
 
                 this->addChild(swelvyBG);
             }
-        } else if (p0 == ShopType::Community) {
+        } else if (static_cast<int>(p0) == 2) {
             if (Mod::get()->getSettingValue<bool>("gd/GJShopLayer-Community")){
                 if (auto bg = this->getChildByID("background")) {
                     bg->setVisible(false);
@@ -45,7 +45,7 @@ class $modify(MyGJShopLayer, GJShopLayer) {
 
                 this->addChild(swelvyBG);
             }
-        } else if (p0 == ShopType::Mechanic) {
+        } else if (static_cast<int>(p0) == 3) {
             if (Mod::get()->getSettingValue<bool>("gd/GJShopLayer-Mechanic")){
                 if (auto bg = this->getChildByID("background")) {
                     bg->setVisible(false);
@@ -57,7 +57,7 @@ class $modify(MyGJShopLayer, GJShopLayer) {
 
                 this->addChild(swelvyBG);
             }
-        } else if (p0 == ShopType::Diamond) {
+        } else if (static_cast<int>(p0) == 4) {
             if (Mod::get()->getSettingValue<bool>("gd/GJShopLayer-Diamond")){
                 if (auto bg = this->getChildByID("background")) {
                     bg->setVisible(false);
