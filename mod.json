@@ -209,6 +209,12 @@
             "type": "bool",
             "default": true
         },
+        "gd/GJShopLayer": {
+            "name": "Shops (Currently just all of them)",
+            "description": "GJShopLayer",
+            "type": "bool",
+            "default": true
+        },
         "mods-title": {
             "type": "title",
             "name": "Mods Settings"
@@ -375,11 +381,17 @@
             "type": "bool",
             "default": true
         },
-        "alphalaneous.level_info_backgrounds": {
-            "name": "Level Info Backgrounds",
-            "description": "Replace alphalaneous.level_info_backgrounds background.",
+        "teamtcm.geometry-dash-odyssey/OdysseyComicLayer": {
+            "name": "OdysseyComicLayer",
+            "description": "OdysseyComicLayer",
             "type": "bool",
-            "default": false
+            "default": true
+        },
+        "teamtcm.geometry-dash-odyssey/OdysseySelectLayer": {
+            "name": "OdysseySelectLayer",
+            "description": "OdysseySelectLayer",
+            "type": "bool",
+            "default": true
         }
     },
     "dependencies": [

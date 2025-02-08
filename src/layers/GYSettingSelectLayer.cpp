@@ -182,6 +182,7 @@ bool GYSettingSelectLayer::init() {
         GYModTile::create("Geodify", "OmgRod", "omgrod.geodify"),
         // GYModTile::create("Newgrounds Explorer", "TheSillyDoggo", "thesillydoggo.newgrounds_explorer"),
         GYModTile::create("Texture Workshop", "Uproxide", "uproxide.textures"),
+        GYModTile::create("Geometry Dash: Odyssey", "chumiu", "teamtcm.geometry-dash-odyssey"),
     };
 
     bool addToLeft = true;
