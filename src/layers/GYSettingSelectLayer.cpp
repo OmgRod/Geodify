@@ -127,7 +127,9 @@ bool GYSettingSelectLayer::init() {
 
     // START OF CONTENT
 
-    CCScale9Sprite* contentBox = CCScale9Sprite::create("GJ_square01.png");
+    CCScale9Sprite* contentBox = CCScale9Sprite::create("square02b_001.png");
+    contentBox->setColor(ccColor3B{0, 0, 0});
+    contentBox->setOpacity(60);
     contentBox->setContentSize({ winSize.width * 0.7f, winSize.height * 0.7f });
     contentBox->setPosition({ winSize.width / 2, winSize.height / 2 - winSize.height * 0.05f });
     contentBox->setAnchorPoint({ 0.5f, 0.5f });
@@ -139,33 +141,19 @@ bool GYSettingSelectLayer::init() {
     scroll->setTouchEnabled(true);
     contentBox->addChild(scroll);
 
-    auto contentLeft = CCLayer::create();
-    contentLeft->setContentSize({ winSize.width * 0.3f, 0.f });
-    contentLeft->setID("content-left");
-    contentLeft->setPosition({ winSize.width * 0.0125f, 0 });
-    contentLeft->setAnchorPoint({ 0, 0 });
+    auto contentLayer = CCLayer::create();
+    contentLayer->setContentSize({ winSize.width * 0.7f, 0.f });
+    contentLayer->setID("content-layer");
+    contentLayer->setPosition({ 0, 0 });
+    contentLayer->setAnchorPoint({ 0, 0 });
 
-    auto contentRight = CCLayer::create();
-    contentRight->setContentSize({ winSize.width * 0.3f, 0.f });
-    contentRight->setID("content-right");
-    contentRight->setPosition({ winSize.width * 0.3625f, 0 });
-    contentRight->setAnchorPoint({ 0, 0 });
-
-    auto leftColumn = ColumnLayout::create();
-    leftColumn->setAxisReverse(true)
-            ->setAutoGrowAxis(scroll->getContentHeight())
-            ->setCrossAxisOverflow(false)
-            ->setAxisAlignment(AxisAlignment::End)
-            ->setGap(10.f);
-    contentLeft->setLayout(leftColumn);
-
-    auto rightColumn = ColumnLayout::create();
-    rightColumn->setAxisReverse(true)
-            ->setAutoGrowAxis(scroll->getContentHeight())
-            ->setCrossAxisOverflow(false)
-            ->setAxisAlignment(AxisAlignment::End)
-            ->setGap(10.f);
-    contentRight->setLayout(rightColumn);
+    auto columnLayout = ColumnLayout::create();
+    columnLayout->setAxisReverse(true)
+                ->setAutoGrowAxis(scroll->getContentHeight())
+                ->setCrossAxisOverflow(false)
+                ->setAxisAlignment(AxisAlignment::Center)
+                ->setGap(10.f);
+    contentLayer->setLayout(columnLayout);
 
     auto modTiles = { 
         GYModTile::create("Geometry Dash", "RobTop", "gd"),
@@ -185,14 +173,8 @@ bool GYSettingSelectLayer::init() {
         GYModTile::create("Geometry Dash: Odyssey", "chumiu", "teamtcm.geometry-dash-odyssey"),
     };
 
-    bool addToLeft = true;
     for (auto& tile : modTiles) {
-        if (addToLeft) {
-            contentLeft->addChild(tile);
-        } else {
-            contentRight->addChild(tile);
-        }
-        addToLeft = !addToLeft;
+        contentLayer->addChild(tile);
     }
 
     auto updateContentSize = [&](CCLayer* layer) {
@@ -211,23 +193,24 @@ bool GYSettingSelectLayer::init() {
         layer->setContentSize({ layer->getContentSize().width, totalHeight });
     };
 
-    updateContentSize(contentLeft);
-    updateContentSize(contentRight);
+    updateContentSize(contentLayer);
 
-    scroll->m_contentLayer->addChild(contentLeft);
-    scroll->m_contentLayer->addChild(contentRight);
+    scroll->m_contentLayer->addChild(contentLayer);
 
-    contentLeft->updateLayout();
-    contentRight->updateLayout();
+    contentLayer->updateLayout();
 
+    float maxHeight = contentLayer->getContentSize().height;
     scroll->m_contentLayer->setContentSize({
-        contentLeft->getContentSize().width + contentRight->getContentSize().width + 20.f,
-        std::max(contentLeft->getContentSize().height, contentRight->getContentSize().height)
+        contentLayer->getContentSize().width,
+        maxHeight
     });
 
-    scroll->m_contentLayer->setAnchorPoint({ 0, 0 });
+    scroll->m_contentLayer->setAnchorPoint({ 0, 1 });
+    scroll->m_contentLayer->setPosition({ 0, scroll->getContentSize().height });
 
     // END OF CONTENT
+
+    updateContentSize(contentLayer);
 
 
     CCMenu* leftMenu = CCMenu::create();

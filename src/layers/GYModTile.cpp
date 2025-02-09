@@ -44,12 +44,15 @@ bool GYModTile::init(std::string modName, std::string modAuthor, std::string mod
 
     auto modNameText = CCLabelBMFont::create(modName.c_str(), "bigFont.fnt");
     modNameText->setPosition({ this->getContentSize().width / 2, this->getContentSize().height - winSize.height * 0.05f });
-    modNameText->setScale(0.5f);
+    float maxWidth = this->getContentSize().width * 0.8f;
+    float scale = (modNameText->getContentSize().width > maxWidth) ? (this->getContentSize().width * 0.7f) / modNameText->getContentSize().width : 0.5f;
+    modNameText->setScale(std::min(scale, 0.5f));
     bg->addChild(modNameText);
 
     auto modAuthorText = CCLabelBMFont::create(fmt::format("By {}", modAuthor).c_str(), "goldFont.fnt");
     modAuthorText->setPosition({ this->getContentSize().width / 2, this->getContentSize().height - winSize.height * 0.35f });
-    modAuthorText->setScale(0.5f);
+    scale = (modAuthorText->getContentSize().width > maxWidth) ? (this->getContentSize().width * 0.7f) / modAuthorText->getContentSize().width : 0.5f;
+    modAuthorText->setScale(std::min(scale, 0.5f));
     bg->addChild(modAuthorText);
 
     auto sprite = CCNode::create();
