@@ -1,4 +1,5 @@
 #include "SwelvyBG.hpp"
+#include "ccTypes.h"
 #include <Geode/loader/Mod.hpp>
 #include <random>
 
@@ -21,21 +22,11 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
     float y = m_obContentSize.height + 5;
     int idx = 0;
 
-    bool enableColor = Mod::get()->getSettingValue<bool>("enable-color");
+    bool enableColor = Mod::get()->getSettingValue<bool>("color-enable");
+    log::debug("Color feature enabled: {}", enableColor);
 
     auto createLayer = [&](ccColor3B color, const char* texturePath) {
         ccColor3B adjustedColor = color;
-
-        if (enableColor) {
-            // Construct the setting key dynamically
-            std::string settingKey = "color-" + std::to_string(idx);
-            auto colorSetting = Mod::get()->getSettingValue<std::string>(settingKey);
-
-            if (!colorSetting.empty()) {
-                auto res = cc3bFromHexString(colorSetting);
-                if (res.isOk()) adjustedColor = res.unwrap();
-            }
-        }
 
         float speed = dis(gen);
         if (sign(gen) == 0) {
@@ -44,6 +35,11 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
         ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_CLAMP_TO_EDGE};
 
         auto sprite = CCSprite::create(texturePath);
+        if (!sprite) {
+            log::debug("Failed to load texture: {}", texturePath);
+            return;
+        }
+
         auto rect = sprite->getTextureRect();
         sprite->setUserObject("width", CCFloat::create(rect.size.width * widthmult));
         rect.size = CCSize{winSize.width * widthmult, rect.size.height * hightmult};
@@ -59,6 +55,8 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
         sprite->schedule(schedule_selector(SwelvyBG::updateSpritePosition));
         sprite->setUserObject("speed", CCFloat::create(speed));
         this->addChild(sprite);
+
+        log::debug("Created layer {} with color ({}, {}, {})", layerID, adjustedColor.r, adjustedColor.g, adjustedColor.b);
 
         y -= m_obContentSize.height / 6;
         idx += 1;
@@ -76,6 +74,7 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
             createLayer(layer.first, layer.second);
         }
     } else {
+        log::debug("Color feature disabled. Using default colors.");
         for (auto layer : std::initializer_list<std::pair<ccColor3B, const char*>> {
             { ccc3(244, 212, 142), "geode.loader/swelve-layer3.png" },
             { ccc3(245, 174, 125), "geode.loader/swelve-layer0.png" },
@@ -92,12 +91,24 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
 }
 
 void SwelvyBG::updateSpritePosition(float dt) {
-    auto speed = typeinfo_cast<CCFloat*>(this->getUserObject("speed"))->getValue();
-    auto width = typeinfo_cast<CCFloat*>(this->getUserObject("width"))->getValue();
+    auto speedObj = typeinfo_cast<CCFloat*>(this->getUserObject("speed"));
+    auto widthObj = typeinfo_cast<CCFloat*>(this->getUserObject("width"));
+
+    if (!speedObj || !widthObj) {
+        log::debug("Sprite missing required user objects: speed or width");
+        return;
+    }
+
+    float speed = speedObj->getValue();
+    float width = widthObj->getValue();
 
     auto sprite = typeinfo_cast<CCSprite*>(this);
-    auto rect = sprite->getTextureRect();
+    if (!sprite) {
+        log::debug("Failed to cast object to CCSprite in updateSpritePosition");
+        return;
+    }
 
+    auto rect = sprite->getTextureRect();
     float dX = rect.origin.x - speed * dt;
     if (dX >= std::abs(width)) {
         dX = 0;
@@ -105,6 +116,8 @@ void SwelvyBG::updateSpritePosition(float dt) {
 
     rect.origin = CCPoint{ dX, 0 };
     sprite->setTextureRect(rect);
+
+    // log::debug("Updated sprite {} position: dX={}, speed={}, width={}", sprite->getID(), dX, speed, width);
 }
 
 SwelvyBG* SwelvyBG::create(float widthmult, float hightmult, float minspeed, float maxspeed) {
@@ -114,5 +127,6 @@ SwelvyBG* SwelvyBG::create(float widthmult, float hightmult, float minspeed, flo
         return ret;
     }
     delete ret;
+    log::debug("Failed to create SwelvyBG instance");
     return nullptr;
 }

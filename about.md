@@ -16,6 +16,13 @@ Please create an [issue](https://github.com/OmgRod/Geodify/issues) on GitHub for
 ~~For feature requests, please use the `feature request` label.~~
 ~~For layer requests, please use the `layer` label.~~
 
+## Known Issues
+
+- Color settings don't work
+- Settings squares misaligned
+
+Any devs here feel free to help me out with these
+
 ## Credits
 
 - Lead Developer: OmgRod
