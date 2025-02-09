@@ -8,7 +8,7 @@
     "version": "v2.1.0",
     "id": "omgrod.geodify",
     "name": "Geodify",
-    "developers": ["OmgRod", "Viper"],
+    "developers": ["OmgRod", "Cosmella-v"],
     "description": "Converts most backgrounds to Geode's background (SwelvyBG).",
     "early-load": true,
     "resources": {
@@ -441,12 +441,15 @@
             "type": "bool",
             "default": true
         },
-
+        "other-title": {
+            "type": "title",
+            "name": "Other"
+        },
         "other/enable-menu-icons": {
             "name": "Enable Menu Ground + Icons",
             "description": "Keeps the ground and icons visible in MenuLayer.",
             "type": "bool",
-            "default": true
+            "default": false
         }
     },
     "dependencies": {

@@ -20,7 +20,7 @@ class $modify(MenuLayer) {
 
         if (Mod::get()->getSettingValue<bool>("gd/MenuLayer")) {
 			if (CCNode* mainmenu = this->getChildByIDRecursive("main-menu-bg")) {
-				if (Mod::get()->getSettingValue<bool>("other/part-enable-menu-bg")) {
+				if (Mod::get()->getSettingValue<bool>("other/enable-menu-icons")) {
 					mainmenu->getChildByID("background")->setVisible(false);
 				} else {
 					mainmenu->setVisible(false);

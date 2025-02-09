@@ -25,7 +25,8 @@ Any devs here feel free to help me out with these
 
 ## Credits
 
-- Lead Developer: OmgRod
-- Developers: OmgRod, Viper
-- Alpha's Geode Utils: Alphalaneous
-- Logo: hiimjasmine00 and OmgRod
+- OmgRod: Lead Developer + Logo Designer
+- Cosmella: Developer
+- Alphalaneous: Alpha's Geode Utils Mod
+- hiimjasmine00: Logo Designer
+- Geode SDK Discord: Answering OmgRod's approximately 800 dumb questions about coding
