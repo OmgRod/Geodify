@@ -1,4 +1,4 @@
-# v2.1.0-beta
+# v2.1.0
 
 - Added Layers: `teamtcm.geometry-dash-odyssey/OdysseyComicLayer`, `teamtcm.geometry-dash-odyssey/OdysseySelectLayer`, `gd/UIOptionsLayer`, `gd/UIPOptionsLayer`, `GJShopLayer` (currently all of them are together)
 - Bugfix: [Color offset doesn't work](https://github.com/OmgRod/Geodify/issues/20)
