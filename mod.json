@@ -5,7 +5,7 @@
         "win": "2.2074",
         "mac": "2.2074"
     },
-    "version": "v2.1.0",
+    "version": "v2.1.1-beta.1",
     "id": "omgrod.geodify",
     "name": "Geodify",
     "developers": ["OmgRod", "Cosmella-v"],
@@ -17,7 +17,8 @@
             "res/loops/*"
         ],
         "sprites": [
-            "res/*.png"
+            "res/*.png",
+            "res/joke/*.png"
         ]
     },
     "settings": {

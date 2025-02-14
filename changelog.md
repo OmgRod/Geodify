@@ -1,3 +1,9 @@
+# v2.1.1
+
+- Fixed issues which caused rejected mod (good job, rod!)
+
+![garage plus joke](omgrod.geodify/changelog1.png)
+
 # v2.1.0
 
 - Added Layers: `teamtcm.geometry-dash-odyssey/OdysseyComicLayer`, `teamtcm.geometry-dash-odyssey/OdysseySelectLayer`, `gd/UIOptionsLayer`, `gd/UIPOptionsLayer`, `GJShopLayer` (currently all of them are together)
