@@ -78,3 +78,48 @@ SET_SWELVY(GlobedLevelListLayer, "dankmeme.globed2/GlobedLevelListLayer", "backg
 
 ```
 This way is new from v2.0.0+!
+
+### Registering Layers
+
+When adding a layer, it must also be registered. To do this, follow the steps below:
+
+1. Add it to `mod.json`
+
+```json
+{
+	"settings": {
+		"[Mod ID]/[Layer Name]": {
+            "name": "[Layer Name]",
+            "description": "[Layer Name]",
+            "type": "bool",
+            "default": true
+        },
+	}
+}
+```
+
+2. Add it to `src/Tags.hpp`
+
+```cpp
+m_tagMap = {
+    {"[Mod ID]-[Layer Name]", 0 /* Tag ID - should be unique */},
+}
+
+m_stringMap = {
+    {0 /* Tag ID - should be unique */, "[Mod ID]-[Layer Name]"},
+}
+```
+
+3. Add the mod to `src/layers/GYSettingSelectLayer.cpp`
+
+> [!IMPORTANT]
+> You should only do this if the layer you are adding is for a new mod that isn't yet in Geodify.
+
+> [!NOTE]
+> As of writing this, the relevant code is located in `lines 158-175`
+
+```cpp
+auto modTiles = { 
+    GYModTile::create("[Mod Name]", "[Developer Name(s)]", "[Mod ID]"),
+}
+```
