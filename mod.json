@@ -442,6 +442,12 @@
             "type": "bool",
             "default": true
         },
+        "gdutilsdevs.gdutils/MoreLeaderboards": {
+            "name": "MoreLeaderboards",
+            "description": "MoreLeaderboards",
+            "type": "bool",
+            "default": true
+        },
         "other-title": {
             "type": "title",
             "name": "Other"

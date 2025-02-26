@@ -167,10 +167,11 @@ bool GYSettingSelectLayer::init() {
         GYModTile::create("GDDP Integration", "Minemaker0430", "minemaker0430.gddp_integration"),
         GYModTile::create("Garage Plus", "OmgRod", "omgrod.garage_plus"),
         // GYModTile::create("GDStream", "OmgRod", "omgrod.gdstream"),
-        GYModTile::create("Geodify", "OmgRod", "omgrod.geodify"),
+        GYModTile::create("Geodify", "OmgRod & Cosmella-v", "omgrod.geodify"),
         // GYModTile::create("Newgrounds Explorer", "TheSillyDoggo", "thesillydoggo.newgrounds_explorer"),
         GYModTile::create("Texture Workshop", "Uproxide", "uproxide.textures"),
         GYModTile::create("Geometry Dash: Odyssey", "chumiu", "teamtcm.geometry-dash-odyssey"),
+        GYModTile::create("GDUtils", "Jouca & Firee", "gdutilsdevs.gdutils"),
     };
 
     for (auto& tile : modTiles) {

@@ -63,6 +63,15 @@ public:
             {"thesillydoggo.newgrounds_explorer-NewgroundsBrowserLayer", 44},
             {"uproxide.textures-TextureWorkshopLayer", 45},
             {"omgrod.geodify-GYSettingSelectLayer", 49},
+            {"teamtcm.geometry-dash-odyssey-OdysseyComicLayer", 50},
+            {"teamtcm.geometry-dash-odyssey-OdysseySelectLayer", 51},
+            {"gd-GJShopLayer-Normal", 52},
+            {"gd-GJShopLayer-Secret", 53},
+            {"gd-GJShopLayer-Community", 54},
+            {"gd-GJShopLayer-Mechanic", 55},
+            {"gd-GJShopLayer-Diamond", 56},
+            {"gdutilsdevs.gdutils-MoreLeaderboards", 57},
+            {"teamtcm.geometry-dash-odyssey-GJShopLayer-Carp", 58},
         };
 
         log::debug("Tag map populated with {} entries.", m_tagMap.size());
@@ -119,6 +128,15 @@ public:
             {47, "minemaker0430.gddp_integration-RecommendedLayer"},
             {48, "minemaker0430.gddp_integration-RouletteSafeLayer"},
             {49, "omgrod.geodify-GYSettingSelectLayer"},
+            {50, "teamtcm.geometry-dash-odyssey-OdysseyComicLayer"},
+            {51, "teamtcm.geometry-dash-odyssey-OdysseySelectLayer"},
+            {52, "gd-GJShopLayer-Normal"},
+            {53, "gd-GJShopLayer-Secret"},
+            {54, "gd-GJShopLayer-Community"},
+            {55, "gd-GJShopLayer-Mechanic"},
+            {56, "gd-GJShopLayer-Diamond"},
+            {57, "gdutilsdevs.gdutils-MoreLeaderboards"},
+            {58, "teamtcm.geometry-dash-odyssey-GJShopLayer-Carp"},
         };
 
         log::debug("String map populated with {} entries.", m_stringMap.size());

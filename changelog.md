@@ -1,3 +1,8 @@
+# v2.1.2
+
+- Bugfix: Certain screenshots wouldn't work
+- Added Layers: `gdutilsdevs.gdutils/MoreLeaderboards`
+
 # v2.1.1
 
 - Fixed issues which caused rejected mod (good job, rod!)
