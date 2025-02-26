@@ -116,7 +116,7 @@ m_stringMap = {
 > You should only do this if the layer you are adding is for a new mod that isn't yet in Geodify.
 
 > [!NOTE]
-> As of writing this, the relevant code is located in `lines 158-175`
+> As of writing this, the relevant code is located inside the `GYSettingSelectLayer::init()` function, where the `modTiles` variable is defined and populated before being added to the `contentLayer` within the scrollable UI section.
 
 ```cpp
 auto modTiles = { 
