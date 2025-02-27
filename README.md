@@ -77,6 +77,20 @@ using namespace geode::prelude;
 SET_SWELVY(GlobedLevelListLayer, "dankmeme.globed2/GlobedLevelListLayer", "background");
 
 ```
+
+If the layer you're attempting to hook doesnt have an ID for its background, use `SET_SWELVY_SPRITE`.
+
+```cpp
+#include <Geode/Geode.hpp>
+#include "../../SwelvyBG.hpp"
+#include <alphalaneous.alphas_geode_utils/include/NodeModding.h>
+
+using namespace geode::prelude;
+
+SET_SWELVY_SPRITE(GlobedLevelListLayer, "dankmeme.globed2/GlobedLevelListLayer");
+
+```
+
 This way is new from v2.0.0+!
 
 ### Registering Layers
