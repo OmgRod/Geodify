@@ -72,6 +72,7 @@ public:
             {"gd-GJShopLayer-Diamond", 56},
             {"gdutilsdevs.gdutils-MoreLeaderboards", 57},
             {"teamtcm.geometry-dash-odyssey-GJShopLayer-Carp", 58},
+            {"cvolton.betterinfo-LeaderboardViewLayer", 59},
         };
 
         log::debug("Tag map populated with {} entries.", m_tagMap.size());
@@ -137,6 +138,7 @@ public:
             {56, "gd-GJShopLayer-Diamond"},
             {57, "gdutilsdevs.gdutils-MoreLeaderboards"},
             {58, "teamtcm.geometry-dash-odyssey-GJShopLayer-Carp"},
+            {59, "cvolton.betterinfo-LeaderboardViewLayer"},
         };
 
         log::debug("String map populated with {} entries.", m_stringMap.size());

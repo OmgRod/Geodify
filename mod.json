@@ -292,6 +292,12 @@
             "type": "bool",
             "default": true
         },
+        "cvolton.betterinfo/LeaderboardViewLayer": {
+            "name": "LeaderboardViewLayer",
+            "description": "LeaderboardViewLayer",
+            "type": "bool",
+            "default": true
+        },
         "dankmeme.globed2/GlobedLevelListLayer": {
             "name": "GlobedLevelListLayer",
             "description": "GlobedLevelListLayer",
