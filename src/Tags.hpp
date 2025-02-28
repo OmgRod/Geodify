@@ -163,7 +163,7 @@ public:
             return it->second;
         }
         log::error("Unknown tag: {}", tag);
-        return "unknown";
+        return "Unknown";
     }
 
 private:

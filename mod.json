@@ -247,13 +247,13 @@
             "default": true
         },
         "gd/UIOptionsLayer": {
-            "name": "ui",
+            "name": "Platformer Controls Settings",
             "description": "UIOptionsLayer",
             "type": "bool",
             "default": true
         },
         "gd/UIPOptionsLayer": {
-            "name": "uip",
+            "name": "Practice Controls Settings",
             "description": "UIPOptionsLayer",
             "type": "bool",
             "default": true

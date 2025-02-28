@@ -70,7 +70,18 @@ void GYScreenshotPopup::imageCreationFinished(CCImage* image) {
 
 void GYScreenshotPopup::onDownloadFail() {
     CCSprite* fallbackSprite = CCSprite::create("noPreview.png"_spr);
-    m_mainLayer->addChildAtPosition(fallbackSprite, Anchor::Center);
+    if (fallbackSprite) {
+        auto maxWidth = m_mainLayer->getContentSize().width * 0.75f;
+        auto maxHeight = m_mainLayer->getContentSize().height * 0.75f;
+
+        auto spriteWidth = fallbackSprite->getContentSize().width;
+        auto spriteHeight = fallbackSprite->getContentSize().height;
+
+        float scale = std::min(maxWidth / spriteWidth, maxHeight / spriteHeight);
+        fallbackSprite->setScale(scale);
+
+        m_mainLayer->addChildAtPosition(fallbackSprite, Anchor::Center);
+    }
 }
 
 std::string GYScreenshotPopup::extractLastSegment(const std::string& input) {
