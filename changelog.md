@@ -1,8 +1,9 @@
 # v2.1.1
 
 - Bugfix: Certain screenshots wouldn't work
+- Bugfix: Screenshots that don't work show black and purple squares
 - Added Layers: `gdutilsdevs.gdutils/MoreLeaderboards`
-- Fixed issues which caused rejected mod (good job, rod!)
+- Fixed issues which caused rejected mod (good job, rod!) - beta 1
 
 ![garage plus joke](omgrod.geodify/changelog1.png)
 
