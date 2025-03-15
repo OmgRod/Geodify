@@ -454,6 +454,12 @@
             "type": "bool",
             "default": true
         },
+        "lblazen.gdps_hub/GDPSHubLayer": {
+            "name": "GDPSHubLayer",
+            "description": "GDPSHubLayer",
+            "type": "bool",
+            "default": true
+        },
         "other-title": {
             "type": "title",
             "name": "Other"
