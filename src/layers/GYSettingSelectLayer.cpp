@@ -172,6 +172,7 @@ bool GYSettingSelectLayer::init() {
         GYModTile::create("Texture Workshop", "Uproxide", "uproxide.textures"),
         GYModTile::create("Geometry Dash: Odyssey", "chumiu", "teamtcm.geometry-dash-odyssey"),
         GYModTile::create("GDUtils", "Jouca & Firee", "gdutilsdevs.gdutils"),
+        GYModTile::create("GDPS Hub", "GDPS Hub Team & km7dev", "lblazen.gdps_hub"),
     };
 
     for (auto& tile : modTiles) {
