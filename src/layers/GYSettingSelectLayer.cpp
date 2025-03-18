@@ -237,7 +237,6 @@ bool GYSettingSelectLayer::init() {
     colorBtn->setID("color-button");
     leftMenu->addChild(colorBtn);
 
-    /*
     auto geodeLoopToggle = CCMenuItemExt::createToggler(
         CCSprite::createWithSpriteFrameName("GJ_fxOnBtn_001.png"),
         CCSprite::createWithSpriteFrameName("GJ_fxOffBtn_001.png"),
@@ -252,7 +251,6 @@ bool GYSettingSelectLayer::init() {
         }
     );
     leftMenu->addChild(geodeLoopToggle);
-    */
 
     CCMenuItemSpriteExtra* settingsBtn = CCMenuItemSpriteExtra::create(
         CircleButtonSprite::create(

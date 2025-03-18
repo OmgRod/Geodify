@@ -1,3 +1,8 @@
+# v2.1.2
+
+- Added GDPS Hub mod
+- Added ninXout menu loop
+
 # v2.1.1
 
 - Bugfix: Certain screenshots wouldn't work

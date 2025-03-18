@@ -1,7 +1,6 @@
 /// @todo: Fix this code - on Windows its fine, but on Android it bugs out.
 /// I'm not going to work on this right now, but I'll leave it here for future reference. (@OmgRod)
 
-/*
 #include <Geode/Geode.hpp>
 #include <Geode/modify/FMODAudioEngine.hpp>
 
@@ -21,4 +20,3 @@ public:
         FMODAudioEngine::playMusic(name, shouldLoop, fadeInTime, channel);
     }
 };
-*/
