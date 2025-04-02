@@ -1,7 +1,7 @@
 # v2.1.2
 
 - Added GDPS Hub mod
-- Added ninXout menu loop
+- Added iOS support
 
 # v2.1.1
 

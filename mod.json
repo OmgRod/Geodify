@@ -13,10 +13,6 @@
     "description": "Converts most backgrounds to Geode's background (SwelvyBG).",
     "early-load": true,
     "resources": {
-        "files": [
-            "res/layers.json",
-            "res/loops/*"
-        ],
         "sprites": [
             "res/*.png",
             "res/joke/*.png"
