@@ -4,4 +4,16 @@
 
 using namespace geode::prelude;
 
-SET_SWELVY(GDPSHubLayer, "lblazen.gdps_hub/GDPSHubLayer", "background");
+class $nodeModify(MyGDPSHubLayer, GDPSHubLayer) {
+    void modify() {
+        if (Mod::get()->getSettingValue<bool>("lblazen.gdps_hub/GDPSHubLayer")) {
+            if (auto bg = this->getChildByID("background")) {
+                bg->setVisible(false);
+                this->getChildByID("swelvy-node")->setVisible(false);
+                SwelvyBG* swelvyBG = SwelvyBG::create();
+                swelvyBG->setZOrder(bg->getZOrder() - 1);
+                this->addChild(swelvyBG);
+            }
+        }
+    }
+};

@@ -1,3 +1,7 @@
+# v2.1.3
+
+- Fixed GDPS Hub background
+
 # v2.1.2
 
 - Added GDPS Hub mod
