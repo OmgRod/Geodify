@@ -3,6 +3,7 @@
 #include <Geode/ui/GeodeUI.hpp>
 #include <Geode/ui/BasedButtonSprite.hpp>
 #include <Geode/utils/cocos.hpp>
+#include <Geode/loader/Loader.hpp>
 #include <filesystem>
 #include <fstream>
 #include <map>
@@ -12,7 +13,6 @@
 #include "GYColorPopup.hpp"
 #include "GYModTile.hpp"
 #include "../SwelvyBG.hpp"
-#include "../json.hpp"
 
 /*
 
@@ -155,28 +155,31 @@ bool GYSettingSelectLayer::init() {
                 ->setGap(10.f);
     contentLayer->setLayout(columnLayout);
 
-    auto modTiles = { 
-        GYModTile::create("Geometry Dash", "RobTop", "gd"),
-        GYModTile::create("Geode", "Geode Team", "geode.loader"),
-        GYModTile::create("BetterInfo", "Cvolton", "cvolton.betterinfo"),
-        GYModTile::create("Globed", "dankmeme", "dankmeme.globed2"),
-        GYModTile::create("Texture Loader", "Geode Team", "geode.texture-loader"),
-        GYModTile::create("Integrated Demonlist", "hiimjustin000", "hiimjustin000.integrated_demonlist"),
-        GYModTile::create("GDPS Switcher", "km7dev", "km7dev.gdps-switcher"),
-        GYModTile::create("BetterAchievements", "limegradient", "limegradient.betterachievements"),
-        GYModTile::create("GDDP Integration", "Minemaker0430", "minemaker0430.gddp_integration"),
-        GYModTile::create("Garage Plus", "OmgRod", "omgrod.garage_plus"),
-        // GYModTile::create("GDStream", "OmgRod", "omgrod.gdstream"),
-        GYModTile::create("Geodify", "OmgRod & Cosmella-v", "omgrod.geodify"),
-        // GYModTile::create("Newgrounds Explorer", "TheSillyDoggo", "thesillydoggo.newgrounds_explorer"),
-        GYModTile::create("Texture Workshop", "Uproxide", "uproxide.textures"),
-        GYModTile::create("Geometry Dash: Odyssey", "chumiu", "teamtcm.geometry-dash-odyssey"),
-        GYModTile::create("GDUtils", "Jouca & Firee", "gdutilsdevs.gdutils"),
-        GYModTile::create("GDPS Hub", "GDPS Hub Team & km7dev", "lblazen.gdps_hub"),
+    // Mods data
+    std::vector<std::tuple<std::string, std::string, std::string>> modData = {
+        { "Geometry Dash", "RobTop", "gd" },
+        { "Geode", "Geode Team", "geode.loader" },
+        { "BetterInfo", "Cvolton", "cvolton.betterinfo" },
+        { "Globed", "dankmeme", "dankmeme.globed2" },
+        { "Texture Loader", "Geode Team", "geode.texture-loader" },
+        { "Integrated Demonlist", "hiimjustin000", "hiimjustin000.integrated_demonlist" },
+        { "GDPS Switcher", "km7dev", "km7dev.gdps-switcher" },
+        { "BetterAchievements", "limegradient", "limegradient.betterachievements" },
+        { "GDDP Integration", "Minemaker0430", "minemaker0430.gddp_integration" },
+        { "Garage Plus", "OmgRod", "omgrod.garage_plus" },
+        { "GDStream", "OmgRod", "omgrod.gdstream" },
+        { "Geodify", "OmgRod & Cosmella-v", "omgrod.geodify" },
+        { "Newgrounds Explorer", "TheSillyDoggo", "thesillydoggo.newgrounds_explorer" },
+        { "Texture Workshop", "Uproxide", "uproxide.textures" },
+        { "Geometry Dash: Odyssey", "chumiu", "teamtcm.geometry-dash-odyssey" },
+        { "GDUtils", "Jouca & Firee", "gdutilsdevs.gdutils" },
+        { "GDPS Hub", "GDPS Hub Team & km7dev", "lblazen.gdps_hub" },
     };
 
-    for (auto& tile : modTiles) {
-        contentLayer->addChild(tile);
+    for (const auto& [name, author, id] : modData) {
+        if (Loader::get()->isModLoaded(id) || id == "gd") {
+            contentLayer->addChild(GYModTile::create(name, author, id));
+        }
     }
 
     auto updateContentSize = [&](CCLayer* layer) {
@@ -273,111 +276,10 @@ bool GYSettingSelectLayer::init() {
         leftMenu->addChild(settingsLabel);
     }
 
-    GYSettingSelectLayer::generateModsList();
-
     scroll->moveToTop();
 
     this->addChild(leftMenu);
     this->addChild(menu);
     
-    return true;
-}
-
-void GYSettingSelectLayer::generateWrapper(CCObject* sender) {
-    generateModsList();
-}
-
-bool GYSettingSelectLayer::generateModsList() {
-    std::filesystem::path filePath = Mod::get()->getResourcesDir() / "layers.json";
-
-    if (!std::filesystem::exists(filePath)) {
-        log::error("File does not exist at path: {}", filePath.string());
-        return false;
-    }
-
-    std::string filePathStr = filePath.string();
-    log::info("Reading file from: {}", filePathStr);
-
-    std::ifstream file(filePathStr);
-    if (!file.is_open()) {
-        log::error("Failed to open the file: {}", filePathStr);
-        return false;
-    }
-
-    std::string fileContent((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
-    file.close();
-    log::info("File content: {}", fileContent);
-
-    nlohmann::json jsonData;
-    try {
-        jsonData = nlohmann::json::parse(fileContent);
-    } catch (const nlohmann::json::parse_error& err) {
-        log::error("Failed to parse JSON: {}", err.what());
-        return false;
-    }
-
-    if (!jsonData.contains("mods") || !jsonData["mods"].is_object()) {
-        log::error("Invalid JSON structure: 'mods' key not found or not an object");
-        return false;
-    }
-
-    const auto& modsData = jsonData["mods"];
-    std::map<std::string, std::pair<std::string, std::string>> modsMap;
-
-    for (auto it = modsData.begin(); it != modsData.end(); ++it) {
-        const std::string modID = it.key();
-        const auto& modInfo = it.value();
-
-        if (!modInfo.contains("name") || !modInfo["name"].is_string() ||
-            !modInfo.contains("author") || !modInfo["author"].is_string()) {
-            log::error("Invalid mod entry: Missing 'name' or 'author' in mod '{}'", modID);
-            continue;
-        }
-
-        std::string modName = modInfo["name"];
-        std::string modAuthor = modInfo["author"];
-        modsMap[modID] = { modName, modAuthor };
-    }
-
-    log::info("Extracted Mods Map:");
-    for (const auto& [modID, modInfo] : modsMap) {
-        log::info("- Mod ID: {}, Name: {}, Author: {}", modID, modInfo.first, modInfo.second);
-    }
-
-    if (jsonData.contains("layers") && jsonData["layers"].is_object()) {
-        const auto& layersData = jsonData["layers"];
-        log::info("Layers Info:");
-        for (auto it = layersData.begin(); it != layersData.end(); ++it) {
-            const std::string layerID = it.key();
-            const auto& layerInfo = it.value();
-
-            if (!layerInfo.contains("name") || !layerInfo["name"].is_string() ||
-                !layerInfo.contains("mod") || !layerInfo["mod"].is_string()) {
-                log::error("Invalid layer entry: Missing 'name' or 'mod' in layer '{}'", layerID);
-                continue;
-            }
-
-            std::string layerName = layerInfo["name"];
-            std::string modID = layerInfo["mod"];
-
-            log::info("Layer ID: {}, Name: {}, Mod: {}", layerID, layerName, modID);
-
-            if (modsMap.find(modID) != modsMap.end()) {
-                log::info("  - Linked Mod Name: {}, Author: {}", modsMap[modID].first, modsMap[modID].second);
-            } else {
-                log::warn("  - Mod ID '{}' not found in mods list", modID);
-            }
-        }
-    } else {
-        log::warn("No valid 'layers' data found in JSON");
-    }
-
-    ScrollLayer* scroll = typeinfo_cast<ScrollLayer*>(this->getChildByID("content-box")->getChildByID("scroll"));
-    if (!scroll) {
-        log::error("Failed to cast content-box->scroll to ScrollLayer");
-        return false;
-    }
-    scroll->m_contentLayer->updateLayout();
-
     return true;
 }

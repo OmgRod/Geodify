@@ -1,3 +1,9 @@
+# v2.1.4
+
+- Settings menu now only shows settings for loaded mods. If there are any issues with this mod, disable the settings in the full settings popup.
+- Changed GDPS Hub background.
+- GDPS Hub background modify now disabled by default.
+
 # v2.1.3
 
 - Fixed GDPS Hub background

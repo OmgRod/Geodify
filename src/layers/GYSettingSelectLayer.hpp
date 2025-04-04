@@ -13,7 +13,5 @@ public:
     void settingsBtn(CCObject* sender);
     void colorPopup(CCObject* sender);
     void backWrapper(CCObject* sender);
-    void generateWrapper(CCObject* sender);
     void openNormalSettings(CCObject* sender);
-    bool generateModsList();
 };
