@@ -1,6 +1,7 @@
 # v2.1.3
 
 - Fixed GDPS Hub background
+- Fixed menu loop being silent
 
 # v2.1.2
 

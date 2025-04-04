@@ -237,20 +237,20 @@ bool GYSettingSelectLayer::init() {
     colorBtn->setID("color-button");
     leftMenu->addChild(colorBtn);
 
-    auto geodeLoopToggle = CCMenuItemExt::createToggler(
-        CCSprite::createWithSpriteFrameName("GJ_fxOnBtn_001.png"),
-        CCSprite::createWithSpriteFrameName("GJ_fxOffBtn_001.png"),
-        [&](CCMenuItemToggler* toggler) {
-            auto fmod = FMODAudioEngine::sharedEngine();
-            if (toggler->isOn()) {
-                Mod::get()->setSettingValue("menu-loop", false);
-            } else {
-                Mod::get()->setSettingValue("menu-loop", true);
-            }
-            fmod->playMusic("menuLoop.mp3", true, 0.5f, 1.0f);
-        }
-    );
-    leftMenu->addChild(geodeLoopToggle);
+    // auto geodeLoopToggle = CCMenuItemExt::createToggler(
+    //     CCSprite::createWithSpriteFrameName("GJ_fxOnBtn_001.png"),
+    //     CCSprite::createWithSpriteFrameName("GJ_fxOffBtn_001.png"),
+    //     [&](CCMenuItemToggler* toggler) {
+    //         auto fmod = FMODAudioEngine::sharedEngine();
+    //         if (toggler->isOn()) {
+    //             Mod::get()->setSettingValue("menu-loop", false);
+    //         } else {
+    //             Mod::get()->setSettingValue("menu-loop", true);
+    //         }
+    //         fmod->playMusic("menuLoop.mp3", true, 0.5f, 1.0f);
+    //     }
+    // );
+    // leftMenu->addChild(geodeLoopToggle);
 
     CCMenuItemSpriteExtra* settingsBtn = CCMenuItemSpriteExtra::create(
         CircleButtonSprite::create(
