@@ -1,3 +1,8 @@
+# v2.1.5
+
+- Added GDCP List Integration mod
+- Added missing preview images
+
 # v2.1.4
 
 - Settings menu now only shows settings for loaded mods. If there are any issues with this mod, disable the settings in the full settings popup.
