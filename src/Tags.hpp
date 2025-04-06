@@ -73,7 +73,8 @@ public:
             {"gdutilsdevs.gdutils-MoreLeaderboards", 57},
             {"teamtcm.geometry-dash-odyssey-GJShopLayer-Carp", 58},
             {"cvolton.betterinfo-LeaderboardViewLayer", 59},
-{"lblazen.gdps_hub-GDPSHubLayer", 60}
+            {"lblazen.gdps_hub-GDPSHubLayer", 60},
+            {"gdcpteam.challenge-list-GDCPListLayer", 61}
         };
 
         log::debug("Tag map populated with {} entries.", m_tagMap.size());
@@ -140,7 +141,8 @@ public:
             {57, "gdutilsdevs.gdutils-MoreLeaderboards"},
             {58, "teamtcm.geometry-dash-odyssey-GJShopLayer-Carp"},
             {59, "cvolton.betterinfo-LeaderboardViewLayer"},
-{60, "lblazen.gdps_hub-GDPSHubLayer"}
+            {60, "lblazen.gdps_hub-GDPSHubLayer"},
+            {61, "gdcpteam.challenge-list-GDCPListLayer"}
         };
 
         log::debug("String map populated with {} entries.", m_stringMap.size());

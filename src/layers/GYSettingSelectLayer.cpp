@@ -173,7 +173,8 @@ bool GYSettingSelectLayer::init() {
         { "Texture Workshop", "Uproxide", "uproxide.textures" },
         { "Geometry Dash: Odyssey", "chumiu", "teamtcm.geometry-dash-odyssey" },
         { "GDUtils", "Jouca & Firee", "gdutilsdevs.gdutils" },
-        { "GDPS Hub", "GDPS Hub Team & km7dev", "lblazen.gdps_hub" },
+        { "GDPS Hub", "GDPS Hub Team + 2 more", "lblazen.gdps_hub" },
+        { "GDCP List Integration", "GDCP Team + 2 more", "gdcpteam.challenge-list" },
     };
 
     for (const auto& [name, author, id] : modData) {

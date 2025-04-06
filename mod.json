@@ -457,6 +457,12 @@
             "type": "bool",
             "default": false
         },
+        "gdcpteam.challenge-list/GDCPListLayer": {
+            "name": "GDCPListLayer",
+            "description": "GDCPListLayer",
+            "type": "bool",
+            "default": true
+        },
         "other-title": {
             "type": "title",
             "name": "Other"
