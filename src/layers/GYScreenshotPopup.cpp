@@ -23,65 +23,31 @@ bool GYScreenshotPopup::setup(int const& layer) {
 
     std::string URL = fmt::format("https://raw.githubusercontent.com/OmgRod/Geodify/master/previews/{}Preview.png", layerName);
 
-    auto req = web::WebRequest();
-    m_downloadListener.bind([this](web::WebTask::Event* e) {
-        if (auto res = e->getValue()) {
-            if (!res->ok()) {
-                log::error("Failed to download image from URL.");
-                onDownloadFail();
-            } else {
-                auto data = res->data();
-                std::thread imageThread = std::thread([data, this]() {
-                    m_image = new CCImage();
-                    m_image->autorelease();
-                    m_image->initWithImageData(const_cast<uint8_t*>(data.data()), data.size());
-                    geode::Loader::get()->queueInMainThread([this]() {
-                        imageCreationFinished(m_image);
-                    });
-                });
-                imageThread.detach();
-            }
+    CCSize spriteTargetSize{
+        m_mainLayer->getContentSize().width * 0.75f,
+        m_mainLayer->getContentSize().height * 0.75f
+    };
+
+    m_sprite = LazySprite::create(spriteTargetSize);
+    m_sprite->setAutoResize(true);
+    m_sprite->setLoadCallback([this](Result<> res) {
+        if (!res) {
+            log::error("Failed to load image: {}", res.unwrapErr());
+            onDownloadFail();
         }
     });
-    m_downloadListener.setFilter(req.get(URL));
+
+    m_sprite->loadFromUrl(URL);
+    m_mainLayer->addChildAtPosition(m_sprite, Anchor::Center);
 
     return true;
 }
 
-void GYScreenshotPopup::imageCreationFinished(CCImage* image) {
-    CCTexture2D* texture = new CCTexture2D();
-    texture->autorelease();
-    texture->initWithImage(image);
-
-    m_sprite = CCSprite::createWithTexture(texture);
-    if (m_sprite) {
-        auto maxWidth = m_mainLayer->getContentSize().width * 0.75f;
-        auto maxHeight = m_mainLayer->getContentSize().height * 0.75f;
-
-        auto spriteWidth = m_sprite->getContentSize().width;
-        auto spriteHeight = m_sprite->getContentSize().height;
-
-        float scale = std::min(maxWidth / spriteWidth, maxHeight / spriteHeight);
-        m_sprite->setScale(scale);
-
-        m_mainLayer->addChildAtPosition(m_sprite, Anchor::Center);
-    }
-}
-
 void GYScreenshotPopup::onDownloadFail() {
-    CCSprite* fallbackSprite = CCSprite::create("noPreview.png"_spr);
-    if (fallbackSprite) {
-        auto maxWidth = m_mainLayer->getContentSize().width * 0.75f;
-        auto maxHeight = m_mainLayer->getContentSize().height * 0.75f;
+    if (!m_sprite) return;
 
-        auto spriteWidth = fallbackSprite->getContentSize().width;
-        auto spriteHeight = fallbackSprite->getContentSize().height;
-
-        float scale = std::min(maxWidth / spriteWidth, maxHeight / spriteHeight);
-        fallbackSprite->setScale(scale);
-
-        m_mainLayer->addChildAtPosition(fallbackSprite, Anchor::Center);
-    }
+    m_sprite->initWithSpriteFrameName("noPreview.png"_spr);
+    m_sprite->setScale(1.0f);
 }
 
 std::string GYScreenshotPopup::extractLastSegment(const std::string& input) {

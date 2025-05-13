@@ -1,7 +1,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/ui/GeodeUI.hpp>
 #include <Geode/Loader.hpp>
-#include "Geode/modify/Modify.hpp"
 #include "layers/GYSettingSelectLayer.hpp"
 
 using namespace geode::prelude;
