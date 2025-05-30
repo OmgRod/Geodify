@@ -1,3 +1,9 @@
+# v2.2.1
+
+- Changed all default modded layer settings to false
+
+> ok ery, you win...
+
 # v2.2.0
 
 - Added GDCP List Integration mod

@@ -1,4 +1,5 @@
 # Geodify
+
 A mod made to to change most menus' backgrounds to the Geode one 
 
 <img src="logo.png" width="150" alt="Logo" />
@@ -62,7 +63,6 @@ class $modify(MyCreatorLayer, CreatorLayer) {
 };
 ```
 
-
 ### External Mods
 
 For external mods that modify the background of a specific menu, you can use the following example. This shows how to hook into `GlobedLevelListLayer` to add a custom background.
@@ -75,7 +75,6 @@ For external mods that modify the background of a specific menu, you can use the
 using namespace geode::prelude;
 
 SET_SWELVY(GlobedLevelListLayer /* Layer Name */, "dankmeme.globed2/GlobedLevelListLayer" /* Setting name - please keep in this format */, "background" /* Background Node ID */);
-
 ```
 
 If the layer you're attempting to hook doesnt have an ID for its background, use `SET_SWELVY_SPRITE`.
@@ -88,7 +87,6 @@ If the layer you're attempting to hook doesnt have an ID for its background, use
 using namespace geode::prelude;
 
 SET_SWELVY_SPRITE(GlobedLevelListLayer /* Layer Name */, "dankmeme.globed2/GlobedLevelListLayer" /* Setting name - please keep in this format */);
-
 ```
 
 This way is new from v2.0.0+!

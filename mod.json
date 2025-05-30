@@ -263,193 +263,193 @@
             "name": "CustomCreatorLayer",
             "description": "CustomCreatorLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "cvolton.betterinfo/DailyViewLayer": {
             "name": "DailyViewLayer",
             "description": "DailyViewLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "cvolton.betterinfo/LevelSearchViewLayer": {
             "name": "LevelSearchViewLayer",
             "description": "LevelSearchViewLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "cvolton.betterinfo/RewardGroupLayer": {
             "name": "RewardGroupLayer",
             "description": "RewardGroupLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "cvolton.betterinfo/RewardViewLayer": {
             "name": "RewardViewLayer",
             "description": "RewardViewLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "cvolton.betterinfo/LeaderboardViewLayer": {
             "name": "LeaderboardViewLayer",
             "description": "LeaderboardViewLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "dankmeme.globed2/GlobedLevelListLayer": {
             "name": "GlobedLevelListLayer",
             "description": "GlobedLevelListLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "dankmeme.globed2/GlobedMenuLayer": {
             "name": "GlobedMenuLayer",
             "description": "GlobedMenuLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "dankmeme.globed2/GlobedServersLayer": {
             "name": "GlobedServersLayer",
             "description": "GlobedServersLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "dankmeme.globed2/GlobedSettingsLayer": {
             "name": "GlobedSettingsLayer",
             "description": "GlobedSettingsLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "geode.loader/ModsLayer": {
             "name": "ModsLayer",
             "description": "ModsLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "geode.texture-loader/PackSelectLayer": {
             "name": "PackSelectLayer",
             "description": "PackSelectLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "hiimjustin000.integrated_demonlist/IDListLayer": {
             "name": "IDListLayer",
             "description": "IDListLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "hiimjustin000.integrated_demonlist/IDPackLayer": {
             "name": "IDPackLayer",
             "description": "IDPackLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "km7dev.gdps-switcher/ServerSwitchLayer": {
             "name": "ServerSwitchLayer",
             "description": "ServerSwitchLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "limegradient.betterachievements/BetterAchievementLayer": {
             "name": "BetterAchievementLayer",
             "description": "BetterAchievementLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "minemaker0430.gddp_integration/DPLayer": {
             "name": "DPLayer",
             "description": "DPLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "minemaker0430.gddp_integration/DPListLayer": {
             "name": "DPListLayer",
             "description": "DPListLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "minemaker0430.gddp_integration/DPSearchLayer": {
             "name": "DPSearchLayer",
             "description": "DPSearchLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "minemaker0430.gddp_integration/RecommendedLayer": {
             "name": "RecommendedLayer",
             "description": "RecommendedLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "minemaker0430.gddp_integration/RouletteSafeLayer": {
             "name": "RouletteSafeLayer",
             "description": "RouletteSafeLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "omgrod.garage_plus/GPFeedbackLayer": {
             "name": "GPFeedbackLayer",
             "description": "GPFeedbackLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "omgrod.garage_plus/GPKofiLayer": {
             "name": "GPKofiLayer",
             "description": "GPKofiLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "omgrod.gdstream/StreamCreatorLayer": {
             "name": "StreamCreatorLayer",
             "description": "StreamCreatorLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "omgrod.gdstream/StreamLayer": {
             "name": "StreamLayer",
             "description": "StreamLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "thesillydoggo.newgrounds_explorer/NewgroundsBrowserLayer": {
             "name": "NewgroundsBrowserLayer",
             "description": "NewgroundsBrowserLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "uproxide.textures/TextureWorkshopLayer": {
             "name": "TextureWorkshopLayer",
             "description": "TextureWorkshopLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "omgrod.geodify/GYSettingSelectLayer": {
             "name": "GYSettingSelectLayer",
             "description": "GYSettingSelectLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "teamtcm.geometry-dash-odyssey/OdysseyComicLayer": {
             "name": "OdysseyComicLayer",
             "description": "OdysseyComicLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "teamtcm.geometry-dash-odyssey/OdysseySelectLayer": {
             "name": "OdysseySelectLayer",
             "description": "OdysseySelectLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "teamtcm.geometry-dash-odyssey/GJShopLayer-Carp": {
             "name": "Carp Shop",
             "description": "GJShopLayer-Carp",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "gdutilsdevs.gdutils/MoreLeaderboards": {
             "name": "MoreLeaderboards",
             "description": "MoreLeaderboards",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "lblazen.gdps_hub/GDPSHubLayer": {
             "name": "GDPSHubLayer",
@@ -461,7 +461,7 @@
             "name": "GDCPListLayer",
             "description": "GDCPListLayer",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "other-title": {
             "type": "title",
