@@ -1,6 +1,7 @@
 # v2.2.1
 
 - Changed all default modded layer settings to false
+- Switched to `LazySprite`
 
 > ok ery, you win...
 
