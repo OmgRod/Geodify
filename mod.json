@@ -6,7 +6,7 @@
         "mac": "2.2074",
         "ios": "2.2074"
     },
-    "version": "v2.2.1",
+    "version": "v2.3.0",
     "id": "omgrod.geodify",
     "name": "Geodify",
     "developers": ["OmgRod", "Cosmella-v"],
@@ -460,6 +460,30 @@
         "gdcpteam.challenge-list/GDCPListLayer": {
             "name": "GDCPListLayer",
             "description": "GDCPListLayer",
+            "type": "bool",
+            "default": false
+        },
+        "alphalaneous.random_tab/RandomLayer": {
+            "name": "RandomLayer",
+            "description": "RandomLayer",
+            "type": "bool",
+            "default": false
+        },
+        "omgrod.geometry-dash-surge/GDSBasementLayer": {
+            "name": "GDSBasementLayer",
+            "description": "GDSBasementLayer",
+            "type": "bool",
+            "default": false
+        },
+        "omgrod.geometry-dash-surge/GDSIslandSelectLayer": {
+            "name": "GDSIslandSelectLayer",
+            "description": "GDSIslandSelectLayer",
+            "type": "bool",
+            "default": false
+        },
+        "omgrod.geometry-dash-surge/GDSCreditsLayer": {
+            "name": "GDSCreditsLayer",
+            "description": "GDSCreditsLayer",
             "type": "bool",
             "default": false
         },

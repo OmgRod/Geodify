@@ -175,6 +175,8 @@ bool GYSettingSelectLayer::init() {
         { "GDUtils", "Jouca & Firee", "gdutilsdevs.gdutils" },
         { "GDPS Hub", "GDPS Hub Team + 2 more", "lblazen.gdps_hub" },
         { "GDCP List Integration", "GDCP Team + 2 more", "gdcpteam.challenge-list" },
+        { "Random Tab", "Alphalaneous", "alphalaneous.random_tab" },
+        { "Geometry Dash: Surge", "OmgRod", "omgrod.geometry-dash-surge" },
     };
 
     for (const auto& [name, author, id] : modData) {

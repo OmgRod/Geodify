@@ -1,3 +1,8 @@
+# v2.3.0
+
+- Add `alphalaneous.random_tab` mod
+- Add `omgrod.geometry-dash-surge` mod (mod coming soon...)
+
 # v2.2.1
 
 - Changed all default modded layer settings to false
