@@ -74,7 +74,11 @@ public:
             {"teamtcm.geometry-dash-odyssey-GJShopLayer-Carp", 58},
             {"cvolton.betterinfo-LeaderboardViewLayer", 59},
             {"lblazen.gdps_hub-GDPSHubLayer", 60},
-            {"gdcpteam.challenge-list-GDCPListLayer", 61}
+            {"gdcpteam.challenge-list-GDCPListLayer", 61},
+            {"alphalaneous.random_tab-RandomLayer", 62},
+            {"omgrod.geometry-dash-surge-GDSIslandSelectLayer", 63},
+            {"omgrod.geometry-dash-surge-GDSBasementLayer", 64},
+            {"omgrod.geometry-dash-surge-GDSCreditsLayer", 65},
         };
 
         log::debug("Tag map populated with {} entries.", m_tagMap.size());
@@ -142,7 +146,11 @@ public:
             {58, "teamtcm.geometry-dash-odyssey-GJShopLayer-Carp"},
             {59, "cvolton.betterinfo-LeaderboardViewLayer"},
             {60, "lblazen.gdps_hub-GDPSHubLayer"},
-            {61, "gdcpteam.challenge-list-GDCPListLayer"}
+            {61, "gdcpteam.challenge-list-GDCPListLayer"},
+            {62, "alphalaneous.random_tab-RandomLayer"},
+            {63, "omgrod.geometry-dash-surge-GDSIslandSelectLayer"},
+            {64, "omgrod.geometry-dash-surge-GDSBasementLayer"},
+            {65, "omgrod.geometry-dash-surge-GDSCreditsLayer"},
         };
 
         log::debug("String map populated with {} entries.", m_stringMap.size());
