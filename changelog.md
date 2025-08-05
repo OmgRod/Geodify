@@ -1,3 +1,7 @@
+# v2.3.1
+
+- Bugfix: Clicking the settings button with Happy Textures installed crashes the game.
+
 # v2.3.0
 
 - Add `alphalaneous.random_tab` mod
