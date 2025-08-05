@@ -1,6 +1,7 @@
 # v2.3.1
 
 - Bugfix: Clicking the settings button with Happy Textures installed crashes the game.
+- btw thanks guys for 200k downloads
 
 # v2.3.0
 
