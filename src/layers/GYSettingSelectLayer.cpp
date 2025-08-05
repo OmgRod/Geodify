@@ -50,17 +50,7 @@ GYSettingSelectLayer* GYSettingSelectLayer::create() {
 }
 
 void GYSettingSelectLayer::settingsBtn(CCObject* sender) {
-    auto scene = CCScene::create();
-    GYSettingSelectLayer* ret = new GYSettingSelectLayer();
-    // Everything after this is not compiled
-    if (ret && ret->init()) {
-        ret->autorelease();
-    }
-    delete ret;
-    ret = nullptr;
-    scene->addChild(GYSettingSelectLayer::create());
-    auto scenePrev = CCTransitionFade::create(0.5f, scene);
-    CCDirector::sharedDirector()->pushScene(scenePrev);
+    CCDirector::sharedDirector()->pushScene(CCTransitionFade::create(0.5f, GYSettingSelectLayer::scene()));
 }
 
 void GYSettingSelectLayer::colorPopup(CCObject* sender) {
