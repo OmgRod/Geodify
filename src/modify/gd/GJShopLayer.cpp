@@ -1,15 +1,15 @@
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
 #include <Geode/modify/GJShopLayer.hpp>
-#include <alphalaneous.alphas_geode_utils/include/NodeModding.h>
+#include <alphalaneous.alphas_geode_utils/include/ObjectModify.hpp>
 
 using namespace geode::prelude;
 
-ADD_TAG("gd-GJShopLayer-Normal")	
-ADD_TAG("gd-GJShopLayer-Secret")	
-ADD_TAG("gd-GJShopLayer-Community")	
-ADD_TAG("gd-GJShopLayer-Mechanic")	
-ADD_TAG("gd-GJShopLayer-Diamond")	
+ADD_TAG("gd-GJShopLayer-Normal");	
+ADD_TAG("gd-GJShopLayer-Secret");	
+ADD_TAG("gd-GJShopLayer-Community");	
+ADD_TAG("gd-GJShopLayer-Mechanic");	
+ADD_TAG("gd-GJShopLayer-Diamond");	
 
 class $modify(MyGJShopLayer, GJShopLayer) {
     bool init(ShopType p0) {

@@ -3,7 +3,7 @@
 #include <Geode/modify/LevelListLayer.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("gd-LevelListLayer")
+ADD_TAG("gd-LevelListLayer");
 class $modify(MyLevelListLayer, LevelListLayer) {
 	bool init(GJLevelList* list) {
 		if (!LevelListLayer::init(list)) {

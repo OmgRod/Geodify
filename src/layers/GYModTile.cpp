@@ -27,11 +27,11 @@ bool GYModTile::init(std::string modName, std::string modAuthor, std::string mod
     
     geode::Mod* mod = nullptr;
     if (modID != "gd") {
-        geode::Mod* mod = Loader::get()->getLoadedMod(modID);
+        mod = Loader::get()->getLoadedMod(modID);
     }
-    this->m_modID = mod ? mod->getID() : modID;
-    this->m_modName = mod ? mod->getName() : modName;
-    this->m_modAuthor = mod ? mod->getMetadataRef().formatDeveloperDisplayString(mod->getDevelopers()) : modAuthor;
+    this->m_modID = mod ? std::string(mod->getID()) : modID;
+    this->m_modName = mod ? std::string(mod->getName()) : modName;
+    this->m_modAuthor = mod ? ModMetadata::formatDeveloperDisplayString(mod->getDevelopers()) : modAuthor;
     setMouseEnabled(true);
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();

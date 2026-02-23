@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Geode/ui/General.hpp>
+#include <alphalaneous.alphas_geode_utils/include/ObjectModify.hpp>
 
 using namespace geode::prelude;
 #include "Tags.hpp"
@@ -8,11 +9,11 @@ using namespace geode::prelude;
 class $nodeModify(my##layer, layer) {\
     void modify() {\
         if (Mod::get()->getSettingValue<bool>(setting)) {\
-            if (auto bg = getChildByID(backgroundID)) {\
+            if (auto bg = this->getChildByID(backgroundID)) {\
                 bg->setVisible(false);\
                 SwelvyBG* swelvyBG = SwelvyBG::create();\
                 swelvyBG->setZOrder(-999);\
-                addChild(swelvyBG);\
+                this->addChild(swelvyBG);\
             }\
         }\
     }\
@@ -22,11 +23,11 @@ class $nodeModify(my##layer, layer) {\
 class $nodeModify(my##layer, layer) {\
     void modify() {\
         if (Mod::get()->getSettingValue<bool>(setting)) {\
-            if (auto bg = getChildByType<CCSprite>(0)) {\
+            if (auto bg = this->template getChildByType<CCSprite>(0)) {\
                 bg->setVisible(false);\
                 SwelvyBG* swelvyBG = SwelvyBG::create();\
                 swelvyBG->setZOrder(-999);\
-                addChild(swelvyBG);\
+                this->addChild(swelvyBG);\
             }\
         }\
     }\

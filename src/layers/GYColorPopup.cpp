@@ -27,10 +27,12 @@ void GYColorPopup::onApply(CCObject* sender) {
     }
 }
 
-bool GYColorPopup::setup() {
-    this->setTitle("Color Settings");
-
+bool GYColorPopup::init() {
     auto winSize = CCDirector::sharedDirector()->getWinSize();
+    
+    if (!Popup::init(winSize.width * 0.75f, winSize.height * 0.75f)) return false;
+
+    this->setTitle("Color Settings");
 
     auto layerSize = CCSize(winSize.width * 0.75f, winSize.height * 0.75f);
 
@@ -85,7 +87,7 @@ GYColorPopup* GYColorPopup::create() {
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();
     
-    if (ret->initAnchored(winSize.width * 0.75f, winSize.height * 0.75f, "GJ_square01.png")) {
+    if (ret->init()) {
         ret->autorelease();
         return ret;
     }

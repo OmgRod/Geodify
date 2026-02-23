@@ -3,7 +3,7 @@
 #include <Geode/modify/LoadingLayer.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("gd-LoadingLayer")
+ADD_TAG("gd-LoadingLayer");
 class $modify(MyLoadingLayer, LoadingLayer) {
 	bool init(bool p0) {
 		if (!LoadingLayer::init(p0)) {

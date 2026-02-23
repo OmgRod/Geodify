@@ -1,6 +1,11 @@
 #include "GYScreenshotPopup.hpp"
+#include "../Tags.hpp"
 
-bool GYScreenshotPopup::setup(int const& layer) {
+bool GYScreenshotPopup::init(int const& layer) {
+    auto winSize = CCDirector::sharedDirector()->getWinSize();
+
+    if (!Popup::init(winSize.width * .6f, winSize.height * .7f)) return false;
+
     Tags tags;
     auto layerName = tags.getStringFromTag(layer);
 
@@ -11,7 +16,6 @@ bool GYScreenshotPopup::setup(int const& layer) {
 
     std::string result = extractLastSegment(layerName);
 
-    auto winSize = CCDirector::sharedDirector()->getWinSize();
     if (!m_mainLayer) {
         log::error("m_mainLayer is not initialized");
         return false;
@@ -61,7 +65,7 @@ std::string GYScreenshotPopup::extractLastSegment(const std::string& input) {
 GYScreenshotPopup* GYScreenshotPopup::create(int const& text) {
     auto ret = new GYScreenshotPopup();
     auto winSize = CCDirector::sharedDirector()->getWinSize();
-    if (ret->initAnchored(winSize.width * .6f, winSize.height * .7f, text)) {
+    if (ret->init(text)) {
         ret->autorelease();
         return ret;
     }

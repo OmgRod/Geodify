@@ -5,15 +5,13 @@
 #include <Geode/ui/LazySprite.hpp>
 #include <string>
 
-#include "../Tags.hpp"
-
 using namespace geode::prelude;
 
-class GYScreenshotPopup : public geode::Popup<int const&> {
+class GYScreenshotPopup : public geode::Popup {
 protected:
     Ref<LazySprite> m_sprite;
 
-    bool setup(int const& layer) override;
+    bool init(int const& layer);
     void onDownloadFail();
 
 public:

@@ -1,9 +1,9 @@
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include <alphalaneous.alphas_geode_utils/include/NodeModding.h>
+#include <alphalaneous.alphas_geode_utils/include/ObjectModify.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("omgrod.garage_plus-StreamLayer")
+ADD_TAG("omgrod.garage_plus-StreamLayer");
 class $nodeModify(StreamLayer) {
     void modify() {
         if (Mod::get()->getSettingValue<bool>("omgrod.gdstream/StreamLayer")) {

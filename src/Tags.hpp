@@ -72,5 +72,6 @@ public:
                 Tags::addTag(name); \
             } \
         } __CONCAT(autoRegisterTag_, __LINE__); \
-    }
+    } \
+    static_assert(true, "")
 

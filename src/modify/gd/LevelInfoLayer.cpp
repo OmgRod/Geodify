@@ -3,7 +3,7 @@
 #include <Geode/modify/LevelInfoLayer.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("gd-LevelInfoLayer")
+ADD_TAG("gd-LevelInfoLayer");
 class $modify(MyLevelInfoLayer, LevelInfoLayer) {
 	bool init(GJGameLevel* level, bool challenge) {
 		if (!LevelInfoLayer::init(level, challenge)) {

@@ -3,7 +3,7 @@
 #include <Geode/modify/LevelBrowserLayer.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("gd-LevelBrowserLayer")
+ADD_TAG("gd-LevelBrowserLayer");
 class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 	bool init(GJSearchObject* p0) {
 		if (!LevelBrowserLayer::init(p0)) {

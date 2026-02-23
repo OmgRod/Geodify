@@ -46,7 +46,7 @@ using namespace geode::prelude;
 
 // This way is the new way to register a layer tag from v2.4.1+!
 // ADD_TAG is gd-LayerNameThing
-ADD_TAG("gd-CreatorLayer")
+ADD_TAG("gd-CreatorLayer");
 
 class $modify(MyCreatorLayer, CreatorLayer) {
 	bool init() {
@@ -76,13 +76,13 @@ For external mods that modify the background of a specific menu, you can use the
 ```cpp
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include <alphalaneous.alphas_geode_utils/include/NodeModding.h>
+#include <alphalaneous.alphas_geode_utils/include/ObjectModify.hpp>
 
 using namespace geode::prelude;
 
 // This way is the new way to register a layer tag from v2.4.1+!
 // ADD_TAG is ModID-LayerNameThing
-ADD_TAG("dankmeme.globed2-GlobedLevelListLayer")
+ADD_TAG("dankmeme.globed2-GlobedLevelListLayer");
 
 SET_SWELVY(GlobedLevelListLayer /* Layer Name */, "dankmeme.globed2/GlobedLevelListLayer" /* Setting name - please keep in this format */, "background" /* Background Node ID */);
 ```
@@ -92,12 +92,12 @@ If the layer you're attempting to hook doesnt have an ID for its background, use
 ```cpp
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include <alphalaneous.alphas_geode_utils/include/NodeModding.h>
+#include <alphalaneous.alphas_geode_utils/include/ObjectModify.hpp>
 
 using namespace geode::prelude;
 // This way is the new way to register a layer tag from v2.4.1+!
 // ADD_TAG is ModID-LayerNameThing
-ADD_TAG("dankmeme.globed2-GlobedLevelListLayer")
+ADD_TAG("dankmeme.globed2-GlobedLevelListLayer");
 
 SET_SWELVY_SPRITE(GlobedLevelListLayer /* Layer Name */, "dankmeme.globed2/GlobedLevelListLayer" /* Setting name - please keep in this format */);
 ```

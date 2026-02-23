@@ -5,11 +5,9 @@
 
 using namespace geode::prelude;
 
-$execute {
-    new EventListener<EventFilter<ModPopupUIEvent>>(+[](ModPopupUIEvent* event) {
-        if (event->getModID() == Mod::get()->getID()) {
-            auto popup = event->getPopup();
-            
+$on_mod(Loaded) {
+    auto listener = ModPopupUIEvent().listen([](FLAlertLayer* popup, std::string_view, std::optional<Mod*> mod) {
+        if (mod && mod.value()->getID() == Mod::get()->getID()) {
             if (popup) {
                 if (CCMenuItemSpriteExtra* btn = typeinfo_cast<CCMenuItemSpriteExtra*>(popup->getChildByIDRecursive("settings-button"))) {
                     btn->m_pfnSelector = menu_selector(GYSettingSelectLayer::settingsBtn);

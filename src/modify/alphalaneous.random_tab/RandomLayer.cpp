@@ -1,20 +1,20 @@
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include <alphalaneous.alphas_geode_utils/include/NodeModding.h>
+#include <alphalaneous.alphas_geode_utils/include/ObjectModify.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("alphalaneous.random_tab-RandomLayer")
+ADD_TAG("alphalaneous.random_tab-RandomLayer");
 class $nodeModify(MyRandomLayer, RandomLayer) {\
     void modify() {
         if (Mod::get()->getSettingValue<bool>("alphalaneous.random_tab/RandomLayer")) {
-            if (auto bg = getChildByType<CCSprite>(-1)) {
+            if (auto bg = this->template getChildByType<CCSprite>(-1)) {
                 bg->setVisible(false);
                 SwelvyBG* swelvyBG = SwelvyBG::create();
                 swelvyBG->setZOrder(-999);
-                addChild(swelvyBG);
+                this->addChild(swelvyBG);
 
                 for (int i = 0; i < 4; ++i) {
-                    if (auto newBg = getChildByType<CCScale9Sprite>(i)) {
+                    if (auto newBg = this->template getChildByType<CCScale9Sprite>(i)) {
                         newBg->setColor(ccColor3B{0, 0, 0});
                         newBg->setOpacity(60);
                     } else {

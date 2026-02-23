@@ -3,7 +3,7 @@
 #include <Geode/modify/UIOptionsLayer.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("gd-UIOptionsLayer")
+ADD_TAG("gd-UIOptionsLayer");
 class $modify(MyUIOptionsLayer, UIOptionsLayer) {
 	bool init(bool p0) {
 		if (!UIOptionsLayer::init(p0)) {
@@ -11,9 +11,8 @@ class $modify(MyUIOptionsLayer, UIOptionsLayer) {
 		}
 		if (Mod::get()->getSettingValue<bool>("gd/UIOptionsLayer")) {
 			int lowestZ = INT_MAX;
-			CCObject* obj = nullptr;
             auto layer = this->getChildByType<CCLayer*>(0);
-			CCARRAY_FOREACH(layer->getChildren(), obj) {
+			for (auto obj : layer->getChildrenExt<CCNode*>()) {
 				if (auto node = typeinfo_cast<CCNode*>(obj)) {
 					lowestZ = std::min(lowestZ, node->getZOrder());
 				}

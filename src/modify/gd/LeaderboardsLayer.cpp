@@ -3,10 +3,10 @@
 #include <Geode/modify/LeaderboardsLayer.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("gd-LeaderboardsLayer")	
+ADD_TAG("gd-LeaderboardsLayer");	
 class $modify(MyLeaderboardsLayer, LeaderboardsLayer) {
-	bool init(LeaderboardState p0) {
-		if (!LeaderboardsLayer::init(p0)) {
+	bool init(LeaderboardType type, LeaderboardStat stat) {
+		if (!LeaderboardsLayer::init(type, stat)) {
 			return false;
 		}
 		if (Mod::get()->getSettingValue<bool>("gd/LeaderboardsLayer")) {

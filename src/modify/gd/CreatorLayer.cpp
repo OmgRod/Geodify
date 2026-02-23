@@ -4,7 +4,7 @@
 
 using namespace geode::prelude;
 
-ADD_TAG("gd-CreatorLayer")
+ADD_TAG("gd-CreatorLayer");
 class $modify(MyCreatorLayer, CreatorLayer) {
 	bool init() {
 		if (!CreatorLayer::init()) {

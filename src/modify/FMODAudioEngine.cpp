@@ -30,7 +30,7 @@ public:
 };
 
 $on_mod(Loaded) {
-	listenForSettingChanges("menu-loop", [](bool enabled) {
+	listenForSettingChanges<bool>("menu-loop", [](bool enabled) {
         if (Saved.name == "menuLoop.mp3") {
 		    FMODAudioEngine::sharedEngine()->playMusic("menuLoop.mp3", Saved.shouldLoop, Saved.fadeInTime, Saved.channel);
         };

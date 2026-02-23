@@ -3,7 +3,7 @@
 #include <Geode/modify/SecretLayer.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("gd-SecretLayer")
+ADD_TAG("gd-SecretLayer");
 class $modify(MySecretLayer, SecretLayer) {
 	bool init() {
 		if (!SecretLayer::init()) {

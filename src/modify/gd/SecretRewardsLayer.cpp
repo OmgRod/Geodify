@@ -3,7 +3,7 @@
 #include <Geode/modify/SecretRewardsLayer.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("gd-SecretRewardsLayer")
+ADD_TAG("gd-SecretRewardsLayer");
 class $modify(MySecretRewardsLayer, SecretRewardsLayer) {
 	bool init(bool p0) {
 		if (!SecretRewardsLayer::init(p0)) {

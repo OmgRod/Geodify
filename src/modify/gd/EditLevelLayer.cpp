@@ -4,7 +4,7 @@
 
 using namespace geode::prelude;
 
-ADD_TAG("gd-EditLevelLayer")
+ADD_TAG("gd-EditLevelLayer");
 class $modify(MyEditLevelLayer, EditLevelLayer) {
     bool init(GJGameLevel* p0) {
         if (!EditLevelLayer::init(p0)) {

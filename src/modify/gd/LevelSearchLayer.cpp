@@ -3,7 +3,7 @@
 #include <Geode/modify/LevelSearchLayer.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("gd-LevelSearchLayer")
+ADD_TAG("gd-LevelSearchLayer");
 class $modify(MyLevelSearchLayer, LevelSearchLayer) {
 	bool init(int p0) {
 		if (!LevelSearchLayer::init(p0)) {
@@ -37,8 +37,7 @@ class $modify(MyLevelSearchLayer, LevelSearchLayer) {
 			CCNode* searchBar = this->getChildByID("search-bar");
 			if (searchBar) {
 				CCArray* children = searchBar->getChildren();
-				CCObject* obj = nullptr;
-				CCARRAY_FOREACH(children, obj) {
+				for (auto obj : CCArrayExt<CCObject*>(children)) {
 					CCLabelBMFont* label = typeinfo_cast<CCLabelBMFont*>(obj);
 					if (label) {
 						label->setColor(ccc3(255, 255, 255));

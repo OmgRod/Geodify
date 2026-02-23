@@ -1,9 +1,9 @@
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include <alphalaneous.alphas_geode_utils/include/NodeModding.h>
+#include <alphalaneous.alphas_geode_utils/include/ObjectModify.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("omgrod.garage_plus-GPFeedbackLayer")
+ADD_TAG("omgrod.garage_plus-GPFeedbackLayer");
 class $nodeModify(GPFeedbackLayer) {
     void modify() {
         if (Mod::get()->getSettingValue<bool>("omgrod.garage_plus/GPFeedbackLayer")) {

@@ -4,9 +4,6 @@
 #include <Geode/ui/BasedButtonSprite.hpp>
 #include <Geode/utils/cocos.hpp>
 #include <Geode/loader/Loader.hpp>
-#include <filesystem>
-#include <fstream>
-#include <map>
 #include <string>
 
 #include "GYSettingSelectLayer.hpp"

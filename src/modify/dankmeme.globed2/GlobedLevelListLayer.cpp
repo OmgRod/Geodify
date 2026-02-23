@@ -1,7 +1,7 @@
 #include <Geode/Geode.hpp>
 #include "../../SwelvyBG.hpp"
-#include <alphalaneous.alphas_geode_utils/include/NodeModding.h>
+#include <alphalaneous.alphas_geode_utils/include/ObjectModify.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("dankmeme.globed2-GlobedLevelListLayer")
+ADD_TAG("dankmeme.globed2-GlobedLevelListLayer");
 SET_SWELVY(GlobedLevelListLayer, "dankmeme.globed2/GlobedLevelListLayer", "background");

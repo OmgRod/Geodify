@@ -3,7 +3,7 @@
 #include <Geode/modify/LevelAreaInnerLayer.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("gd-LevelAreaInnerLayer")	
+ADD_TAG("gd-LevelAreaInnerLayer");	
 class $modify(MyLevelAreaInnerLayer, LevelAreaInnerLayer) {
 	bool init(bool p0) {
 		if (!LevelAreaInnerLayer::init(p0)) {

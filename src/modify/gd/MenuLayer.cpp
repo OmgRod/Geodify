@@ -4,7 +4,7 @@
 #include <Geode/modify/MenuLayer.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("gd-MenuLayer")
+ADD_TAG("gd-MenuLayer");
 class $modify(MenuLayer) {
 	static void onModify(auto& self) {
         (void)self.setHookPriority("MenuLayer::init", -2);

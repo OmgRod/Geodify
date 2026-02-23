@@ -3,7 +3,7 @@
 #include <Geode/modify/PlayLayer.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("gd-PlayLayer")
+ADD_TAG("gd-PlayLayer");
 class $modify(MyPlayLayer, PlayLayer) {
 	bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
 		if (!PlayLayer::init(level, useReplay, dontCreateObjects)) {

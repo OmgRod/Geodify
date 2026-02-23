@@ -34,10 +34,13 @@ void GYModSettingsPopup::screenshotPopup(CCObject* sender) {
     GYScreenshotPopup::create(sender->getTag())->show();
 }
 
-bool GYModSettingsPopup::setup(std::string const& modName, std::string const& modAuthor, std::string const& modID) {
-    this->setTitle(modName + " by " + modAuthor);
-
+bool GYModSettingsPopup::init(std::string const& modName, std::string const& modAuthor, std::string const& modID) {
     auto winSize = CCDirector::sharedDirector()->getWinSize();
+
+    if (!Popup::init(winSize.width * 0.75f, winSize.height * 0.75f))
+            return false;
+    
+    this->setTitle(modName + " by " + modAuthor);
 
     auto layerSize = CCSize(winSize.width * 0.75f, winSize.height * 0.75f);
 
@@ -108,7 +111,7 @@ GYModSettingsPopup* GYModSettingsPopup::create(std::string const& modName, std::
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();
     
-    if (ret->initAnchored(winSize.width * 0.75f, winSize.height * 0.75f, modName, modAuthor, modID, "GJ_square05.png")) {
+    if (ret->init(modName, modAuthor, modID)) {
         ret->autorelease();
         return ret;
     }

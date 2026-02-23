@@ -3,7 +3,7 @@
 #include <Geode/modify/GauntletLayer.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("gd-GauntletLayer")	
+ADD_TAG("gd-GauntletLayer");	
 class $modify(MyGauntletLayer, GauntletLayer) {
 	bool init(GauntletType p) {
 		if (!GauntletLayer::init(p)) {

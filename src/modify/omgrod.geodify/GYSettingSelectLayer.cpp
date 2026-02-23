@@ -1,2 +1,2 @@
 #include "../../SwelvyBG.hpp"
-ADD_TAG("omgrod.geodify-GYSettingSelectLayer")
+ADD_TAG("omgrod.geodify-GYSettingSelectLayer");

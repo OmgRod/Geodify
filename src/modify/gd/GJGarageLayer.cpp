@@ -3,7 +3,7 @@
 #include <Geode/modify/GJGarageLayer.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("gd-GJGarageLayer")	
+ADD_TAG("gd-GJGarageLayer");	
 class $modify(MyGJGarageLayer, GJGarageLayer) {
 	bool init() {
 		if (!GJGarageLayer::init()) {

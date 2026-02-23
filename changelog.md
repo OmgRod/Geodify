@@ -1,3 +1,7 @@
+# v2.4.1
+
+- Update to Geode v5
+
 # v2.4.0
 
 - Add (fully) `timestepyt.secretlayer6` mod

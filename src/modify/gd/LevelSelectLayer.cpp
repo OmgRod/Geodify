@@ -3,7 +3,7 @@
 #include <Geode/modify/LevelSelectLayer.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("gd-LevelSelectLayer")
+ADD_TAG("gd-LevelSelectLayer");
 class $modify(MyLevelSelectLayer, LevelSelectLayer) {
 	bool init(int page) {
 		if (!LevelSelectLayer::init(page)) {

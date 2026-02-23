@@ -3,7 +3,7 @@
 #include <Geode/modify/UIPOptionsLayer.hpp>
 
 using namespace geode::prelude;
-ADD_TAG("gd-UIPOptionsLayer")
+ADD_TAG("gd-UIPOptionsLayer");
 class $modify(MyUIPOptionsLayer, UIPOptionsLayer) {
 	bool init() {
 		if (!UIPOptionsLayer::init()) {
@@ -11,9 +11,8 @@ class $modify(MyUIPOptionsLayer, UIPOptionsLayer) {
 		}
 		if (Mod::get()->getSettingValue<bool>("gd/UIPOptionsLayer")) {
 			int lowestZ = INT_MAX;
-			CCObject* obj = nullptr;
             auto layer = this->getChildByType<CCLayer*>(0);
-			CCARRAY_FOREACH(layer->getChildren(), obj) {
+			for (auto obj : layer->getChildrenExt<CCNode*>()) {
 				if (auto node = typeinfo_cast<CCNode*>(obj)) {
 					lowestZ = std::min(lowestZ, node->getZOrder());
 				}
