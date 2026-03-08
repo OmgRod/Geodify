@@ -1,3 +1,7 @@
+# v2.4.2
+
+- Fixed settings menu
+
 # v2.4.1
 
 - Update to Geode v5
