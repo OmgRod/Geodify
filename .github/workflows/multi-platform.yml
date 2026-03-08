@@ -39,11 +39,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11' 
-
-      - name: Generate tags
-        run: |
-          python generate_tags.py
+          python-version: '3.11'
           
       - name: Build the mod
         uses: geode-sdk/build-geode-mod@main
