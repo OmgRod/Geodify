@@ -1,6 +1,7 @@
 # v2.4.2
 
 - Fixed settings menu
+- Remove useless "Enable Color" setting
 
 # v2.4.1
 

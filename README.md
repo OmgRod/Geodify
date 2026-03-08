@@ -10,7 +10,7 @@ To build this mod, follow one of the methods below:
 
 ### VS Code
 > [!NOTE]
-> Run the generate_tags.py to convert tags into settings if you add a new one :3
+> You will also need to install Python3 to be able to build this mod. You may download it at <https://www.python.org/downloads/>
 
 1. Open the project in VS Code.
 2. Install the necessary dependencies (if not already done).

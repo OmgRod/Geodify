@@ -1,5 +1,18 @@
 cmake_minimum_required(VERSION 3.21)
 
+find_package(Python3 COMPONENTS Interpreter REQUIRED)
+set(GENERATE_TAGS_SCRIPT ${CMAKE_SOURCE_DIR}/generate_tags.py)
+
+execute_process(
+    COMMAND ${Python3_EXECUTABLE} ${GENERATE_TAGS_SCRIPT}
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    RESULT_VARIABLE GENERATE_TAGS_RESULT
+)
+
+if (NOT GENERATE_TAGS_RESULT EQUAL 0)
+    message(FATAL_ERROR "Failed to execute generate_tags.py. Please check the script.")
+endif()
+
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 if ("${CMAKE_SYSTEM_NAME}" STREQUAL "iOS" OR IOS)
@@ -7,13 +20,6 @@ if ("${CMAKE_SYSTEM_NAME}" STREQUAL "iOS" OR IOS)
 else()
     set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64")
 endif()
-
-find_package(Python3 COMPONENTS Interpreter REQUIRED)
-set(GENERATE_TAGS_SCRIPT ${CMAKE_SOURCE_DIR}/generate_tags.py)
-
-#execute_process(
-#    COMMAND ${Python3_EXECUTABLE} ${GENERATE_TAGS_SCRIPT}
-#)
 
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 

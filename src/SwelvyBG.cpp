@@ -22,9 +22,6 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
     float y = m_obContentSize.height + 5;
     int idx = 0;
 
-    bool enableColor = Mod::get()->getSettingValue<bool>("color-enable");
-    log::debug("Color feature enabled: {}", enableColor);
-
     auto createLayer = [&](ccColor3B color, const char* texturePath) {
         ccColor3B adjustedColor = color;
 
@@ -62,29 +59,15 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
         idx += 1;
     };
 
-    if (enableColor) {
-        for (auto layer : std::initializer_list<std::pair<ccColor3B, const char*>> {
-            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-0"), "geode.loader/swelve-layer3.png" },
-            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-1"), "geode.loader/swelve-layer0.png" },
-            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-2"), "geode.loader/swelve-layer1.png" },
-            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-3"), "geode.loader/swelve-layer2.png" },
-            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-4"), "geode.loader/swelve-layer1.png" },
-            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-5"), "geode.loader/swelve-layer0.png" },
-        }) {
-            createLayer(layer.first, layer.second);
-        }
-    } else {
-        log::debug("Color feature disabled. Using default colors.");
-        for (auto layer : std::initializer_list<std::pair<ccColor3B, const char*>> {
-            { ccc3(244, 212, 142), "geode.loader/swelve-layer3.png" },
-            { ccc3(245, 174, 125), "geode.loader/swelve-layer0.png" },
-            { ccc3(236, 137, 124), "geode.loader/swelve-layer1.png" },
-            { ccc3(213, 105, 133), "geode.loader/swelve-layer2.png" },
-            { ccc3(173, 84, 146), "geode.loader/swelve-layer1.png" },
-            { ccc3(113, 74, 154), "geode.loader/swelve-layer0.png" },
-        }) {
-            createLayer(layer.first, layer.second);
-        }
+    for (auto layer : std::initializer_list<std::pair<ccColor3B, const char*>> {
+        { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-0"), "geode.loader/swelve-layer3.png" },
+        { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-1"), "geode.loader/swelve-layer0.png" },
+        { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-2"), "geode.loader/swelve-layer1.png" },
+        { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-3"), "geode.loader/swelve-layer2.png" },
+        { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-4"), "geode.loader/swelve-layer1.png" },
+        { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-5"), "geode.loader/swelve-layer0.png" },
+    }) {
+        createLayer(layer.first, layer.second);
     }
 
     return true;
