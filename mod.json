@@ -1,5 +1,5 @@
 {
-    "geode": "5.0.0",
+    "geode": "5.3.0",
     "gd": {
         "android": "2.2081",
         "win": "2.2081",
@@ -9,7 +9,10 @@
     "version": "v2.4.1",
     "id": "omgrod.geodify",
     "name": "Geodify",
-    "developers": ["OmgRod", "Cosmella-v"],
+    "developers": [
+        "OmgRod",
+        "Cosmella-v"
+    ],
     "description": "Converts most backgrounds to Geode's background (SwelvyBG).",
     "early-load": true,
     "resources": {
@@ -17,7 +20,9 @@
             "res/*.png",
             "res/joke/*.png"
         ],
-        "files": ["res/loops/ninxout.wav"]
+        "files": [
+            "res/loops/ninxout.wav"
+        ]
     },
     "settings": {
         "menu-loop": {
@@ -260,6 +265,264 @@
             "type": "title",
             "name": "Mods Settings"
         },
+        "alphalaneous.random_tab/RandomLayer": {
+            "name": "RandomLayer",
+            "description": "RandomLayer",
+            "type": "bool",
+            "default": false
+        },
+        "cvolton.betterinfo/CustomCreatorLayer": {
+            "name": "CustomCreatorLayer",
+            "description": "CustomCreatorLayer",
+            "type": "bool",
+            "default": false
+        },
+        "cvolton.betterinfo/DailyViewLayer": {
+            "name": "DailyViewLayer",
+            "description": "DailyViewLayer",
+            "type": "bool",
+            "default": false
+        },
+        "cvolton.betterinfo/LeaderboardViewLayer": {
+            "name": "LeaderboardViewLayer",
+            "description": "LeaderboardViewLayer",
+            "type": "bool",
+            "default": false
+        },
+        "cvolton.betterinfo/LevelSearchViewLayer": {
+            "name": "LevelSearchViewLayer",
+            "description": "LevelSearchViewLayer",
+            "type": "bool",
+            "default": false
+        },
+        "cvolton.betterinfo/RewardGroupLayer": {
+            "name": "RewardGroupLayer",
+            "description": "RewardGroupLayer",
+            "type": "bool",
+            "default": false
+        },
+        "cvolton.betterinfo/RewardViewLayer": {
+            "name": "RewardViewLayer",
+            "description": "RewardViewLayer",
+            "type": "bool",
+            "default": false
+        },
+        "dankmeme.globed2/GlobedLevelListLayer": {
+            "name": "GlobedLevelListLayer",
+            "description": "GlobedLevelListLayer",
+            "type": "bool",
+            "default": false
+        },
+        "dankmeme.globed2/GlobedMenuLayer": {
+            "name": "GlobedMenuLayer",
+            "description": "GlobedMenuLayer",
+            "type": "bool",
+            "default": false
+        },
+        "dankmeme.globed2/GlobedServersLayer": {
+            "name": "GlobedServersLayer",
+            "description": "GlobedServersLayer",
+            "type": "bool",
+            "default": false
+        },
+        "dankmeme.globed2/GlobedSettingsLayer": {
+            "name": "GlobedSettingsLayer",
+            "description": "GlobedSettingsLayer",
+            "type": "bool",
+            "default": false
+        },
+        "gd-GJShopLayer/Normal": {
+            "name": "Normal",
+            "description": "Normal",
+            "type": "bool",
+            "default": false
+        },
+        "gd-GJShopLayer/Secret": {
+            "name": "Secret",
+            "description": "Secret",
+            "type": "bool",
+            "default": false
+        },
+        "gd-GJShopLayer/Community": {
+            "name": "Community",
+            "description": "Community",
+            "type": "bool",
+            "default": false
+        },
+        "gd-GJShopLayer/Mechanic": {
+            "name": "Mechanic",
+            "description": "Mechanic",
+            "type": "bool",
+            "default": false
+        },
+        "gd-GJShopLayer/Diamond": {
+            "name": "Diamond",
+            "description": "Diamond",
+            "type": "bool",
+            "default": false
+        },
+        "gdcpteam.challenge-list/GDCPListLayer": {
+            "name": "GDCPListLayer",
+            "description": "GDCPListLayer",
+            "type": "bool",
+            "default": false
+        },
+        "gdutilsdevs.gdutils/MoreLeaderboards": {
+            "name": "MoreLeaderboards",
+            "description": "MoreLeaderboards",
+            "type": "bool",
+            "default": false
+        },
+        "geode.loader/ModsLayer": {
+            "name": "ModsLayer",
+            "description": "ModsLayer",
+            "type": "bool",
+            "default": false
+        },
+        "geode.texture-loader/PackSelectLayer": {
+            "name": "PackSelectLayer",
+            "description": "PackSelectLayer",
+            "type": "bool",
+            "default": false
+        },
+        "hiimjustin000.integrated_demonlist/IDListLayer": {
+            "name": "IDListLayer",
+            "description": "IDListLayer",
+            "type": "bool",
+            "default": false
+        },
+        "hiimjustin000.integrated_demonlist/IDPackLayer": {
+            "name": "IDPackLayer",
+            "description": "IDPackLayer",
+            "type": "bool",
+            "default": false
+        },
+        "km7dev.gdps-switcher/ServerSwitchLayer": {
+            "name": "ServerSwitchLayer",
+            "description": "ServerSwitchLayer",
+            "type": "bool",
+            "default": false
+        },
+        "lblazen.gdps_hub/GDPSHubLayer": {
+            "name": "GDPSHubLayer",
+            "description": "GDPSHubLayer",
+            "type": "bool",
+            "default": false
+        },
+        "limegradient.betterachievements/BetterAchievementLayer": {
+            "name": "BetterAchievementLayer",
+            "description": "BetterAchievementLayer",
+            "type": "bool",
+            "default": false
+        },
+        "minemaker0430.gddp_integration/DPLayer": {
+            "name": "DPLayer",
+            "description": "DPLayer",
+            "type": "bool",
+            "default": false
+        },
+        "minemaker0430.gddp_integration/DPListLayer": {
+            "name": "DPListLayer",
+            "description": "DPListLayer",
+            "type": "bool",
+            "default": false
+        },
+        "minemaker0430.gddp_integration/DPSearchLayer": {
+            "name": "DPSearchLayer",
+            "description": "DPSearchLayer",
+            "type": "bool",
+            "default": false
+        },
+        "minemaker0430.gddp_integration/RecommendedLayer": {
+            "name": "RecommendedLayer",
+            "description": "RecommendedLayer",
+            "type": "bool",
+            "default": false
+        },
+        "minemaker0430.gddp_integration/RouletteSafeLayer": {
+            "name": "RouletteSafeLayer",
+            "description": "RouletteSafeLayer",
+            "type": "bool",
+            "default": false
+        },
+        "omgrod.garage_plus/GPFeedbackLayer": {
+            "name": "GPFeedbackLayer",
+            "description": "GPFeedbackLayer",
+            "type": "bool",
+            "default": false
+        },
+        "omgrod.garage_plus/GPKofiLayer": {
+            "name": "GPKofiLayer",
+            "description": "GPKofiLayer",
+            "type": "bool",
+            "default": false
+        },
+        "omgrod.garage_plus/StreamCreatorLayer": {
+            "name": "StreamCreatorLayer",
+            "description": "StreamCreatorLayer",
+            "type": "bool",
+            "default": false
+        },
+        "omgrod.garage_plus/StreamLayer": {
+            "name": "StreamLayer",
+            "description": "StreamLayer",
+            "type": "bool",
+            "default": false
+        },
+        "omgrod.geodify/GYSettingSelectLayer": {
+            "name": "GYSettingSelectLayer",
+            "description": "GYSettingSelectLayer",
+            "type": "bool",
+            "default": false
+        },
+        "omgrod.geometry-dash-surge/GDSBasementLayer": {
+            "name": "GDSBasementLayer",
+            "description": "GDSBasementLayer",
+            "type": "bool",
+            "default": false
+        },
+        "omgrod.geometry-dash-surge/GDSCreditsLayer": {
+            "name": "GDSCreditsLayer",
+            "description": "GDSCreditsLayer",
+            "type": "bool",
+            "default": false
+        },
+        "omgrod.geometry-dash-surge/GDSIslandSelectLayer": {
+            "name": "GDSIslandSelectLayer",
+            "description": "GDSIslandSelectLayer",
+            "type": "bool",
+            "default": false
+        },
+        "teamtcm.geometry-dash-odyssey/OdysseyComicLayer": {
+            "name": "OdysseyComicLayer",
+            "description": "OdysseyComicLayer",
+            "type": "bool",
+            "default": false
+        },
+        "teamtcm.geometry-dash-odyssey/OdysseySelectLayer": {
+            "name": "OdysseySelectLayer",
+            "description": "OdysseySelectLayer",
+            "type": "bool",
+            "default": false
+        },
+        "thesillydoggo.newgrounds_explorer/NewgroundsBrowserLayer": {
+            "name": "NewgroundsBrowserLayer",
+            "description": "NewgroundsBrowserLayer",
+            "type": "bool",
+            "default": false
+        },
+        "timestepyt.secretlayer6/SecretLayer6R": {
+            "name": "SecretLayer6R",
+            "description": "SecretLayer6R",
+            "type": "bool",
+            "default": false
+        },
+        "uproxide.textures/TextureWorkshopLayer": {
+            "name": "TextureWorkshopLayer",
+            "description": "TextureWorkshopLayer",
+            "type": "bool",
+            "default": false
+        },
         "other-title": {
             "type": "title",
             "name": "Other"
@@ -282,7 +545,14 @@
     "incompatibilities": {
         "undefined0.icon_ninja": "<=v1.2.3"
     },
-    "tags": ["content", "customization", "enhancement", "interface", "offline", "universal"],
+    "tags": [
+        "content",
+        "customization",
+        "enhancement",
+        "interface",
+        "offline",
+        "universal"
+    ],
     "links": {
         "community": "https://discord.gg/vK3DuqJwyW",
         "homepage": "https://omgrod.me",
