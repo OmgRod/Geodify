@@ -1,3 +1,7 @@
+# v2.4.3
+
+- Fixed settings button being hooked on all mods ([#31](https://github.com/OmgRod/Geodify/issues/31))
+
 # v2.4.2
 
 - Fixed settings menu
