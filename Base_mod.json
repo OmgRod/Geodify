@@ -6,7 +6,7 @@
         "mac": "2.2081",
         "ios": "2.2081"
     },
-    "version": "v2.4.2",
+    "version": "v2.4.3",
     "id": "omgrod.geodify",
     "name": "Geodify",
     "developers": ["OmgRod", "Cosmella-v"],
@@ -20,6 +20,11 @@
         "files": ["res/loops/ninxout.wav"]
     },
     "settings": {
+        "settings-button": {
+            "name": "Open Better Settings",
+            "type": "custom:button",
+            "description": "Opens better settings menu."
+        },
         "menu-loop": {
             "name": "Menu Loop",
             "description": "ninxout geode loop",
