@@ -4,11 +4,11 @@
 
 using namespace geode::prelude;
 
-class ButtonSettingV3 : public SettingV3 {
+class CustomButtonSettingV3 : public SettingV3 {
 public:
     static Result<std::shared_ptr<SettingV3>> parse(std::string const& key, std::string const& modID, matjson::Value const& json) {
-        auto res = std::make_shared<ButtonSettingV3>();
-        auto root = checkJson(json, "ButtonSettingV3");
+        auto res = std::make_shared<CustomButtonSettingV3>();
+        auto root = checkJson(json, "CustomButtonSettingV3");
 
         res->init(key, modID, root);
         res->parseNameAndDescription(root);
@@ -38,7 +38,7 @@ protected:
     ButtonSprite* m_buttonSprite;
     CCMenuItemSpriteExtra* m_button;
 
-    bool init(std::shared_ptr<ButtonSettingV3> setting, float width) {
+    bool init(std::shared_ptr<CustomButtonSettingV3> setting, float width) {
         if (!SettingNodeV3::init(setting, width))
             return false;
         
@@ -76,7 +76,7 @@ protected:
     void onResetToDefault() override {}
 
 public:
-    static MyButtonSettingNodeV3* create(std::shared_ptr<ButtonSettingV3> setting, float width) {
+    static MyButtonSettingNodeV3* create(std::shared_ptr<CustomButtonSettingV3> setting, float width) {
         auto ret = new MyButtonSettingNodeV3();
         if (ret->init(setting, width)) {
             ret->autorelease();
@@ -93,18 +93,18 @@ public:
         return false;
     }
 
-    std::shared_ptr<ButtonSettingV3> getSetting() const {
-        return std::static_pointer_cast<ButtonSettingV3>(SettingNodeV3::getSetting());
+    std::shared_ptr<CustomButtonSettingV3> getSetting() const {
+        return std::static_pointer_cast<CustomButtonSettingV3>(SettingNodeV3::getSetting());
     }
 };
 
-SettingNodeV3* ButtonSettingV3::createNode(float width) {
+SettingNodeV3* CustomButtonSettingV3::createNode(float width) {
     return MyButtonSettingNodeV3::create(
-        std::static_pointer_cast<ButtonSettingV3>(shared_from_this()),
+        std::static_pointer_cast<CustomButtonSettingV3>(shared_from_this()),
         width
     );
 }
 
 $execute {
-    (void)Mod::get()->registerCustomSettingType("button", &ButtonSettingV3::parse);
+    (void)Mod::get()->registerCustomSettingType("button", &CustomButtonSettingV3::parse);
 }

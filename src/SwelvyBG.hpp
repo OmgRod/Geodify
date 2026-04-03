@@ -33,6 +33,34 @@ class $nodeModify(my##layer, layer) {\
     }\
 }
 
+#define SET_SWELVY_WITH_NAMESPACE(namespace, layer, setting, backgroundID) \
+class $nodeModify(my##layer, namespace::layer) { \
+    void modify() { \
+        if (Mod::get()->getSettingValue<bool>(setting)) { \
+            if (auto bg = this->getChildByID(backgroundID)) { \
+                bg->setVisible(false); \
+                SwelvyBG* swelvyBG = SwelvyBG::create(); \
+                swelvyBG->setZOrder(-999); \
+                this->addChild(swelvyBG); \
+            } \
+        } \
+    } \
+}
+
+#define SET_SWELVY_SPRITE_WITH_NAMESPACE(namespace, layer, setting) \
+class $nodeModify(my##layer, namespace::layer) { \
+    void modify() { \
+        if (Mod::get()->getSettingValue<bool>(setting)) { \
+            if (auto bg = this->template getChildByType<CCSprite>(0)) { \
+                bg->setVisible(false); \
+                SwelvyBG* swelvyBG = SwelvyBG::create(); \
+                swelvyBG->setZOrder(-999); \
+                this->addChild(swelvyBG); \
+            } \
+        } \
+    } \
+}
+
 class SwelvyBG : public CCNode {
 protected:
     bool init(float widthmult, float heightmul, float minspeed, float maxspeed);

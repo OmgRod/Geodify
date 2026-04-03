@@ -4,4 +4,4 @@
 
 using namespace geode::prelude;
 ADD_TAG("dankmeme.globed2-GlobedMenuLayer");
-SET_SWELVY(GlobedMenuLayer, "dankmeme.globed2/GlobedMenuLayer", "background");
+SET_SWELVY_WITH_NAMESPACE(globed, GlobedMenuLayer, "dankmeme.globed2/GlobedMenuLayer", "background");

@@ -1,3 +1,8 @@
+# v2.5.0
+
+- Added Globed v2 support
+- Added (for developers) 2 new macros for layers for custom namespaces
+
 # v2.4.3
 
 - Fixed settings button being hooked on all mods ([#31](https://github.com/OmgRod/Geodify/issues/31))

@@ -4,4 +4,4 @@
 
 using namespace geode::prelude;
 ADD_TAG("dankmeme.globed2-GlobedLevelListLayer");
-SET_SWELVY(GlobedLevelListLayer, "dankmeme.globed2/GlobedLevelListLayer", "background");
+SET_SWELVY_WITH_NAMESPACE(globed, GlobedLevelListLayer, "dankmeme.globed2/GlobedLevelListLayer", "background");
