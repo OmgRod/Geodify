@@ -1,6 +1,9 @@
 #include "SwelvyBG.hpp"
 #include "ccTypes.h"
 #include <Geode/loader/Mod.hpp>
+#include <algorithm>
+#include <cctype>
+#include <string>
 #include <random>
 
 bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxspeed) {
@@ -10,64 +13,105 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
     this->setID("SwelvyBG");
 
     auto winSize = CCDirector::get()->getWinSize();
+    auto bgType = Mod::get()->getSettingValue<std::string>("background-type");
+    auto normalizedBgType = bgType;
+    auto trim = [](std::string& value) {
+        constexpr char whitespace[] = " \t\n\r\f\v";
+        auto begin = value.find_first_not_of(whitespace);
+        if (begin == std::string::npos) {
+            value.clear();
+            return;
+        }
+        auto end = value.find_last_not_of(whitespace);
+        value = value.substr(begin, end - begin + 1);
+    };
+    trim(normalizedBgType);
+    std::transform(normalizedBgType.begin(), normalizedBgType.end(), normalizedBgType.begin(), [](unsigned char c) {
+        return static_cast<char>(std::tolower(c));
+    });
+
+    bool useSapphireBackground =
+        normalizedBgType.find("sapphire") != std::string::npos ||
+        normalizedBgType == "1" ||
+        (!normalizedBgType.empty() && normalizedBgType != "default" && normalizedBgType != "0");
+
+    log::debug("SwelvyBG background-type='{}' (normalized='{}')", bgType, normalizedBgType);
+
     this->setContentSize(winSize);
     this->setAnchorPoint({ 0.f, 0.f });
     this->setID("swelvy-background"_spr);
 
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> sign(0, 1);
-    std::uniform_real_distribution<float> dis(3.f, 9.f);
+    CCSprite* sapphireBg = nullptr;
 
-    float y = m_obContentSize.height + 5;
-    int idx = 0;
-
-    auto createLayer = [&](ccColor3B color, const char* texturePath) {
-        ccColor3B adjustedColor = color;
-
-        float speed = dis(gen);
-        if (sign(gen) == 0) {
-            speed = -speed;
+    if (useSapphireBackground) {
+        sapphireBg = CCSprite::create("sapphire-bg.png"_spr);
+        if (!sapphireBg) {
+            log::debug("Failed to load sapphire-bg.png, falling back to default swelvy layers");
+            useSapphireBackground = false;
         }
-        ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_CLAMP_TO_EDGE};
+    }
 
-        auto sprite = CCSprite::create(texturePath);
-        if (!sprite) {
-            log::debug("Failed to load texture: {}", texturePath);
-            return;
+    if (useSapphireBackground) {
+        sapphireBg->setScaleX((winSize.width) / sapphireBg->getContentSize().width);
+        sapphireBg->setScaleY((winSize.height) / sapphireBg->getContentSize().height);
+        sapphireBg->setPosition({winSize.width / 2, winSize.height / 2});
+        this->addChild(sapphireBg);
+    } else {
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> sign(0, 1);
+        std::uniform_real_distribution<float> dis(3.f, 9.f);
+
+        float y = m_obContentSize.height + 5;
+        int idx = 0;
+
+        auto createLayer = [&](ccColor3B color, const char* texturePath) {
+            ccColor3B adjustedColor = color;
+
+            float speed = dis(gen);
+            if (sign(gen) == 0) {
+                speed = -speed;
+            }
+            ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_CLAMP_TO_EDGE};
+
+            auto sprite = CCSprite::create(texturePath);
+            if (!sprite) {
+                log::debug("Failed to load texture: {}", texturePath);
+                return;
+            }
+
+            auto rect = sprite->getTextureRect();
+            sprite->setUserObject("width", CCFloat::create(rect.size.width * widthmult));
+            rect.size = CCSize{winSize.width * widthmult, rect.size.height * hightmult};
+
+            std::string layerID = fmt::format("layer-{}", idx);
+            sprite->setID(layerID);
+            sprite->getTexture()->setTexParameters(&params);
+            sprite->setTextureRect(rect);
+            sprite->setAnchorPoint({ 0, 1 });
+            sprite->setContentSize({ winSize.width * widthmult, sprite->getContentSize().height });
+            sprite->setColor(adjustedColor);
+            sprite->setPosition({ 0, y });
+            sprite->schedule(schedule_selector(SwelvyBG::updateSpritePosition));
+            sprite->setUserObject("speed", CCFloat::create(speed));
+            this->addChild(sprite);
+
+            log::debug("Created layer {} with color ({}, {}, {})", layerID, adjustedColor.r, adjustedColor.g, adjustedColor.b);
+
+            y -= m_obContentSize.height / 6;
+            idx += 1;
+        };
+
+        for (auto layer : std::initializer_list<std::pair<ccColor3B, const char*>> {
+            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-0"), "geode.loader/swelve-layer3.png" },
+            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-1"), "geode.loader/swelve-layer0.png" },
+            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-2"), "geode.loader/swelve-layer1.png" },
+            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-3"), "geode.loader/swelve-layer2.png" },
+            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-4"), "geode.loader/swelve-layer1.png" },
+            { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-5"), "geode.loader/swelve-layer0.png" },
+        }) {
+            createLayer(layer.first, layer.second);
         }
-
-        auto rect = sprite->getTextureRect();
-        sprite->setUserObject("width", CCFloat::create(rect.size.width * widthmult));
-        rect.size = CCSize{winSize.width * widthmult, rect.size.height * hightmult};
-
-        std::string layerID = fmt::format("layer-{}", idx);
-        sprite->setID(layerID);
-        sprite->getTexture()->setTexParameters(&params);
-        sprite->setTextureRect(rect);
-        sprite->setAnchorPoint({ 0, 1 });
-        sprite->setContentSize({ winSize.width * widthmult, sprite->getContentSize().height });
-        sprite->setColor(adjustedColor);
-        sprite->setPosition({ 0, y });
-        sprite->schedule(schedule_selector(SwelvyBG::updateSpritePosition));
-        sprite->setUserObject("speed", CCFloat::create(speed));
-        this->addChild(sprite);
-
-        log::debug("Created layer {} with color ({}, {}, {})", layerID, adjustedColor.r, adjustedColor.g, adjustedColor.b);
-
-        y -= m_obContentSize.height / 6;
-        idx += 1;
-    };
-
-    for (auto layer : std::initializer_list<std::pair<ccColor3B, const char*>> {
-        { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-0"), "geode.loader/swelve-layer3.png" },
-        { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-1"), "geode.loader/swelve-layer0.png" },
-        { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-2"), "geode.loader/swelve-layer1.png" },
-        { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-3"), "geode.loader/swelve-layer2.png" },
-        { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-4"), "geode.loader/swelve-layer1.png" },
-        { Mod::get()->getSettingValue<cocos2d::ccColor3B>("color-5"), "geode.loader/swelve-layer0.png" },
-    }) {
-        createLayer(layer.first, layer.second);
     }
 
     return true;

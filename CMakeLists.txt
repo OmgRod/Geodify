@@ -3,6 +3,15 @@ cmake_minimum_required(VERSION 3.21)
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 set(GENERATE_TAGS_SCRIPT ${CMAKE_SOURCE_DIR}/generate_tags.py)
 
+# Regenerate configuration when metadata inputs change so mod.json stays in sync.
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
+    ${CMAKE_SOURCE_DIR}/Base_mod.json
+    ${CMAKE_SOURCE_DIR}/generate_tags.py
+)
+
+file(GLOB_RECURSE TAG_SOURCE_FILES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/src/*.cpp")
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${TAG_SOURCE_FILES})
+
 execute_process(
     COMMAND ${Python3_EXECUTABLE} ${GENERATE_TAGS_SCRIPT}
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}

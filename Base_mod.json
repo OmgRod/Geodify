@@ -6,7 +6,7 @@
         "mac": "2.2081",
         "ios": "2.2081"
     },
-    "version": "v2.5.0",
+    "version": "v2.6.0",
     "id": "omgrod.geodify",
     "name": "Geodify",
     "developers": ["OmgRod", "Cosmella-v"],
@@ -25,11 +25,17 @@
             "type": "custom:button",
             "description": "Opens better settings menu."
         },
+        "background-type": {
+            "name": "Background Type",
+            "type": "string",
+            "one-of": ["Default", "Sapphire"],
+            "default": "Default"
+        },
         "menu-loop": {
             "name": "Menu Loop",
             "description": "ninxout geode loop",
             "type": "bool",
-            "default": true
+            "default": false
         },
         "colour-title": {
             "type": "title",

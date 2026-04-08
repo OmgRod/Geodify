@@ -1,3 +1,7 @@
+# v2.6.0
+
+- Added Sapphire SDK background
+
 # v2.5.0
 
 - Added Globed v2 support
