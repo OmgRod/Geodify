@@ -6,30 +6,44 @@
 using namespace geode::prelude;
 ADD_TAG("gd-LoadingLayer");
 class $modify(MyLoadingLayer, LoadingLayer) {
+	struct Fields {
+		SwelvyBG* swelvyBG = nullptr;
+		CCSprite* sapphireBg = nullptr;
+	};
+
 	bool init(bool p0) {
 		if (!LoadingLayer::init(p0)) return false;
 
 		if (Mod::get()->getSettingValue<bool>("gd/LoadingLayer")) {
-			auto sapphireTexture = CCTextureCache::get()->addImage("sapphire-bg.png"_spr, false);
-
-			if (auto bg = this->getChildByID("bg-texture")) {
-				bg->setVisible(false);
-			}
+			m_fields->swelvyBG = SwelvyBG::create();
+			m_fields->swelvyBG->setZOrder(-3);
+			this->addChild(m_fields->swelvyBG);
 
 			if (Mod::get()->getSettingValue<std::string>("background-type") == "Sapphire") {
-				auto sapphireBg = CCSprite::createWithTexture(sapphireTexture);
-				sapphireBg->setZOrder(-3);
-				sapphireBg->setScaleX(this->getContentSize().width / sapphireBg->getContentSize().width);
-				sapphireBg->setScaleY(this->getContentSize().height / sapphireBg->getContentSize().height);
-				sapphireBg->setPosition(this->getContentSize() / 2);
-				this->addChild(sapphireBg);
-			} else {
-				SwelvyBG* swelvyBG = SwelvyBG::create();
-				swelvyBG->setZOrder(-3);
-				this->addChild(swelvyBG);
+				CCTextureCache::get()->addImageAsync(
+					"sapphire-bg.png"_spr,
+					this,
+					menu_selector(MyLoadingLayer::loadSapphireBGAsync),
+					CCTexture2DPixelFormat::kCCTexture2DPixelFormat_Default
+				);
 			}
 		}
 
 		return true;
+	}
+
+	void loadSapphireBGAsync(CCObject* sender) {
+		CCTexture2D* sapphireTexture = static_cast<CCTexture2D*>(sender);
+		if (sapphireTexture) {
+			this->removeChild(m_fields->swelvyBG);
+			m_fields->sapphireBg = CCSprite::createWithTexture(sapphireTexture);
+			m_fields->sapphireBg->setZOrder(-3);
+			m_fields->sapphireBg->setScaleX(this->getContentSize().width / m_fields->sapphireBg->getContentSize().width);
+			m_fields->sapphireBg->setScaleY(this->getContentSize().height / m_fields->sapphireBg->getContentSize().height);
+			m_fields->sapphireBg->setPosition(this->getContentSize() / 2);
+			this->addChild(m_fields->sapphireBg);
+		} else {
+			log::error("Failed to load Sapphire background texture: sapphire-bg.png");
+		}
 	}
 };
