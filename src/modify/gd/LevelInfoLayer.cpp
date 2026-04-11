@@ -6,9 +6,7 @@ using namespace geode::prelude;
 ADD_TAG("gd-LevelInfoLayer");
 class $modify(MyLevelInfoLayer, LevelInfoLayer) {
 	bool init(GJGameLevel* level, bool challenge) {
-		if (!LevelInfoLayer::init(level, challenge)) {
-			return false;
-		}
+		if (!LevelInfoLayer::init(level, challenge)) return false;
 		if (Mod::get()->getSettingValue<bool>("gd/LevelInfoLayer")){
 			if (auto bg = this->getChildByID("background")) {
 				bg->setVisible(false);

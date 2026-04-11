@@ -6,9 +6,7 @@ using namespace geode::prelude;
 ADD_TAG("gd-GauntletSelectLayer");	
 class $modify(MyGauntletSelectLayer, GauntletSelectLayer) {
 	bool init(int p0) {
-		if (!GauntletSelectLayer::init(p0)) {
-			return false;
-		}
+		if (!GauntletSelectLayer::init(p0)) return false;
 		if (Mod::get()->getSettingValue<bool>("gd/GauntletSelectLayer")){
 			if (auto bg = this->getChildByID("background")) {
 				bg->setVisible(false);

@@ -46,17 +46,18 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
     if (useSapphireBackground) {
         sapphireBg = CCSprite::create("sapphire-bg.png"_spr);
         if (!sapphireBg) {
-            log::debug("Failed to load sapphire-bg.png, falling back to default swelvy layers");
+            log::warn("Failed to load sapphire-bg.png. Using default background.");
             useSapphireBackground = false;
         }
     }
 
-    if (useSapphireBackground) {
+    if (useSapphireBackground && sapphireBg) {
         sapphireBg->setScaleX((winSize.width) / sapphireBg->getContentSize().width);
         sapphireBg->setScaleY((winSize.height) / sapphireBg->getContentSize().height);
         sapphireBg->setPosition({winSize.width / 2, winSize.height / 2});
         this->addChild(sapphireBg);
     } else {
+        log::info("Default background layers will be used.");
         std::random_device rd;
         std::mt19937 gen(rd());
         std::uniform_int_distribution<> sign(0, 1);
@@ -76,7 +77,7 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
 
             auto sprite = CCSprite::create(texturePath);
             if (!sprite) {
-                log::debug("Failed to load texture: {}", texturePath);
+                log::warn("Failed to load texture: {}", texturePath);
                 return;
             }
 

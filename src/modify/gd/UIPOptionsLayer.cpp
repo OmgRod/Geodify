@@ -6,9 +6,7 @@ using namespace geode::prelude;
 ADD_TAG("gd-UIPOptionsLayer");
 class $modify(MyUIPOptionsLayer, UIPOptionsLayer) {
 	bool init() {
-		if (!UIPOptionsLayer::init()) {
-			return false;
-		}
+		if (!UIPOptionsLayer::init()) return false;
 		if (Mod::get()->getSettingValue<bool>("gd/UIPOptionsLayer")) {
 			int lowestZ = INT_MAX;
             auto layer = this->getChildByType<CCLayer*>(0);

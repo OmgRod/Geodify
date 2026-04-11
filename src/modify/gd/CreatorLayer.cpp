@@ -7,9 +7,7 @@ using namespace geode::prelude;
 ADD_TAG("gd-CreatorLayer");
 class $modify(MyCreatorLayer, CreatorLayer) {
 	bool init() {
-		if (!CreatorLayer::init()) {
-			return false;
-		}
+		if (!CreatorLayer::init()) return false;
 		if (Mod::get()->getSettingValue<bool>("gd/CreatorLayer")){
 			if (auto bg = this->getChildByID("background")){
 				bg->setVisible(false);

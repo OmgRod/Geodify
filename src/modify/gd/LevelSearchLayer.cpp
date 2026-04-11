@@ -6,9 +6,7 @@ using namespace geode::prelude;
 ADD_TAG("gd-LevelSearchLayer");
 class $modify(MyLevelSearchLayer, LevelSearchLayer) {
 	bool init(int p0) {
-		if (!LevelSearchLayer::init(p0)) {
-			return false;
-		}
+		if (!LevelSearchLayer::init(p0)) return false;
 		if (Mod::get()->getSettingValue<bool>("gd/LevelSearchLayer")){
 			if (auto bg = this->getChildByID("background")) {
 				bg->setVisible(false);

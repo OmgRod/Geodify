@@ -6,9 +6,7 @@ using namespace geode::prelude;
 ADD_TAG("gd-GJGarageLayer");	
 class $modify(MyGJGarageLayer, GJGarageLayer) {
 	bool init() {
-		if (!GJGarageLayer::init()) {
-			return false;
-		}
+		if (!GJGarageLayer::init()) return false;
 		if (Mod::get()->getSettingValue<bool>("gd/GJGarageLayer")){
 			if (auto bg = this->getChildByID("background")) {
 				bg->setVisible(false);

@@ -6,9 +6,7 @@ using namespace geode::prelude;
 ADD_TAG("gd-SecretRewardsLayer");
 class $modify(MySecretRewardsLayer, SecretRewardsLayer) {
 	bool init(bool p0) {
-		if (!SecretRewardsLayer::init(p0)) {
-			return false;
-		}
+		if (!SecretRewardsLayer::init(p0)) return false;
 		if (Mod::get()->getSettingValue<bool>("gd/SecretRewardsLayer")){
 			if (auto bg = this->getChildByID("background")) {
 				bg->setVisible(false);

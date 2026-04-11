@@ -6,9 +6,7 @@ using namespace geode::prelude;
 ADD_TAG("gd-PlayLayer");
 class $modify(MyPlayLayer, PlayLayer) {
 	bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
-		if (!PlayLayer::init(level, useReplay, dontCreateObjects)) {
-			return false;
-		}
+		if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
 
         auto bgOn = Mod::get()->getSettingValue<bool>("gd/PlayLayer");
 

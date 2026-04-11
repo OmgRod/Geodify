@@ -1,47 +1,53 @@
-# v2.6.0
+# Geodify Changelog
+
+## v2.6.1
+
+- Fixed broken loading background when Sapphire SDK background is enabled
+
+## v2.6.0
 
 - Added Sapphire SDK background
 
-# v2.5.0
+## v2.5.0
 
 - Added Globed v2 support
 - Added (for developers) 2 new macros for layers for custom namespaces
 
-# v2.4.3
+## v2.4.3
 
 - Fixed settings button being hooked on all mods ([#31](https://github.com/OmgRod/Geodify/issues/31))
 
-# v2.4.2
+## v2.4.2
 
 - Fixed settings menu
 - Remove useless "Enable Color" setting
 
-# v2.4.1
+## v2.4.1
 
 - Update to Geode v5
 
-# v2.4.0
+## v2.4.0
 
 - Add (fully) `timestepyt.secretlayer6` mod
 
-# v2.3.1
+## v2.3.1
 
 - Bugfix: Clicking the settings button with Happy Textures installed crashes the game.
 - btw thanks guys for 200k downloads
 
-# v2.3.0
+## v2.3.0
 
 - Add `alphalaneous.random_tab` mod
 - Add `omgrod.geometry-dash-surge` mod (mod coming soon...)
 
-# v2.2.1
+## v2.2.1
 
 - Changed all default modded layer settings to false
 - Switched to `LazySprite`
 
 > ok ery, you win...
 
-# v2.2.0
+## v2.2.0
 
 - Added GDCP List Integration mod
 - Added missing preview images
@@ -49,17 +55,17 @@
 - Changed GDPS Hub background.
 - GDPS Hub background modify now disabled by default.
 
-# v2.1.3
+## v2.1.3
 
 - Fixed GDPS Hub background
 - Fixed menu loop being silent
 
-# v2.1.2
+## v2.1.2
 
 - Added GDPS Hub mod
 - Added iOS support
 
-# v2.1.1
+## v2.1.1
 
 - Bugfix: Certain screenshots wouldn't work
 - Bugfix: Screenshots that don't work show black and purple squares
@@ -68,12 +74,12 @@
 
 ![garage plus joke](omgrod.geodify/changelog1.png)
 
-# v2.1.0
+## v2.1.0
 
 - Added Layers: `teamtcm.geometry-dash-odyssey/OdysseyComicLayer`, `teamtcm.geometry-dash-odyssey/OdysseySelectLayer`, `gd/UIOptionsLayer`, `gd/UIPOptionsLayer`, `gd/GJShopLayer`, `gd/SecretLayer5`
 - Bugfix: [Color offset doesn't work](https://github.com/OmgRod/Geodify/issues/20)
 
-# v2.0.1
+## v2.0.1
 
 - Bugfix: BetterAchievements background didn't change
 - Added Layers: `minemaker0430.gddp_integration/DPSearchLayer`, `minemaker0430.gddp_integration/RecommendedLayer`, `minemaker0430.gddp_integration/RouletteSafeLayer`, `omgrod.geodify/GYSettingSelectLayer`
@@ -81,9 +87,8 @@
 - Support me on Ko-fi
 - justin0 lost credit -> jasmine thanks for making mod logo
 
-# v2.0.0
+## v2.0.0
 
-- ~~Added ninXout's Geode menu loop~~ (delayed to v2.1.0)
 - Refactored code
 - Revamped settings menu
 - Bugfix: [Color settings don't work](https://github.com/OmgRod/Geodify/issues/11)
@@ -91,61 +96,58 @@
 - Changed color offset to change [each individual wave](https://github.com/OmgRod/Geodify/issues/13)
 - Switched from External Hook API to Alpha's Geode Utils
 
-```
-Setting keys were changed. What does this mean?
-Setting keys are identifiers for different settings to find out which setting is which. We have changed some setting keys so if you notice some changes in your Geodify configuration, don't be worried! Simply just change them back to how they were with the new revamped settings menu!
-```
+> Setting keys were changed. What does this mean?
+> Setting keys are identifiers for different settings to find out which setting is which. We have changed some setting keys so if you notice some changes in your Geodify configuration, don't be worried! Simply just change them back to how they were with the new revamped settings menu!
 
-# v1.6.0
+## v1.6.0
 
 - Added color offset option
 - remade the external mods hooks function `Fixing the PackSelectLayer apply bug`
 
-# v1.5.2
+## v1.5.2
 
 - Added macOS support
 - Bugfixes
 
-# v1.5.1
+## v1.5.1
 
 - Ported to Geode v4.0.0 release
 
-# v1.5.0
+## v1.5.0
 
 - Fixes
 - BetterInfo - `LevelSearchViewLayer`, `RewardViewLayer`, `RewardGroupLayer`, `DailyViewLayer`
 - Integrated Demonlist - `IDListLayer`, `IDPackLayer`
 - Basement - `SecretLayer3`
 
-# v1.4.0
+## v1.4.0
 
 - Added Tower layers
 - Added Vaults
 - Added Level Edit layer (not the editor but the level info editor)
 - Updated to Geode v4.0.0-beta.1
 
-# v1.3.0
+## v1.3.0
 
 - Updated to Geode v4.0.0
 
-# v1.2.2
+## v1.2.2
 
 - Added MacOS support
 
-# v1.2.1
+## v1.2.1
 
 - Updated to Geode v3.4.0
-- Bugfixes:
-    - Background shows up in gameplay by default
+- Background shows up in gameplay by default
 
-# v1.2.0
+## v1.2.0
 
 - Added `GDDP Integration` mod
 - Attempted to add `Minecraftify` mod
 - Added `Newgrounds Explorer` mod
 - Added back `LoadingLayer`
 
-# v1.1.0
+## v1.1.0
 
 - Fixed versioning stuff
 - Fixed `LoadingLayer` bug
@@ -154,27 +156,26 @@ Setting keys are identifiers for different settings to find out which setting is
 - Added GDPS Switcher
 - Updated to Geode v3.3.1
 
-# v1.0.1
+## v1.0.1
 
 - Added Happy Textures as a dependency
 - Added `BetterInfo` mod
 - Added `Globed` mod
 - Added `Texture Pack Loader` mod
 - Added `Texture Pack Workshop` mod
-- Bugfixes:
-    - Fixed possible crashes.
+- Fixed possible crashes.
 
-# v1.0.0
+## v1.0.0
 
 - Added the following layers:
-    - `CreatorLayer`
-    - `GauntletSelectLayer`
-    - `GJGarageLayer`
-    - `LeaderboardsLayer`
-    - `LevelBrowserLayer`
-    - `LevelInfoLayer`
-    - `LevelSearchLayer`
-    - `LevelSelectLayer`
-    - `LoadingLayer`
-    - `MenuLayer`
-    - `SecretRewardsLayer`
+  - `CreatorLayer`
+  - `GauntletSelectLayer`
+  - `GJGarageLayer`
+  - `LeaderboardsLayer`
+  - `LevelBrowserLayer`
+  - `LevelInfoLayer`
+  - `LevelSearchLayer`
+  - `LevelSelectLayer`
+  - `LoadingLayer`
+  - `MenuLayer`
+  - `SecretRewardsLayer`

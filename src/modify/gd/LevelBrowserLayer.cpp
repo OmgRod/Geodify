@@ -6,9 +6,7 @@ using namespace geode::prelude;
 ADD_TAG("gd-LevelBrowserLayer");
 class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 	bool init(GJSearchObject* p0) {
-		if (!LevelBrowserLayer::init(p0)) {
-			return false;
-		}
+		if (!LevelBrowserLayer::init(p0)) return false;
 		if (Mod::get()->getSettingValue<bool>("gd/LevelBrowserLayer")){
 			if (auto bg = this->getChildByID("background")) {
 				bg->setVisible(false);

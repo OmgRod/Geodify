@@ -10,9 +10,7 @@ class $modify(MenuLayer) {
         (void)self.setHookPriority("MenuLayer::init", -2);
     }
 	bool init() {
-		if (!MenuLayer::init()) {
-			return false;
-		}
+		if (!MenuLayer::init()) return false;
 
 		if (this->getChildByID("SwelvyBG")) {
 			return true;
@@ -34,8 +32,6 @@ class $modify(MenuLayer) {
 			}
 			SwelvyBG* swelvyBG = SwelvyBG::create();
 			swelvyBG->setZOrder(-3);
-			
-
 			this->addChild(swelvyBG);
 		}
 		return true;

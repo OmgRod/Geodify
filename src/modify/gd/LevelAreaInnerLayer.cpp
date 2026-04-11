@@ -6,9 +6,7 @@ using namespace geode::prelude;
 ADD_TAG("gd-LevelAreaInnerLayer");	
 class $modify(MyLevelAreaInnerLayer, LevelAreaInnerLayer) {
 	bool init(bool p0) {
-		if (!LevelAreaInnerLayer::init(p0)) {
-			return false;
-		}
+		if (!LevelAreaInnerLayer::init(p0)) return false;
 		if (Mod::get()->getSettingValue<bool>("gd/LevelAreaInnerLayer")){
 			auto swelvyBG = SwelvyBG::create();
 			swelvyBG->setZOrder(-2);
