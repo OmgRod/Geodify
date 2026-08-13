@@ -27,6 +27,7 @@ protected:
     void onDownloadFail();
 
     Ref<CCMenuItemSpriteExtra> m_swelvyBtn;
+    Ref<CCMenuItemSpriteExtra> m_imglost;
     Ref<CCMenuItemSpriteExtra> m_sapphireBtn;
 
     CCSize m_spriteTargetSize;

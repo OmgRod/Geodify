@@ -41,50 +41,6 @@ bool GYScreenshotPopup::init(std::string_view layerName) {
     m_sprite = LazySprite::create(spriteTargetSize);
     m_sprite->setAutoResize(true);
 
-    m_sprite->setLoadCallback([this, spriteTargetSize](Result<> res) {
-        if (res) {
-            log::info("Preview loaded successfully");
-            createToggleButtons();
-        } else {
-            log::error(
-                "Failed to load preview: {}",
-                res.unwrapErr()
-            );
-
-            removeToggleButtons();
-            onDownloadFail();
-
-            auto sprite = LazySprite::create(spriteTargetSize);
-            sprite->setAutoResize(true);
-            sprite->loadFromFile(
-                Mod::get()->getResourcesDir() / "noPreview.png"
-            );
-
-            sprite->setPosition(this->m_sprite->getPosition());
-            this->m_mainLayer->addChild(sprite);
-
-            auto reportSpr = ButtonSprite::create("Report Bug");
-            reportSpr->setScale(0.75f);
-
-            auto reportBtn = CCMenuItemExt::createSpriteExtra(
-                reportSpr,
-                [](CCObject*) {
-                    geode::utils::web::openLinkInBrowser("https://github.com/OmgRod/Geodify/issues/new?template=bug_report.md");
-                }
-            );
-
-            reportBtn->setPosition({
-                this->m_buttonMenu->getContentWidth() / 2,
-                this->m_buttonMenu->getContentHeight() * 0.1f
-            });
-            
-            this->m_buttonMenu->addChild(reportBtn);
-
-            m_sprite->removeFromParentAndCleanup(true);
-            m_sprite = nullptr;
-        }
-    });
-
     m_mainLayer->addChildAtPosition(
         m_sprite,
         Anchor::Center
@@ -125,9 +81,11 @@ void GYScreenshotPopup::reloadPreview() {
     m_sprite->setLoadCallback([this](Result<> res) {
         if (res) {
             //log::info("Preview loaded successfully");
-
+            if(m_imglost){
+                m_imglost->removeFromParentAndCleanup(true);
+                m_imglost = nullptr;
+            }
             fixSpriteSize();
-
             createToggleButtons();
         } else {
             log::error(
@@ -135,7 +93,7 @@ void GYScreenshotPopup::reloadPreview() {
                 res.unwrapErr()
             );
 
-            removeToggleButtons();
+            //removeToggleButtons();
             createReportButton();
             onDownloadFail();
         }
@@ -264,22 +222,27 @@ void GYScreenshotPopup::fixSpriteSize() {
 }
 
 void GYScreenshotPopup::createReportButton() {
-    auto reportSpr = ButtonSprite::create("Report Bug");
-    reportSpr->setScale(0.75f);
+    if(m_imglost)return;
+    auto reportSpr = ButtonSprite::create("Bug report");
+    reportSpr->setScale(0.25f);
 
-    auto reportBtn = CCMenuItemExt::createSpriteExtra(
+    m_imglost = CCMenuItemExt::createSpriteExtra(
         reportSpr,
         [](CCObject*) {
-            geode::utils::web::openLinkInBrowser(
-                "https://github.com/OmgRod/Geodify/issues/new?template=bug_report.md"
+            geode::createQuickPopup(
+                "Missing image",
+                "The preview does not exist! <cr>These bugs won't be fixed</c>",
+                "Close",
+                nullptr,
+                nullptr
             );
         }
     );
 
-    reportBtn->setPosition({
+    m_imglost->setPosition({
         m_buttonMenu->getContentWidth() / 2,
         m_buttonMenu->getContentHeight() * 0.1f
     });
 
-    m_buttonMenu->addChild(reportBtn);
+    m_buttonMenu->addChild(m_imglost);
 }
