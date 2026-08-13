@@ -31,7 +31,7 @@ using namespace geode::prelude;
 
 // Geometry Dash
 
-ADD_TAG("gd-CreatorLayer");
+ADD_TAG("gd/CreatorLayer");
 class $modify(MyCreatorLayer, CreatorLayer) {
 	bool init() {
 		if (!CreatorLayer::init()) return false;
@@ -51,7 +51,7 @@ class $modify(MyCreatorLayer, CreatorLayer) {
 	}
 };
 
-ADD_TAG("gd-EditLevelLayer");
+ADD_TAG("gd/EditLevelLayer");
 class $modify(MyEditLevelLayer, EditLevelLayer) {
     bool init(GJGameLevel* p0) {
         if (!EditLevelLayer::init(p0)) {
@@ -87,7 +87,7 @@ class $modify(MyEditLevelLayer, EditLevelLayer) {
     }
 };
 
-ADD_TAG("gd-GauntletLayer");
+ADD_TAG("gd/GauntletLayer");
 class $modify(MyGauntletLayer, GauntletLayer) {
 	bool init(GauntletType p) {
 		if (!GauntletLayer::init(p)) return false;
@@ -107,7 +107,7 @@ class $modify(MyGauntletLayer, GauntletLayer) {
 	}
 };
 
-ADD_TAG("gd-GauntletSelectLayer");
+ADD_TAG("gd/GauntletSelectLayer");
 class $modify(MyGauntletSelectLayer, GauntletSelectLayer) {
 	bool init(int p0) {
 		if (!GauntletSelectLayer::init(p0)) return false;
@@ -130,7 +130,7 @@ class $modify(MyGauntletSelectLayer, GauntletSelectLayer) {
 	}
 };
 
-ADD_TAG("gd-GJGarageLayer");
+ADD_TAG("gd/GJGarageLayer");
 class $modify(MyGJGarageLayer, GJGarageLayer) {
 	bool init() {
 		if (!GJGarageLayer::init()) return false;
@@ -150,12 +150,12 @@ class $modify(MyGJGarageLayer, GJGarageLayer) {
 	}
 };
 
-ADD_TAG("gd-GJShopLayer-Normal");
-ADD_TAG("gd-GJShopLayer-Secret");
-ADD_TAG("gd-GJShopLayer-Community");
-ADD_TAG("gd-GJShopLayer-Mechanic");
-ADD_TAG("gd-GJShopLayer-Diamond");
-ADD_TAG("teamtcm.geometry-dash-odyssey-GJShopLayer-Carp");
+ADD_TAG("gd/GJShopLayer-Normal", "Scratch's Shop");
+ADD_TAG("gd/GJShopLayer-Secret", "Secret Shop");
+ADD_TAG("gd/GJShopLayer-Community", "Community Shop");
+ADD_TAG("gd/GJShopLayer-Mechanic", "Mechanic's Shop");
+ADD_TAG("gd/GJShopLayer-Diamond", "Diamond Shop");
+ADD_TAG("teamtcm.geometry-dash-odyssey/GJShopLayer-Carp", "Carp's Shop");
 
 class $modify(MyGJShopLayer, GJShopLayer) {
     bool init(ShopType p0) {
@@ -202,7 +202,7 @@ class $modify(MyGJShopLayer, GJShopLayer) {
     }
 };
 
-ADD_TAG("gd-LeaderboardsLayer");
+ADD_TAG("gd/LeaderboardsLayer");
 class $modify(MyLeaderboardsLayer, LeaderboardsLayer) {
 	bool init(LeaderboardType type, LeaderboardStat stat) {
 		if (!LeaderboardsLayer::init(type, stat)) return false;
@@ -224,7 +224,7 @@ class $modify(MyLeaderboardsLayer, LeaderboardsLayer) {
 	}
 };
 
-ADD_TAG("gd-LevelAreaInnerLayer");
+ADD_TAG("gd/LevelAreaInnerLayer");
 class $modify(MyLevelAreaInnerLayer, LevelAreaInnerLayer) {
 	bool init(bool p0) {
 		if (!LevelAreaInnerLayer::init(p0)) return false;
@@ -243,7 +243,7 @@ class $modify(MyLevelAreaInnerLayer, LevelAreaInnerLayer) {
 	}
 };
 
-ADD_TAG("gd-LevelAreaLayer");
+ADD_TAG("gd/LevelAreaLayer");
 class $modify(MyLevelAreaLayer, LevelAreaLayer) {
 	bool init() {
 		if (!LevelAreaLayer::init()) return false;
@@ -264,7 +264,7 @@ class $modify(MyLevelAreaLayer, LevelAreaLayer) {
 	}
 };
 
-ADD_TAG("gd-LevelBrowserLayer");
+ADD_TAG("gd/LevelBrowserLayer");
 class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 	bool init(GJSearchObject* p0) {
 		if (!LevelBrowserLayer::init(p0)) return false;
@@ -286,7 +286,7 @@ class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 	}
 };
 
-ADD_TAG("gd-LevelInfoLayer");
+ADD_TAG("gd/LevelInfoLayer");
 class $modify(MyLevelInfoLayer, LevelInfoLayer) {
 	bool init(GJGameLevel* level, bool challenge) {
 		if (!LevelInfoLayer::init(level, challenge)) return false;
@@ -308,7 +308,7 @@ class $modify(MyLevelInfoLayer, LevelInfoLayer) {
 	}
 };
 
-ADD_TAG("gd-LevelListLayer");
+ADD_TAG("gd/LevelListLayer");
 class $modify(MyLevelListLayer, LevelListLayer) {
 	bool init(GJLevelList* list) {
 		if (!LevelListLayer::init(list)) return false;
@@ -329,7 +329,7 @@ class $modify(MyLevelListLayer, LevelListLayer) {
 	}
 };
 
-ADD_TAG("gd-LevelSearchLayer");
+ADD_TAG("gd/LevelSearchLayer");
 class $modify(MyLevelSearchLayer, LevelSearchLayer) {
 	bool init(int p0) {
 		if (!LevelSearchLayer::init(p0)) return false;
@@ -383,7 +383,7 @@ class $modify(MyLevelSearchLayer, LevelSearchLayer) {
 	}
 };
 
-ADD_TAG("gd-LevelSelectLayer");
+ADD_TAG("gd/LevelSelectLayer");
 class $modify(MyLevelSelectLayer, LevelSelectLayer) {
 	bool init(int page) {
 		if (!LevelSelectLayer::init(page)) return false;
@@ -409,7 +409,7 @@ class $modify(MyLevelSelectLayer, LevelSelectLayer) {
 	}
 };
 
-ADD_TAG("gd-LoadingLayer");
+ADD_TAG("gd/LoadingLayer");
 class $modify(MyLoadingLayer, LoadingLayer) {
 	bool init(bool p0) {
 		if (!LoadingLayer::init(p0)) return false;
@@ -432,7 +432,7 @@ class $modify(MyLoadingLayer, LoadingLayer) {
 	}
 };
 
-ADD_TAG("gd-MenuLayer");
+ADD_TAG("gd/MenuLayer");
 class $modify(MenuLayer) {
 	static void onModify(auto& self) {
         (void)self.setHookPriority("MenuLayer::init", -2);
@@ -470,7 +470,7 @@ class $modify(MenuLayer) {
 	}
 };
 
-ADD_TAG("gd-PlayLayer");
+ADD_TAG("gd/PlayLayer");
 class $modify(MyPlayLayer, PlayLayer) {
 	bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
 		if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
@@ -496,7 +496,7 @@ class $modify(MyPlayLayer, PlayLayer) {
 	}
 };
 
-ADD_TAG("gd-SecretLayer");
+ADD_TAG("gd/SecretLayer");
 class $modify(MySecretLayer, SecretLayer) {
 	bool init() {
 		if (!SecretLayer::init()) return false;
@@ -518,7 +518,7 @@ class $modify(MySecretLayer, SecretLayer) {
 	}
 };
 
-ADD_TAG("gd-SecretLayer2");
+ADD_TAG("gd/SecretLayer2");
 class $modify(MySecretLayer2, SecretLayer2) {
 	bool init() {
 		if (!SecretLayer2::init()) return false;
@@ -539,7 +539,7 @@ class $modify(MySecretLayer2, SecretLayer2) {
     }
 };
 
-ADD_TAG("gd-SecretLayer3");
+ADD_TAG("gd/SecretLayer3");
 class $modify(MySecretLayer3, SecretLayer3) {
 	bool init() {
 		if (!SecretLayer3::init()) return false;
@@ -560,7 +560,7 @@ class $modify(MySecretLayer3, SecretLayer3) {
 	}
 };
 
-ADD_TAG("gd-SecretLayer4");
+ADD_TAG("gd/SecretLayer4");
 class $modify(MySecretLayer4, SecretLayer4) {
 	bool init() {
 		if (!SecretLayer4::init()) return false;
@@ -582,10 +582,10 @@ class $modify(MySecretLayer4, SecretLayer4) {
 	}
 };
 
-ADD_TAG("gd-SecretLayer5");
+ADD_TAG("gd/SecretLayer5");
 SET_SWELVY_SPRITE(SecretLayer5, "gd/SecretLayer5");
 
-ADD_TAG("gd-SecretRewardsLayer");
+ADD_TAG("gd/SecretRewardsLayer");
 class $modify(MySecretRewardsLayer, SecretRewardsLayer) {
 	bool init(bool p0) {
 		if (!SecretRewardsLayer::init(p0)) return false;
@@ -617,7 +617,7 @@ class $modify(MySecretRewardsLayer, SecretRewardsLayer) {
 	}
 };
 
-ADD_TAG("gd-UIOptionsLayer");
+ADD_TAG("gd/UIOptionsLayer");
 class $modify(MyUIOptionsLayer, UIOptionsLayer) {
 	bool init(bool p0) {
 		if (!UIOptionsLayer::init(p0)) return false;
@@ -642,7 +642,7 @@ class $modify(MyUIOptionsLayer, UIOptionsLayer) {
 	}
 };
 
-ADD_TAG("gd-UIPOptionsLayer");
+ADD_TAG("gd/UIPOptionsLayer");
 class $modify(MyUIPOptionsLayer, UIPOptionsLayer) {
 	bool init() {
 		if (!UIPOptionsLayer::init()) return false;
@@ -669,12 +669,12 @@ class $modify(MyUIPOptionsLayer, UIPOptionsLayer) {
 
 // abb2k.gdwt
 
-ADD_TAG("abb2k.gdwt-GDWTLayer");
+ADD_TAG("abb2k.gdwt/GDWTLayer");
 SET_SWELVY_SPRITE(GDWTLayer, "abb2k.gdwt/GDWTLayer");
 
 // alphalaneous.random_tab
 
-ADD_TAG("alphalaneous.random_tab-RandomLayer");
+ADD_TAG("alphalaneous.random_tab/RandomLayer");
 class $nodeModify(MyRandomLayer, RandomLayer) {\
     void modify() {
         if (Mod::get()->getSettingValue<std::string>("background-type") != "Disabled") {
@@ -701,23 +701,23 @@ class $nodeModify(MyRandomLayer, RandomLayer) {\
 
 // Geode
 
-ADD_TAG("geode.loader-ModsLayer");
+ADD_TAG("geode.loader/ModsLayer");
 class $nodeModify(ModsLayer) {
     void modify() {
         if (Mod::get()->getSettingValue<std::string>("background-type") != "Disabled") {
-            if (Mod::get()->getSettingValue<std::string>("background-type") != "Disabled") {
                 if (Mod::get()->getSettingValue<bool>("geode.loader/ModsLayer")) {
                     if (!(Loader::get()->getLoadedMod("geode.loader")->getSettingValue<bool>("enable-geode-theme"))) {
-                        if (auto bg = getChildByID("bg")) {
-                            bg->setVisible(false);
-                        }
-
+                        /*
+                        GeodeInPauseMenu does this and this only to support that mod
+                        https://github.com/hiimjasmine00/GeodeInPauseMenu/blob/1ad050e65ba4d0d06993334d974f126ebef96953/src/classes/ModsLayerWrapper.cpp#L28
+                        */
+                        removeChildByID("bg");
+                        removeChildByID("SwelvyBG");
                         SwelvyBG* swelvyBG = SwelvyBG::create();
                         swelvyBG->setZOrder(-1);
-                        
+                        swelvyBG->setID("SwelvyBG"); // spoof for GeodeInPauseMenu
                         addChild(swelvyBG);
                     }
-                }
             }
         }
     }
@@ -725,25 +725,25 @@ class $nodeModify(ModsLayer) {
 
 // arcticwoof.rated_layouts
 
-ADD_TAG("arcticwoof.rated_layouts-RLMenuLayer");
+ADD_TAG("arcticwoof.rated_layouts/RLMenuLayer");
 SET_SWELVY_SPRITE(RLMenuLayer, "arcticwoof.rated_layouts/RLMenuLayer");
 
-ADD_TAG("arcticwoof.rated_layouts-RLLevelBrowserLayer");
+ADD_TAG("arcticwoof.rated_layouts/RLLevelBrowserLayer");
 SET_SWELVY_SPRITE(RLLevelBrowserLayer, "arcticwoof.rated_layouts/RLLevelBrowserLayer");
 
-ADD_TAG("arcticwoof.rated_layouts-RLLeaderboardLayer");
+ADD_TAG("arcticwoof.rated_layouts/RLLeaderboardLayer");
 SET_SWELVY_SPRITE(RLLeaderboardLayer, "arcticwoof.rated_layouts/RLLeaderboardLayer");
 
-ADD_TAG("arcticwoof.rated_layouts-RLGauntletSelectLayer");
+ADD_TAG("arcticwoof.rated_layouts/RLGauntletSelectLayer");
 SET_SWELVY_SPRITE(RLGauntletSelectLayer, "arcticwoof.rated_layouts/RLGauntletSelectLayer");
 
-ADD_TAG("arcticwoof.rated_layouts-RLGauntletLevelsLayer");
+ADD_TAG("arcticwoof.rated_layouts/RLGauntletLevelsLayer");
 SET_SWELVY_SPRITE(RLGauntletLevelsLayer, "arcticwoof.rated_layouts/RLGauntletLevelsLayer");
 
-ADD_TAG("arcticwoof.rated_layouts-RLSpireLayer");
+ADD_TAG("arcticwoof.rated_layouts/RLSpireLayer");
 SET_SWELVY_SPRITE(RLSpireLayer, "arcticwoof.rated_layouts/RLSpireLayer");
 
-ADD_TAG("arcticwoof.rated_layouts-RLSearchLayer");
+ADD_TAG("arcticwoof.rated_layouts/RLSearchLayer");
 class $nodeModify(RLSearchLayer) {
     void modify() {
         if (Mod::get()->getSettingValue<std::string>("background-type") != "Disabled") {
@@ -766,103 +766,103 @@ class $nodeModify(RLSearchLayer) {
     }
 };
 
-ADD_TAG("arcticwoof.rated_layouts-RLShopLayer");
+ADD_TAG("arcticwoof.rated_layouts/RLShopLayer");
 SET_SWELVY_SPRITE(RLShopLayer, "arcticwoof.rated_layouts/RLShopLayer");
 
-ADD_TAG("arcticwoof.rated_layouts-RLSecretLayer1");
+ADD_TAG("arcticwoof.rated_layouts/RLSecretLayer1");
 SET_SWELVY_SPRITE(RLSecretLayer1, "arcticwoof.rated_layouts/RLSecretLayer1");
 
-ADD_TAG("arcticwoof.rated_layouts-RLSpireSelectLevelLayer");
+ADD_TAG("arcticwoof.rated_layouts/RLSpireSelectLevelLayer");
 SET_SWELVY_SPRITE(RLSpireSelectLevelLayer, "arcticwoof.rated_layouts/RLSpireSelectLevelLayer");
 
 // cvolton.betterinfo
 
-ADD_TAG("cvolton.betterinfo-CustomCreatorLayer");
+ADD_TAG("cvolton.betterinfo/CustomCreatorLayer");
 SET_SWELVY(CustomCreatorLayer, "cvolton.betterinfo/CustomCreatorLayer", "cvolton.betterinfo/background");
 
-ADD_TAG("cvolton.betterinfo-DailyViewLayer");
+ADD_TAG("cvolton.betterinfo/DailyViewLayer");
 SET_SWELVY(DailyViewLayer, "cvolton.betterinfo/DailyViewLayer", "cvolton.betterinfo/background");
 
-ADD_TAG("cvolton.betterinfo-LeaderboardViewLayer");
+ADD_TAG("cvolton.betterinfo/LeaderboardViewLayer");
 SET_SWELVY(LeaderboardViewLayer, "cvolton.betterinfo/LeaderboardViewLayer", "cvolton.betterinfo/background");
 
-ADD_TAG("cvolton.betterinfo-LevelSearchViewLayer");
+ADD_TAG("cvolton.betterinfo/LevelSearchViewLayer");
 SET_SWELVY(LevelSearchViewLayer, "cvolton.betterinfo/LevelSearchViewLayer", "cvolton.betterinfo/background");
 
-ADD_TAG("cvolton.betterinfo-RewardGroupLayer");
+ADD_TAG("cvolton.betterinfo/RewardGroupLayer");
 SET_SWELVY(RewardGroupLayer, "cvolton.betterinfo/RewardGroupLayer", "cvolton.betterinfo/background");
 
-ADD_TAG("cvolton.betterinfo-RewardViewLayer");
+ADD_TAG("cvolton.betterinfo/RewardViewLayer");
 SET_SWELVY(RewardViewLayer, "cvolton.betterinfo/RewardViewLayer", "cvolton.betterinfo/background");
 
 // dankmeme.globed2
 
-ADD_TAG("dankmeme.globed2-GlobedLevelListLayer");
+ADD_TAG("dankmeme.globed2/GlobedLevelListLayer");
 SET_SWELVY_WITH_NAMESPACE(globed, GlobedLevelListLayer, "dankmeme.globed2/GlobedLevelListLayer", "background");
 
-ADD_TAG("dankmeme.globed2-GlobedMenuLayer");
+ADD_TAG("dankmeme.globed2/GlobedMenuLayer");
 SET_SWELVY_WITH_NAMESPACE(globed, GlobedMenuLayer, "dankmeme.globed2/GlobedMenuLayer", "background");
 
-ADD_TAG("dankmeme.globed2-GlobedServersLayer");
+ADD_TAG("dankmeme.globed2/GlobedServersLayer");
 SET_SWELVY_WITH_NAMESPACE(globed, GlobedServersLayer, "dankmeme.globed2/GlobedServersLayer", "background");
 
-ADD_TAG("dankmeme.globed2-SettingsLayer");
+ADD_TAG("dankmeme.globed2/SettingsLayer");
 SET_SWELVY_WITH_NAMESPACE(globed, SettingsLayer, "dankmeme.globed2/SettingsLayer", "background");
 
 // delivel.level-grind
 
-ADD_TAG("delivel.level-grind-CreatorLayer");
+ADD_TAG("delivel.level-grind/CreatorLayer");
 SET_SWELVY_SPRITE_WITH_NAMESPACE(levelgrind, CreatorLayer, "delivel.level-grind/CreatorLayer");
 
-ADD_TAG("delivel.level-grind-CustomBrowserLayer");
+ADD_TAG("delivel.level-grind/CustomBrowserLayer");
 SET_SWELVY_SPRITE_WITH_NAMESPACE(levelgrind, CustomBrowserLayer, "delivel.level-grind/CustomBrowserLayer");
 
-ADD_TAG("delivel.level-grind-GrindPacksLayer");
+ADD_TAG("delivel.level-grind/GrindPacksLayer");
 SET_SWELVY_SPRITE_WITH_NAMESPACE(levelgrind, GrindPacksLayer, "delivel.level-grind/GrindPacksLayer");
 
-ADD_TAG("delivel.level-grind-MainLayer");
+ADD_TAG("delivel.level-grind/MainLayer");
 SET_SWELVY_SPRITE_WITH_NAMESPACE(levelgrind, MainLayer, "delivel.level-grind/MainLayer");
 
-ADD_TAG("delivel.level-grind-PetLayer");
+ADD_TAG("delivel.level-grind/PetLayer");
 SET_SWELVY_SPRITE_WITH_NAMESPACE(levelgrind, PetLayer, "delivel.level-grind/PetLayer");
 
-ADD_TAG("delivel.level-grind-SettingsLayer");
+ADD_TAG("delivel.level-grind/SettingsLayer");
 SET_SWELVY_SPRITE_WITH_NAMESPACE(levelgrind, SettingsLayer, "delivel.level-grind/SettingsLayer");
 
-ADD_TAG("delivel.level-grind-SuggestionsLayer");
+ADD_TAG("delivel.level-grind/SuggestionsLayer");
 SET_SWELVY_SPRITE_WITH_NAMESPACE(levelgrind, SuggestionsLayer, "delivel.level-grind/SuggestionsLayer");
 
 // gdcpteam.challenge-list
 
-ADD_TAG("gdcpteam.challenge-list-GDCPListLayer");
+ADD_TAG("gdcpteam.challenge-list/GDCPListLayer");
 SET_SWELVY(GDCPListLayer, "gdcpteam.challenge-list/GDCPListLayer", "background");
 
 // gdutilsdevs.gdutils
 
-ADD_TAG("gdutilsdevs.gdutils-MoreLeaderboards");
+ADD_TAG("gdutilsdevs.gdutils/MoreLeaderboards");
 SET_SWELVY_SPRITE(MoreLeaderboards, "gdutilsdevs.gdutils/MoreLeaderboards");
 
 // geode.texture-loader
 
-ADD_TAG("geode.texture-loader-PackSelectLayer");
+ADD_TAG("geode.texture-loader/PackSelectLayer");
 SET_SWELVY(PackSelectLayer, "geode.texture-loader/PackSelectLayer", "background");
 
 // hiimjustin000.integrated_demonlist
 
-ADD_TAG("hiimjustin000.integrated_demonlist-IDListLayer");
+ADD_TAG("hiimjustin000.integrated_demonlist/IDListLayer");
 SET_SWELVY_SPRITE(IDListLayer, "hiimjustin000.integrated_demonlist/IDListLayer");
 
-ADD_TAG("hiimjustin000.integrated_demonlist-IDPackLayer");
+ADD_TAG("hiimjustin000.integrated_demonlist/IDPackLayer");
 SET_SWELVY_SPRITE(IDPackLayer, "hiimjustin000.integrated_demonlist/IDPackLayer");
 
 // km7dev.gdps-switcher
 
-ADD_TAG("km7dev.gdps-switcher-ServerSwitchLayer");
+ADD_TAG("km7dev.gdps-switcher/ServerSwitchLayer");
 SET_SWELVY(ServerSwitchLayer, "km7dev.gdps-switcher/ServerSwitchLayer", "background");
 
 // lblazen.gdps_hub
 
-ADD_TAG("lblazen.gdps_hub-GDPSHubLayer");
+ADD_TAG("lblazen.gdps_hub/GDPSHubLayer");
 class $nodeModify(MyGDPSHubLayer, GDPSHubLayer) {
     void modify() {
         if (Mod::get()->getSettingValue<std::string>("background-type") != "Disabled") {
@@ -881,47 +881,47 @@ class $nodeModify(MyGDPSHubLayer, GDPSHubLayer) {
 
 // minemaker0430.gddp_integration
 
-ADD_TAG("minemaker0430.gddp_integration-DPLayer");
+ADD_TAG("minemaker0430.gddp_integration/DPLayer");
 SET_SWELVY(DPLayer, "minemaker0430.gddp_integration/DPLayer", "bg");
 
-ADD_TAG("minemaker0430.gddp_integration-DPListLayer");
+ADD_TAG("minemaker0430.gddp_integration/DPListLayer");
 SET_SWELVY(DPListLayer, "minemaker0430.gddp_integration/DPListLayer", "bg");
 
-ADD_TAG("minemaker0430.gddp_integration-DPSearchLayer");
+ADD_TAG("minemaker0430.gddp_integration/DPSearchLayer");
 SET_SWELVY(DPSearchLayer, "minemaker0430.gddp_integration/DPSearchLayer", "bg");
 
-ADD_TAG("minemaker0430.gddp_integration-RecommendedLayer");
+ADD_TAG("minemaker0430.gddp_integration/RecommendedLayer");
 SET_SWELVY(RecommendedLayer, "minemaker0430.gddp_integration/RecommendedLayer", "bg");
 
-ADD_TAG("minemaker0430.gddp_integration-RouletteSafeLayer");
+ADD_TAG("minemaker0430.gddp_integration/RouletteSafeLayer");
 SET_SWELVY(RouletteSafeLayer, "minemaker0430.gddp_integration/RouletteSafeLayer", "bg");
 
 // omgrod.geodify
 
-ADD_TAG("omgrod.geodify-GYSettingSelectLayer");
+ADD_TAG("omgrod.geodify/GYSettingSelectLayer");
 
 // omgrod.thatdarncoin
 
-ADD_TAG("omgrod.thatdarncoin-CreditsLayer");
+ADD_TAG("omgrod.thatdarncoin/CreditsLayer");
 SET_SWELVY_SPRITE(CreditsLayer, "omgrod.thatdarncoin/CreditsLayer");
 
-ADD_TAG("omgrod.thatdarncoin-ElderLayer");
+ADD_TAG("omgrod.thatdarncoin/ElderLayer");
 SET_SWELVY_SPRITE(ElderLayer, "omgrod.thatdarncoin/ElderLayer");
 
 // teamtcm.geometry-dash-odyssey
 
-ADD_TAG("teamtcm.geometry-dash-odyssey-OdysseyComicLayer");
+ADD_TAG("teamtcm.geometry-dash-odyssey/OdysseyComicLayer");
 SET_SWELVY(OdysseyComicLayer, "teamtcm.geometry-dash-odyssey/OdysseyComicLayer", "teamtcm.geometry-dash-odyssey/background");
 
-ADD_TAG("teamtcm.geometry-dash-odyssey-OdysseySelectLayer");
+ADD_TAG("teamtcm.geometry-dash-odyssey/OdysseySelectLayer");
 SET_SWELVY_SPRITE(OdysseySelectLayer, "teamtcm.geometry-dash-odyssey/OdysseySelectLayer");
 
 // timestepyt.secretlayer6
 
-ADD_TAG("timestepyt.secretlayer6-SecretLayer6R");
+ADD_TAG("timestepyt.secretlayer6/SecretLayer6R");
 SET_SWELVY_SPRITE(SecretLayer6R, "timestepyt.secretlayer6/SecretLayer6R");
 
 // uproxide.textures
 
-ADD_TAG("uproxide.textures-TextureWorkshopLayer");
+ADD_TAG("uproxide.textures/TextureWorkshopLayer");
 SET_SWELVY(TextureWorkshopLayer, "uproxide.textures/TextureWorkshopLayer", "background");

@@ -34,11 +34,23 @@ bool GYColorPopup::init() {
 
     this->setTitle("Color Settings");
 
-    auto layerSize = CCSize(winSize.width * 0.75f, winSize.height * 0.75f);
+    auto layerSize = CCSize(winSize.width * 0.75f, winSize.height * 0.9f);
 
-    auto scroll = ScrollLayer::create(layerSize * 0.9f - ccp(layerSize.width * 0.05f, layerSize.height * 0.5f));
-    scroll->setPosition({ layerSize.width * 0.05f, layerSize.height * 0.375f });
+    auto scroll = ScrollLayer::create(layerSize * 0.9f - ccp(layerSize.width * 0.05f, layerSize.height * 0.35f));
+    scroll->setPosition({ layerSize.width * 0.05f, layerSize.height * 0.175f });
     scroll->setTouchEnabled(true);
+    CCScale9Sprite* contentBox = CCScale9Sprite::create("square02b_001.png");
+    contentBox->setColor(ccColor3B{0, 0, 0});
+    contentBox->setOpacity(60);
+    contentBox->setContentSize(scroll->getContentSize());
+    contentBox->setPosition(scroll->getPosition());
+    contentBox->setAnchorPoint({ 0, 0 });
+    contentBox->setID("content-box");
+    auto scrollbar = geode::Scrollbar::create(scroll);
+    scrollbar->setAnchorPoint({1, 0});
+	scrollbar->setPositionX(scroll->getContentWidth() + scrollbar->getContentWidth() + 5);
+    contentBox->addChild(scrollbar);
+    this->m_mainLayer->addChild(contentBox);
 
     for (auto& key : Mod::get()->getSettingKeys()) {
         if (key.starts_with("color-")) {

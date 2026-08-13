@@ -8,11 +8,10 @@
 using namespace geode::prelude;
 
 void GYModTile::viewMod(CCObject* sender) {
-    log::debug("Viewing mod: {}", this->m_modID);
     GYModSettingsPopup::create(this->m_modName, this->m_modAuthor, this->m_modID)->show();
 }
 
-GYModTile* GYModTile::create(std::string modID) {
+GYModTile* GYModTile::create(std::string_view modID) {
     GYModTile* ret = new GYModTile();
     if (ret && ret->init(modID)) {
         ret->autorelease();
@@ -21,7 +20,7 @@ GYModTile* GYModTile::create(std::string modID) {
     delete ret;
     return nullptr;
 }
-bool GYModTile::init(std::string modID) {
+bool GYModTile::init(std::string_view modID) {
     if (!CCLayer::init())
         return false;
     
@@ -32,8 +31,8 @@ bool GYModTile::init(std::string modID) {
         this->m_modAuthor = "RobTop";
     } else {
         mod = Loader::get()->getLoadedMod(modID);
-        this->m_modID = mod ? std::string(mod->getID()) : modID;
-        this->m_modName = mod ? std::string(mod->getName()) : "Unknown Mod";
+        this->m_modID = mod ? mod->getID() : modID;
+        this->m_modName = mod ? mod->getName() : "Unknown Mod";
         this->m_modAuthor = mod ? ModMetadata::formatDeveloperDisplayString(mod->getDevelopers()) : "Unknown";
     }
 
@@ -49,14 +48,14 @@ bool GYModTile::init(std::string modID) {
     bg->setAnchorPoint({ 0.f, 0.f});
     this->addChild(bg);
 
-    auto modNameText = CCLabelBMFont::create(m_modName.c_str(), "bigFont.fnt");
+    auto modNameText = geode::Label::create(m_modName, "bigFont.fnt");
     modNameText->setPosition({ this->getContentSize().width / 2, this->getContentSize().height - winSize.height * 0.05f });
     float maxWidth = this->getContentSize().width * 0.8f;
     float scale = (modNameText->getContentSize().width > maxWidth) ? (this->getContentSize().width * 0.7f) / modNameText->getContentSize().width : 0.5f;
     modNameText->setScale(std::min(scale, 0.5f));
     bg->addChild(modNameText);
 
-    auto modAuthorText = CCLabelBMFont::create(fmt::format("By {}", m_modAuthor).c_str(), "goldFont.fnt");
+    auto modAuthorText = geode::Label::create(fmt::format("By {}", m_modAuthor), "goldFont.fnt");
     modAuthorText->setPosition({ this->getContentSize().width / 2, this->getContentSize().height - winSize.height * 0.35f });
     scale = (modAuthorText->getContentSize().width > maxWidth) ? (this->getContentSize().width * 0.7f) / modAuthorText->getContentSize().width : 0.5f;
     modAuthorText->setScale(std::min(scale, 0.5f));
@@ -68,7 +67,7 @@ bool GYModTile::init(std::string modID) {
         if (modID == "geode.loader") {
             sprite = CCSprite::create("geodeLogo.png"_spr);
         } else {
-            sprite = geode::createServerModLogo(modID);
+            sprite = geode::createServerModLogo(std::string(modID));
         }
     } else {
         sprite = CCSprite::create("gdLogo.png"_spr);

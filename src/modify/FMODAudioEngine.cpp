@@ -6,15 +6,15 @@ using namespace geode::prelude;
 #include <Geode/modify/FMODAudioEngine.hpp>
 using namespace geode::prelude;
 struct FMODEngineSaved {
-    gd::string name; bool shouldLoop; float fadeInTime; int channel;
+    std::string_view name; bool shouldLoop; float fadeInTime; int channel;
 }; FMODEngineSaved Saved;
 
 class $modify(MyFMODAudioEngine, FMODAudioEngine) {
 public:
     void playMusic(gd::string name, bool shouldLoop, float fadeInTime, int channel) {
-        log::debug("Playing music: {}", name);
-        std::string nameStr = name; 
-        Saved.name = name;
+        //log::debug("Playing music: {}", name);
+        std::string_view nameStr = name; 
+        Saved.name = nameStr;
         Saved.shouldLoop = shouldLoop;
         Saved.fadeInTime = fadeInTime;
         Saved.channel = channel;

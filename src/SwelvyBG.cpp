@@ -37,7 +37,7 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
             normalizedBgType == "1" ||
             (!normalizedBgType.empty() && normalizedBgType != "default" && normalizedBgType != "0");
 
-        log::debug("SwelvyBG background-type='{}' (normalized='{}')", bgType, normalizedBgType);
+        //log::debug("SwelvyBG background-type='{}' (normalized='{}')", bgType, normalizedBgType);
 
         this->setContentSize(winSize);
         this->setAnchorPoint({ 0.f, 0.f });
@@ -58,7 +58,7 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
             sapphireBg->setPosition({winSize.width / 2, winSize.height / 2});
             this->addChild(sapphireBg);
         } else {
-            log::info("Default background layers will be used.");
+            //log::info("Default background layers will be used.");
             std::random_device rd;
             std::mt19937 gen(rd());
             std::uniform_int_distribution<> sign(0, 1);
@@ -98,7 +98,7 @@ bool SwelvyBG::init(float widthmult, float hightmult, float minspeed, float maxs
                 sprite->setUserObject("speed", CCFloat::create(speed));
                 this->addChild(sprite);
 
-                log::debug("Created layer {} with color ({}, {}, {})", layerID, adjustedColor.r, adjustedColor.g, adjustedColor.b);
+                //log::debug("Created layer {} with color ({}, {}, {})", layerID, adjustedColor.r, adjustedColor.g, adjustedColor.b);
 
                 y -= m_obContentSize.height / 6;
                 idx += 1;
@@ -125,7 +125,7 @@ void SwelvyBG::updateSpritePosition(float dt) {
     auto widthObj = typeinfo_cast<CCFloat*>(this->getUserObject("width"));
 
     if (!speedObj || !widthObj) {
-        log::debug("Sprite missing required user objects: speed or width");
+        log::error("Sprite missing required user objects: speed or width");
         return;
     }
 
@@ -134,7 +134,7 @@ void SwelvyBG::updateSpritePosition(float dt) {
 
     auto sprite = typeinfo_cast<CCSprite*>(this);
     if (!sprite) {
-        log::debug("Failed to cast object to CCSprite in updateSpritePosition");
+        log::error("Failed to cast object to CCSprite in updateSpritePosition");
         return;
     }
 
@@ -157,6 +157,6 @@ SwelvyBG* SwelvyBG::create(float widthmult, float hightmult, float minspeed, flo
         return ret;
     }
     delete ret;
-    log::debug("Failed to create SwelvyBG instance");
+    //log::error("Failed to create SwelvyBG instance");
     return nullptr;
 }

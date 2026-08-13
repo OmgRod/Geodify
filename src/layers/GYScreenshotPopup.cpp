@@ -1,29 +1,28 @@
 #include "GYScreenshotPopup.hpp"
 #include "../Tags.hpp"
 
-bool GYScreenshotPopup::init(int const& layer) {
+bool GYScreenshotPopup::init(std::string_view layerName) {
     auto winSize = CCDirector::sharedDirector()->getWinSize();
 
     if (!Popup::init(winSize.width * .6f, winSize.height * .7f)) return false;
 
     Tags tags;
-    auto layerName = tags.getStringFromTag(layer);
 
     if (layerName.empty()) {
-        log::error("Layer name is empty for tag: {}", layer);
+        log::error("Layer name is empty for: {}", layerName);
         return false;
     }
 
     m_layerName = layerName;
 
-    std::string result = extractLastSegment(layerName);
+    std::string_view result = extractLastSegment(layerName);
 
     if (!m_mainLayer) {
         log::error("m_mainLayer is not initialized");
         return false;
     }
 
-    this->setTitle(result);
+    this->setTitle(std::string(result));
 
     m_mainLayer->setContentSize({
         winSize.width * 0.6f,
@@ -113,7 +112,7 @@ std::string GYScreenshotPopup::getPreviewURL() {
 void GYScreenshotPopup::reloadPreview() {
     auto url = getPreviewURL();
 
-    log::info("Loading preview: {}", url);
+    //log::info("Loading preview: {}", url);
 
     if (m_sprite) {
         m_sprite->removeFromParentAndCleanup(true);
@@ -125,7 +124,7 @@ void GYScreenshotPopup::reloadPreview() {
 
     m_sprite->setLoadCallback([this](Result<> res) {
         if (res) {
-            log::info("Preview loaded successfully");
+            //log::info("Preview loaded successfully");
 
             fixSpriteSize();
 
@@ -170,17 +169,19 @@ void GYScreenshotPopup::onDownloadFail() {
     fixSpriteSize();
 }
 
-std::string GYScreenshotPopup::extractLastSegment(const std::string& input) {
-    size_t lastDash = input.rfind('-');
 
-    if (lastDash != std::string::npos) {
-        return input.substr(lastDash + 1);
+std::string_view GYScreenshotPopup::extractLastSegment(std::string_view input) {
+    const auto lastSlash = input.rfind('/');
+
+    if (lastSlash != std::string_view::npos) {
+        return input.substr(lastSlash + 1);
     }
 
     return input;
 }
 
-GYScreenshotPopup* GYScreenshotPopup::create(int const& text) {
+
+GYScreenshotPopup* GYScreenshotPopup::create(std::string_view text) {
     auto ret = new GYScreenshotPopup();
 
     if (ret->init(text)) {

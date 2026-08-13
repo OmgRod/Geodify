@@ -23,7 +23,7 @@ protected:
     std::string getPreviewURL();
     void reloadPreview();
 
-    bool init(int const& layer);
+    bool init(std::string_view layer);
     void onDownloadFail();
 
     Ref<CCMenuItemSpriteExtra> m_swelvyBtn;
@@ -37,6 +37,6 @@ protected:
     void createReportButton();
 
 public:
-    static GYScreenshotPopup* create(int const& text);
-    std::string extractLastSegment(const std::string& input);
+    static GYScreenshotPopup* create(std::string_view text);
+    std::string_view extractLastSegment(std::string_view input);
 };

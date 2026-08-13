@@ -10,7 +10,7 @@ To build this mod, follow one of the methods below:
 
 ### VS Code
 > [!NOTE]
-> You will also need to install Python3 (tested with 3.11) to be able to build this mod. You may download it at <https://www.python.org/downloads/>
+> You will also need to install Python3 (tested with 3.11) to be able to use screenshot.py. You may download it at <https://www.python.org/downloads/>
 
 1. Open the project in VS Code.
 2. Install the necessary dependencies (if not already done).
@@ -46,7 +46,7 @@ using namespace geode::prelude;
 
 // This way is the new way to register a layer tag from v2.4.1+!
 // ADD_TAG is gd-LayerNameThing
-ADD_TAG("gd-CreatorLayer");
+ADD_TAG("gd/CreatorLayer");
 
 class $modify(MyCreatorLayer, CreatorLayer) {
 	bool init() {
@@ -80,7 +80,7 @@ using namespace geode::prelude;
 
 // This way is the new way to register a layer tag from v2.4.1+!
 // ADD_TAG is ModID-LayerNameThing
-ADD_TAG("dankmeme.globed2-GlobedLevelListLayer");
+ADD_TAG("dankmeme.globed2/GlobedLevelListLayer");
 
 SET_SWELVY(GlobedLevelListLayer /* Layer Name */, "dankmeme.globed2/GlobedLevelListLayer" /* Setting name - please keep in this format */, "background" /* Background Node ID */);
 ```
@@ -95,21 +95,10 @@ If the layer you're attempting to hook doesnt have an ID for its background, use
 using namespace geode::prelude;
 // This way is the new way to register a layer tag from v2.4.1+!
 // ADD_TAG is ModID-LayerNameThing
-ADD_TAG("dankmeme.globed2-GlobedLevelListLayer");
+ADD_TAG("dankmeme.globed2/GlobedLevelListLayer");
 
 SET_SWELVY_SPRITE(GlobedLevelListLayer /* Layer Name */, "dankmeme.globed2/GlobedLevelListLayer" /* Setting name - please keep in this format */);
 ```
 
 This way is new from v2.0.0+!
-
-### Registering Layers
-1. Add the mod to `src/Tags.hpp`
-
-> [!IMPORTANT]
-> You should only do this if the layer you are adding is for a new mod that isn't yet in Geodify.
-
-> [!NOTE]
-> As of writing this, the relevant code is the modData list
-> e.g: { "Mod Name", "Devs", "ID" },
-
 

@@ -2,7 +2,7 @@ import os
 from tkinter import Tk, filedialog
 from PIL import Image
 
-MOD_ID = "arcticwoof.rated_layouts"
+MOD_ID = input("what is the mod id e.g: arcticwoof.rated_layouts\n ?:")
 
 def select_image(title):
     path = filedialog.askopenfilename(

@@ -30,23 +30,37 @@ void GYModSettingsPopup::onApply(CCObject* sender) {
 }
 
 void GYModSettingsPopup::screenshotPopup(CCObject* sender) {
-    log::debug("Screenshot popup for setting {}", sender->getTag());
-    GYScreenshotPopup::create(sender->getTag())->show();
+    if (auto node = typeinfo_cast<CCNode*>(sender)) {
+        GYScreenshotPopup::create(node->getID())->show();
+    };
 }
 
-bool GYModSettingsPopup::init(std::string const& modName, std::string const& modAuthor, std::string const& modID) {
+bool GYModSettingsPopup::init(std::string_view modName, std::string_view modAuthor, std::string_view modID) {
     auto winSize = CCDirector::sharedDirector()->getWinSize();
 
     if (!Popup::init(winSize.width * 0.75f, winSize.height * 0.75f))
             return false;
     
-    this->setTitle(modName + " by " + modAuthor);
+    this->setTitle(std::string(modName) + " by " + std::string(modAuthor));
 
-    auto layerSize = CCSize(winSize.width * 0.75f, winSize.height * 0.75f);
+    auto layerSize = CCSize(winSize.width * 0.75f, winSize.height * 0.9f);
 
     auto scroll = ScrollLayer::create(layerSize * 0.9f - ccp(layerSize.width * 0.05f, layerSize.height * 0.35f));
     scroll->setPosition({ layerSize.width * 0.05f, layerSize.height * 0.175f });
     scroll->setTouchEnabled(true);
+    
+    CCScale9Sprite* contentBox = CCScale9Sprite::create("square02b_001.png");
+    contentBox->setColor(ccColor3B{0, 0, 0});
+    contentBox->setOpacity(60);
+    contentBox->setContentSize(scroll->getContentSize());
+    contentBox->setPosition(scroll->getPosition());
+    contentBox->setAnchorPoint({ 0, 0 });
+    contentBox->setID("content-box");
+    auto scrollbar = geode::Scrollbar::create(scroll);
+    scrollbar->setAnchorPoint({1, 0});
+	scrollbar->setPositionX(scroll->getContentWidth() + scrollbar->getContentWidth() + 5);
+    contentBox->addChild(scrollbar);
+    this->m_mainLayer->addChild(contentBox);
 
     for (auto& key : Mod::get()->getSettingKeys()) {
         if (key.starts_with(fmt::format("{}/", modID))) {
@@ -58,13 +72,8 @@ bool GYModSettingsPopup::init(std::string const& modName, std::string const& mod
                     auto btn = menu->getChildByType<CCMenuItemSpriteExtra*>(0);
 
                     Tags tags;
-
-                    std::string modifiedKey = key;
-                    std::replace(modifiedKey.begin(), modifiedKey.end(), '/', '-');
-                    log::debug("Modified key: {}", modifiedKey);
-                    int Tag = tags.getTagFromString(modifiedKey);
-                    node->setTag(Tag);
-                    btn->setTag(Tag);
+                    node->setID(key);
+                    btn->setID(key);
 
                     btn->setTarget(node, menu_selector(GYModSettingsPopup::screenshotPopup));
                 }
@@ -106,7 +115,7 @@ bool GYModSettingsPopup::init(std::string const& modName, std::string const& mod
     return true;
 }
 
-GYModSettingsPopup* GYModSettingsPopup::create(std::string const& modName, std::string const& modAuthor, std::string const& modID) {
+GYModSettingsPopup* GYModSettingsPopup::create(std::string_view modName, std::string_view modAuthor, std::string_view modID) {
     auto ret = new GYModSettingsPopup();
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();

@@ -7,25 +7,28 @@
 #include <string>
 
 #include "GYSettingSelectLayer.hpp"
+#include "fakePopup.hpp"
 #include "GYColorPopup.hpp"
 #include "GYModTile.hpp"
 #include "../SwelvyBG.hpp"
 #include "../Tags.hpp"
 
-/*
-
-BREAKING NEWS:
-
-OmgRod hates scrolling stuff.
-
-*/
-
 
 using namespace geode::prelude;
 
 void GYSettingSelectLayer::keyBackClicked() {
-    CCDirector::sharedDirector()->popSceneWithTransition(0.5f, PopTransition::kPopTransitionFade);
-}
+    if (!m_isPopup) {
+        CCDirector::sharedDirector()->popSceneWithTransition(0.5f, PopTransition::kPopTransitionFade);
+        return;
+    };
+    if (auto node = getParent()) {
+        if (auto close = typeinfo_cast<FakePopup*>(node)) {
+            close->close();
+        } else {
+            removeFromParent();
+        };
+    };
+};
 
 void GYSettingSelectLayer::backWrapper(CCObject* sender) {
     GYSettingSelectLayer::keyBackClicked();
@@ -33,8 +36,15 @@ void GYSettingSelectLayer::backWrapper(CCObject* sender) {
 
 CCScene* GYSettingSelectLayer::scene() {
     auto scene = CCScene::create();
-    scene->addChild(GYSettingSelectLayer::create());
+    auto k = GYSettingSelectLayer::create();
+    scene->addChild(k);
+    k->m_isPopup = false;
     return scene;
+}
+geode::Popup* GYSettingSelectLayer::popup() {
+    auto k = GYSettingSelectLayer::create();
+    k->m_isPopup = true;
+    return FakePopup::create(k); 
 }
 
 GYSettingSelectLayer* GYSettingSelectLayer::create() {
@@ -107,7 +117,7 @@ bool GYSettingSelectLayer::init() {
     backBtn->setID("back-btn");
     menu->addChild(backBtn);
 
-    CCLabelBMFont* title = CCLabelBMFont::create("Geodify Settings", "bigFont.fnt");
+    geode::Label* title = geode::Label::create("Geodify Settings", "bigFont.fnt");
     title->setPosition(winSize.width / 2, winSize.height * 0.9);
     title->setID("title");
     this->addChild(title);
@@ -124,9 +134,15 @@ bool GYSettingSelectLayer::init() {
     contentBox->setID("content-box");
     this->addChild(contentBox);
 
-    ScrollLayer* scroll = ScrollLayer::create({ winSize.width * 0.7f, winSize.height * 0.7f }, true, true);
+    ScrollLayer* scroll = geode::ScrollLayer::create({ winSize.width * 0.7f, winSize.height * 0.7f }, true, true);
     scroll->setID("scroll");
     scroll->setTouchEnabled(true);
+
+    auto scrollbar = geode::Scrollbar::create(scroll);
+    scrollbar->setAnchorPoint({1, 0});
+	scrollbar->setPositionX(scroll->getContentWidth() + scrollbar->getContentWidth() + 5);
+
+	contentBox->addChild(scrollbar);
     contentBox->addChild(scroll);
 
     auto contentLayer = CCLayer::create();
